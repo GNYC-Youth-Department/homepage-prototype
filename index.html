@@ -1,0 +1,607 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>GNYC Youth Homepage Prototype v2</title>
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<!-- Tailwind CSS CDN with forms and container queries plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Google Fonts: Plus Jakarta Sans & Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
+<!-- Tailwind Configuration matching Design System tokens -->
+<script>tailwind.config = {theme: {extend: {colors: {"surface-container-lowest": "#ffffff", "error-container": "#ffdad6", secondary: "#565e74", "surface-container-highest": "#dae2fd", background: "#faf8ff", "on-secondary-fixed": "#131b2e", "outline-variant": "#bfc7d2", "on-secondary-container": "#5c647a", "on-surface-variant": "#3f4850", "on-primary-fixed-variant": "#004b73", "on-primary-fixed": "#001d31", "primary-fixed": "#cce5ff", tertiary: "#6d5e00", "on-primary": "#ffffff", "inverse-surface": "#283044", "on-error-container": "#93000a", "surface-container": "#eaedff", "surface-container-low": "#f2f3ff", "inverse-on-surface": "#eef0ff", "tertiary-container": "#c4ab00", "secondary-container": "#dae2fd", outline: "#707881", "primary-fixed-dim": "#93ccff", "on-tertiary-container": "#4a3f00", "surface-container-high": "#e2e7ff", error: "#ba1a1a", "surface-variant": "#dae2fd", "inverse-primary": "#93ccff", "on-primary-container": "#fdfcff", primary: "#006194", "on-secondary": "#ffffff", surface: "#faf8ff", "surface-tint": "#006398", "surface-dim": "#d2d9f4", "brand-azure": "#0284c7", "secondary-fixed": "#dae2fd", "on-background": "#131b2e", "tertiary-fixed-dim": "#e3c600", "surface-bright": "#faf8ff", "on-secondary-fixed-variant": "#3f465c", "on-error": "#ffffff", "on-tertiary-fixed": "#211b00", "on-tertiary-fixed-variant": "#524600", "secondary-fixed-dim": "#bec6e0", "primary-container": "#007bb9", "tertiary-fixed": "#ffe247", "on-surface": "#131b2e", "on-tertiary": "#ffffff"}, fontFamily: {sans: ["Inter", "system-ui", "sans-serif"], heading: ["Plus Jakarta Sans", "sans-serif"], headline: ["Plus Jakarta Sans"], display: ["Plus Jakarta Sans"], body: ["Inter"], label: ["Inter"]}, boxShadow: {"subtle-card": "0 4px 24px -2px rgba(15, 23, 42, 0.05), 0 2px 8px -1px rgba(15, 23, 42, 0.02)", "subtle-card-hover": "0 16px 36px -4px rgba(0, 97, 148, 0.12), 0 6px 14px -2px rgba(15, 23, 42, 0.04)", "apple-glass": "0 8px 32px 0 rgba(0, 0, 0, 0.06)", "glow-cyan": "0 0 24px -4px rgba(2, 132, 199, 0.25)"}, fontSize: {}, borderRadius: {DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px"}}}};</script>
+<style>
+  html{scroll-behavior:smooth}
+  body{background:#faf8ff}
+  h1,h2,h3,h4,.font-heading{font-family:'Plus Jakarta Sans',system-ui,sans-serif}
+  .glass-nav{top:env(safe-area-inset-top,0px);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px)}
+  .proto-ribbon{display:flex;flex-wrap:wrap;gap:.25rem .75rem;align-items:baseline;justify-content:center;padding:.5rem 1rem;background:#131b2e;color:#dae2fd;font:500 12px/1.4 Inter,system-ui,sans-serif;text-align:center}
+  .proto-ribbon strong{color:#ffe247;font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:11px}
+  .hero-scrim{background:linear-gradient(90deg,rgba(8,14,34,.88) 0%,rgba(8,14,34,.62) 42%,rgba(8,14,34,.12) 100%),linear-gradient(0deg,rgba(8,14,34,.45),rgba(8,14,34,0) 45%)}
+  @media (max-width:767px){.hero-scrim{background:linear-gradient(0deg,rgba(8,14,34,.9) 0%,rgba(8,14,34,.7) 60%,rgba(8,14,34,.45) 100%)}}
+  .link{display:inline-flex;align-items:center;gap:.35rem;font-weight:600;font-size:15px;color:#006194;white-space:nowrap;width:fit-content}
+  .link:hover{color:#004b73;text-decoration:underline;text-underline-offset:3px}
+  .link span{transition:transform .18s ease}.link:hover span{transform:translateX(3px)}
+  .pill{padding:.5rem 1rem;border-radius:9999px;font-size:14px;font-weight:600;white-space:nowrap;background:#fff;color:#3f4850;border:1px solid #d5dbe6;transition:background .15s,color .15s}
+  .pill:hover{background:#f2f3ff}
+  .pill.is-on{background:#131b2e;color:#fff;border-color:#131b2e}
+  .logo{transition:transform .25s cubic-bezier(.34,1.56,.64,1)}article:hover>.logo{transform:scale(1.05)}
+  a:focus-visible,button:focus-visible{outline:2px solid #0284c7;outline-offset:3px;border-radius:9999px}
+  .ev-feature{background:radial-gradient(120% 140% at 85% 0%,#0a4a73 0%,rgba(10,74,115,0) 55%),linear-gradient(135deg,#0b1430 0%,#002f4b 100%);box-shadow:0 24px 48px -16px rgba(11,20,48,.35)}
+  .ev-poster{transform:rotate(2.5deg);box-shadow:0 0 0 1px rgba(255,255,255,.14),0 30px 60px -12px rgba(0,0,0,.6);transition:transform .35s cubic-bezier(.16,1,.3,1)}
+  .ev-feature:hover .ev-poster{transform:rotate(0deg) scale(1.02)}
+  .ev-card{--acc:0,97,148;border:1px solid rgba(var(--acc),.18);box-shadow:0 1px 2px rgba(15,23,42,.04),0 10px 28px -8px rgba(var(--acc),.18),0 4px 10px -4px rgba(15,23,42,.05);transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s cubic-bezier(.16,1,.3,1),border-color .3s}
+  .ev-card:hover{transform:translateY(-6px);border-color:rgba(var(--acc),.45);box-shadow:0 2px 4px rgba(15,23,42,.04),0 28px 56px -14px rgba(var(--acc),.38),0 10px 20px -8px rgba(15,23,42,.08)}
+  .ev-art{transition:transform .6s cubic-bezier(.16,1,.3,1)}
+  .ev-card:hover .ev-art{transform:scale(1.06)}
+  .ev-crest{right:18px;bottom:-30px;width:172px;height:172px;object-fit:contain;transform:rotate(-8deg);filter:drop-shadow(0 18px 28px rgba(0,0,0,.45))}
+  .ev-card:hover .ev-crest{transform:rotate(-3deg) scale(1.07)}
+  .ev-lines{background:repeating-linear-gradient(135deg,rgba(255,255,255,.07) 0 1px,transparent 1px 14px);-webkit-mask-image:linear-gradient(90deg,#000,transparent 75%);mask-image:linear-gradient(90deg,#000,transparent 75%)}
+  .ev-date{box-shadow:0 0 0 1px rgba(15,23,42,.06),0 12px 24px -8px rgba(15,23,42,.28)}
+  .ev-mon{color:rgb(var(--acc))}
+  .ev-btn{transition:background .2s,box-shadow .2s,color .2s}
+  .ev-retreat{--acc:136,32,58}
+  .ev-retreat .ev-head{background:#3b0d1a}
+  .ev-retreat .ev-btn{background:linear-gradient(180deg,#0a75ae,#006194);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 8px 18px -6px rgba(0,97,148,.55)}
+  .ev-retreat .ev-btn:hover{background:linear-gradient(180deg,#006194,#004b73)}
+  .ev-camporee{--acc:180,83,9}
+  .ev-camporee .ev-head{background:linear-gradient(135deg,#7f1d1d 0%,#b91c1c 55%,#dc2626 100%)}
+  .ev-camporee .ev-glow{background:radial-gradient(60% 90% at 82% 78%,rgba(245,214,10,.55),rgba(245,214,10,0) 70%)}
+  .ev-camporee .ev-btn{background:#fef3c7;color:#854d0e;box-shadow:inset 0 0 0 1px rgba(180,83,9,.18)}
+  .ev-camporee .ev-btn:hover{background:#fde68a}
+  .ev-summit{--acc:55,48,163}
+  .ev-summit .ev-head{background:linear-gradient(135deg,#0b1430 0%,#1e3a8a 60%,#1e40af 100%)}
+  .ev-summit .ev-glow{background:radial-gradient(60% 90% at 82% 78%,rgba(251,191,36,.45),rgba(251,191,36,0) 70%)}
+  .ev-summit .ev-btn{background:#e0e7ff;color:#3730a3;box-shadow:inset 0 0 0 1px rgba(55,48,163,.16)}
+  .ev-summit .ev-btn:hover{background:#c7d2fe}
+  .res-band{background:radial-gradient(70% 90% at 0% 0%,rgba(204,229,255,.55),rgba(204,229,255,0) 60%),linear-gradient(180deg,#fff,#f6f8ff)}
+  .res-card{--acc:2,132,199;--tint:#e0f2fe;--deep:#0369a1;border:1px solid rgba(var(--acc),.18);box-shadow:0 1px 2px rgba(15,23,42,.04),0 10px 28px -8px rgba(var(--acc),.2),0 4px 10px -4px rgba(15,23,42,.05);transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s cubic-bezier(.16,1,.3,1),border-color .3s}
+  .res-card:hover{transform:translateY(-6px);border-color:rgba(var(--acc),.45);box-shadow:0 2px 4px rgba(15,23,42,.04),0 28px 56px -14px rgba(var(--acc),.38),0 10px 20px -8px rgba(15,23,42,.08)}
+  .res-head{background:radial-gradient(80% 120% at 85% 0%,rgba(var(--acc),.34),rgba(var(--acc),0) 65%),linear-gradient(135deg,var(--tint),#fff)}
+  .res-lines{background:repeating-linear-gradient(135deg,rgba(var(--acc),.09) 0 1px,transparent 1px 14px);-webkit-mask-image:linear-gradient(270deg,#000,transparent 80%);mask-image:linear-gradient(270deg,#000,transparent 80%)}
+  .res-sheet{position:absolute;left:32px;top:30px;width:112px;height:150px;border-radius:10px;background:#fff;box-shadow:0 0 0 1px rgba(15,23,42,.06),0 18px 30px -10px rgba(var(--acc),.45);transition:transform .45s cubic-bezier(.16,1,.3,1)}
+  .res-back{transform:translate(26px,6px) rotate(7deg);opacity:.75}
+  .res-front{transform:rotate(-5deg);padding:14px 13px;display:flex;flex-direction:column;gap:8px}
+  .res-front i{display:block;height:5px;border-radius:3px;background:#e2e8f0}
+  .res-front i.short{width:62%}
+  .res-front i.res-bar{height:16px;border-radius:5px;background:rgb(var(--acc));opacity:.9;margin-bottom:4px}
+  .res-card:hover .res-front{transform:rotate(-9deg) translateY(-4px)}
+  .res-card:hover .res-back{transform:translate(38px,4px) rotate(12deg)}
+  .res-badge{position:absolute;left:118px;top:96px;width:52px;height:52px;border-radius:9999px;display:flex;align-items:center;justify-content:center;font-size:26px;color:#fff;background:linear-gradient(180deg,rgba(var(--acc),.92),var(--deep));box-shadow:0 0 0 4px #fff,0 12px 22px -6px rgba(var(--acc),.6)}
+  .res-label{color:var(--deep)}
+  .res-btn{background:var(--tint);color:var(--deep);box-shadow:inset 0 0 0 1px rgba(var(--acc),.2);transition:background .2s,color .2s,box-shadow .2s}
+  .res-card:hover .res-btn{background:linear-gradient(180deg,rgba(var(--acc),.95),var(--deep));color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 8px 18px -6px rgba(var(--acc),.55)}
+  .res-amber{--acc:217,119,6;--tint:#fef3c7;--deep:#92400e}
+  .res-indigo{--acc:79,70,229;--tint:#e0e7ff;--deep:#3730a3}
+  .res-emerald{--acc:5,150,105;--tint:#d1fae5;--deep:#065f46}
+  .ministry-card{transition:transform .22s cubic-bezier(.16,1,.3,1),box-shadow .22s cubic-bezier(.16,1,.3,1),border-color .22s ease}
+  .ministry-card:hover{transform:translateY(-4px)}
+  .logo-container{transition:transform .25s cubic-bezier(.34,1.56,.64,1)}
+  .ministry-card:hover .logo-container{transform:scale(1.06)}
+  .no-scrollbar::-webkit-scrollbar{display:none}.no-scrollbar{scrollbar-width:none}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="bg-[#faf8ff] text-[#131b2e] font-sans antialiased selection:bg-sky-100 selection:text-sky-900">
+<div class="proto-ribbon" role="note"><strong>Design prototype &middot; v2</strong><span>Proposed gnycyouth.org homepage revamp &middot; for review only, not the live site &middot; photos, dates and venues marked TBA are placeholders</span></div>
+<nav class="sticky z-50 glass-nav bg-white/85 border-b border-slate-200/80" aria-label="Main">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-[72px] gap-4">
+<a class="flex items-center gap-3 rounded-xl p-1" href="#">
+<img alt="GNYC Adventist Youth Ministries seal" class="h-11 w-auto object-contain" src="img/00.png">
+<span class="flex flex-col"><span class="text-[11px] font-bold uppercase tracking-widest text-[#006194] leading-tight">Greater New York Conference</span><span class="font-heading font-extrabold text-lg tracking-tight text-slate-900 leading-tight">Adventist Youth</span></span>
+</a>
+<div class="hidden lg:flex items-center gap-1 font-medium text-[15px] text-slate-700 whitespace-nowrap"><a class="px-3.5 py-2 rounded-full hover:text-[#006194] hover:bg-sky-50 transition-colors" href="#calendar">Events</a><a class="px-3.5 py-2 rounded-full hover:text-[#006194] hover:bg-sky-50 transition-colors" href="#ministries">Ministries</a><a class="px-3.5 py-2 rounded-full hover:text-[#006194] hover:bg-sky-50 transition-colors" href="#resources">Resources</a><a class="px-3.5 py-2 rounded-full hover:text-[#006194] hover:bg-sky-50 transition-colors" href="#news">News</a><a class="px-3.5 py-2 rounded-full hover:text-[#006194] hover:bg-sky-50 transition-colors" href="#about">About</a><a class="px-3.5 py-2 rounded-full hover:text-[#006194] hover:bg-sky-50 transition-colors" href="#">Store</a></div>
+<div class="flex items-center gap-2 sm:gap-3">
+<div class="hidden sm:flex items-center text-[13px] font-semibold rounded-full border border-slate-200 p-0.5" role="group" aria-label="Language"><button id="lang-en" class="px-2.5 py-1 rounded-full bg-slate-900 text-white" aria-pressed="true">EN</button><button id="lang-es" class="px-2.5 py-1 rounded-full text-slate-600 hover:text-slate-900" aria-pressed="false">ES</button></div>
+<button aria-label="Search" class="p-2.5 rounded-full text-slate-600 hover:text-[#006194] hover:bg-slate-100 transition-colors"><span class="material-symbols-outlined text-[22px]">search</span></button>
+<a class="hidden sm:inline-flex items-center px-5 py-2.5 rounded-full bg-[#006194] hover:bg-[#004b73] text-white font-semibold text-sm transition-colors" href="https://events.gnycyouth.com/event/13/adventist-youth-congress-xviii?aff=P1A3HA0V" rel="noopener noreferrer" target="_blank">Register</a>
+<button id="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" class="lg:hidden p-2 rounded-full text-slate-700 hover:bg-slate-100"><span class="material-symbols-outlined">menu</span></button>
+</div></div>
+<div id="mobile-menu" class="lg:hidden pb-4 border-t border-slate-200/80 pt-2" hidden><a class="block px-3 py-3 rounded-xl text-base font-medium text-slate-800 hover:bg-sky-50" href="#calendar">Events</a><a class="block px-3 py-3 rounded-xl text-base font-medium text-slate-800 hover:bg-sky-50" href="#ministries">Ministries</a><a class="block px-3 py-3 rounded-xl text-base font-medium text-slate-800 hover:bg-sky-50" href="#resources">Resources</a><a class="block px-3 py-3 rounded-xl text-base font-medium text-slate-800 hover:bg-sky-50" href="#news">News</a><a class="block px-3 py-3 rounded-xl text-base font-medium text-slate-800 hover:bg-sky-50" href="#about">About</a><a class="block px-3 py-3 rounded-xl text-base font-medium text-slate-800 hover:bg-sky-50" href="#">Store</a><a class="mt-2 flex items-center justify-center px-5 py-3 rounded-full bg-[#006194] text-white font-semibold" href="https://events.gnycyouth.com/event/13/adventist-youth-congress-xviii?aff=P1A3HA0V">Register for AY Congress XVIII</a></div>
+</div></nav>
+<header class="hero relative overflow-hidden bg-[#0b1430]">
+<img class="absolute inset-0 w-full h-full object-cover" style="object-position:50% 38%" src="img/hero.jpg" alt="Manhattan skyline over Central Park at dusk">
+<div class="hero-scrim absolute inset-0" aria-hidden="true"></div>
+<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-20 sm:pt-28 sm:pb-24 lg:pt-36 lg:pb-32">
+<a class="inline-flex items-center gap-2 text-sm font-medium text-white/90 hover:text-white border border-white/25 bg-white/10 backdrop-blur-sm rounded-full pl-3 pr-4 py-1.5" href="https://events.gnycyouth.com/event/13/adventist-youth-congress-xviii?aff=P1A3HA0V"><span class="w-1.5 h-1.5 rounded-full bg-[#ffe247]" aria-hidden="true"></span>AY Congress XVIII registration is open <span aria-hidden="true">&rarr;</span></a>
+<h1 class="mt-6 max-w-3xl text-[40px] leading-[1.08] sm:text-6xl sm:leading-[1.05] lg:text-7xl lg:leading-[1.03] font-heading font-extrabold tracking-[-0.03em] text-white" style="text-wrap:balance">Helping New York youth live, lead and love <span class="text-[#ffe247]">like Jesus.</span></h1>
+<p class="mt-6 max-w-xl text-lg sm:text-xl leading-relaxed text-white/85">Events, clubs and resources for Adventist Youth Ministries across the five boroughs, Long Island and upstate New York.</p>
+<div class="mt-9 flex flex-col sm:flex-row gap-3 sm:items-center">
+<a class="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-white text-slate-900 hover:bg-slate-100 font-semibold text-base transition-colors" href="#calendar">See upcoming events</a>
+<a class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full border border-white/40 text-white hover:bg-white/10 font-semibold text-base transition-colors" href="https://drive.google.com/file/d/1R9X7ByCJo2Y_s8DfSZvJ8EKGKVcLDpny/view?usp=drive_link" rel="noopener noreferrer" target="_blank"><span class="material-symbols-outlined text-xl" aria-hidden="true">download</span>Download the calendar (PDF)</a>
+</div></div></header>
+<section class="py-16 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" id="calendar">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+<div><h2 class="text-3xl sm:text-4xl font-heading font-extrabold text-slate-900 tracking-tight">Upcoming events</h2><p class="text-slate-600 text-base mt-2">Congresses, camporees, retreats and rallies across the conference.</p></div>
+<a class="link" href="https://gnycyouth.com/event/">View all events <span aria-hidden="true">&rarr;</span></a></div>
+<div class="flex items-center gap-2 overflow-x-auto pb-2 mb-8 no-scrollbar" role="group" aria-label="Filter events" data-filter-group="ev-item"><button id="ev-f-all" class="pill is-on" data-filter="all" aria-pressed="true">All events</button><button id="ev-f-clubs" class="pill" data-filter="clubs" aria-pressed="false">Pathfinders &amp; Adventurers</button><button id="ev-f-youth" class="pill" data-filter="youth" aria-pressed="false">Youth &amp; young adults</button><button id="ev-f-lead" class="pill" data-filter="lead" aria-pressed="false">Leadership</button><button id="ev-f-outdoors" class="pill" data-filter="outdoors" aria-pressed="false">Camping &amp; outdoors</button></div>
+<article class="ev-item ev-feature relative overflow-hidden rounded-[28px] text-white" data-cats="youth">
+<img class="absolute inset-x-0 bottom-0 w-full h-40 sm:h-56 opacity-[0.07] pointer-events-none select-none" src="img/skyline.svg" alt="" aria-hidden="true">
+<div class="relative grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center p-7 sm:p-12 lg:p-16">
+<div class="lg:col-span-7">
+<p class="inline-flex items-center gap-2 text-sm font-semibold text-emerald-300"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400" aria-hidden="true"></span>Registration open</p>
+<p class="mt-6 text-sm sm:text-base font-bold tracking-[0.16em] uppercase text-[#ffe247]">January 29&ndash;31, 2027</p>
+<h3 class="mt-3 font-heading font-extrabold text-4xl sm:text-5xl lg:text-[56px] leading-[1.05] tracking-[-0.03em]" style="text-wrap:balance">XVIII Adventist Youth Congress</h3>
+<p class="mt-4 text-base sm:text-lg text-white/80 flex items-center gap-1.5"><span class="material-symbols-outlined text-xl text-white/60" aria-hidden="true">location_on</span>Dolce by Wyndham Parsippany &middot; Parsippany, NJ</p>
+<p class="mt-5 text-base sm:text-lg text-white/75 leading-relaxed max-w-xl">The largest quadrennial gathering of Adventist youth, collegiate and ministry leaders from across the conference.</p>
+<div class="mt-9 flex flex-wrap items-center gap-x-8 gap-y-5">
+<a class="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-white text-slate-900 hover:bg-slate-100 font-semibold text-base transition-colors" href="https://events.gnycyouth.com/event/13/adventist-youth-congress-xviii?aff=P1A3HA0V" rel="noopener noreferrer" target="_blank">Register a delegate</a>
+<p id="congress-count" class="flex items-baseline gap-2" hidden><span class="font-heading font-extrabold text-4xl tracking-tight tabular-nums text-white" data-days></span><span class="text-sm font-medium text-white/70">days to go</span></p>
+</div></div>
+<div class="lg:col-span-5 flex justify-center lg:justify-end">
+<img class="ev-poster w-56 sm:w-64 lg:w-[300px] rounded-2xl" src="img/05.jpg" alt="Save the date flyer for the Adventist Youth Congress, January 29 to 31, 2027" width="410" height="512">
+</div></div></article><ul class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-7 mt-7"><li class="ev-item ev-card ev-retreat group relative flex flex-col bg-white rounded-3xl overflow-hidden" data-cats="youth outdoors" data-start="2026-09-25">
+<div class="ev-head relative h-52 overflow-hidden"><img class="ev-art absolute inset-0 w-full h-full object-cover" style="object-position:50% 30%" src="img/06.jpg" alt="Forgiven young adult retreat flyer">
+<div class="absolute inset-0 bg-gradient-to-t from-black/55 via-black/5 to-black/25" aria-hidden="true"></div>
+<span class="absolute top-4 left-4 inline-flex items-center px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase text-white bg-white/15 backdrop-blur-md border border-white/25">Young adults</span>
+<span class="soon absolute top-4 right-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase bg-[#ffe247] text-[#211b00] shadow-lg" hidden><span class="w-1.5 h-1.5 rounded-full bg-[#211b00]" aria-hidden="true"></span>This week</span>
+</div>
+<div class="relative flex flex-col flex-1 px-6 sm:px-7 pb-7">
+<div class="ev-date -mt-10 mb-5 self-start bg-white rounded-2xl px-4 pt-2.5 pb-2 text-center min-w-[76px]"><div class="ev-mon text-[11px] font-extrabold tracking-[0.16em] uppercase">Sep 2026</div><div class="font-heading font-extrabold text-[26px] leading-tight tracking-tight text-slate-900 whitespace-nowrap tabular-nums">25&ndash;27</div></div>
+<h3 class="font-heading font-bold text-[22px] text-slate-900 leading-snug tracking-tight">Young Adult Retreat: Forgiven</h3>
+<p class="text-sm text-slate-600 mt-2 flex items-center gap-1"><span class="material-symbols-outlined text-base text-slate-400" aria-hidden="true">location_on</span>Camp Berkshire &middot; Wingdale, NY</p>
+<p class="text-[15px] text-slate-700 mt-3 mb-6 leading-relaxed">Loved. Seen. Chosen. The conference young adult retreat in the Berkshires.</p>
+<a class="ev-btn mt-auto inline-flex items-center justify-center gap-2 w-full py-3.5 px-5 rounded-full font-semibold text-[15px]" href="https://events.gnycyouth.com" rel="noopener noreferrer" target="_blank">Register now<span class="material-symbols-outlined text-lg transition-transform group-hover:translate-x-1" aria-hidden="true">arrow_forward</span></a>
+</div></li><li class="ev-item ev-card ev-camporee group relative flex flex-col bg-white rounded-3xl overflow-hidden" data-cats="clubs outdoors">
+<div class="ev-head relative h-52 overflow-hidden"><div class="ev-glow absolute inset-0" aria-hidden="true"></div><div class="ev-lines absolute inset-0" aria-hidden="true"></div><img class="ev-art ev-crest absolute" src="img/08.png" alt="">
+<div class="absolute inset-0 bg-gradient-to-t from-black/55 via-black/5 to-black/25" aria-hidden="true"></div>
+<span class="absolute top-4 left-4 inline-flex items-center px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase text-white bg-white/15 backdrop-blur-md border border-white/25">Pathfinders</span>
+<span class="soon absolute top-4 right-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase bg-[#ffe247] text-[#211b00] shadow-lg" hidden><span class="w-1.5 h-1.5 rounded-full bg-[#211b00]" aria-hidden="true"></span>This week</span>
+</div>
+<div class="relative flex flex-col flex-1 px-6 sm:px-7 pb-7">
+<div class="ev-date -mt-10 mb-5 self-start bg-white rounded-2xl px-4 pt-2.5 pb-2 text-center min-w-[76px]"><div class="ev-mon text-[11px] font-extrabold tracking-[0.16em] uppercase">Annual</div><div class="font-heading font-extrabold text-[26px] leading-tight tracking-tight text-slate-900 whitespace-nowrap tabular-nums">TBA</div></div>
+<h3 class="font-heading font-bold text-[22px] text-slate-900 leading-snug tracking-tight">Pathfinder Camporee &amp; Bible Experience</h3>
+<p class="text-sm text-slate-600 mt-2 flex items-center gap-1"><span class="material-symbols-outlined text-base text-slate-400" aria-hidden="true">location_on</span>Camp Whittemore</p>
+<p class="text-[15px] text-slate-700 mt-3 mb-6 leading-relaxed">Camping, drum corps reviews, drill inspection and the conference Bible Experience finals.</p>
+<a class="ev-btn mt-auto inline-flex items-center justify-center gap-2 w-full py-3.5 px-5 rounded-full font-semibold text-[15px]" href="#resources">Waivers and forms<span class="material-symbols-outlined text-lg transition-transform group-hover:translate-x-1" aria-hidden="true">arrow_forward</span></a>
+</div></li><li class="ev-item ev-card ev-summit group relative flex flex-col bg-white rounded-3xl overflow-hidden" data-cats="lead">
+<div class="ev-head relative h-52 overflow-hidden"><div class="ev-glow absolute inset-0" aria-hidden="true"></div><div class="ev-lines absolute inset-0" aria-hidden="true"></div><img class="ev-art ev-crest absolute" src="img/crest-mg.png" alt="">
+<div class="absolute inset-0 bg-gradient-to-t from-black/55 via-black/5 to-black/25" aria-hidden="true"></div>
+<span class="absolute top-4 left-4 inline-flex items-center px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase text-white bg-white/15 backdrop-blur-md border border-white/25">Leadership</span>
+<span class="soon absolute top-4 right-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase bg-[#ffe247] text-[#211b00] shadow-lg" hidden><span class="w-1.5 h-1.5 rounded-full bg-[#211b00]" aria-hidden="true"></span>This week</span>
+</div>
+<div class="relative flex flex-col flex-1 px-6 sm:px-7 pb-7">
+<div class="ev-date -mt-10 mb-5 self-start bg-white rounded-2xl px-4 pt-2.5 pb-2 text-center min-w-[76px]"><div class="ev-mon text-[11px] font-extrabold tracking-[0.16em] uppercase">Date</div><div class="font-heading font-extrabold text-[26px] leading-tight tracking-tight text-slate-900 whitespace-nowrap tabular-nums">TBA</div></div>
+<h3 class="font-heading font-bold text-[22px] text-slate-900 leading-snug tracking-tight">Master Guide &amp; TLT Leadership Summit</h3>
+<p class="text-sm text-slate-600 mt-2 flex items-center gap-1"><span class="material-symbols-outlined text-base text-slate-400" aria-hidden="true">location_on</span>Conference Center &middot; Manhasset, NY</p>
+<p class="text-[15px] text-slate-700 mt-3 mb-6 leading-relaxed">Teen Leadership Training intensives, safety credentials and director certification workshops.</p>
+<a class="ev-btn mt-auto inline-flex items-center justify-center gap-2 w-full py-3.5 px-5 rounded-full font-semibold text-[15px]" href="https://gnycyouth.com/pathfinders/tlt/" rel="noopener noreferrer" target="_blank">View the syllabus<span class="material-symbols-outlined text-lg transition-transform group-hover:translate-x-1" aria-hidden="true">arrow_forward</span></a>
+</div></li></ul></section>
+<section class="py-16 lg:py-24 bg-[#f2f3ff]/60" id="news">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="max-w-2xl mb-10"><h2 class="text-3xl sm:text-4xl font-heading font-extrabold text-slate-900 tracking-tight">#OneTeam stories</h2><p class="text-slate-600 text-base mt-2">Mission, leadership and community news from clubs across the conference.</p></div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Story 1 -->
+<article class="bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-subtle-card hover:shadow-subtle-card-hover transition-all group flex flex-col justify-between">
+<div class="relative aspect-video sm:aspect-4/3 bg-slate-900 overflow-hidden">
+<img alt="NAD Master Guide Camporee Gathering" class="w-full h-full object-cover object-center filter brightness-90 group-hover:scale-105 transition-transform duration-300" src="img/02.jpg">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+<div class="absolute bottom-4 left-4 right-4">
+<span class="text-xs font-bold tracking-widest text-sky-200 uppercase">OCT / 2025</span>
+<h3 class="font-heading font-bold text-lg text-white mt-1 leading-snug">
+                The First North American Division Master Guide Camporee
+              </h3>
+</div>
+</div>
+<div class="p-6">
+<p class="text-slate-700 text-[15px] leading-relaxed">
+              Hundreds of GNYC certified Master Guides gathered for unprecedented fellowship, outdoor honors, and mentorship equipping across North America.
+            </p>
+<div class="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between">
+<span class="text-sm text-slate-600">4 min read</span>
+<a class="text-sm font-semibold text-[#006194] hover:underline inline-flex items-center gap-1" href="#">
+                Read story <span aria-hidden="true">&rarr;</span>
+</a>
+</div>
+</div>
+</article>
+<!-- Story 2 -->
+<article class="bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-subtle-card hover:shadow-subtle-card-hover transition-all group flex flex-col justify-between">
+<div class="relative aspect-video sm:aspect-4/3 bg-slate-900 overflow-hidden">
+<img alt="Young Adult LIFE Tour - Metro NY Edition" class="w-full h-full object-cover object-center filter brightness-90 group-hover:scale-105 transition-transform duration-300" src="img/03.jpg">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+<div class="absolute bottom-4 left-4 right-4">
+<span class="text-xs font-bold tracking-widest text-sky-200 uppercase">SEP / 2025</span>
+<h3 class="font-heading font-bold text-lg text-white mt-1 leading-snug">
+                Young Adult LIFE Tour - Metro NY Edition
+              </h3>
+</div>
+</div>
+<div class="p-6">
+<p class="text-slate-700 text-[15px] leading-relaxed">
+              Empowering collegiate students and young professionals to revitalize local church culture through compassionate listening and urban initiatives.
+            </p>
+<div class="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between">
+<span class="text-sm text-slate-600">5 min read</span>
+<a class="text-sm font-semibold text-[#006194] hover:underline inline-flex items-center gap-1" href="#">
+                Read story <span aria-hidden="true">&rarr;</span>
+</a>
+</div>
+</div>
+</article>
+<!-- Story 3 -->
+<article class="bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-subtle-card hover:shadow-subtle-card-hover transition-all group flex flex-col justify-between">
+<div class="relative aspect-video sm:aspect-4/3 bg-slate-900 overflow-hidden">
+<img alt="Youth Safety Resources Makeover" class="w-full h-full object-cover object-center filter brightness-90 group-hover:scale-105 transition-transform duration-300" src="img/04.jpg">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+<div class="absolute bottom-4 left-4 right-4">
+<span class="text-xs font-bold tracking-widest text-sky-200 uppercase">SEP / 2025</span>
+<h3 class="font-heading font-bold text-lg text-white mt-1 leading-snug">
+                NAD Youth Safety Resources Get a Makeover
+              </h3>
+</div>
+</div>
+<div class="p-6">
+<p class="text-slate-700 text-[15px] leading-relaxed">
+              Refreshed training modules and updated background screening protocols ensure our clubs remain the safest haven for every boy and girl.
+            </p>
+<div class="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between">
+<span class="text-sm text-slate-600">3 min read</span>
+<a class="text-sm font-semibold text-[#006194] hover:underline inline-flex items-center gap-1" href="#">
+                Read story <span aria-hidden="true">&rarr;</span>
+</a>
+</div>
+</div>
+</article>
+</div>
+</div>
+</section>
+<section class="border-y border-slate-200/80" id="ministries" aria-labelledby="clubs-h"><div class="max-w-7xl mx-auto py-16 lg:py-24 px-4 sm:px-6 lg:px-8">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12"><div><h2 id="clubs-h" class="text-3xl sm:text-4xl font-heading font-extrabold tracking-tight text-slate-900">A club for every stage of life</h2><p class="mt-2 text-slate-600 text-base max-w-2xl">Four ministries, from Pre-K through young adulthood.</p></div><a class="link" href="#resources">Club manuals <span aria-hidden="true">&rarr;</span></a></div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch" data-purpose="ministry-cards-grid">
+<!-- BEGIN: Card 1 - Adventurers -->
+<article class="ministry-card relative flex flex-col justify-between bg-white rounded-3xl p-6 sm:p-7 border border-slate-200/90 shadow-subtle-card hover:shadow-subtle-card-hover hover:border-sky-300" data-purpose="adventurers-card">
+<div>
+<!-- Top Row: Age Badge & Category Icon -->
+<div class="flex items-center justify-between gap-2 mb-6">
+<span class="inline-flex items-center text-[11px] font-bold tracking-wide uppercase px-3 py-1 rounded-full bg-[#e0f2fe] text-[#0369a1]">
+              Ages 4 – 9
+            </span>
+<!-- Family Icon -->
+<span class="text-slate-400" title="Family &amp; Children">
+<svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24">
+<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+<circle cx="9" cy="7" r="4"></circle>
+<path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+<path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+</svg>
+</span>
+</div>
+<!-- Emblem / Logo Container using DATA:IMAGE:IMAGE_7 -->
+<div class="flex justify-center mb-6">
+<div class="logo-container w-24 h-24 rounded-full bg-gradient-to-b from-[#e0f2fe] to-[#bae6fd]/40 flex items-center justify-center p-2.5 border border-sky-100 shadow-sm"><img alt="Adventurer Club Official Crest" class="w-16 h-16 object-contain filter drop-shadow-sm" src="img/07.png"></div>
+</div>
+<!-- Program Details -->
+<div class="text-center">
+<h3 class="text-xl font-bold font-heading text-slate-900 tracking-tight">Adventurers</h3>
+<p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mt-1 mb-3">Pre-K through Grade 4</p>
+<p class="text-slate-600 text-sm leading-relaxed">
+              Early-age co-ed scouting program fostering family bonds, nature appreciation, and fundamental Christian values through 80+ joyful awards.
+            </p>
+</div>
+</div>
+<!-- Action Button -->
+<div class="mt-8 pt-2">
+<a class="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-[#eef6ff] hover:bg-[#e0f0fe] text-[#0284c7] hover:text-[#0369a1] font-semibold text-sm transition-colors group" href="https://gnycyouth.com/adventures/">
+<span class="">Explore Adventurers</span>
+<svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="currentColor" viewBox="0 0 20 20">
+<path clip-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" fill-rule="evenodd"></path>
+</svg>
+</a>
+</div>
+</article>
+<!-- END: Card 1 - Adventurers -->
+<!-- BEGIN: Card 2 - Pathfinders (Flagship) -->
+<article class="ministry-card relative flex flex-col justify-between bg-white rounded-3xl p-6 sm:p-7 border-2 border-amber-200/90 shadow-subtle-card hover:shadow-subtle-card-hover hover:border-amber-400" data-purpose="pathfinders-card">
+<!-- Top Featured Ribbon / Pill Badge -->
+<div class="absolute -top-3.5 left-1/2 -translate-x-1/2">
+<span class="inline-flex items-center px-3.5 py-0.5 rounded-full text-[10px] font-extrabold tracking-widest uppercase bg-[#854d0e] text-white shadow-sm ring-2 ring-white">
+            FLAGSHIP
+          </span>
+</div>
+<div>
+<!-- Top Row: Grade Badge & Camp Tent Icon -->
+<div class="flex items-center justify-between gap-2 mb-6 pt-0.5">
+<span class="inline-flex items-center text-[11px] font-bold tracking-wide uppercase px-3 py-1 rounded-full bg-[#fef3c7] text-[#92400e]">
+              Grades 5 – 10
+            </span>
+<!-- Tent / Outdoor Icon -->
+<span class="text-slate-400" title="Outdoor &amp; Camping">
+<svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24">
+<path d="m19 20-7-14-7 14h14z"></path>
+<path d="M12 6v14"></path>
+<path d="M9.5 20l2.5-5 2.5 5"></path>
+</svg>
+</span>
+</div>
+<!-- Emblem / Logo Container using DATA:IMAGE:IMAGE_6 -->
+<div class="flex justify-center mb-6">
+<div class="logo-container w-24 h-24 rounded-full bg-gradient-to-b from-[#fef3c7] to-[#fde68a]/30 flex items-center justify-center p-2.5 border border-amber-200/70 shadow-sm"><img alt="Pathfinder Club Official Triangle Shield" class="w-16 h-16 object-contain filter drop-shadow-sm" src="img/08.png"></div>
+</div>
+<!-- Program Details -->
+<div class="text-center">
+<h3 class="text-xl font-bold font-heading text-slate-900 tracking-tight">Pathfinders</h3>
+<p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mt-1 mb-3">Ages 10 through 16</p>
+<p class="text-slate-600 text-sm leading-relaxed">
+              Outdoor survival, camping, honors, drilling &amp; marching, drum corps, and deep scripture study through the Pathfinder Bible Experience.
+            </p>
+</div>
+</div>
+<!-- Action Button -->
+<div class="mt-8 pt-2">
+<a class="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-[#fef3c7] hover:bg-[#fde68a] text-[#854d0e] hover:text-[#713f12] font-semibold text-sm transition-colors group" href="https://gnycyouth.com/pathfinders/">
+<span class="">Explore Pathfinders</span>
+<svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="currentColor" viewBox="0 0 20 20">
+<path clip-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" fill-rule="evenodd"></path>
+</svg>
+</a>
+</div>
+</article>
+<!-- END: Card 2 - Pathfinders -->
+<!-- BEGIN: Card 3 - Master Guides -->
+<article class="ministry-card relative flex flex-col justify-between bg-white rounded-3xl p-6 sm:p-7 border border-slate-200/90 shadow-subtle-card hover:shadow-subtle-card-hover hover:border-indigo-300" data-purpose="master-guides-card">
+<div>
+<!-- Top Row: Grade Badge & Leadership Award Icon -->
+<div class="flex items-center justify-between gap-2 mb-6">
+<span class="inline-flex items-center text-[11px] font-bold tracking-wide uppercase px-3 py-1 rounded-full bg-[#e0e7ff] text-[#3730a3]">
+              Grades 11 – Adult
+            </span>
+<!-- Leadership / Medal Icon -->
+<span class="text-slate-400" title="Leadership &amp; Mentorship">
+<svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24">
+<circle cx="12" cy="8" r="6"></circle>
+<path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path>
+</svg>
+</span>
+</div>
+<!-- Emblem / Logo Container using DATA:IMAGE:IMAGE_5 -->
+<div class="flex justify-center mb-6">
+<div class="logo-container w-24 h-24 rounded-full bg-gradient-to-b from-[#e0e7ff] to-[#c7d2fe]/30 flex items-center justify-center p-2.5 border border-indigo-100 shadow-sm"><img alt="Master Guide Official Octagon Star &amp; Globe" class="w-16 h-16 object-contain filter drop-shadow-sm" src="img/crest-mg.png"></div>
+</div>
+<!-- Program Details -->
+<div class="text-center">
+<h3 class="text-xl font-bold font-heading text-slate-900 tracking-tight">Master Guides</h3>
+<p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mt-1 mb-3">Youth Leadership &amp; Mentors</p>
+<p class="text-slate-600 text-sm leading-relaxed">
+              The premier leadership training ministry of the Seventh-day Adventist Church, certifying directors, counselors, and lifelong club champions.
+            </p>
+</div>
+</div>
+<!-- Action Button -->
+<div class="mt-8 pt-2">
+<a class="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-[#eef2ff] hover:bg-[#e0e7ff] text-[#4338ca] hover:text-[#3730a3] font-semibold text-sm transition-colors group" href="https://gnycyouth.com/about/youth-leadership/">
+<span class="">Explore Master Guides</span>
+<svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="currentColor" viewBox="0 0 20 20">
+<path clip-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" fill-rule="evenodd"></path>
+</svg>
+</a>
+</div>
+</article>
+<!-- END: Card 3 - Master Guides -->
+<!-- BEGIN: Card 4 - AY & Campus Ministries -->
+<article class="ministry-card relative flex flex-col justify-between bg-white rounded-3xl p-6 sm:p-7 border border-slate-200/90 shadow-subtle-card hover:shadow-subtle-card-hover hover:border-sky-300" data-purpose="ay-card">
+<div>
+<!-- Top Row: Stage Badge & Campus Globe Icon -->
+<div class="flex items-center justify-between gap-2 mb-6">
+<span class="inline-flex items-center text-[11px] font-bold tracking-wide uppercase px-3 py-1 rounded-full bg-[#e0f2fe] text-[#0369a1]">
+              Young Adults
+            </span>
+<!-- Global / Campus Ministries Icon -->
+<span class="text-slate-400" title="Campus &amp; Global Mission">
+<svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24">
+<circle cx="12" cy="12" r="10"></circle>
+<path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+<path d="M2 12h20"></path>
+</svg>
+</span>
+</div>
+<!-- Emblem / Logo Container using DATA:IMAGE:IMAGE_4 -->
+<div class="flex justify-center mb-6">
+<div class="logo-container w-24 h-24 rounded-full bg-gradient-to-b from-[#e0f2fe] to-[#bae6fd]/30 flex items-center justify-center p-2.5 border border-sky-100 shadow-sm"><img alt="Adventist Youth Society 3 Angels Globe Logo" class="w-16 h-16 object-contain filter drop-shadow-sm" src="img/crest-ay.png"></div>
+</div>
+<!-- Program Details -->
+<div class="text-center">
+<h3 class="text-xl font-bold font-heading text-slate-900 tracking-tight">AY &amp; Campus Ministries</h3>
+<p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mt-1 mb-3">Collegiate, SOE &amp; Society</p>
+<p class="text-slate-600 text-sm leading-relaxed">
+              Mobilizing young adults, urban evangelism teams, and university students through Public Campus Ministries (PCM) and School of Evangelism.
+            </p>
+</div>
+</div>
+<!-- Action Button -->
+<div class="mt-8 pt-2">
+<a class="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-[#eef6ff] hover:bg-[#e0f0fe] text-[#0284c7] hover:text-[#0369a1] font-semibold text-sm transition-colors group" href="https://gnycyouth.com/adventist-youth-ministries/">
+<span class="">Explore AY Society</span>
+<svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="currentColor" viewBox="0 0 20 20">
+<path clip-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" fill-rule="evenodd"></path>
+</svg>
+</a>
+</div>
+</article>
+<!-- END: Card 4 - AY & Campus Ministries -->
+</div>
+</div></div></section>
+<section class="res-band border-b border-slate-200/80" id="resources"><div class="max-w-7xl mx-auto py-16 lg:py-24 px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+<div class="lg:col-span-4 lg:sticky lg:top-28">
+<h2 class="text-3xl sm:text-4xl lg:text-[42px] lg:leading-[1.1] font-heading font-extrabold text-slate-900 tracking-tight" style="text-wrap:balance">For club directors and leaders</h2>
+<p class="text-slate-600 text-base sm:text-lg mt-4 leading-relaxed">Forms, waivers, uniform standards and study material, ready to download.</p>
+<div class="flex flex-wrap gap-2 mt-7" role="group" aria-label="Filter resources" data-filter-group="res-item"><button id="res-f-all" class="pill is-on" data-filter="all" aria-pressed="true">All</button><button id="res-f-forms" class="pill" data-filter="forms" aria-pressed="false">Forms &amp; waivers</button><button id="res-f-uniform" class="pill" data-filter="uniform" aria-pressed="false">Uniform</button><button id="res-f-pbe" class="pill" data-filter="pbe" aria-pressed="false">Bible Experience</button></div>
+<div class="mt-8 flex items-start gap-3.5 rounded-2xl bg-white/80 border border-slate-200/80 p-4 shadow-subtle-card"><span class="material-symbols-outlined text-[22px] text-[#006194] mt-0.5" aria-hidden="true">mail</span><p class="text-sm text-slate-700 leading-relaxed">Can&rsquo;t find a form? Email <a class="font-semibold text-[#006194] hover:underline" href="mailto:info@gnycyouth.com">info@gnycyouth.com</a> and the youth office will send it.</p></div>
+</div>
+<ul class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-7"><li class="res-item res-card res-sky group relative flex flex-col bg-white rounded-3xl overflow-hidden" data-cats="forms">
+<div class="res-head relative h-44 overflow-hidden" aria-hidden="true">
+<div class="res-lines absolute inset-0"></div>
+<div class="res-sheet res-back"></div>
+<div class="res-sheet res-front"><i class="res-bar"></i><i></i><i></i><i class="short"></i><i></i><i class="short"></i></div>
+<span class="res-badge material-symbols-outlined">assignment</span>
+<span class="absolute top-4 right-4 px-3 py-1 rounded-full text-[11px] font-extrabold tracking-[0.12em] uppercase bg-white/85 backdrop-blur-md text-slate-800 shadow-sm">PDF</span>
+</div>
+<div class="flex flex-col flex-1 p-6 sm:p-7">
+<p class="res-label text-xs font-bold tracking-[0.14em] uppercase">Form &amp; guideline</p>
+<h3 class="mt-2 font-heading font-bold text-xl text-slate-900 leading-snug tracking-tight">Camporee instructive form</h3>
+<p class="text-[15px] text-slate-700 mt-2.5 mb-6 leading-relaxed">Schedule, campsite rules, fire safety and the director briefing for the annual camporee.</p>
+<a class="res-btn mt-auto inline-flex items-center justify-center gap-2 w-full py-3.5 px-5 rounded-full font-semibold text-[15px]" href="https://drive.google.com/file/d/1fXJtZb3sQf-Ta3kHERrqHuwifCNthTd4/view?usp=sharing" rel="noopener noreferrer" target="_blank"><span class="material-symbols-outlined text-xl transition-transform group-hover:translate-y-0.5" aria-hidden="true">download</span>Download the form</a>
+</div></li><li class="res-item res-card res-amber group relative flex flex-col bg-white rounded-3xl overflow-hidden" data-cats="forms">
+<div class="res-head relative h-44 overflow-hidden" aria-hidden="true">
+<div class="res-lines absolute inset-0"></div>
+<div class="res-sheet res-back"></div>
+<div class="res-sheet res-front"><i class="res-bar"></i><i></i><i></i><i class="short"></i><i></i><i class="short"></i></div>
+<span class="res-badge material-symbols-outlined">verified_user</span>
+<span class="absolute top-4 right-4 px-3 py-1 rounded-full text-[11px] font-extrabold tracking-[0.12em] uppercase bg-white/85 backdrop-blur-md text-slate-800 shadow-sm">Google Doc</span>
+</div>
+<div class="flex flex-col flex-1 p-6 sm:p-7">
+<p class="res-label text-xs font-bold tracking-[0.14em] uppercase">Safety &amp; waiver</p>
+<h3 class="mt-2 font-heading font-bold text-xl text-slate-900 leading-snug tracking-tight">Travel and tent release, with risk memo</h3>
+<p class="text-[15px] text-slate-700 mt-2.5 mb-6 leading-relaxed">Parental permission, a risk management template and the pastor and director memo.</p>
+<a class="res-btn mt-auto inline-flex items-center justify-center gap-2 w-full py-3.5 px-5 rounded-full font-semibold text-[15px]" href="https://docs.google.com/document/d/1tja6FWznvbLDNfgDkX4kkWgLNS0EpW2A/edit?usp=sharing" rel="noopener noreferrer" target="_blank"><span class="material-symbols-outlined text-xl transition-transform group-hover:translate-y-0.5" aria-hidden="true">download</span>Download the release</a>
+</div></li><li class="res-item res-card res-indigo group relative flex flex-col bg-white rounded-3xl overflow-hidden" data-cats="uniform">
+<div class="res-head relative h-44 overflow-hidden" aria-hidden="true">
+<div class="res-lines absolute inset-0"></div>
+<div class="res-sheet res-back"></div>
+<div class="res-sheet res-front"><i class="res-bar"></i><i></i><i></i><i class="short"></i><i></i><i class="short"></i></div>
+<span class="res-badge material-symbols-outlined">checkroom</span>
+<span class="absolute top-4 right-4 px-3 py-1 rounded-full text-[11px] font-extrabold tracking-[0.12em] uppercase bg-white/85 backdrop-blur-md text-slate-800 shadow-sm">PDF</span>
+</div>
+<div class="flex flex-col flex-1 p-6 sm:p-7">
+<p class="res-label text-xs font-bold tracking-[0.14em] uppercase">Official standard</p>
+<h3 class="mt-2 font-heading font-bold text-xl text-slate-900 leading-snug tracking-tight">Pathfinder uniform guidelines</h3>
+<p class="text-[15px] text-slate-700 mt-2.5 mb-6 leading-relaxed">Insignia placement, sash protocol, Class A and Class B uniforms, and TLT cords.</p>
+<a class="res-btn mt-auto inline-flex items-center justify-center gap-2 w-full py-3.5 px-5 rounded-full font-semibold text-[15px]" href="https://gnycyouth.ryankerbs.com/wp-content/uploads/2015/05/Pathfinder-Uniform-Guidelines.pdf" rel="noopener noreferrer" target="_blank"><span class="material-symbols-outlined text-xl transition-transform group-hover:translate-y-0.5" aria-hidden="true">download</span>Download the guidelines</a>
+</div></li><li class="res-item res-card res-emerald group relative flex flex-col bg-white rounded-3xl overflow-hidden" data-cats="pbe">
+<div class="res-head relative h-44 overflow-hidden" aria-hidden="true">
+<div class="res-lines absolute inset-0"></div>
+<div class="res-sheet res-back"></div>
+<div class="res-sheet res-front"><i class="res-bar"></i><i></i><i></i><i class="short"></i><i></i><i class="short"></i></div>
+<span class="res-badge material-symbols-outlined">menu_book</span>
+<span class="absolute top-4 right-4 px-3 py-1 rounded-full text-[11px] font-extrabold tracking-[0.12em] uppercase bg-white/85 backdrop-blur-md text-slate-800 shadow-sm">Portal</span>
+</div>
+<div class="flex flex-col flex-1 p-6 sm:p-7">
+<p class="res-label text-xs font-bold tracking-[0.14em] uppercase">Scripture &amp; study</p>
+<h3 class="mt-2 font-heading font-bold text-xl text-slate-900 leading-snug tracking-tight">Pathfinder Bible Experience</h3>
+<p class="text-[15px] text-slate-700 mt-2.5 mb-6 leading-relaxed">This year&rsquo;s books, sample questions, commentary guides and team qualification rules.</p>
+<a class="res-btn mt-auto inline-flex items-center justify-center gap-2 w-full py-3.5 px-5 rounded-full font-semibold text-[15px]" href="https://gnycyouth.com/pathfinders/bible-experience/" rel="noopener noreferrer" target="_blank"><span class="material-symbols-outlined text-xl transition-transform group-hover:translate-y-0.5" aria-hidden="true">open_in_new</span>Open the PBE portal</a>
+</div></li></ul>
+</div></div></section>
+
+<footer class="bg-[#002f4b] text-white pt-16 pb-12 border-t border-sky-900/60 relative overflow-hidden" id="about">
+<!-- Subtle Background Glow -->
+<div class="absolute top-0 right-0 w-96 h-96 bg-sky-600/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 pb-14 border-b border-sky-800/40">
+<!-- Col 1: Conference Seal & Direct Contact Info -->
+<div class="lg:col-span-2">
+<div class="flex items-center gap-3 mb-4">
+<img alt="Adventist Youth Ministries Greater New York Conference" class="h-16 w-auto object-contain filter drop-shadow-md" src="img/00.png">
+<div>
+<h3 class="font-heading font-extrabold text-lg text-white leading-tight">Adventist Youth Ministries</h3>
+<p class="text-xs text-sky-200">Greater New York Conference of Seventh-day Adventists</p>
+</div>
+</div>
+<p class="text-sky-100/80 text-sm max-w-sm mt-3 leading-relaxed">
+            Reaching young hearts across the 5 boroughs of New York City, Long Island, and surrounding upstate counties with everlasting hope and purpose.
+          </p>
+<div class="mt-6 space-y-2 text-sm text-sky-100/90 font-medium">
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-base text-sky-300 shrink-0 mt-0.5">location_on</span>
+<span class="">7 Shelter Rock Rd, Manhasset, NY 11030</span>
+</div>
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-base text-sky-300 shrink-0">call</span>
+<a class="hover:text-white underline underline-offset-2" href="tel:+15166279350">(516) 627-9350</a>
+</div>
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-base text-sky-300 shrink-0">mail</span>
+<a class="hover:text-white underline underline-offset-2" href="mailto:info@gnycyouth.com">info@gnycyouth.com</a>
+</div>
+</div>
+<!-- Social links -->
+<div class="mt-6 flex items-center gap-3">
+<a class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors" href="https://www.instagram.com/gnycyouth/" rel="noopener noreferrer" target="_blank" aria-label="Instagram @gnycyouth">
+<svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4.8"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"></circle></svg>
+</a>
+<a class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors" href="https://www.facebook.com/GNYCYouth/" rel="noopener noreferrer" target="_blank" aria-label="Facebook">
+<svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.6-1.5h1.5V4.4c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.4H8.2v3h2.5V21z"></path></svg>
+</a>
+<a class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors" href="https://www.tiktok.com/@gnycyouth" rel="noopener noreferrer" target="_blank" aria-label="TikTok">
+<svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 5.8a4.3 4.3 0 0 1-1-2.8h-3v12.4a2.6 2.6 0 1 1-2.6-2.7c.3 0 .5 0 .8.1V9.7a5.7 5.7 0 1 0 4.9 5.7V9.1a7.3 7.3 0 0 0 4.2 1.3v-3a4.3 4.3 0 0 1-3.3-1.6z"></path></svg>
+</a>
+</div>
+</div>
+<!-- Col 2: Ministries Column -->
+<div>
+<h4 class="font-heading font-bold text-sm tracking-wider uppercase text-sky-300 mb-4">Ministries</h4>
+<ul class="space-y-2.5 text-sm text-sky-100/80 font-normal">
+<li class=""><a class="hover:text-white transition-colors" href="https://gnycyouth.com/adventures/">Adventurers Club</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="https://gnycyouth.com/pathfinders/">Pathfinders Club</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="https://gnycyouth.com/about/youth-leadership/">Master Guides</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="https://gnycyouth.com/adventist-youth-ministries/">Adventist Youth (AY)</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="https://gnycyouth.com/soe/">School of Evangelism (SOE)</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="https://gnycyouth.com/collegiate-or-public-campuses-ministry/">Public Campus Ministry (PCM)</a></li>
+</ul>
+</div>
+<!-- Col 3: Events & Camporee -->
+<div>
+<h4 class="font-heading font-bold text-sm tracking-wider uppercase text-sky-300 mb-4">Events &amp; Calendar</h4>
+<ul class="space-y-2.5 text-sm text-sky-100/80 font-normal">
+<li class=""><a class="hover:text-white transition-colors font-semibold text-amber-300" href="https://events.gnycyouth.com/event/13/adventist-youth-congress-xviii">AY Congress XVIII</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="https://gnycyouth.com/event/pathfinder-camporee-2022/">Annual Camporee</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="https://gnycyouth.com/pathfinders/bible-experience/">Bible Experience (PBE)</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="https://gnycyouth.com/pathfinders/drill-pill/">Drilling and Marching</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="https://gnycyouth.com/pathfinders/drum-corp/">Drum Corps</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="https://gnycyouth.com/pathfinders/tlt/">TLT Leadership Program</a></li>
+</ul>
+</div>
+<!-- Col 4: Quick Access & Downloads (Inspired by Image 17) -->
+<div>
+<h4 class="font-heading font-bold text-sm tracking-wider uppercase text-sky-300 mb-4">Quick Access</h4>
+<ul class="space-y-2.5 text-sm text-sky-100/80 font-normal">
+<li class=""><a class="hover:text-white transition-colors" href="#">Store</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="https://gnycyouth.com/event/">Events portal</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="https://drive.google.com/file/d/1R9X7ByCJo2Y_s8DfSZvJ8EKGKVcLDpny/view?usp=drive_link">Year calendar (PDF)</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="https://gnycyouth.ryankerbs.com/wp-content/uploads/2015/05/Pathfinder-Uniform-Guidelines.pdf">Uniform Guidelines</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="https://gnycyouth.com/youth-leadership/">Leadership Staff</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="https://gnycyouth.com/about/">About GNYC Youth</a></li>
+</ul>
+</div>
+</div>
+<!-- Bottom Row: Copyright, Terms & Privacy -->
+<div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-sky-200/80">
+<p class="">© 2026 Greater New York Conference of Seventh-day Adventists. All rights reserved.</p>
+<div class="flex items-center gap-6">
+<a class="hover:text-white transition-colors" href="#">Terms &amp; Conditions</a>
+<span class="text-sky-800">|</span>
+<a class="hover:text-white transition-colors" href="#">Privacy Policy</a>
+<span class="text-sky-800">|</span>
+<a class="hover:text-white transition-colors" href="#">Risk Management</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<script>
+(function(){
+  var b=document.getElementById('menu-btn'),m=document.getElementById('mobile-menu');
+  b.addEventListener('click',function(){var open=m.hidden;m.hidden=!open;b.setAttribute('aria-expanded',open);b.firstElementChild.textContent=open?'close':'menu';});
+  m.addEventListener('click',function(e){if(e.target.closest('a')){m.hidden=true;b.setAttribute('aria-expanded',false);b.firstElementChild.textContent='menu';}});
+  document.querySelectorAll('[data-filter-group]').forEach(function(g){
+    var items=document.querySelectorAll('.'+g.dataset.filterGroup);
+    g.addEventListener('click',function(e){var p=e.target.closest('[data-filter]');if(!p)return;
+      g.querySelectorAll('[data-filter]').forEach(function(x){var on=x===p;x.classList.toggle('is-on',on);x.setAttribute('aria-pressed',on);});
+      items.forEach(function(it){it.hidden=p.dataset.filter!=='all'&&it.dataset.cats.split(' ').indexOf(p.dataset.filter)<0;});});});
+  var c=document.getElementById('congress-count'),d=Math.ceil((new Date(2027,0,29)-new Date())/864e5);
+  if(d>0){c.querySelector('[data-days]').textContent=d;c.hidden=false;}
+  document.querySelectorAll('[data-start]').forEach(function(el){var p=el.dataset.start.split('-'),n=(new Date(p[0],p[1]-1,p[2])-new Date())/864e5;if(n>-3&&n<=7)el.querySelector('.soon').hidden=false;});
+  var en=document.getElementById('lang-en'),es=document.getElementById('lang-es');
+  function lang(a,c){a.className='px-2.5 py-1 rounded-full bg-slate-900 text-white';a.setAttribute('aria-pressed',true);c.className='px-2.5 py-1 rounded-full text-slate-600 hover:text-slate-900';c.setAttribute('aria-pressed',false);}
+  en.addEventListener('click',function(){lang(en,es)});es.addEventListener('click',function(){lang(es,en)});
+})();
+</script>
+</body>
+</html>
