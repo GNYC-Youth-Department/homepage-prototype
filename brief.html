@@ -46,7 +46,7 @@
 <p class="eyebrow !text-[#b45309]">Content brief · for the Youth Director</p>
 <h1 class="font-heading font-extrabold text-5xl sm:text-6xl tracking-[-0.03em] leading-[1.02] text-slate-900 mt-2" style="text-wrap:balance">What to provide, and where it goes</h1>
 <p class="lede !max-w-2xl">Every block on the new site that needs words, a photo, a file or a name has a code, such as <code class="font-mono font-bold text-[#b45309]">PF-01</code>. This page lists all of them, page by page, with the size and length we need. Tick items off as you send them; the list remembers your ticks on this device.</p>
-<div class="flex flex-wrap gap-3 mt-8 no-print"><a class="btn-primary !py-3 !px-6" href="ministries/pathfinders.html?slots=1">See the codes on the Pathfinders page</a><button class="pill" onclick="window.print()">Print or save as PDF</button><a class="pill" href="design.html">Design guidelines</a></div>
+<div class="flex flex-wrap gap-3 mt-8 no-print"><a class="btn-primary !py-3 !px-6" href="ministries/pathfinders.html?slots=1">See the codes on the Pathfinders page</a><button class="pill" onclick="window.print()">Print or save as PDF</button><a class="pill" href="sitemap.html">Page map</a><a class="pill" href="design.html">Design guidelines</a></div>
 <div class="mt-8 flex flex-wrap items-center gap-6 text-sm text-slate-600"><span class="prog">Overall <i><b id="p-all"></b></i><span id="p-all-t">0 / 0</span></span><span class="text-slate-400">·</span><span id="counts"></span></div>
 </div></header>
 
@@ -63,119 +63,23 @@
 
 <div data-site="footer"></div>
 <script src="assets/site.js"></script>
+<script src="assets/brief-data.js"></script>
 <script>
-/* ---------- slot inventory ---------- */
-var P = [
- {code:'HM', name:'Homepage', url:'index.html', group:'Built pages', slots:[
-  ['HM-01','photo','Hero photo','2400×1200 landscape, New York skyline or a large gathering; the current one is a stock skyline'],
-  ['HM-02','text','Hero headline and one-line intro','Confirm “Helping New York youth live, lead and love like Jesus.” or supply your own, plus 25 words'],
-  ['HM-03','file','Featured event flyer','AY Congress flyer at 1600px+ (current copy is small and says XIX; confirm XVIII vs XIX)'],
-  ['HM-04','data','Three next events','Dates from gnycyouth.org (Retreat Sep 25–27, TLT Convention Oct 3–4, Bible Olympics Oct 24); add venues, blurbs, links and flyers'],
-  ['HM-11','link','2027 club registration','URL of the club registration form (banner on gnycyouth.org)'],
-  ['HM-05','photo','Three story photos','1600×1000 each; the current three are stock'],
-  ['HM-06','text','Three stories','Headline, 40–60 word summary, month, link to full story'],
-  ['HM-07','text','Club card descriptions','Confirm the four 25-word descriptions and age ranges'],
-  ['HM-08','file','Four featured resources','Which four downloads should the homepage show; link or file for each'],
-  ['HM-09','link','Store link','Done: gnycyouth.org/shop'],
-  ['HM-10','file','Year calendar PDF','The current season’s printable calendar']]},
- {code:'PF', name:'Pathfinders', url:'ministries/pathfinders.html', group:'Built pages', note:'Ministry page layout. Adventurers, Master Guides and AY Ministries use the same layout and the same list of slots.', slots:[
-  ['PF-01','photo','Hero photo','1600×2000 portrait, Pathfinders in Class A uniform, outdoors'],
-  ['PF-02','text','Tagline','25–40 words'],
-  ['PF-03','data','Three figures','Number of clubs, Pathfinders, trained staff (real numbers)'],
-  ['PF-04','text','Why Pathfinders','60–90 words in the Director’s voice'],
-  ['PF-05','people','Pathfinder Director','Name, title, 400×400 headshot'],
-  ['PF-06','data','The club year','Month for each of the five milestones this season (the camporee is in spring only)'],
-  ['PF-07','photo','Honors photo','1600×700, sash close-up or an honor being taught'],
-  ['PF-08','auto','Upcoming events','Pulled from the Events calendar when tagged Pathfinders'],
-  ['PF-09','link','Monthly report','Form or portal URL, due date'],
-  ['PF-10','link','Safety & screening','Sterling Volunteers / child-protection instructions'],
-  ['PF-11','people','Leadership','4–8 people: headshot 600×600, name, role, area, email'],
-  ['PF-12','data','Club directory','Every club: church, neighbourhood, area, meeting day/time, director name, email or phone'],
-  ['PF-13','link','Map','Google My Maps link, or we build it from the church addresses in PF-12'],
-  ['PF-14','photo','Gallery','6 photos, 1200px+ long side: campout, drill, PBE, service, worship, investiture'],
-  ['PF-15','text','FAQ','Confirm or rewrite the five answers; add cost range and uniform supplier'],
-  ['PF-16','link','New-club enquiries','Email address to receive them']]},
- {code:'PBE', name:'Pathfinder Bible Experience', url:'ministries/pathfinders/bible-experience.html', group:'Built pages', note:'Sub-ministry page layout. TLT, Drum Corps, Drilling & Marching, Young Adults, School of Evangelism and Public Campus Ministry use the same layout.', slots:[
-  ['PBE-01','photo','PBE logo','Supplied 21 Sep 2026 (518×369 PNG); a larger or vector copy is in the NAD logo pack on nadpbe.org'],
-  ['PBE-02','text','Intro','30–50 words'],
-  ['PBE-03','link','Team registration','Form URL and deadline'],
-  ['PBE-04','text','Book and version','Confirm 2026–27 books (Mark, 1 & 2 Peter, 1, 2 & 3 John, per nadpbe.org) and the Bible version used at GNYC rounds'],
-  ['PBE-05','data','Round dates','Club, area, conference, union, division dates and venues'],
-  ['PBE-06','photo','Testing photo','1600×1000, a team at the table'],
-  ['PBE-07','link','Registration form','Google Form or Events portal, fee if any'],
-  ['PBE-08','file','GNYC study additions','NAD links are in place; add GNYC round details, sample questions or coach notes if any'],
-  ['PBE-09','text','How a round works','Confirm question count, timing and scoring bands for GNYC'],
-  ['PBE-10','data','Honour roll','Last 3 seasons: club names that placed first at each level + 1 team photo each'],
-  ['PBE-11','people','PBE coordinator','Name, email, phone, 400×400 headshot'],
-  ['PBE-12','text','FAQ','Confirm the four answers']]},
- {code:'EV', name:'Events', url:'events.html', group:'Built pages', slots:[
-  ['EV-01','text','Intro line','One sentence and the season the calendar covers'],
-  ['EV-02','link','Calendar subscription','Public Google Calendar or iCal URL'],
-  ['EV-03','file','Printable calendar','This season’s PDF'],
-  ['EV-04','data','Featured event','Title, dates, venue, 40 words, registration link, flyer 1600px+'],
-  ['EV-05','data','Every event this season','Title, date, time, venue, audience (Adventurers / Pathfinders / Leaders / Youth), 30 words, flyer 1200×1200, registration link. A spreadsheet is ideal']]},
- {code:'RS', name:'Resources', url:'resources.html', group:'Built pages', slots:[
-  ['RS-01','text','Intro','30–50 words'],
-  ['RS-02','file','Resource inventory','Every document to publish: title, one-line description, ministry, category, the file (PDF/Doc/link), year, English or Spanish. A spreadsheet plus a folder of files']]},
- {code:'AB', name:'About & Leadership', url:'about.html', group:'Built pages', slots:[
-  ['AB-01','photo','Hero photo','1600×1200, the team or a large gathering'],
-  ['AB-02','text','Mission statement','30–50 words'],
-  ['AB-03','people','Youth Director','Done from gnycyouth.org: Pr. Christian Genao'],
-  ['AB-04','text','Director’s welcome','150–220 words, first person'],
-  ['AB-05','text','Four pillars','Confirm or rewrite: title + 25 words each'],
-  ['AB-06','people','Department staff','Names, titles and photos done from gnycyouth.org (5 people); add each person’s email'],
-  ['AB-07','people','Lead area coordinators','15 names and areas done from gnycyouth.org (Club and AY tracks); add headshots 800×1000 and emails'],
-  ['AB-08','data','Timeline','Youth directors since 1979 done; add founding dates (first club, first camporee, first congress)'],
-  ['AB-09','text','Office hours and contacts','Hours, and the best contact per ministry']]},
- {code:'ADA', name:'Adventurer Awards', url:'ministries/adventurers/awards.html', group:'Built pages', slots:[
-  ['ADA-01','text','Intro','30–50 words; which awards GNYC clubs teach most'],
-  ['ADA-02','photo','Patch photos','117 awards still show a grey circle; 34 patch photos came from the Climb Higher camporee app. Photograph or scan the rest on a plain background, 600×600'],
-  ['ADA-03','text','Class check','Confirm the class assignment for Potato and Trikes & Bikes, and whether Healthy Me and Insects (Little Lamb) are still current']]},
- {code:'DS', name:'Design guidelines', url:'design.html', group:'Built pages', slots:[
-  ['DS-01','file','Official seal','GNYC Youth seal as vector (SVG/AI/EPS) or PNG 2000px, transparent'],
-  ['DS-02','file','Club emblems','Adventurer, Pathfinder, Master Guide, AY emblems as vector or PNG 2000px, transparent (we have web-size copies)'],
-  ['DS-03','file','Pathfinder class insignia','Friend, Companion, Explorer, Ranger, Voyager, Guide emblems, transparent PNG or vector, supplied 21 Sep 2026 as one sheet; used on the Pathfinders page. Vector originals from AdventSource still welcome for print']]},
- {code:'AD', name:'Adventurers', tmpl:'PF', url:'ministries/adventurers.html', group:'Built pages · ministry layout', slots:null, note:'Class emblems, club logo and the NAD illustrated backgrounds are in place (AD-01, AD-07 done); a real photo can replace the hero illustration later'},
- {code:'MG', name:'Master Guides', tmpl:'PF', url:'ministries/master-guides.html', group:'Built pages · ministry layout', slots:null},
- {code:'AY', name:'AY Ministries', tmpl:'PF', url:'ministries/ay-ministries.html', group:'Built pages · ministry layout', slots:null},
- {code:'TLT', name:'Teen Leadership Training', tmpl:'PBE', url:'ministries/pathfinders/teen-leadership-training.html', group:'Built pages · program layout', slots:null, note:'Logo supplied 21 Sep 2026 (TLT-01 done)'},
- {code:'DC', name:'Drum Corps', tmpl:'PBE', url:'ministries/pathfinders/drum-corps.html', group:'Built pages · program layout', slots:null},
- {code:'DM', name:'Drilling & Marching', tmpl:'PBE', url:'ministries/pathfinders/drilling-marching.html', group:'Built pages · program layout', slots:null},
- {code:'YA', name:'Young Adults', tmpl:'PBE', url:'ministries/ay/young-adults.html', group:'Built pages · program layout', slots:null},
- {code:'SOE', name:'School of Evangelism', tmpl:'PBE', url:'ministries/ay/school-of-evangelism.html', group:'Built pages · program layout', slots:null},
- {code:'PCM', name:'Public Campus Ministry', tmpl:'PBE', url:'ministries/ay/public-campus-ministry.html', group:'Built pages · program layout', slots:null},
- {code:'NW', name:'News & stories', url:'news.html', group:'Built pages · other', slots:[
-  ['NW-01','text','Stories to launch with','6–10 stories: headline, 300–600 words, month, author'],
-  ['NW-02','photo','Story photos','1600×1000 for each story, plus 2–4 inside photos where available'],
-  ['NW-03','data','Categories','Which tags to use (club, event, leadership, young adults, safety…)']]},
- {code:'HS', name:'Our history', url:'history.html', group:'Built pages · other', slots:[
-  ['HS-01','text','Theme summaries','One or two sentences for the years without one (2025–2020, 2017–2018, 2015, 2006, 2005, 2004); 2019 artwork missing'],
-  ['HS-02','photo','Archive photos','3–6 scans or photos, any size, with year and caption'],
-  ['HS-03','data','Directors','Done from gnycyouth.org; confirm gaps 1986–1990 and 1997–2003'],
-  ['HS-04','text','History narrative','400–800 words in the Director’s words']]},
- {code:'LG', name:'Legal & policies', group:'Not mocked up', slots:[
-  ['LG-01','file','Privacy policy, terms, risk management','Current text or documents; confirm the three footer links']]}
-];
-/* generic ministry / sub-ministry slot lists for sibling pages */
-var TEMPLATES={
- PF:[['01','photo','Hero photo','1600×2000 portrait, members in uniform or in action'],['02','text','Tagline','25–40 words'],['03','data','Three figures','Clubs / members / staff'],['04','text','Why this ministry','60–90 words'],['05','people','Ministry director','Name, title, 400×400 headshot'],['06','data','The year','Five or six milestones with months'],['07','photo','Feature photo','1600×700'],['08','auto','Upcoming events','From the calendar'],['09','link','Director report / portal','URL'],['10','link','Safety & screening','URL'],['11','people','Leadership','4–8 people with headshots'],['12','data','Club or group directory','Church, area, meeting time, contact'],['13','link','Map','Link or addresses'],['14','photo','Gallery','6 photos 1200px+'],['15','text','FAQ','5 questions and answers'],['16','link','Enquiries email','Address']],
- PBE:[['01','photo','Key art or logo','800×1067 or emblem, transparent'],['02','text','Intro','30–50 words'],['03','link','Sign-up or registration','URL and deadline'],['04','text','What it is this year','Focus, level or theme for the season'],['05','data','Key dates','Dates and venues'],['06','photo','Action photo','1600×1000'],['07','link','Form','Registration or application form'],['08','file','Resources','3–6 PDFs or links'],['09','text','How it works','Rules, requirements or curriculum summary, 80–120 words'],['10','data','Highlights or results','Recent achievements + photos'],['11','people','Coordinator','Name, email, phone, headshot'],['12','text','FAQ','4 questions and answers']]
-};
 var KIND={photo:'Photo',text:'Text',file:'File',people:'People',data:'Data',link:'Link',auto:'Automatic'};
 var store={}; try{store=JSON.parse(localStorage.getItem('gnyc-brief')||'{}')}catch(e){}
 var pagesEl=document.getElementById('pages'),toc=document.getElementById('toc'),total=0,done=0,byKind={},lastGroup='';
 P.forEach(function(pg){
   var slots=pg.slots||TEMPLATES[pg.tmpl].map(function(s){return [pg.code+'-'+s[0],s[1],s[2],s[3]]});
   if(pg.group!==lastGroup){toc.insertAdjacentHTML('beforeend','<div class="grp">'+pg.group+'</div>');lastGroup=pg.group;}
-  var need=slots.filter(function(s){return s[1]!=='auto'}).length,have=slots.filter(function(s){return store[s[0]]}).length;
+  var need=slots.filter(function(s){return s[1]!=='auto'}).length,have=slots.filter(function(s){return s[1]!=='auto'&&(store[s[0]]||preDone(s[3]))}).length;
   total+=need;done+=have;
   toc.insertAdjacentHTML('beforeend','<a href="#'+pg.code+'">'+pg.name+'<small>'+have+'/'+need+'</small></a>');
-  var rows=slots.map(function(s){byKind[s[1]]=(byKind[s[1]]||0)+1;var d=!!store[s[0]];
+  var rows=slots.map(function(s){byKind[s[1]]=(byKind[s[1]]||0)+1;var d=!!store[s[0]]||preDone(s[3]);
     return '<tr'+(d?' class="done"':'')+' data-code="'+s[0]+'"><td class="no-print"><input type="checkbox" class="chk" id="c-'+s[0]+'" '+(d?'checked':'')+(s[1]==='auto'?' disabled':'')+' aria-label="Provided: '+s[2]+'"></td><td class="code">'+s[0]+'</td><td><span class="kind k-'+s[1]+'">'+KIND[s[1]]+'</span></td><td><b class="text-slate-900">'+s[2]+'</b></td><td class="spec">'+s[3]+'</td></tr>';}).join('');
   var link=pg.url?'<a class="link" href="'+pg.url+'?slots=1">Open the page with codes shown <span aria-hidden="true">&rarr;</span></a>':'<span class="text-sm text-slate-500">Layout: same as '+(pg.tmpl==='PF'?'Pathfinders':'Pathfinder Bible Experience')+' &middot; <a class="text-[#006194] font-semibold" href="'+(pg.tmpl==='PF'?'ministries/pathfinders.html':'ministries/pathfinders/bible-experience.html')+'?slots=1">see it</a></span>';
   pagesEl.insertAdjacentHTML('beforeend','<section class="card-b pg" id="'+pg.code+'"><header><h2>'+pg.name+'<small><span class="font-mono font-bold text-[#b45309]">'+pg.code+'</span> &middot; '+need+' items'+(pg.note?' &middot; '+pg.note:'')+'</small></h2>'+link+'</header><div class="overflow-x-auto"><table><thead><tr><th class="no-print">Sent</th><th>Code</th><th>Type</th><th>What</th><th>Size / length / notes</th></tr></thead><tbody>'+rows+'</tbody></table></div></section>');
 });
-function refresh(){var t=0,d=0;P.forEach(function(pg){var slots=pg.slots||TEMPLATES[pg.tmpl].map(function(s){return [pg.code+'-'+s[0],s[1]]});var n=0,h=0;slots.forEach(function(s){if(s[1]==='auto')return;n++;if(store[s[0]])h++;});t+=n;d+=h;var a=toc.querySelector('a[href="#'+pg.code+'"] small');if(a)a.textContent=h+'/'+n;});
+function refresh(){var t=0,d=0;P.forEach(function(pg){var slots=pg.slots||TEMPLATES[pg.tmpl].map(function(s){return [pg.code+'-'+s[0],s[1]]});var n=0,h=0;slots.forEach(function(s){if(s[1]==='auto')return;n++;if(store[s[0]]||preDone(s[3]))h++;});t+=n;d+=h;var a=toc.querySelector('a[href="#'+pg.code+'"] small');if(a)a.textContent=h+'/'+n;});
   document.getElementById('p-all').style.width=(t?100*d/t:0)+'%';document.getElementById('p-all-t').textContent=d+' / '+t+' provided';}
 document.getElementById('counts').innerHTML=Object.keys(byKind).filter(function(k){return k!=='auto'}).map(function(k){return '<span class="kind k-'+k+'">'+KIND[k]+' '+byKind[k]+'</span>'}).join(' ');
 refresh();
