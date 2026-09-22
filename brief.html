@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en" data-root="./">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>GNYC Youth Content Brief</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+  .toc{position:sticky;top:96px;display:grid;gap:.1rem;max-height:calc(100vh - 120px);overflow:auto}
+  .toc a{padding:.4rem .75rem;border-radius:10px;font-size:14px;color:#475569;text-decoration:none;display:flex;justify-content:space-between;gap:.5rem}
+  .toc a:hover{background:#f0f9ff;color:#006194}
+  .toc a small{color:#94a3b8;font-variant-numeric:tabular-nums}
+  .toc .grp{font:700 11px Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#94a3b8;padding:.9rem .75rem .3rem}
+  .pg{scroll-margin-top:100px}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th{text-align:left;font:700 11px Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#64748b;padding:.6rem .75rem;border-bottom:1px solid #e2e8f0}
+  td{padding:.8rem .75rem;border-bottom:1px solid #eef1f6;vertical-align:top;color:#334155}
+  tr:last-child td{border-bottom:0}
+  td.code{font:700 12px ui-monospace,Menlo,monospace;color:#b45309;white-space:nowrap}
+  td.spec{color:#475569}
+  .kind{display:inline-flex;align-items:center;gap:.3rem;padding:.15rem .55rem;border-radius:9999px;font:700 10px Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+  .k-photo{background:#fee2e2;color:#991b1b}.k-text{background:#e0f2fe;color:#0369a1}.k-file{background:#ede9fe;color:#6d28d9}.k-people{background:#dcfce7;color:#166534}.k-data{background:#fef3c7;color:#92400e}.k-link{background:#f1f5f9;color:#475569}.k-auto{background:#f1f5f9;color:#94a3b8}
+  .chk{width:18px;height:18px;border-radius:5px;border-color:#94a3b8;color:#006194}
+  tr.done td{color:#94a3b8;text-decoration:line-through}tr.done td.code{color:#94a3b8}
+  .card-b{background:#fff;border:1px solid #e2e8f0;border-radius:24px;overflow:hidden}
+  .card-b header{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;padding:1.25rem 1.5rem;border-bottom:1px solid #e2e8f0;background:#fafbff}
+  .card-b h2{margin:0;font:800 22px 'Plus Jakarta Sans',sans-serif;letter-spacing:-.01em}
+  .card-b h2 small{display:block;font:500 13px Inter,sans-serif;color:#64748b;letter-spacing:0;margin-top:.15rem}
+  .prog{font:600 13px Inter,sans-serif;color:#475569;display:flex;align-items:center;gap:.6rem}
+  .prog i{display:block;width:90px;height:6px;border-radius:9999px;background:#e2e8f0;overflow:hidden}
+  .prog i b{display:block;height:100%;background:#059669;width:0}
+  .step{display:grid;grid-template-columns:44px 1fr;gap:1rem;align-items:start}
+  .step>b{width:44px;height:44px;border-radius:12px;background:#0b1430;color:#ffe247;display:flex;align-items:center;justify-content:center;font:800 16px 'Plus Jakarta Sans',sans-serif}
+  @media print{.no-print,[data-site="nav"],[data-site="footer"],.slot-toggle{display:none!important}.card-b{break-inside:avoid;border-radius:0}body{background:#fff}}
+</style>
+</head>
+<body data-page="brief">
+<div data-site="nav"></div>
+
+<header class="border-b border-slate-200/80" style="background:radial-gradient(70% 90% at 0% 0%,rgba(254,243,199,.9),rgba(254,243,199,0) 60%),linear-gradient(180deg,#fff,#f6f8ff)">
+<div class="wrap pt-10 pb-12 lg:pt-14 lg:pb-16">
+<p class="eyebrow !text-[#b45309]">Content brief · for the Youth Director</p>
+<h1 class="font-heading font-extrabold text-5xl sm:text-6xl tracking-[-0.03em] leading-[1.02] text-slate-900 mt-2" style="text-wrap:balance">What to provide, and where it goes</h1>
+<p class="lede !max-w-2xl">Every block on the new site that needs words, a photo, a file or a name has a code, such as <code class="font-mono font-bold text-[#b45309]">PF-01</code>. This page lists all of them, page by page, with the size and length we need. Tick items off as you send them; the list remembers your ticks on this device.</p>
+<div class="flex flex-wrap gap-3 mt-8 no-print"><a class="btn-primary !py-3 !px-6" href="ministries/pathfinders.html?slots=1">See the codes on the Pathfinders page</a><button class="pill" onclick="window.print()">Print or save as PDF</button><a class="pill" href="design.html">Design guidelines</a></div>
+<div class="mt-8 flex flex-wrap items-center gap-6 text-sm text-slate-600"><span class="prog">Overall <i><b id="p-all"></b></i><span id="p-all-t">0 / 0</span></span><span class="text-slate-400">·</span><span id="counts"></span></div>
+</div></header>
+
+<section class="wrap py-12 grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="card-b p-6"><div class="step"><b>1</b><div><h3 class="font-heading font-bold text-lg m-0">One Drive folder per page</h3><p class="text-sm text-slate-600 mt-1">Create a shared Google Drive folder called <b>GNYC Website Content</b> with one sub-folder per page code: <span class="font-mono">HM, PF, PBE, AD, MG, AY…</span></p></div></div></div>
+<div class="card-b p-6"><div class="step"><b>2</b><div><h3 class="font-heading font-bold text-lg m-0">Name files by code</h3><p class="text-sm text-slate-600 mt-1">Start every file with its code: <span class="font-mono">PF-01-hero.jpg</span>, <span class="font-mono">PBE-08-study-guide.pdf</span>. Several files for one code: <span class="font-mono">PF-14a.jpg, PF-14b.jpg</span>.</p></div></div></div>
+<div class="card-b p-6"><div class="step"><b>3</b><div><h3 class="font-heading font-bold text-lg m-0">Text in one Google Doc</h3><p class="text-sm text-slate-600 mt-1">Put all words in one Doc, one heading per code. Names and roles for people go in a table with the headshot file name next to each person.</p></div></div></div>
+</section>
+
+<div class="wrap grid grid-cols-1 lg:grid-cols-12 gap-10 pb-20">
+<aside class="hidden lg:block lg:col-span-3"><nav class="toc" id="toc" aria-label="Pages"></nav></aside>
+<main class="lg:col-span-9 grid gap-8" id="pages"></main>
+</div>
+
+<div data-site="footer"></div>
+<script src="assets/site.js"></script>
+<script>
+/* ---------- slot inventory ---------- */
+var P = [
+ {code:'HM', name:'Homepage', url:'index.html', group:'Built pages', slots:[
+  ['HM-01','photo','Hero photo','2400×1200 landscape, New York skyline or a large gathering; the current one is a stock skyline'],
+  ['HM-02','text','Hero headline and one-line intro','Confirm “Helping New York youth live, lead and love like Jesus.” or supply your own, plus 25 words'],
+  ['HM-03','file','Featured event flyer','AY Congress flyer at 1600px+ (current copy is small and says XIX; confirm XVIII vs XIX)'],
+  ['HM-04','data','Three next events','Title, dates, venue, 25-word blurb, registration link, flyer or photo each'],
+  ['HM-05','photo','Three story photos','1600×1000 each; the current three are stock'],
+  ['HM-06','text','Three stories','Headline, 40–60 word summary, month, link to full story'],
+  ['HM-07','text','Club card descriptions','Confirm the four 25-word descriptions and age ranges'],
+  ['HM-08','file','Four featured resources','Which four downloads should the homepage show; link or file for each'],
+  ['HM-09','link','Store link','The URL the Store menu item should open'],
+  ['HM-10','file','Year calendar PDF','The current season’s printable calendar']]},
+ {code:'PF', name:'Pathfinders', url:'ministries/pathfinders.html', group:'Built pages', note:'Ministry page layout. Adventurers, Master Guides and AY Ministries use the same layout and the same list of slots.', slots:[
+  ['PF-01','photo','Hero photo','1600×2000 portrait, Pathfinders in Class A uniform, outdoors'],
+  ['PF-02','text','Tagline','25–40 words'],
+  ['PF-03','data','Three figures','Number of clubs, Pathfinders, trained staff (real numbers)'],
+  ['PF-04','text','Why Pathfinders','60–90 words in the Director’s voice'],
+  ['PF-05','people','Pathfinder Director','Name, title, 400×400 headshot'],
+  ['PF-06','data','The club year','Month for each of the six milestones this season'],
+  ['PF-07','photo','Honors photo','1600×700, sash close-up or an honor being taught'],
+  ['PF-08','auto','Upcoming events','Pulled from the Events calendar when tagged Pathfinders'],
+  ['PF-09','link','Monthly report','Form or portal URL, due date'],
+  ['PF-10','link','Safety & screening','Sterling Volunteers / child-protection instructions'],
+  ['PF-11','people','Leadership','4–8 people: headshot 600×600, name, role, area, email'],
+  ['PF-12','data','Club directory','Every club: church, neighbourhood, area, meeting day/time, director name, email or phone'],
+  ['PF-13','link','Map','Google My Maps link, or we build it from the church addresses in PF-12'],
+  ['PF-14','photo','Gallery','6 photos, 1200px+ long side: campout, drill, PBE, service, worship, investiture'],
+  ['PF-15','text','FAQ','Confirm or rewrite the five answers; add cost range and uniform supplier'],
+  ['PF-16','link','New-club enquiries','Email address to receive them']]},
+ {code:'PBE', name:'Pathfinder Bible Experience', url:'ministries/pathfinders/bible-experience.html', group:'Built pages', note:'Sub-ministry page layout. TLT, Drum Corps, Drilling & Marching, Young Adults, School of Evangelism and Public Campus Ministry use the same layout.', slots:[
+  ['PBE-01','photo','This year’s book cover or key art','800×1067 portrait'],
+  ['PBE-02','text','Intro','30–50 words'],
+  ['PBE-03','link','Team registration','Form URL and deadline'],
+  ['PBE-04','text','Book and version','Book(s) of the Bible and Bible version for this season'],
+  ['PBE-05','data','Round dates','Club, area, conference, union, division dates and venues'],
+  ['PBE-06','photo','Testing photo','1600×1000, a team at the table'],
+  ['PBE-07','link','Registration form','Google Form or Events portal, fee if any'],
+  ['PBE-08','file','Study resources','4–6 PDFs: study guide, sample questions, commentary excerpt, rules; NAD/AdventSource links'],
+  ['PBE-09','text','How a round works','Confirm question count, timing and scoring bands for GNYC'],
+  ['PBE-10','data','Honour roll','Last 3 seasons: club names that placed first at each level + 1 team photo each'],
+  ['PBE-11','people','PBE coordinator','Name, email, phone, 400×400 headshot'],
+  ['PBE-12','text','FAQ','Confirm the four answers']]},
+ {code:'EV', name:'Events', url:'events.html', group:'Built pages', slots:[
+  ['EV-01','text','Intro line','One sentence and the season the calendar covers'],
+  ['EV-02','link','Calendar subscription','Public Google Calendar or iCal URL'],
+  ['EV-03','file','Printable calendar','This season’s PDF'],
+  ['EV-04','data','Featured event','Title, dates, venue, 40 words, registration link, flyer 1600px+'],
+  ['EV-05','data','Every event this season','Title, date, time, venue, audience (Adventurers / Pathfinders / Leaders / Youth), 30 words, flyer 1200×1200, registration link. A spreadsheet is ideal']]},
+ {code:'RS', name:'Resources', url:'resources.html', group:'Built pages', slots:[
+  ['RS-01','text','Intro','30–50 words'],
+  ['RS-02','file','Resource inventory','Every document to publish: title, one-line description, ministry, category, the file (PDF/Doc/link), year, English or Spanish. A spreadsheet plus a folder of files']]},
+ {code:'AB', name:'About & Leadership', url:'about.html', group:'Built pages', slots:[
+  ['AB-01','photo','Hero photo','1600×1200, the team or a large gathering'],
+  ['AB-02','text','Mission statement','30–50 words'],
+  ['AB-03','people','Youth Director','Name, title, 600×600 headshot'],
+  ['AB-04','text','Director’s welcome','150–220 words, first person'],
+  ['AB-05','text','Four pillars','Confirm or rewrite: title + 25 words each'],
+  ['AB-06','people','Department staff','Headshot 800×1000 portrait, name, title, email for each'],
+  ['AB-07','people','Area coordinators','One per area (Bronx, Brooklyn, Manhattan, Queens, Staten Island, Long Island, Upstate): headshot, name, ministry, email'],
+  ['AB-08','data','Timeline','5–7 dated milestones, one sentence each'],
+  ['AB-09','text','Office hours and contacts','Hours, and the best contact per ministry']]},
+ {code:'DS', name:'Design guidelines', url:'design.html', group:'Built pages', slots:[
+  ['DS-01','file','Official seal','GNYC Youth seal as vector (SVG/AI/EPS) or PNG 2000px, transparent'],
+  ['DS-02','file','Club emblems','Adventurer, Pathfinder, Master Guide, AY emblems as vector or PNG 2000px, transparent (we have web-size copies)']]},
+ {code:'AD', name:'Adventurers', tmpl:'PF', group:'Same layout as Pathfinders', slots:null},
+ {code:'MG', name:'Master Guides', tmpl:'PF', group:'Same layout as Pathfinders', slots:null},
+ {code:'AY', name:'AY Ministries', tmpl:'PF', group:'Same layout as Pathfinders', slots:null},
+ {code:'TLT', name:'Teen Leadership Training', tmpl:'PBE', group:'Same layout as PBE', slots:null},
+ {code:'DC', name:'Drum Corps', tmpl:'PBE', group:'Same layout as PBE', slots:null},
+ {code:'DM', name:'Drilling & Marching', tmpl:'PBE', group:'Same layout as PBE', slots:null},
+ {code:'YA', name:'Young Adults', tmpl:'PBE', group:'Same layout as PBE', slots:null},
+ {code:'SOE', name:'School of Evangelism', tmpl:'PBE', group:'Same layout as PBE', slots:null},
+ {code:'PCM', name:'Public Campus Ministry', tmpl:'PBE', group:'Same layout as PBE', slots:null},
+ {code:'NW', name:'News & stories', group:'Other pages', slots:[
+  ['NW-01','text','Stories to launch with','6–10 stories: headline, 300–600 words, month, author'],
+  ['NW-02','photo','Story photos','1600×1000 for each story, plus 2–4 inside photos where available'],
+  ['NW-03','data','Categories','Which tags to use (club, event, leadership, young adults, safety…)']]},
+ {code:'HS', name:'Our history', group:'Other pages', slots:[
+  ['HS-01','text','History narrative','400–800 words, or the existing history page text to reuse'],
+  ['HS-02','photo','Archive photos','3–6 scans or photos, any size, with year and caption'],
+  ['HS-03','data','Milestones','Year + one sentence, 8–12 items']]},
+ {code:'LG', name:'Legal & policies', group:'Other pages', slots:[
+  ['LG-01','file','Privacy policy, terms, risk management','Current text or documents; confirm the three footer links']]}
+];
+/* generic ministry / sub-ministry slot lists for sibling pages */
+var TEMPLATES={
+ PF:[['01','photo','Hero photo','1600×2000 portrait, members in uniform or in action'],['02','text','Tagline','25–40 words'],['03','data','Three figures','Clubs / members / staff'],['04','text','Why this ministry','60–90 words'],['05','people','Ministry director','Name, title, 400×400 headshot'],['06','data','The year','Six milestones with months'],['07','photo','Feature photo','1600×700'],['08','auto','Upcoming events','From the calendar'],['09','link','Director report / portal','URL'],['10','link','Safety & screening','URL'],['11','people','Leadership','4–8 people with headshots'],['12','data','Club or group directory','Church, area, meeting time, contact'],['13','link','Map','Link or addresses'],['14','photo','Gallery','6 photos 1200px+'],['15','text','FAQ','5 questions and answers'],['16','link','Enquiries email','Address']],
+ PBE:[['01','photo','Key art or logo','800×1067 or emblem, transparent'],['02','text','Intro','30–50 words'],['03','link','Sign-up or registration','URL and deadline'],['04','text','What it is this year','Focus, level or theme for the season'],['05','data','Key dates','Dates and venues'],['06','photo','Action photo','1600×1000'],['07','link','Form','Registration or application form'],['08','file','Resources','3–6 PDFs or links'],['09','text','How it works','Rules, requirements or curriculum summary, 80–120 words'],['10','data','Highlights or results','Recent achievements + photos'],['11','people','Coordinator','Name, email, phone, headshot'],['12','text','FAQ','4 questions and answers']]
+};
+var KIND={photo:'Photo',text:'Text',file:'File',people:'People',data:'Data',link:'Link',auto:'Automatic'};
+var store={}; try{store=JSON.parse(localStorage.getItem('gnyc-brief')||'{}')}catch(e){}
+var pagesEl=document.getElementById('pages'),toc=document.getElementById('toc'),total=0,done=0,byKind={},lastGroup='';
+P.forEach(function(pg){
+  var slots=pg.slots||TEMPLATES[pg.tmpl].map(function(s){return [pg.code+'-'+s[0],s[1],s[2],s[3]]});
+  if(pg.group!==lastGroup){toc.insertAdjacentHTML('beforeend','<div class="grp">'+pg.group+'</div>');lastGroup=pg.group;}
+  var need=slots.filter(function(s){return s[1]!=='auto'}).length,have=slots.filter(function(s){return store[s[0]]}).length;
+  total+=need;done+=have;
+  toc.insertAdjacentHTML('beforeend','<a href="#'+pg.code+'">'+pg.name+'<small>'+have+'/'+need+'</small></a>');
+  var rows=slots.map(function(s){byKind[s[1]]=(byKind[s[1]]||0)+1;var d=!!store[s[0]];
+    return '<tr'+(d?' class="done"':'')+' data-code="'+s[0]+'"><td class="no-print"><input type="checkbox" class="chk" id="c-'+s[0]+'" '+(d?'checked':'')+(s[1]==='auto'?' disabled':'')+' aria-label="Provided: '+s[2]+'"></td><td class="code">'+s[0]+'</td><td><span class="kind k-'+s[1]+'">'+KIND[s[1]]+'</span></td><td><b class="text-slate-900">'+s[2]+'</b></td><td class="spec">'+s[3]+'</td></tr>';}).join('');
+  var link=pg.url?'<a class="link" href="'+pg.url+'?slots=1">Open the page with codes shown <span aria-hidden="true">&rarr;</span></a>':'<span class="text-sm text-slate-500">Layout: same as '+(pg.tmpl==='PF'?'Pathfinders':'Pathfinder Bible Experience')+' &middot; <a class="text-[#006194] font-semibold" href="'+(pg.tmpl==='PF'?'ministries/pathfinders.html':'ministries/pathfinders/bible-experience.html')+'?slots=1">see it</a></span>';
+  pagesEl.insertAdjacentHTML('beforeend','<section class="card-b pg" id="'+pg.code+'"><header><h2>'+pg.name+'<small><span class="font-mono font-bold text-[#b45309]">'+pg.code+'</span> &middot; '+need+' items'+(pg.note?' &middot; '+pg.note:'')+'</small></h2>'+link+'</header><div class="overflow-x-auto"><table><thead><tr><th class="no-print">Sent</th><th>Code</th><th>Type</th><th>What</th><th>Size / length / notes</th></tr></thead><tbody>'+rows+'</tbody></table></div></section>');
+});
+function refresh(){var t=0,d=0;P.forEach(function(pg){var slots=pg.slots||TEMPLATES[pg.tmpl].map(function(s){return [pg.code+'-'+s[0],s[1]]});var n=0,h=0;slots.forEach(function(s){if(s[1]==='auto')return;n++;if(store[s[0]])h++;});t+=n;d+=h;var a=toc.querySelector('a[href="#'+pg.code+'"] small');if(a)a.textContent=h+'/'+n;});
+  document.getElementById('p-all').style.width=(t?100*d/t:0)+'%';document.getElementById('p-all-t').textContent=d+' / '+t+' provided';}
+document.getElementById('counts').innerHTML=Object.keys(byKind).filter(function(k){return k!=='auto'}).map(function(k){return '<span class="kind k-'+k+'">'+KIND[k]+' '+byKind[k]+'</span>'}).join(' ');
+refresh();
+pagesEl.addEventListener('change',function(e){var c=e.target;if(!c.classList.contains('chk'))return;var tr=c.closest('tr'),code=tr.dataset.code;if(c.checked)store[code]=1;else delete store[code];tr.classList.toggle('done',c.checked);try{localStorage.setItem('gnyc-brief',JSON.stringify(store))}catch(x){}refresh();});
+</script>
+</body>
+</html>

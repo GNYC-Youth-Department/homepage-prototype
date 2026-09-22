@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Pathfinders · GNYC Youth prototype</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<style>
+  .pf-hero{background:radial-gradient(90% 120% at 100% 0%,rgba(220,38,38,.55) 0%,rgba(220,38,38,0) 55%),radial-gradient(60% 80% at 0% 100%,rgba(245,214,10,.18),rgba(245,214,10,0) 60%),linear-gradient(135deg,#0b1430 0%,#1a1033 50%,#3b0d1a 100%)}
+  .pf-lines{background:repeating-linear-gradient(135deg,rgba(255,255,255,.05) 0 1px,transparent 1px 16px);mask-image:linear-gradient(90deg,transparent,#000 40%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 40%,transparent)}
+  .crest-float{filter:drop-shadow(0 30px 40px rgba(0,0,0,.55));animation:bob 7s ease-in-out infinite}
+  @keyframes bob{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-10px) rotate(-2deg)}}
+  .law li{display:flex;gap:.75rem;align-items:flex-start;font-size:15px;line-height:1.5;color:#334155}
+  .law li::before{content:counter(law);counter-increment:law;flex:none;width:26px;height:26px;border-radius:9999px;background:#fef3c7;color:#92400e;font:700 12px/26px Inter,sans-serif;text-align:center}
+  .law{counter-reset:law;list-style:none;margin:0;padding:0;display:grid;gap:.75rem}
+  .year{display:grid;grid-template-columns:repeat(6,minmax(180px,1fr));gap:1rem;position:relative}
+  .year::before{content:"";position:absolute;left:0;right:0;top:22px;height:2px;background:linear-gradient(90deg,#dc2626,#f59e0b,#dc2626)}
+  .year li{position:relative;padding-top:3.25rem;list-style:none}
+  .year li::before{content:"";position:absolute;top:14px;left:0;width:18px;height:18px;border-radius:9999px;background:#fff;border:4px solid #dc2626;box-shadow:0 0 0 6px #faf8ff}
+  .cls{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.75rem}
+  .cls div{border-radius:16px;padding:1rem;color:#fff;min-height:118px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 12px 24px -10px rgba(15,23,42,.4)}
+  .cls strong{font-family:'Plus Jakarta Sans',sans-serif;font-size:18px}
+  .cls span{font-size:12px;opacity:.85}
+  .area-btn{display:flex;align-items:center;justify-content:space-between;width:100%;padding:.85rem 1rem;border-radius:14px;border:1px solid #e2e8f0;background:#fff;font:600 15px Inter,sans-serif;color:#0f172a;cursor:pointer;text-align:left}
+  .area-btn:hover,.area-btn.is-on{border-color:#dc2626;background:#fff5f5;color:#991b1b}
+  .area-btn small{font-weight:600;color:#64748b}
+  details.faq{border-bottom:1px solid #e2e8f0}
+  details.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.15rem 0;font:600 17px 'Plus Jakarta Sans',sans-serif;color:#0f172a}
+  details.faq summary::-webkit-details-marker{display:none}
+  details.faq summary .material-symbols-outlined{transition:transform .2s;color:#64748b}
+  details.faq[open] summary .material-symbols-outlined{transform:rotate(45deg)}
+  details.faq p{margin:0 0 1.25rem;color:#475569;font-size:15px;line-height:1.65;max-width:60ch}
+  .gal{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:150px;gap:.75rem}
+  .gal .ph{border-radius:16px}
+  .gal .big{grid-column:span 2;grid-row:span 2}
+  @media (max-width:767px){.gal{grid-template-columns:repeat(2,1fr);grid-auto-rows:120px}.gal .big{grid-column:span 2;grid-row:span 1}}
+</style>
+</head>
+<body data-page="ministries">
+<div data-site="nav"></div>
+
+<!-- ================= HERO ================= -->
+<header class="pf-hero relative overflow-hidden text-white">
+<div class="pf-lines absolute inset-0" aria-hidden="true"></div>
+<div class="wrap relative pt-10 pb-16 lg:pt-14 lg:pb-24">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><a href="#">Ministries</a><span class="sep">/</span><span class="text-white">Pathfinders</span></nav>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center mt-8">
+<div class="lg:col-span-7">
+<p class="text-xs font-bold tracking-[0.18em] uppercase text-[#ffe247]">Ages 10–16 · Grades 5–10 · Flagship club ministry</p>
+<h1 class="mt-4 font-heading font-extrabold text-5xl sm:text-6xl lg:text-7xl leading-[1.02] tracking-[-0.03em]">Pathfinders</h1>
+<p class="slot mt-5 text-lg sm:text-xl leading-relaxed text-white/85 max-w-xl" data-slot="PF-02" data-spec="Text · tagline, 25–40 words">A church-centered adventure for every 10 to 16 year old: camping, honors, drill and marching, drum corps and deep Bible study, led by trained volunteers in more than 60 clubs across Greater New York.</p>
+<div class="mt-8 flex flex-col sm:flex-row gap-3">
+<a class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-white text-slate-900 hover:bg-slate-100 font-semibold text-base transition-colors" href="#find"><span class="material-symbols-outlined text-xl" aria-hidden="true">location_on</span>Find a club near you</a>
+<a class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full border border-white/40 text-white hover:bg-white/10 font-semibold text-base transition-colors" href="#directors">For club directors</a>
+</div>
+<dl class="slot mt-10 grid grid-cols-3 gap-6 max-w-lg border-t border-white/15 pt-7" data-slot="PF-03" data-spec="Numbers · 3 real figures (clubs, Pathfinders, staff)">
+<div><dt class="text-xs uppercase tracking-wider text-white/60">Clubs</dt><dd class="font-heading font-extrabold text-3xl tabular mt-1">60+</dd></div>
+<div><dt class="text-xs uppercase tracking-wider text-white/60">Pathfinders</dt><dd class="font-heading font-extrabold text-3xl tabular mt-1">2,100</dd></div>
+<div><dt class="text-xs uppercase tracking-wider text-white/60">Trained staff</dt><dd class="font-heading font-extrabold text-3xl tabular mt-1">480</dd></div>
+</dl>
+</div>
+<div class="lg:col-span-5 relative">
+<div class="slot ph ph-dark rounded-[28px] aspect-[4/5] max-w-md mx-auto" data-slot="PF-01" data-spec="Photo · 1600×2000 portrait · Pathfinders in Class A uniform, outdoors"><span><span class="material-symbols-outlined">photo_camera</span>Hero photo<br>Class A uniform, outdoors</span></div>
+<img class="crest-float absolute -left-6 -bottom-8 w-36 sm:w-44 lg:w-52" src="../img/08.png" alt="" aria-hidden="true">
+</div>
+</div></div>
+</header>
+
+<!-- ================= PLEDGE & LAW ================= -->
+<section class="section bg-white border-b border-slate-200/80">
+<div class="wrap grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+<div class="lg:col-span-5">
+<p class="eyebrow">What we promise</p>
+<h2 class="h-section">The Pathfinder Pledge</h2>
+<blockquote class="mt-6 font-heading font-bold text-2xl sm:text-3xl leading-snug tracking-tight text-slate-900 border-l-4 border-[#dc2626] pl-6">“By the grace of God, I will be pure and kind and true. I will keep the Pathfinder Law. I will be a servant of God and a friend to man.”</blockquote>
+<p class="slot lede" data-slot="PF-04" data-spec="Text · why Pathfinders, 60–90 words, in the Director's voice">Pathfinders is where children become leaders. Every meeting, campout and honor is built to grow a young person spiritually, mentally, physically and socially, with adults who model what it means to walk with Jesus.</p>
+<div class="slot mt-6 flex items-center gap-4 rounded-2xl bg-slate-50 border border-slate-200 p-4" data-slot="PF-05" data-spec="Photo · 400×400 headshot + name and title">
+<div class="ph rounded-full w-14 h-14 shrink-0"><span class="material-symbols-outlined !m-0 !text-2xl">person</span></div>
+<div><p class="font-semibold text-slate-900 m-0">Conference Pathfinder Director</p><p class="text-sm text-slate-600 m-0">Name and title to be provided</p></div></div>
+</div>
+<div class="lg:col-span-7">
+<p class="eyebrow">The Pathfinder Law</p>
+<ol class="law mt-4">
+<li>Keep the morning watch.</li><li>Do my honest part.</li><li>Care for my body.</li><li>Keep a level eye.</li>
+<li>Be courteous and obedient.</li><li>Walk softly in the sanctuary.</li><li>Keep a song in my heart.</li><li>Go on God’s errands.</li>
+</ol>
+</div></div>
+</section>
+
+<!-- ================= PROGRAMS ================= -->
+<section class="section">
+<div class="wrap">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div><p class="eyebrow">Inside the club</p><h2 class="h-section">Four programs, one ministry</h2><p class="lede">Every Pathfinder club takes part in the club year. These four conference programs are where clubs compete, perform and grow together.</p></div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
+<a class="card acc-amber group flex flex-col overflow-hidden" href="pathfinders/bible-experience.html">
+<div class="relative h-40 bg-gradient-to-br from-[#7f1d1d] via-[#b91c1c] to-[#f59e0b] flex items-end p-5 overflow-hidden"><span class="material-symbols-outlined absolute -right-4 -top-4 text-[140px] text-white/15" aria-hidden="true">menu_book</span><span class="inline-flex px-3 py-1 rounded-full text-[11px] font-extrabold tracking-wider uppercase bg-white/20 text-white border border-white/30 backdrop-blur">Bible study</span></div>
+<div class="p-6 flex flex-col flex-1"><h3 class="font-heading font-bold text-xl text-slate-900">Pathfinder Bible Experience</h3><p class="text-[15px] text-slate-700 mt-2 leading-relaxed">Teams of six study one book of the Bible for months, then test their knowledge from club to division level.</p><span class="link mt-auto pt-5">Explore PBE <span aria-hidden="true">&rarr;</span></span></div></a>
+<a class="card acc-indigo group flex flex-col overflow-hidden" href="../brief.html#TLT">
+<div class="relative h-40 bg-gradient-to-br from-[#0b1430] via-[#1e3a8a] to-[#4f46e5] flex items-end p-5 overflow-hidden"><span class="material-symbols-outlined absolute -right-4 -top-4 text-[140px] text-white/15" aria-hidden="true">school</span><span class="inline-flex px-3 py-1 rounded-full text-[11px] font-extrabold tracking-wider uppercase bg-white/20 text-white border border-white/30 backdrop-blur">Ages 14–17</span></div>
+<div class="p-6 flex flex-col flex-1"><h3 class="font-heading font-bold text-xl text-slate-900">Teen Leadership Training</h3><p class="text-[15px] text-slate-700 mt-2 leading-relaxed">Older Pathfinders learn to plan, teach and lead as apprentice staff on a three-year track.</p><span class="link mt-auto pt-5">Explore TLT <span aria-hidden="true">&rarr;</span></span></div></a>
+<a class="card acc-red group flex flex-col overflow-hidden" href="../brief.html#DC">
+<div class="relative h-40 bg-gradient-to-br from-[#450a0a] via-[#991b1b] to-[#dc2626] flex items-end p-5 overflow-hidden"><span class="material-symbols-outlined absolute -right-4 -top-4 text-[140px] text-white/15" aria-hidden="true">music_note</span><span class="inline-flex px-3 py-1 rounded-full text-[11px] font-extrabold tracking-wider uppercase bg-white/20 text-white border border-white/30 backdrop-blur">Performance</span></div>
+<div class="p-6 flex flex-col flex-1"><h3 class="font-heading font-bold text-xl text-slate-900">Drum Corps</h3><p class="text-[15px] text-slate-700 mt-2 leading-relaxed">Percussion and pageantry: clubs rehearse all year for parades, Pathfinder Day and the conference review.</p><span class="link mt-auto pt-5">Explore Drum Corps <span aria-hidden="true">&rarr;</span></span></div></a>
+<a class="card acc-emerald group flex flex-col overflow-hidden" href="../brief.html#DM">
+<div class="relative h-40 bg-gradient-to-br from-[#022c22] via-[#065f46] to-[#10b981] flex items-end p-5 overflow-hidden"><span class="material-symbols-outlined absolute -right-4 -top-4 text-[140px] text-white/15" aria-hidden="true">military_tech</span><span class="inline-flex px-3 py-1 rounded-full text-[11px] font-extrabold tracking-wider uppercase bg-white/20 text-white border border-white/30 backdrop-blur">Discipline</span></div>
+<div class="p-6 flex flex-col flex-1"><h3 class="font-heading font-bold text-xl text-slate-900">Drilling &amp; Marching</h3><p class="text-[15px] text-slate-700 mt-2 leading-relaxed">Basic and fancy drill units build teamwork and precision, judged at the annual conference drill meet.</p><span class="link mt-auto pt-5">Explore drill <span aria-hidden="true">&rarr;</span></span></div></a>
+</div></div>
+</section>
+
+<!-- ================= THE PATHFINDER YEAR ================= -->
+<section class="section bg-white border-y border-slate-200/80">
+<div class="wrap">
+<p class="eyebrow">Plan the year</p>
+<h2 class="h-section">A year in the life of a club</h2>
+<p class="lede">Dates change each year. The current calendar is always on the Events page; this is the rhythm every club follows.</p>
+<ol class="slot year mt-12 overflow-x-auto pb-4 no-scrollbar" data-slot="PF-06" data-spec="Dates · month for each of the 6 milestones this club year">
+<li><p class="eyebrow !text-[#b91c1c]">September</p><h3 class="font-heading font-bold text-lg mt-1">Pathfinder Day &amp; Induction</h3><p class="text-sm text-slate-600 mt-1">Clubs are commissioned and new Pathfinders inducted in their local church.</p></li>
+<li><p class="eyebrow !text-[#b91c1c]">October</p><h3 class="font-heading font-bold text-lg mt-1">Fall Camporee</h3><p class="text-sm text-slate-600 mt-1">First campout of the year with honors, campfire and Sabbath in the outdoors.</p></li>
+<li><p class="eyebrow !text-[#b91c1c]">January–April</p><h3 class="font-heading font-bold text-lg mt-1">Bible Experience</h3><p class="text-sm text-slate-600 mt-1">Club, area and conference rounds; top teams go on to union and division.</p></li>
+<li><p class="eyebrow !text-[#b91c1c]">March</p><h3 class="font-heading font-bold text-lg mt-1">Drill Meet &amp; Drum Corps Review</h3><p class="text-sm text-slate-600 mt-1">Units and corps perform before conference judges.</p></li>
+<li><p class="eyebrow !text-[#b91c1c]">May</p><h3 class="font-heading font-bold text-lg mt-1">Conference Camporee &amp; Fair</h3><p class="text-sm text-slate-600 mt-1">The flagship weekend: every club, every area, one campsite.</p></li>
+<li><p class="eyebrow !text-[#b91c1c]">June</p><h3 class="font-heading font-bold text-lg mt-1">Investiture</h3><p class="text-sm text-slate-600 mt-1">Pathfinders receive the class they earned and staff are recognized.</p></li>
+</ol>
+<a class="link mt-4" href="../events.html">See this year's Pathfinder dates <span aria-hidden="true">&rarr;</span></a>
+</div>
+</section>
+
+<!-- ================= CLASSES & HONORS ================= -->
+<section class="section">
+<div class="wrap grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+<div class="lg:col-span-5">
+<p class="eyebrow">Growth track</p>
+<h2 class="h-section">Six classes, one for every year</h2>
+<p class="lede">Each class year covers Bible, personal growth, health, outdoor skills and service. Pathfinders are invested in their class each June.</p>
+<div class="cls mt-8">
+<div style="background:linear-gradient(160deg,#2563eb,#1e40af)"><strong>Friend</strong><span>Grade 5 · age 10</span></div>
+<div style="background:linear-gradient(160deg,#dc2626,#991b1b)"><strong>Companion</strong><span>Grade 6 · age 11</span></div>
+<div style="background:linear-gradient(160deg,#16a34a,#166534)"><strong>Explorer</strong><span>Grade 7 · age 12</span></div>
+<div style="background:linear-gradient(160deg,#94a3b8,#475569)"><strong>Ranger</strong><span>Grade 8 · age 13</span></div>
+<div style="background:linear-gradient(160deg,#9f1239,#4c0519)"><strong>Voyager</strong><span>Grade 9 · age 14</span></div>
+<div style="background:linear-gradient(160deg,#facc15,#ca8a04);color:#3f2a00"><strong>Guide</strong><span>Grade 10 · age 15</span></div>
+</div>
+</div>
+<div class="lg:col-span-7">
+<div class="card acc-amber p-7 sm:p-9 overflow-hidden relative">
+<span class="material-symbols-outlined absolute -right-6 -bottom-8 text-[200px] text-amber-100" aria-hidden="true">workspace_premium</span>
+<div class="relative">
+<p class="eyebrow !text-[#92400e]">Honors</p>
+<h3 class="font-heading font-extrabold text-3xl tracking-tight text-slate-900 mt-1">Hundreds of honors to earn</h3>
+<p class="text-[15px] text-slate-700 mt-3 leading-relaxed max-w-md">From knot-tying to first aid to Christian citizenship, honors are the patches on a Pathfinder's sash. Clubs teach them at meetings; many are offered at camporee.</p>
+<div class="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-3 text-sm font-semibold text-slate-800">
+<span class="rounded-xl bg-white/80 border border-amber-200 px-3 py-2">Arts &amp; crafts</span><span class="rounded-xl bg-white/80 border border-amber-200 px-3 py-2">Health &amp; science</span><span class="rounded-xl bg-white/80 border border-amber-200 px-3 py-2">Household arts</span><span class="rounded-xl bg-white/80 border border-amber-200 px-3 py-2">Nature</span><span class="rounded-xl bg-white/80 border border-amber-200 px-3 py-2">Outdoor industries</span><span class="rounded-xl bg-white/80 border border-amber-200 px-3 py-2">Outreach</span><span class="rounded-xl bg-white/80 border border-amber-200 px-3 py-2">Recreation</span><span class="rounded-xl bg-white/80 border border-amber-200 px-3 py-2">Vocational</span>
+</div>
+<div class="slot ph rounded-2xl h-40 mt-6" data-slot="PF-07" data-spec="Photo · 1600×700 · close-up of a honors sash or an honor being taught"><span><span class="material-symbols-outlined">photo_camera</span>Honors sash close-up</span></div>
+</div></div>
+</div></div>
+</section>
+
+<!-- ================= UPCOMING EVENTS ================= -->
+<section class="section bg-white border-y border-slate-200/80">
+<div class="wrap">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4"><div><p class="eyebrow">Coming up</p><h2 class="h-section">Pathfinder events</h2></div><a class="link" href="../events.html">All events <span aria-hidden="true">&rarr;</span></a></div>
+<ul class="slot grid grid-cols-1 md:grid-cols-3 gap-6 mt-10 list-none p-0 m-0" data-slot="PF-08" data-spec="Auto · pulled from the Events calendar, tagged Pathfinders">
+<li class="card acc-red overflow-hidden flex flex-col"><div class="ph h-40"><span><span class="material-symbols-outlined">photo_camera</span>Event flyer</span></div><div class="p-6 flex flex-col flex-1"><p class="eyebrow !text-[#b91c1c]">Annual · date TBA</p><h3 class="font-heading font-bold text-xl mt-1">Conference Camporee &amp; Fair</h3><p class="text-sm text-slate-600 mt-1">Camp Whittemore</p><a class="link mt-auto pt-5" href="../events.html">Details <span aria-hidden="true">&rarr;</span></a></div></li>
+<li class="card acc-amber overflow-hidden flex flex-col"><div class="ph h-40"><span><span class="material-symbols-outlined">photo_camera</span>Event flyer</span></div><div class="p-6 flex flex-col flex-1"><p class="eyebrow !text-[#92400e]">January–April</p><h3 class="font-heading font-bold text-xl mt-1">Pathfinder Bible Experience</h3><p class="text-sm text-slate-600 mt-1">Area and conference rounds</p><a class="link mt-auto pt-5" href="pathfinders/bible-experience.html">Details <span aria-hidden="true">&rarr;</span></a></div></li>
+<li class="card acc-emerald overflow-hidden flex flex-col"><div class="ph h-40"><span><span class="material-symbols-outlined">photo_camera</span>Event flyer</span></div><div class="p-6 flex flex-col flex-1"><p class="eyebrow !text-[#065f46]">March · date TBA</p><h3 class="font-heading font-bold text-xl mt-1">Drill Meet &amp; Drum Corps Review</h3><p class="text-sm text-slate-600 mt-1">Venue TBA</p><a class="link mt-auto pt-5" href="../events.html">Details <span aria-hidden="true">&rarr;</span></a></div></li>
+</ul></div>
+</section>
+
+<!-- ================= FOR DIRECTORS ================= -->
+<section class="section" id="directors">
+<div class="wrap grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
+<div class="lg:col-span-4">
+<p class="eyebrow">Club directors &amp; staff</p>
+<h2 class="h-section">Run your club well</h2>
+<p class="lede">Everything a director needs in one place: forms, standards, training dates and the people to call.</p>
+<a class="btn-primary mt-6 !py-3.5 !px-7 !text-[15px]" href="../resources.html">Open the resource library</a>
+</div>
+<div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-5">
+<a class="card acc-sky p-6 flex gap-4 items-start" href="../resources.html"><span class="material-symbols-outlined text-3xl text-[#006194]" aria-hidden="true">assignment</span><span><strong class="font-heading text-lg text-slate-900 block">Camporee &amp; travel forms</strong><span class="text-sm text-slate-600">Registration, tent release, risk memo</span></span></a>
+<a class="card acc-indigo p-6 flex gap-4 items-start" href="../resources.html"><span class="material-symbols-outlined text-3xl text-indigo-700" aria-hidden="true">checkroom</span><span><strong class="font-heading text-lg text-slate-900 block">Uniform guidelines</strong><span class="text-sm text-slate-600">Class A and B, insignia placement</span></span></a>
+<a class="slot card acc-emerald p-6 flex gap-4 items-start" href="#" data-slot="PF-09" data-spec="Link · monthly report form or portal URL"><span class="material-symbols-outlined text-3xl text-emerald-700" aria-hidden="true">fact_check</span><span><strong class="font-heading text-lg text-slate-900 block">Monthly club report</strong><span class="text-sm text-slate-600">Due the 5th of each month</span></span></a>
+<a class="slot card acc-amber p-6 flex gap-4 items-start" href="#" data-slot="PF-10" data-spec="Link · safety / background-check (Sterling Volunteers) instructions"><span class="material-symbols-outlined text-3xl text-amber-700" aria-hidden="true">verified_user</span><span><strong class="font-heading text-lg text-slate-900 block">Staff safety &amp; screening</strong><span class="text-sm text-slate-600">Background checks and child protection training</span></span></a>
+</div></div>
+</section>
+
+<!-- ================= COORDINATORS ================= -->
+<section class="section bg-white border-y border-slate-200/80">
+<div class="wrap">
+<p class="eyebrow">People to call</p>
+<h2 class="h-section">Pathfinder leadership</h2>
+<p class="lede">The conference team and the area coordinators who support every club.</p>
+<ul class="slot grid grid-cols-2 md:grid-cols-4 gap-6 mt-10 list-none p-0 m-0" data-slot="PF-11" data-spec="People · 4–8 headshots 600×600 + name, role, area, email">
+<li><div class="ph rounded-3xl aspect-square"><span><span class="material-symbols-outlined">person</span>Headshot</span></div><p class="font-heading font-bold text-lg mt-3 mb-0">Name</p><p class="text-sm text-slate-600 m-0">Conference Pathfinder Director</p></li>
+<li><div class="ph rounded-3xl aspect-square"><span><span class="material-symbols-outlined">person</span>Headshot</span></div><p class="font-heading font-bold text-lg mt-3 mb-0">Name</p><p class="text-sm text-slate-600 m-0">Associate Director</p></li>
+<li><div class="ph rounded-3xl aspect-square"><span><span class="material-symbols-outlined">person</span>Headshot</span></div><p class="font-heading font-bold text-lg mt-3 mb-0">Name</p><p class="text-sm text-slate-600 m-0">Area Coordinator · Brooklyn</p></li>
+<li><div class="ph rounded-3xl aspect-square"><span><span class="material-symbols-outlined">person</span>Headshot</span></div><p class="font-heading font-bold text-lg mt-3 mb-0">Name</p><p class="text-sm text-slate-600 m-0">Area Coordinator · Queens</p></li>
+</ul></div>
+</section>
+
+<!-- ================= FIND A CLUB ================= -->
+<section class="section" id="find">
+<div class="wrap grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+<div class="lg:col-span-5">
+<p class="eyebrow">Join</p>
+<h2 class="h-section">Find a club near you</h2>
+<p class="lede">Pathfinder clubs meet at local Seventh-day Adventist churches. Pick your area to see the clubs and the director to contact.</p>
+<div class="slot grid gap-2 mt-8" data-slot="PF-12" data-spec="List · every club by area: church name, neighbourhood, meeting day, director name + email/phone" data-filter-group="club-row">
+<button class="area-btn is-on" data-filter="all">All of Greater New York <small>60+ clubs</small></button>
+<button class="area-btn" data-filter="bronx">The Bronx <small>—</small></button>
+<button class="area-btn" data-filter="brooklyn">Brooklyn <small>—</small></button>
+<button class="area-btn" data-filter="manhattan">Manhattan <small>—</small></button>
+<button class="area-btn" data-filter="queens">Queens <small>—</small></button>
+<button class="area-btn" data-filter="si">Staten Island <small>—</small></button>
+<button class="area-btn" data-filter="li">Long Island <small>—</small></button>
+<button class="area-btn" data-filter="upstate">Upstate <small>—</small></button>
+</div></div>
+<div class="lg:col-span-7">
+<div class="slot ph rounded-[28px] h-72 lg:h-80" data-slot="PF-13" data-spec="Map · club locations (Google My Maps link or list of church addresses)"><span><span class="material-symbols-outlined">map</span>Map of clubs across Greater New York</span></div>
+<ul class="mt-5 divide-y divide-slate-200 border-y border-slate-200 list-none p-0 m-0">
+<li class="club-row py-4 flex flex-wrap items-center justify-between gap-3" data-cats="brooklyn"><div><p class="font-heading font-bold text-lg m-0">Example Church Pathfinder Club</p><p class="text-sm text-slate-600 m-0">Brooklyn · meets Sundays 10 am</p></div><a class="link" href="#">Contact the director <span aria-hidden="true">&rarr;</span></a></li>
+<li class="club-row py-4 flex flex-wrap items-center justify-between gap-3" data-cats="queens"><div><p class="font-heading font-bold text-lg m-0">Example Church Pathfinder Club</p><p class="text-sm text-slate-600 m-0">Queens · meets Sabbath afternoons</p></div><a class="link" href="#">Contact the director <span aria-hidden="true">&rarr;</span></a></li>
+<li class="club-row py-4 flex flex-wrap items-center justify-between gap-3" data-cats="bronx"><div><p class="font-heading font-bold text-lg m-0">Example Church Pathfinder Club</p><p class="text-sm text-slate-600 m-0">The Bronx · meets Sundays 9 am</p></div><a class="link" href="#">Contact the director <span aria-hidden="true">&rarr;</span></a></li>
+</ul>
+<p class="text-sm text-slate-500 mt-3">Example rows. The real list comes from the club directory the Director provides.</p>
+</div></div>
+</section>
+
+<!-- ================= GALLERY ================= -->
+<section class="section bg-white border-y border-slate-200/80">
+<div class="wrap">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4"><div><p class="eyebrow">Life in the club</p><h2 class="h-section">Moments from this year</h2></div><a class="link" href="https://www.instagram.com/gnycyouth/">@gnycyouth on Instagram <span aria-hidden="true">&rarr;</span></a></div>
+<div class="slot gal mt-10" data-slot="PF-14" data-spec="Photos · 6 images, 1200px+ on the long side, mixed portrait/landscape · campout, drill, PBE, service, worship, investiture">
+<div class="ph big"><span><span class="material-symbols-outlined">photo_camera</span>Camporee</span></div>
+<div class="ph"><span>Drill</span></div><div class="ph"><span>PBE</span></div>
+<div class="ph"><span>Service</span></div><div class="ph"><span>Worship</span></div>
+<div class="ph"><span>Investiture</span></div><div class="ph"><span>Drum corps</span></div>
+<div class="ph"><span>Honors</span></div><div class="ph"><span>Campfire</span></div>
+</div></div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="section">
+<div class="wrap grid grid-cols-1 lg:grid-cols-12 gap-10">
+<div class="lg:col-span-4"><p class="eyebrow">For parents</p><h2 class="h-section">Questions families ask</h2><p class="lede">Answers below are drafts for the Director to confirm.</p></div>
+<div class="slot lg:col-span-8 border-t border-slate-200" data-slot="PF-15" data-spec="Text · confirm or rewrite each answer; add cost and uniform supplier">
+<details class="faq" open><summary>Does my child have to be Adventist to join?<span class="material-symbols-outlined">add</span></summary><p>No. Pathfinder clubs welcome any child aged 10 to 16 who is willing to take part in the program, including its spiritual activities.</p></details>
+<details class="faq"><summary>What does it cost?<span class="material-symbols-outlined">add</span></summary><p>Each club sets its own annual fee to cover insurance, class materials and events. Uniforms are purchased separately; many clubs help families with costs. Ask the local director.</p></details>
+<details class="faq"><summary>When and where do clubs meet?<span class="material-symbols-outlined">add</span></summary><p>Most clubs meet weekly or twice a month at their church, usually Sunday morning or Sabbath afternoon, from September to June.</p></details>
+<details class="faq"><summary>How are children kept safe?<span class="material-symbols-outlined">add</span></summary><p>Every adult staff member completes a background check and child-protection training before serving, and clubs follow Adventist Risk Management guidelines for trips and camping.</p></details>
+<details class="faq"><summary>Where do I buy the uniform?<span class="material-symbols-outlined">add</span></summary><p>Class A uniform pieces, sashes and insignia are available through the GNYC Youth Store and AdventSource. Your director will tell you what a new Pathfinder needs first.</p></details>
+</div></div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="wrap pb-20">
+<div class="relative overflow-hidden rounded-[28px] text-white p-8 sm:p-12 lg:p-16" style="background:linear-gradient(135deg,#0b1430,#3b0d1a)">
+<img class="absolute -right-10 -bottom-16 w-72 opacity-20 rotate-12" src="../img/08.png" alt="" aria-hidden="true">
+<div class="relative grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+<div class="lg:col-span-8"><p class="text-xs font-bold tracking-[0.18em] uppercase text-[#ffe247]">Ready to start?</p><h2 class="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight mt-3" style="text-wrap:balance">Join a club, or start one at your church.</h2><p class="text-white/80 text-lg mt-4 max-w-xl">The conference Pathfinder office will connect you with a club near you or walk your church through chartering a new one.</p></div>
+<div class="lg:col-span-4 flex flex-col gap-3"><a class="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-white text-slate-900 hover:bg-slate-100 font-semibold" href="#find">Find a club</a><a class="slot inline-flex items-center justify-center px-7 py-3.5 rounded-full border border-white/40 hover:bg-white/10 font-semibold" href="mailto:info@gnycyouth.com" data-slot="PF-16" data-spec="Email · Pathfinder office address for new-club enquiries">Start a new club</a></div>
+</div></div>
+</section>
+
+<div data-site="footer"></div>
+<script src="../assets/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en" data-root="./">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Resources · GNYC Youth prototype</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+  .rs-hero{background:radial-gradient(70% 90% at 0% 0%,rgba(204,229,255,.9),rgba(204,229,255,0) 60%),linear-gradient(180deg,#fff,#f6f8ff)}
+  .search{display:flex;align-items:center;gap:.75rem;background:#fff;border:1px solid #d5dbe6;border-radius:9999px;padding:.5rem .5rem .5rem 1.25rem;box-shadow:0 10px 30px -12px rgba(0,97,148,.25)}
+  .search input{flex:1;border:0;outline:0;font:500 16px Inter,sans-serif;background:none;min-width:0}
+  .cat{display:flex;flex-direction:column;gap:.5rem;padding:1.25rem;border-radius:20px;background:#fff;border:1px solid #e2e8f0;text-decoration:none;color:inherit;transition:transform .25s cubic-bezier(.16,1,.3,1),box-shadow .25s,border-color .25s}
+  .cat:hover{transform:translateY(-3px);border-color:#93ccff;box-shadow:0 18px 40px -14px rgba(0,97,148,.3)}
+  .cat .material-symbols-outlined{font-size:28px;color:#006194}
+  .cat b{font:700 16px 'Plus Jakarta Sans',sans-serif;color:#0f172a}
+  .cat small{color:#64748b;font-size:13px}
+  .row{display:grid;grid-template-columns:44px 1fr auto;gap:1rem;align-items:center;padding:1rem 1.25rem;border-radius:16px;text-decoration:none;color:inherit;transition:background .15s}
+  .row:hover{background:#fff}
+  .row .ic{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:#e0f2fe;color:#0369a1}
+  .row .ic.pdf{background:#fee2e2;color:#991b1b}.row .ic.doc{background:#dbeafe;color:#1d4ed8}.row .ic.link{background:#dcfce7;color:#166534}.row .ic.vid{background:#ede9fe;color:#6d28d9}
+  .row b{font:700 16px 'Plus Jakarta Sans',sans-serif;color:#0f172a;display:block}
+  .row small{color:#64748b;font-size:13px}
+  .row .meta{font:700 11px Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#64748b;white-space:nowrap}
+  @media (max-width:639px){.row{grid-template-columns:44px 1fr}.row .meta{display:none}}
+  .aud{display:inline-flex;padding:.15rem .55rem;border-radius:9999px;font:700 10px Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase;background:#f1f5f9;color:#475569;margin-left:.4rem;vertical-align:middle}
+</style>
+</head>
+<body data-page="resources">
+<div data-site="nav"></div>
+
+<header class="rs-hero border-b border-slate-200/80">
+<div class="wrap pt-10 pb-12 lg:pt-14 lg:pb-16">
+<nav class="crumbs !text-slate-500" aria-label="Breadcrumb"><a href="index.html" class="hover:!text-slate-900">Home</a><span class="sep">/</span><span class="text-slate-900">Resources</span></nav>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mt-8">
+<div class="lg:col-span-7"><p class="eyebrow">Resource library</p><h1 class="font-heading font-extrabold text-5xl sm:text-6xl tracking-[-0.03em] leading-[1.02] text-slate-900 mt-2">Forms, manuals and downloads</h1><p class="slot lede" data-slot="RS-01" data-spec="Text · one-paragraph intro, 30–50 words">Everything club directors, staff and parents need, in one searchable place. Filter by ministry or type, or search by name.</p></div>
+<div class="lg:col-span-5"><form class="search" role="search" onsubmit="return false"><span class="material-symbols-outlined text-slate-400">search</span><input id="rs-q" type="search" placeholder="Search forms, manuals, guidelines…" aria-label="Search resources"><button class="btn-primary !py-2.5" type="submit">Search</button></form><p class="text-xs text-slate-500 mt-2 pl-4">Try “tent release”, “uniform”, “PBE”</p></div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 mt-10">
+<a class="cat" href="#list"><span class="material-symbols-outlined">assignment</span><b>Forms &amp; waivers</b><small>Registration, consent, travel</small></a>
+<a class="cat" href="#list"><span class="material-symbols-outlined">checkroom</span><b>Uniform &amp; insignia</b><small>Class A and B standards</small></a>
+<a class="cat" href="#list"><span class="material-symbols-outlined">menu_book</span><b>Curriculum &amp; classes</b><small>Adventurer and Pathfinder classes</small></a>
+<a class="cat" href="#list"><span class="material-symbols-outlined">verified_user</span><b>Safety &amp; compliance</b><small>Screening, risk management</small></a>
+<a class="cat" href="#list"><span class="material-symbols-outlined">school</span><b>Leadership training</b><small>Master Guide, TLT, directors</small></a>
+<a class="cat" href="#list"><span class="material-symbols-outlined">translate</span><b>En español</b><small>Recursos en español</small></a>
+</div></div>
+</header>
+
+<section class="wrap section" id="list">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+<aside class="lg:col-span-3 lg:sticky lg:top-28">
+<p class="eyebrow">Ministry</p>
+<div class="grid gap-1.5 mt-3" role="group" aria-label="Filter by ministry" data-filter-group="rs">
+<button class="pill is-on text-left" data-filter="all" aria-pressed="true">All ministries</button><button class="pill text-left" data-filter="adv" aria-pressed="false">Adventurers</button><button class="pill text-left" data-filter="pf" aria-pressed="false">Pathfinders</button><button class="pill text-left" data-filter="mg" aria-pressed="false">Master Guides</button><button class="pill text-left" data-filter="ay" aria-pressed="false">AY &amp; young adults</button><button class="pill text-left" data-filter="dir" aria-pressed="false">Directors only</button>
+</div>
+<div class="mt-8 rounded-2xl bg-white border border-slate-200 p-5"><p class="font-heading font-bold text-slate-900 m-0">Missing a form?</p><p class="text-sm text-slate-600 mt-1 mb-3">Email the youth office and we will add it here.</p><a class="link" href="mailto:info@gnycyouth.com">info@gnycyouth.com <span aria-hidden="true">&rarr;</span></a></div>
+</aside>
+<div class="lg:col-span-9">
+<p class="slot text-sm text-slate-500 mb-3" data-slot="RS-02" data-spec="Files · every document the office publishes: title, one-line description, ministry, category, file (PDF/Doc/link), year, EN/ES · see brief for the inventory sheet">Showing <b id="rs-count">12</b> resources · example inventory</p>
+<div class="rounded-3xl bg-[#f2f3ff]/70 border border-slate-200/80 p-2 grid gap-1">
+<a class="row rs" data-cats="pf dir" href="https://drive.google.com/file/d/1fXJtZb3sQf-Ta3kHERrqHuwifCNthTd4/view" target="_blank" rel="noopener"><span class="ic pdf material-symbols-outlined">picture_as_pdf</span><span><b>Camporee instructive form <span class="aud">Pathfinders</span></b><small>Schedule, campsite rules, fire safety and director briefing</small></span><span class="meta">PDF · 2026</span></a>
+<a class="row rs" data-cats="pf adv dir" href="https://docs.google.com/document/d/1tja6FWznvbLDNfgDkX4kkWgLNS0EpW2A/edit" target="_blank" rel="noopener"><span class="ic doc material-symbols-outlined">description</span><span><b>Travel and tent release, with risk memo <span class="aud">All clubs</span></b><small>Parental permission, risk template, pastor/director memo</small></span><span class="meta">Doc · 2026</span></a>
+<a class="row rs" data-cats="pf" href="https://gnycyouth.ryankerbs.com/wp-content/uploads/2015/05/Pathfinder-Uniform-Guidelines.pdf" target="_blank" rel="noopener"><span class="ic pdf material-symbols-outlined">picture_as_pdf</span><span><b>Pathfinder uniform guidelines <span class="aud">Pathfinders</span></b><small>Insignia placement, sash protocol, Class A and B, TLT cords</small></span><span class="meta">PDF</span></a>
+<a class="row rs" data-cats="adv" href="#"><span class="ic pdf material-symbols-outlined">picture_as_pdf</span><span><b>Adventurer uniform guidelines <span class="aud">Adventurers</span></b><small>Class A uniform, sash, awards placement</small></span><span class="meta">PDF · TBA</span></a>
+<a class="row rs" data-cats="pf" href="ministries/pathfinders/bible-experience.html"><span class="ic link material-symbols-outlined">menu_book</span><span><b>Pathfinder Bible Experience study pack <span class="aud">Pathfinders</span></b><small>Study guide, sample questions, commentary notes</small></span><span class="meta">Page</span></a>
+<a class="row rs" data-cats="dir" href="#"><span class="ic link material-symbols-outlined">fact_check</span><span><b>Monthly club report <span class="aud">Directors</span></b><small>Submit attendance, activities and finances by the 5th</small></span><span class="meta">Form · TBA</span></a>
+<a class="row rs" data-cats="dir mg" href="#"><span class="ic pdf material-symbols-outlined">verified_user</span><span><b>Volunteer screening &amp; child protection <span class="aud">All staff</span></b><small>How to complete the background check and training</small></span><span class="meta">PDF · TBA</span></a>
+<a class="row rs" data-cats="dir" href="#"><span class="ic pdf material-symbols-outlined">event_note</span><span><b>Club charter &amp; insurance checklist <span class="aud">Directors</span></b><small>Annual chartering steps and Adventist Risk Management coverage</small></span><span class="meta">PDF · TBA</span></a>
+<a class="row rs" data-cats="mg" href="#"><span class="ic pdf material-symbols-outlined">school</span><span><b>Master Guide curriculum <span class="aud">Master Guides</span></b><small>Requirements, record card and investiture checklist</small></span><span class="meta">PDF · TBA</span></a>
+<a class="row rs" data-cats="pf" href="#"><span class="ic pdf material-symbols-outlined">school</span><span><b>Teen Leadership Training handbook <span class="aud">Pathfinders</span></b><small>Three-year TLT track and evaluation forms</small></span><span class="meta">PDF · TBA</span></a>
+<a class="row rs" data-cats="ay" href="#"><span class="ic vid material-symbols-outlined">play_circle</span><span><b>AY Society programme ideas <span class="aud">Young adults</span></b><small>Sabbath afternoon programme templates and videos</small></span><span class="meta">Link · TBA</span></a>
+<a class="row rs" data-cats="pf adv" href="#"><span class="ic pdf material-symbols-outlined">translate</span><span><b>Formulario de permiso de viaje <span class="aud">Español</span></b><small>Spanish version of the travel release</small></span><span class="meta">PDF · TBA</span></a>
+</div>
+</div></div>
+</section>
+
+<div data-site="footer"></div>
+<script src="assets/site.js"></script>
+<script>
+(function(){var q=document.getElementById('rs-q'),rows=document.querySelectorAll('.rs'),c=document.getElementById('rs-count');
+q.addEventListener('input',function(){var v=q.value.trim().toLowerCase(),n=0;rows.forEach(function(r){var m=!v||r.textContent.toLowerCase().indexOf(v)>-1;r.hidden=!m;if(m)n++;});c.textContent=n;});})();
+</script>
+</body>
+</html>
