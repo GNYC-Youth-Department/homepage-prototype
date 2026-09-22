@@ -45,8 +45,8 @@
 <div class="wrap pt-10 pb-12 lg:pt-14 lg:pb-16">
 <p class="eyebrow !text-[#b45309]">Content brief · for the Youth Director</p>
 <h1 class="font-heading font-extrabold text-5xl sm:text-6xl tracking-[-0.03em] leading-[1.02] text-slate-900 mt-2" style="text-wrap:balance">What to provide, and where it goes</h1>
-<p class="lede !max-w-2xl">Every block on the new site that needs words, a photo, a file or a name has a code, such as <code class="font-mono font-bold text-[#b45309]">PF-01</code>. This page lists all of them, page by page, with the size and length we need. Tick items off as you send them; the list remembers your ticks on this device.</p>
-<div class="flex flex-wrap gap-3 mt-8 no-print"><a class="btn-primary !py-3 !px-6" href="ministries/pathfinders.html?slots=1">See the codes on the Pathfinders page</a><button class="pill" onclick="window.print()">Print or save as PDF</button><a class="pill" href="sitemap.html">Page map</a><a class="pill" href="design.html">Design guidelines</a></div>
+<p class="lede !max-w-2xl">Every block on the new site that needs words, a photo, a file or a name has a code, such as <code class="font-mono font-bold text-[#b45309]">PF-01</code>. This page lists all of them, page by page, with the size and length we need. State and owners are kept in the shared <a class="text-[#006194] font-semibold" href="https://docs.google.com/spreadsheets/d/1MyNo2o8HU9yuw4UiIbeg81gDz8qweUPCp04mtkXLwpI/edit" target="_blank" rel="noopener">Content Tracker</a>; mark an item Done there and it shows here.</p>
+<div class="flex flex-wrap gap-3 mt-8 no-print"><a class="btn-primary !py-3 !px-6" href="https://docs.google.com/spreadsheets/d/1MyNo2o8HU9yuw4UiIbeg81gDz8qweUPCp04mtkXLwpI/edit" target="_blank" rel="noopener">Open the Content Tracker</a><a class="pill" href="ministries/pathfinders.html?slots=1">See the codes on a page</a><button class="pill" onclick="window.print()">Print or save as PDF</button><a class="pill" href="sitemap.html">Page map</a><a class="pill" href="design.html">Design guidelines</a></div>
 <div class="mt-8 flex flex-wrap items-center gap-6 text-sm text-slate-600"><span class="prog">Overall <i><b id="p-all"></b></i><span id="p-all-t">0 / 0</span></span><span class="text-slate-400">·</span><span id="counts"></span></div>
 </div></header>
 
@@ -66,22 +66,27 @@
 <script src="assets/brief-data.js"></script>
 <script>
 var KIND={photo:'Photo',text:'Text',file:'File',people:'People',data:'Data',link:'Link',auto:'Automatic'};
-var store={}; try{store=JSON.parse(localStorage.getItem('gnyc-brief')||'{}')}catch(e){}
+var store={},live=null; try{store=JSON.parse(localStorage.getItem('gnyc-brief')||'{}')}catch(e){}
+function isDone(s){return live?(/^(done|ready|provided)/i.test((live[s[0]]||{}).state||'')):(!!store[s[0]]||preDone(s[3]))}
 var pagesEl=document.getElementById('pages'),toc=document.getElementById('toc'),total=0,done=0,byKind={},lastGroup='';
+function build(){pagesEl.innerHTML='';toc.innerHTML='';byKind={};lastGroup='';
 P.forEach(function(pg){
   var slots=pg.slots||TEMPLATES[pg.tmpl].map(function(s){return [pg.code+'-'+s[0],s[1],s[2],s[3]]});
   if(pg.group!==lastGroup){toc.insertAdjacentHTML('beforeend','<div class="grp">'+pg.group+'</div>');lastGroup=pg.group;}
-  var need=slots.filter(function(s){return s[1]!=='auto'}).length,have=slots.filter(function(s){return s[1]!=='auto'&&(store[s[0]]||preDone(s[3]))}).length;
+  var need=slots.filter(function(s){return s[1]!=='auto'}).length,have=slots.filter(function(s){return s[1]!=='auto'&&isDone(s)}).length;
   total+=need;done+=have;
   toc.insertAdjacentHTML('beforeend','<a href="#'+pg.code+'">'+pg.name+'<small>'+have+'/'+need+'</small></a>');
-  var rows=slots.map(function(s){byKind[s[1]]=(byKind[s[1]]||0)+1;var d=!!store[s[0]]||preDone(s[3]);
-    return '<tr'+(d?' class="done"':'')+' data-code="'+s[0]+'"><td class="no-print"><input type="checkbox" class="chk" id="c-'+s[0]+'" '+(d?'checked':'')+(s[1]==='auto'?' disabled':'')+' aria-label="Provided: '+s[2]+'"></td><td class="code">'+s[0]+'</td><td><span class="kind k-'+s[1]+'">'+KIND[s[1]]+'</span></td><td><b class="text-slate-900">'+s[2]+'</b></td><td class="spec">'+s[3]+'</td></tr>';}).join('');
+  var rows=slots.map(function(s){byKind[s[1]]=(byKind[s[1]]||0)+1;var d=isDone(s);var ow=live&&live[s[0]]&&live[s[0]].owner?'<div class="text-[11px] text-slate-500 mt-1">'+live[s[0]].owner+'</div>':'';
+    return '<tr'+(d?' class="done"':'')+' data-code="'+s[0]+'"><td class="no-print"><input type="checkbox" class="chk" id="c-'+s[0]+'" '+(d?'checked':'')+(s[1]==='auto'?' disabled':'')+' aria-label="Provided: '+s[2]+'"></td><td class="code">'+s[0]+'</td><td><span class="kind k-'+s[1]+'">'+KIND[s[1]]+'</span></td><td><b class="text-slate-900">'+s[2]+'</b>'+ow+'</td><td class="spec">'+s[3]+'</td></tr>';}).join('');
   var link=pg.url?'<a class="link" href="'+pg.url+'?slots=1">Open the page with codes shown <span aria-hidden="true">&rarr;</span></a>':'<span class="text-sm text-slate-500">Layout: same as '+(pg.tmpl==='PF'?'Pathfinders':'Pathfinder Bible Experience')+' &middot; <a class="text-[#006194] font-semibold" href="'+(pg.tmpl==='PF'?'ministries/pathfinders.html':'ministries/pathfinders/bible-experience.html')+'?slots=1">see it</a></span>';
   pagesEl.insertAdjacentHTML('beforeend','<section class="card-b pg" id="'+pg.code+'"><header><h2>'+pg.name+'<small><span class="font-mono font-bold text-[#b45309]">'+pg.code+'</span> &middot; '+need+' items'+(pg.note?' &middot; '+pg.note:'')+'</small></h2>'+link+'</header><div class="overflow-x-auto"><table><thead><tr><th class="no-print">Sent</th><th>Code</th><th>Type</th><th>What</th><th>Size / length / notes</th></tr></thead><tbody>'+rows+'</tbody></table></div></section>');
 });
-function refresh(){var t=0,d=0;P.forEach(function(pg){var slots=pg.slots||TEMPLATES[pg.tmpl].map(function(s){return [pg.code+'-'+s[0],s[1]]});var n=0,h=0;slots.forEach(function(s){if(s[1]==='auto')return;n++;if(store[s[0]]||preDone(s[3]))h++;});t+=n;d+=h;var a=toc.querySelector('a[href="#'+pg.code+'"] small');if(a)a.textContent=h+'/'+n;});
+}
+build();
+loadTracker(function(err,by){if(err)return;live=by;build();refresh();document.querySelectorAll('.chk').forEach(function(c){c.disabled=true;c.title='State comes from the Content Tracker'});var n=document.getElementById('counts');n.insertAdjacentHTML('afterend',' <span class="kind" style="background:#dcfce7;color:#166534">Live from the tracker</span>');});
+function refresh(){var t=0,d=0;P.forEach(function(pg){var slots=pg.slots||TEMPLATES[pg.tmpl].map(function(s){return [pg.code+'-'+s[0],s[1]]});var n=0,h=0;slots.forEach(function(s){if(s[1]==='auto')return;n++;if(isDone(s))h++;});t+=n;d+=h;var a=toc.querySelector('a[href="#'+pg.code+'"] small');if(a)a.textContent=h+'/'+n;});
   document.getElementById('p-all').style.width=(t?100*d/t:0)+'%';document.getElementById('p-all-t').textContent=d+' / '+t+' provided';}
-document.getElementById('counts').innerHTML=Object.keys(byKind).filter(function(k){return k!=='auto'}).map(function(k){return '<span class="kind k-'+k+'">'+KIND[k]+' '+byKind[k]+'</span>'}).join(' ');
+refresh();document.getElementById('counts').innerHTML=Object.keys(byKind).filter(function(k){return k!=='auto'}).map(function(k){return '<span class="kind k-'+k+'">'+KIND[k]+' '+byKind[k]+'</span>'}).join(' ');
 refresh();
 pagesEl.addEventListener('change',function(e){var c=e.target;if(!c.classList.contains('chk'))return;var tr=c.closest('tr'),code=tr.dataset.code;if(c.checked)store[code]=1;else delete store[code];tr.classList.toggle('done',c.checked);try{localStorage.setItem('gnyc-brief',JSON.stringify(store))}catch(x){}refresh();});
 </script>

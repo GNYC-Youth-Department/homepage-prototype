@@ -44,9 +44,10 @@
 <div class="wrap pt-10 pb-12 lg:pt-14 lg:pb-16">
 <p class="eyebrow">Page map · content assignments</p>
 <h1 class="font-heading font-extrabold text-5xl sm:text-6xl tracking-[-0.03em] leading-[1.02] text-slate-900 mt-2" style="text-wrap:balance">Every page, and who fills it</h1>
-<p class="lede !max-w-2xl">The structure of the new gnycyouth.org as one tree. Each page shows how many content items it still needs, with a box to write who is responsible. Type a name and it is remembered on this device; use <b>Print</b> to hand the list out, or <b>Copy list</b> to paste it into an email or a spreadsheet.</p>
-<div class="flex flex-wrap gap-3 mt-8 no-print"><a class="btn-primary !py-3 !px-6" href="brief.html">Open the content brief</a><button class="pill" id="copy">Copy list</button><button class="pill" onclick="window.print()">Print or save as PDF</button><a class="pill" href="design.html">Design guidelines</a></div>
+<p class="lede !max-w-2xl">The structure of the new gnycyouth.org as one tree. Each page shows who owns it and how many content items it still needs. State and owners live in the <a class="text-[#006194] font-semibold" href="https://docs.google.com/spreadsheets/d/1MyNo2o8HU9yuw4UiIbeg81gDz8qweUPCp04mtkXLwpI/edit" target="_blank" rel="noopener">Content Tracker</a> (a shared Google Sheet); edit there and this page follows.</p>
+<div class="flex flex-wrap gap-3 mt-8 no-print"><a class="btn-primary !py-3 !px-6" href="https://docs.google.com/spreadsheets/d/1MyNo2o8HU9yuw4UiIbeg81gDz8qweUPCp04mtkXLwpI/edit" target="_blank" rel="noopener">Open the Content Tracker</a><a class="pill" href="brief.html">Content brief</a><button class="pill" id="copy">Copy list</button><button class="pill" onclick="window.print()">Print or save as PDF</button><a class="pill" href="design.html">Design guidelines</a></div>
 <div class="legend mt-8"><span><span class="st st-ok">Ready</span> everything provided</span><span><span class="st st-part">In progress</span> some items provided</span><span><span class="st st-todo">Needs content</span> nothing provided yet</span><span><span class="st st-na">Automatic</span> filled from the calendar or posts</span></div>
+<div id="tracker-status" class="mt-6 rounded-2xl border border-slate-200 bg-white p-4 text-sm text-slate-600">Connecting to the Content Tracker…</div>
 <div class="mt-4 flex flex-wrap items-center gap-6 text-sm text-slate-600"><span class="flex items-center gap-2">Overall <span class="bar" style="width:140px"><b id="p-all"></b></span><span id="p-all-t" class="cnt"></span></span><span id="p-pages" class="cnt"></span></div>
 </div></header>
 
@@ -84,27 +85,30 @@
     ['DS','Design guidelines (internal)','design.html',null,[]],
     [null,'Content brief (internal)','brief.html',null,[]]
   ];
-  var store={},owners={};try{store=JSON.parse(localStorage.getItem('gnyc-brief')||'{}');owners=JSON.parse(localStorage.getItem('gnyc-owners')||'{}')}catch(e){}
+  var store={},owners={},live=null;try{store=JSON.parse(localStorage.getItem('gnyc-brief')||'{}');owners=JSON.parse(localStorage.getItem('gnyc-owners')||'{}')}catch(e){}
+  function isDone(s){return live?(/^(done|ready|provided)/i.test((live[s[0]]||{}).state||'')):(store[s[0]]||preDone(s[3]))}
+  function ownerOf(pg,sl){if(live){var o={};sl.forEach(function(s){var x=(live[s[0]]||{}).owner;if(x)o[x]=(o[x]||0)+1});var k=Object.keys(o).sort(function(a,b){return o[b]-o[a]});return k.join(', ')}return owners[pg.code]||pg.owner||''}
   var byCode={};P.forEach(function(pg){byCode[pg.code]=pg});
   function slotsOf(pg){return pg.slots||TEMPLATES[pg.tmpl].map(function(s){return [pg.code+'-'+s[0],s[1],s[2],s[3]]})}
   var tot=0,done=0,pages=0,ready=0,rows=[];
   function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
   function node(n){
     var code=n[0],title=n[1],url=n[2],icon=n[3],kids=n[4],pg=code&&byCode[code],meta='';
-    if(pg){var sl=slotsOf(pg).filter(function(s){return s[1]!=='auto'}),h=sl.filter(function(s){return store[s[0]]||preDone(s[3])}).length,need=sl.length,kinds={};
-      sl.forEach(function(s){if(!(store[s[0]]||preDone(s[3])))kinds[s[1]]=(kinds[s[1]]||0)+1});
+    if(pg){var sl=slotsOf(pg).filter(function(s){return s[1]!=='auto'}),h=sl.filter(isDone).length,need=sl.length,kinds={};
+      sl.forEach(function(s){if(!isDone(s))kinds[s[1]]=(kinds[s[1]]||0)+1});
       tot+=need;done+=h;pages++;if(h===need)ready++;
       var st=h===need?'<span class="st st-ok">Ready</span>':h?'<span class="st st-part">In progress</span>':'<span class="st st-todo">Needs content</span>';
       var ks=Object.keys(kinds).map(function(k){return '<span class="k k-'+k+'">'+kinds[k]+' '+k+'</span>'}).join('');
-      rows.push([code,title,owners[code]||pg.owner||'',h+'/'+need,Object.keys(kinds).map(function(k){return kinds[k]+' '+k}).join(', ')]);
-      meta='<div class="m">'+st+'<span class="kinds">'+ks+'</span><span class="bar"><b style="width:'+(need?100*h/need:0)+'%"></b></span><span class="cnt">'+h+' / '+need+'</span><input class="own" data-code="'+code+'" placeholder="Assign to…" value="'+esc(owners[code]||pg.owner||'')+'" aria-label="Responsible for '+esc(title)+'"><a class="lnk" href="brief.html#'+code+'">Slot list</a>'+(url?'<a class="lnk" href="'+url+(url.indexOf('#')>-1?'':'?slots=1')+'">Open with codes</a>':'')+'</div>';
+      rows.push([code,title,ownerOf(pg,sl),h+'/'+need,Object.keys(kinds).map(function(k){return kinds[k]+' '+k}).join(', ')]);
+      meta='<div class="m">'+st+'<span class="kinds">'+ks+'</span><span class="bar"><b style="width:'+(need?100*h/need:0)+'%"></b></span><span class="cnt">'+h+' / '+need+'</span>'+(live?'<span class="own" style="border-style:dashed;background:#fff;display:inline-block">'+(esc(ownerOf(pg,sl))||'<span style="color:#94a3b8">Unassigned</span>')+'</span>':'<input class="own" data-code="'+code+'" placeholder="Assign to…" value="'+esc(owners[code]||pg.owner||'')+'" aria-label="Responsible for '+esc(title)+'">')+'<a class="lnk" href="brief.html#'+code+'">Slot list</a>'+(url?'<a class="lnk" href="'+url+(url.indexOf('#')>-1?'':'?slots=1')+'">Open with codes</a>':'')+'</div>';
     } else if(url){meta='<div class="m"><span class="st st-na">'+(url.indexOf('http')===0?'Existing':'Automatic')+'</span><a class="lnk" href="'+url+'">Open</a></div>'}
     else meta='<div class="m"><span class="st st-na">'+(kids.length?'Section':'Automatic')+'</span></div>';
     var t='<div class="t">'+(icon?'<img src="'+icon+'" alt="">':'<span class="material-symbols-outlined text-slate-400" style="font-size:22px">'+(kids.length&&!url?'folder':'description')+'</span>')+'<span><b>'+esc(title)+'</b>'+(code?' <span class="code">'+code+'</span>':'')+(url&&url.indexOf('http')!==0?'<small class="block">/'+url.replace('index.html','')+'</small>':'')+'</span></div>';
     return '<li><div class="node">'+t+meta+'</div>'+(kids.length?'<ul>'+kids.map(node).join('')+'</ul>':'')+'</li>';
   }
-  document.getElementById('tree').innerHTML=TREE.map(node).join('');
-  document.getElementById('p-all').style.width=(tot?100*done/tot:0)+'%';document.getElementById('p-all-t').textContent=done+' / '+tot+' items provided';document.getElementById('p-pages').textContent=ready+' of '+pages+' pages ready';
+  function render(){tot=0;done=0;pages=0;ready=0;rows=[];document.getElementById('tree').innerHTML=TREE.map(node).join('');document.getElementById('p-all').style.width=(tot?100*done/tot:0)+'%';document.getElementById('p-all-t').textContent=done+' / '+tot+' items provided';document.getElementById('p-pages').textContent=ready+' of '+pages+' pages ready';}
+  render();
+  loadTracker(function(err,by){var b=document.getElementById('tracker-status');if(err){b.className='mt-6 rounded-2xl border border-amber-300 bg-amber-50 p-4 text-sm text-amber-900';b.innerHTML='<b>Tracker not connected yet.</b> State and owners shown are the built-in defaults. To connect: open the <a class="underline font-semibold" href="'+TRACKER_URL+'" target="_blank" rel="noopener">Content Tracker sheet</a>, Share → General access → <b>Anyone with the link, Viewer</b>. Then reload this page.';return}live=by;render();b.className='mt-6 rounded-2xl border border-emerald-300 bg-emerald-50 p-4 text-sm text-emerald-900 flex flex-wrap items-center justify-between gap-3';b.innerHTML='<span><b>Live from the Content Tracker</b> · '+Object.keys(by).length+' items · loaded '+new Date().toLocaleString()+'</span><a class="btn-primary !py-2 !px-4 !bg-emerald-700" href="'+TRACKER_URL+'" target="_blank" rel="noopener">Edit in the tracker</a>';});
   document.getElementById('tree').addEventListener('input',function(e){var i=e.target;if(!i.classList.contains('own'))return;owners[i.dataset.code]=i.value.trim();try{localStorage.setItem('gnyc-owners',JSON.stringify(owners))}catch(x){}});
   document.getElementById('copy').onclick=function(){var lines=['Page code\tPage\tAssigned to\tProvided\tStill needed'].concat(rows.map(function(r){r[2]=owners[r[0]]||'';return r.join('\t')}));navigator.clipboard.writeText(lines.join('\n')).then(function(){var b=document.getElementById('copy');b.textContent='Copied';setTimeout(function(){b.textContent='Copy list'},1500)})};
 })();

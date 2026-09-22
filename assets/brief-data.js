@@ -110,3 +110,21 @@ var TEMPLATES={
 
 /* items already supplied during the prototype are marked in their spec */
 function preDone(spec){return /^(Done|Supplied)/i.test(spec||'')}
+
+/* ---------- live tracker (Google Sheet) ----------
+   The Sheet is the source of truth for state and owners. It must be shared "Anyone with the link: Viewer" for the page to read it. */
+var TRACKER_ID='1MyNo2o8HU9yuw4UiIbeg81gDz8qweUPCp04mtkXLwpI';
+var TRACKER_URL='https://docs.google.com/spreadsheets/d/'+TRACKER_ID+'/edit';
+function loadTracker(cb){
+  var url='https://docs.google.com/spreadsheets/d/'+TRACKER_ID+'/gviz/tq?tqx=out:csv&headers=1&t='+Date.now();
+  fetch(url,{cache:'no-store'}).then(function(r){if(!r.ok)throw 0;return r.text()}).then(function(t){
+    if(t.indexOf('<')===0)throw 0;
+    var rows=[],row=[],f='',q=false;
+    for(var i=0;i<t.length;i++){var c=t[i];if(q){if(c==='"'){if(t[i+1]==='"'){f+='"';i++}else q=false}else f+=c}else{if(c==='"')q=true;else if(c===','){row.push(f);f=''}else if(c==='\n'||c==='\r'){if(c==='\r'&&t[i+1]==='\n')i++;row.push(f);rows.push(row);row=[];f=''}else f+=c}}
+    if(f||row.length){row.push(f);rows.push(row)}
+    var head=rows.shift().map(function(h){return h.trim().toLowerCase()});
+    var iA=head.indexOf('ask'),iO=head.findIndex(function(h){return h.indexOf('owner')===0}),iS=head.indexOf('state'),iE=head.indexOf('evidence link'),iB=head.indexOf('signed by');
+    var by={};rows.forEach(function(r){if(r[iA])by[r[iA].trim()]={owner:(r[iO]||'').trim(),state:(r[iS]||'').trim(),evidence:(r[iE]||'').trim(),signed:(r[iB]||'').trim()}});
+    cb(null,by);
+  }).catch(function(){cb(true)});
+}
