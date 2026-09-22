@@ -7,8 +7,7 @@ var P = [
   ['HM-03','file','Featured event flyer','AY Congress flyer at 1600px+ (current copy is small and says XIX; confirm XVIII vs XIX)'],
   ['HM-04','data','Three next events','Dates from gnycyouth.org (Retreat Sep 25–27, TLT Convention Oct 3–4, Bible Olympics Oct 24); add venues, blurbs, links and flyers'],
   ['HM-11','link','2027 club registration','URL of the club registration form (banner on gnycyouth.org)'],
-  ['HM-05','photo','Three story photos','1600×1000 each; the current three are stock'],
-  ['HM-06','text','Three stories','Headline, 40–60 word summary, month, link to full story'],
+  ['HM-05','text','Three real stories for the homepage','Headline, 40–60 word summary, month, author, and a photo 1600×1000 from the event with consent on file. No stock and no placeholder text; assign a writer'],
   ['HM-07','text','Club card descriptions','Confirm the four 25-word descriptions and age ranges'],
   ['HM-08','file','Four featured resources','Which four downloads should the homepage show; link or file for each'],
   ['HM-09','link','Store link','Done: gnycyouth.org/shop'],
@@ -80,8 +79,8 @@ var P = [
  {code:'SOE', name:'School of Evangelism', tmpl:'PBE', url:'ministries/ay/school-of-evangelism.html', group:'Built pages · program layout', slots:null},
  {code:'PCM', name:'Public Campus Ministry', tmpl:'PBE', url:'ministries/ay/public-campus-ministry.html', group:'Built pages · program layout', slots:null},
  {code:'NW', name:'News & stories', url:'news.html', group:'Built pages · other', slots:[
-  ['NW-01','text','Stories to launch with','6–10 stories: headline, 300–600 words, month, author'],
-  ['NW-02','photo','Story photos','1600×1000 for each story, plus 2–4 inside photos where available'],
+  ['NW-01','text','Stories to launch with','6–10 real stories: headline, 300–600 words, month, author. Assign writers by ministry'],
+  ['NW-02','photo','Story photos','1600×1000 per story from the event, plus 2–4 inside photos; photo consent on file for minors'],
   ['NW-03','data','Categories','Which tags to use (club, event, leadership, young adults, safety…)']]},
  {code:'HS', name:'Our history', url:'history.html', group:'Built pages · other', slots:[
   ['HS-01','text','Theme summaries','One or two sentences for the years without one (2025–2020, 2017–2018, 2015, 2006, 2005, 2004); 2019 artwork missing'],
