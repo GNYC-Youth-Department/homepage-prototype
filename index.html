@@ -78,6 +78,16 @@
   .res-amber{--acc:217,119,6;--tint:#fef3c7;--deep:#92400e}
   .res-indigo{--acc:79,70,229;--tint:#e0e7ff;--deep:#3730a3}
   .res-emerald{--acc:5,150,105;--tint:#d1fae5;--deep:#065f46}
+  .story-band{background:linear-gradient(180deg,#f2f3ff 0%,#faf8ff 100%)}
+  .story-art{transition:transform .7s cubic-bezier(.16,1,.3,1)}
+  .story:hover .story-art{transform:scale(1.05)}
+  .story-feature{box-shadow:0 24px 48px -16px rgba(11,20,48,.4);background:#0b1430}
+  .story-chip{display:inline-flex;align-items:center;padding:.3rem .8rem;border-radius:9999px;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+  .story-chip-gold{background:#ffe247;color:#211b00;border-color:#ffe247}
+  .story-side{--acc:2,132,199;--deep:#0369a1;border:1px solid rgba(var(--acc),.18);box-shadow:0 1px 2px rgba(15,23,42,.04),0 10px 28px -8px rgba(var(--acc),.18),0 4px 10px -4px rgba(15,23,42,.05);transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s cubic-bezier(.16,1,.3,1),border-color .3s}
+  .story-side:hover{transform:translateY(-5px);border-color:rgba(var(--acc),.45);box-shadow:0 2px 4px rgba(15,23,42,.04),0 26px 52px -14px rgba(var(--acc),.36),0 10px 20px -8px rgba(15,23,42,.08)}
+  .story-date{color:var(--deep)}
+  .story-emerald{--acc:5,150,105;--deep:#065f46}
   .ministry-card{transition:transform .22s cubic-bezier(.16,1,.3,1),box-shadow .22s cubic-bezier(.16,1,.3,1),border-color .22s ease}
   .ministry-card:hover{transform:translateY(-4px)}
   .logo-container{transition:transform .25s cubic-bezier(.34,1.56,.64,1)}
@@ -173,85 +183,41 @@
 <p class="text-[15px] text-slate-700 mt-3 mb-6 leading-relaxed">Teen Leadership Training intensives, safety credentials and director certification workshops.</p>
 <a class="ev-btn mt-auto inline-flex items-center justify-center gap-2 w-full py-3.5 px-5 rounded-full font-semibold text-[15px]" href="https://gnycyouth.com/pathfinders/tlt/" rel="noopener noreferrer" target="_blank">View the syllabus<span class="material-symbols-outlined text-lg transition-transform group-hover:translate-x-1" aria-hidden="true">arrow_forward</span></a>
 </div></li></ul></section>
-<section class="py-16 lg:py-24 bg-[#f2f3ff]/60" id="news">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="max-w-2xl mb-10"><h2 class="text-3xl sm:text-4xl font-heading font-extrabold text-slate-900 tracking-tight">#OneTeam stories</h2><p class="text-slate-600 text-base mt-2">Mission, leadership and community news from clubs across the conference.</p></div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-<!-- Story 1 -->
-<article class="bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-subtle-card hover:shadow-subtle-card-hover transition-all group flex flex-col justify-between">
-<div class="relative aspect-video sm:aspect-4/3 bg-slate-900 overflow-hidden">
-<img alt="NAD Master Guide Camporee Gathering" class="w-full h-full object-cover object-center filter brightness-90 group-hover:scale-105 transition-transform duration-300" src="img/02.jpg">
-<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-<div class="absolute bottom-4 left-4 right-4">
-<span class="text-xs font-bold tracking-widest text-sky-200 uppercase">OCT / 2025</span>
-<h3 class="font-heading font-bold text-lg text-white mt-1 leading-snug">
-                The First North American Division Master Guide Camporee
-              </h3>
-</div>
-</div>
-<div class="p-6">
-<p class="text-slate-700 text-[15px] leading-relaxed">
-              Hundreds of GNYC certified Master Guides gathered for unprecedented fellowship, outdoor honors, and mentorship equipping across North America.
-            </p>
-<div class="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between">
-<span class="text-sm text-slate-600">4 min read</span>
-<a class="text-sm font-semibold text-[#006194] hover:underline inline-flex items-center gap-1" href="#">
-                Read story <span aria-hidden="true">&rarr;</span>
-</a>
-</div>
-</div>
-</article>
-<!-- Story 2 -->
-<article class="bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-subtle-card hover:shadow-subtle-card-hover transition-all group flex flex-col justify-between">
-<div class="relative aspect-video sm:aspect-4/3 bg-slate-900 overflow-hidden">
-<img alt="Young Adult LIFE Tour - Metro NY Edition" class="w-full h-full object-cover object-center filter brightness-90 group-hover:scale-105 transition-transform duration-300" src="img/03.jpg">
-<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-<div class="absolute bottom-4 left-4 right-4">
-<span class="text-xs font-bold tracking-widest text-sky-200 uppercase">SEP / 2025</span>
-<h3 class="font-heading font-bold text-lg text-white mt-1 leading-snug">
-                Young Adult LIFE Tour - Metro NY Edition
-              </h3>
-</div>
-</div>
-<div class="p-6">
-<p class="text-slate-700 text-[15px] leading-relaxed">
-              Empowering collegiate students and young professionals to revitalize local church culture through compassionate listening and urban initiatives.
-            </p>
-<div class="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between">
-<span class="text-sm text-slate-600">5 min read</span>
-<a class="text-sm font-semibold text-[#006194] hover:underline inline-flex items-center gap-1" href="#">
-                Read story <span aria-hidden="true">&rarr;</span>
-</a>
-</div>
-</div>
-</article>
-<!-- Story 3 -->
-<article class="bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-subtle-card hover:shadow-subtle-card-hover transition-all group flex flex-col justify-between">
-<div class="relative aspect-video sm:aspect-4/3 bg-slate-900 overflow-hidden">
-<img alt="Youth Safety Resources Makeover" class="w-full h-full object-cover object-center filter brightness-90 group-hover:scale-105 transition-transform duration-300" src="img/04.jpg">
-<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-<div class="absolute bottom-4 left-4 right-4">
-<span class="text-xs font-bold tracking-widest text-sky-200 uppercase">SEP / 2025</span>
-<h3 class="font-heading font-bold text-lg text-white mt-1 leading-snug">
-                NAD Youth Safety Resources Get a Makeover
-              </h3>
-</div>
-</div>
-<div class="p-6">
-<p class="text-slate-700 text-[15px] leading-relaxed">
-              Refreshed training modules and updated background screening protocols ensure our clubs remain the safest haven for every boy and girl.
-            </p>
-<div class="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between">
-<span class="text-sm text-slate-600">3 min read</span>
-<a class="text-sm font-semibold text-[#006194] hover:underline inline-flex items-center gap-1" href="#">
-                Read story <span aria-hidden="true">&rarr;</span>
-</a>
-</div>
-</div>
-</article>
-</div>
-</div>
-</section>
+<section class="story-band" id="news"><div class="max-w-7xl mx-auto py-16 lg:py-24 px-4 sm:px-6 lg:px-8">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+<div><p class="text-xs font-bold tracking-[0.16em] uppercase text-[#006194] mb-2">#OneTeam movement</p><h2 class="text-3xl sm:text-4xl font-heading font-extrabold text-slate-900 tracking-tight">Stories from across the conference</h2><p class="text-slate-600 text-base mt-2">Mission, leadership and community news from our clubs.</p></div>
+<a class="link" href="#">All stories <span aria-hidden="true">&rarr;</span></a></div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-7"><article class="story story-feature group relative lg:col-span-7 rounded-3xl overflow-hidden text-white min-h-[440px] lg:min-h-[560px] flex flex-col justify-end">
+<img class="story-art absolute inset-0 w-full h-full object-cover" src="img/02.jpg" alt="Master Guides gathered at the North American Division camporee">
+<div class="absolute inset-0 bg-gradient-to-t from-[#0b1430] via-[#0b1430]/55 to-[#0b1430]/10" aria-hidden="true"></div>
+<div class="absolute top-5 left-5 flex items-center gap-2"><span class="story-chip story-chip-gold">Featured</span><span class="story-chip">Master Guides</span></div>
+<div class="relative p-7 sm:p-10 lg:p-12">
+<p class="text-xs font-bold tracking-[0.16em] uppercase text-[#ffe247]">October 2025 &middot; 4 min read</p>
+<h3 class="mt-3 font-heading font-extrabold text-3xl sm:text-4xl lg:text-[44px] lg:leading-[1.08] tracking-[-0.02em] max-w-xl" style="text-wrap:balance">The first North American Division Master Guide Camporee</h3>
+<p class="mt-4 text-base sm:text-lg text-white/80 leading-relaxed max-w-lg">Hundreds of GNYC certified Master Guides gathered for fellowship, outdoor honors and mentorship training with leaders from across North America.</p>
+<a class="mt-7 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-slate-900 hover:bg-slate-100 font-semibold text-[15px] transition-colors" href="#">Read the story<span class="material-symbols-outlined text-lg transition-transform group-hover:translate-x-1" aria-hidden="true">arrow_forward</span></a>
+</div></article><div class="lg:col-span-5 grid grid-cols-1 gap-6 lg:gap-7"><article class="story story-side story-sky group flex flex-col sm:flex-row lg:flex-col bg-white rounded-3xl overflow-hidden">
+<div class="relative sm:w-2/5 lg:w-auto aspect-[16/10] sm:aspect-auto lg:aspect-[16/9] overflow-hidden bg-slate-900 shrink-0">
+<img class="story-art absolute inset-0 w-full h-full object-cover" src="img/03.jpg" alt="Young adults at the LIFE Tour Metro New York edition">
+<div class="absolute inset-0 bg-gradient-to-t from-black/45 to-transparent" aria-hidden="true"></div>
+<span class="story-chip absolute top-4 left-4">Young adults</span></div>
+<div class="flex flex-col flex-1 p-6">
+<p class="story-date text-xs font-bold tracking-[0.14em] uppercase">September 2025 &middot; 5 min read</p>
+<h3 class="mt-2 font-heading font-bold text-xl text-slate-900 leading-snug tracking-tight">Young Adult LIFE Tour: Metro New York edition</h3>
+<p class="mt-2 text-[15px] text-slate-700 leading-relaxed">Collegiate students and young professionals renewing local church culture through listening and urban outreach.</p>
+<a class="link mt-4 pt-1" href="#">Read the story <span aria-hidden="true">&rarr;</span></a>
+</div></article><article class="story story-side story-emerald group flex flex-col sm:flex-row lg:flex-col bg-white rounded-3xl overflow-hidden">
+<div class="relative sm:w-2/5 lg:w-auto aspect-[16/10] sm:aspect-auto lg:aspect-[16/9] overflow-hidden bg-slate-900 shrink-0">
+<img class="story-art absolute inset-0 w-full h-full object-cover" src="img/04.jpg" alt="Pathfinder leaders at a safety training session">
+<div class="absolute inset-0 bg-gradient-to-t from-black/45 to-transparent" aria-hidden="true"></div>
+<span class="story-chip absolute top-4 left-4">Safety</span></div>
+<div class="flex flex-col flex-1 p-6">
+<p class="story-date text-xs font-bold tracking-[0.14em] uppercase">September 2025 &middot; 3 min read</p>
+<h3 class="mt-2 font-heading font-bold text-xl text-slate-900 leading-snug tracking-tight">NAD youth safety resources get a makeover</h3>
+<p class="mt-2 text-[15px] text-slate-700 leading-relaxed">Refreshed training modules and updated background screening keep every club a safe place for every child.</p>
+<a class="link mt-4 pt-1" href="#">Read the story <span aria-hidden="true">&rarr;</span></a>
+</div></article></div></div>
+</div></section>
 <section class="border-y border-slate-200/80" id="ministries" aria-labelledby="clubs-h"><div class="max-w-7xl mx-auto py-16 lg:py-24 px-4 sm:px-6 lg:px-8">
 <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12"><div><h2 id="clubs-h" class="text-3xl sm:text-4xl font-heading font-extrabold tracking-tight text-slate-900">A club for every stage of life</h2><p class="mt-2 text-slate-600 text-base max-w-2xl">Four ministries, from Pre-K through young adulthood.</p></div><a class="link" href="#resources">Club manuals <span aria-hidden="true">&rarr;</span></a></div>
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch" data-purpose="ministry-cards-grid">
