@@ -17,13 +17,13 @@ var P = [
   ['PF-02','text','Tagline','25–40 words'],
   ['PF-03','data','Three figures','Number of clubs, Pathfinders, trained staff (real numbers)'],
   ['PF-04','text','Why Pathfinders','60–90 words in the Director’s voice'],
-  ['PF-05','people','Pathfinder Director','Add: the live site lists Dr. Andrew Gordon as Associate Director for Club Ministry; confirm who signs the Pathfinders page'],
+  ['PF-05','people','Pathfinder page lead','Done: Dr. Andrew Gordon, Associate Director · Club Ministry; add email'],
   ['PF-06','data','The club year','Month for each of the five milestones this season (the camporee is in spring only)'],
   ['PF-07','photo','Honors photo','1600×700, sash close-up or an honor being taught'],
   ['PF-08','auto','Upcoming events','Pulled from the Events calendar when tagged Pathfinders'],
   ['PF-09','link','Monthly report','Form or portal URL, due date'],
   ['PF-10','link','Safety & screening','Sterling Volunteers / child-protection instructions'],
-  ['PF-11','people','Leadership','4–8 people: headshot 600×600, name, role, area, email'],
+  ['PF-11','people','Leadership','Done: names from gnycyouth.org; add headshots 600×600 and emails for the seven lead area coordinators'],
   ['PF-12','data','Club directory','Every club: church, neighbourhood, area, meeting day/time, director name, email or phone'],
   ['PF-13','link','Map','Google My Maps link, or we build it from the church addresses in PF-12'],
   ['PF-14','photo','Gallery','6 photos, 1200px+ long side: campout, drill, PBE, service, worship, investiture'],
@@ -40,7 +40,7 @@ var P = [
   ['PBE-08','file','GNYC study additions','NAD links are in place; add GNYC round details, sample questions or coach notes if any'],
   ['PBE-09','text','How a round works','Confirm question count, timing and scoring bands for GNYC'],
   ['PBE-10','data','Honour roll','Last 3 seasons: club names that placed first at each level + 1 team photo each'],
-  ['PBE-11','people','PBE coordinator','Name, email, phone, 400×400 headshot'],
+  ['PBE-11','people','PBE coordinator','Dr. Andrew Gordon shown as responsible; name the PBE coordinator if there is one, with email'],
   ['PBE-12','text','FAQ','Confirm the four answers']]},
  {code:'EV', name:'Events', url:'events.html', group:'Built pages', slots:[
   ['EV-01','text','Intro line','One sentence and the season the calendar covers'],
@@ -92,8 +92,8 @@ var P = [
 ];
 /* generic ministry / sub-ministry slot lists for sibling pages */
 var TEMPLATES={
- PF:[['01','photo','Hero photo','1600×2000 portrait, members in uniform or in action'],['02','text','Tagline','25–40 words'],['03','data','Three figures','Clubs / members / staff'],['04','text','Why this ministry','60–90 words'],['05','people','Ministry director','Name, title, 400×400 headshot'],['06','data','The year','Five or six milestones with months'],['07','photo','Feature photo','1600×700'],['08','auto','Upcoming events','From the calendar'],['09','link','Director report / portal','URL'],['10','link','Safety & screening','URL'],['11','people','Leadership','4–8 people with headshots'],['12','data','Club or group directory','Church, area, meeting time, contact'],['13','link','Map','Link or addresses'],['14','photo','Gallery','6 photos 1200px+'],['15','text','FAQ','5 questions and answers'],['16','link','Enquiries email','Address']],
- PBE:[['01','photo','Key art or logo','800×1067 or emblem, transparent'],['02','text','Intro','30–50 words'],['03','link','Sign-up or registration','URL and deadline'],['04','text','What it is this year','Focus, level or theme for the season'],['05','data','Key dates','Dates and venues'],['06','photo','Action photo','1600×1000'],['07','link','Form','Registration or application form'],['08','file','Resources','3–6 PDFs or links'],['09','text','How it works','Rules, requirements or curriculum summary, 80–120 words'],['10','data','Highlights or results','Recent achievements + photos'],['11','people','Coordinator','Name, email, phone, headshot'],['12','text','FAQ','4 questions and answers']]
+ PF:[['01','photo','Hero photo','1600×2000 portrait, members in uniform or in action'],['02','text','Tagline','25–40 words'],['03','data','Three figures','Clubs / members / staff'],['04','text','Why this ministry','60–90 words'],['05','people','Ministry lead','Done from gnycyouth.org; add email'],['06','data','The year','Five or six milestones with months'],['07','photo','Feature photo','1600×700'],['08','auto','Upcoming events','From the calendar'],['09','link','Director report / portal','URL'],['10','link','Safety & screening','URL'],['11','people','Leadership','Names done from gnycyouth.org; add coordinator headshots and emails'],['12','data','Club or group directory','Church, area, meeting time, contact'],['13','link','Map','Link or addresses'],['14','photo','Gallery','6 photos 1200px+'],['15','text','FAQ','5 questions and answers'],['16','link','Enquiries email','Address']],
+ PBE:[['01','photo','Key art or logo','800×1067 or emblem, transparent'],['02','text','Intro','30–50 words'],['03','link','Sign-up or registration','URL and deadline'],['04','text','What it is this year','Focus, level or theme for the season'],['05','data','Key dates','Dates and venues'],['06','photo','Action photo','1600×1000'],['07','link','Form','Registration or application form'],['08','file','Resources','3–6 PDFs or links'],['09','text','How it works','Rules, requirements or curriculum summary, 80–120 words'],['10','data','Highlights or results','Recent achievements + photos'],['11','people','Coordinator','Responsible director shown; name the program coordinator if appointed, with email'],['12','text','FAQ','4 questions and answers']]
 };
 
 /* items already supplied during the prototype are marked in their spec */
