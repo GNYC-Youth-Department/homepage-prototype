@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en" data-root="../../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Public Campus Ministry · GNYC Youth prototype</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/site.css">
+<style>
+  .hero{background:radial-gradient(90% 120% at 100% 0%,rgba(5,150,105,.6) 0%,transparent 55%),radial-gradient(60% 80% at 0% 100%,rgba(2,132,199,.25),transparent 60%),linear-gradient(135deg,#0b1430 0%,#022c22 100%)}
+  .lines{background:repeating-linear-gradient(135deg,rgba(255,255,255,.05) 0 1px,transparent 1px 16px);mask-image:linear-gradient(90deg,transparent,#000 40%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 40%,transparent)}
+  .crest-float{filter:drop-shadow(0 30px 40px rgba(0,0,0,.55));animation:bob 7s ease-in-out infinite}
+  @keyframes bob{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-10px) rotate(-2deg)}}
+  .acc{color:#059669} .acc-bg{background:#059669} .acc-soft{background:#d1fae5;color:#065f46}
+  .law{counter-reset:law;list-style:none;margin:0;padding:0;display:grid;gap:.75rem}
+  .law li{display:flex;gap:.75rem;align-items:flex-start;font-size:15px;line-height:1.5;color:#334155}
+  .law li::before{content:counter(law);counter-increment:law;flex:none;width:26px;height:26px;border-radius:9999px;background:#d1fae5;color:#065f46;font:700 12px/26px Inter,sans-serif;text-align:center}
+  .year{display:grid;grid-template-columns:repeat(5,minmax(200px,1fr));gap:1rem;position:relative}
+  .year::before{content:"";position:absolute;left:0;right:0;top:22px;height:2px;background:linear-gradient(90deg,#059669,#f59e0b,#059669)}
+  .year li{position:relative;padding-top:3.25rem;list-style:none}
+  .year li::before{content:"";position:absolute;top:14px;left:0;width:18px;height:18px;border-radius:9999px;background:#fff;border:4px solid #059669;box-shadow:0 0 0 6px #faf8ff}
+  .cls{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem}
+  @media (max-width:420px){.cls{grid-template-columns:repeat(2,1fr)}}
+  .cls div{border-radius:18px;padding:1.1rem .75rem 1rem;background:#fff;border:1px solid #e2e8f0;border-top:4px solid var(--c);text-align:center;display:flex;flex-direction:column;align-items:center;gap:.15rem;box-shadow:0 1px 2px rgba(15,23,42,.04),0 10px 24px -12px rgba(15,23,42,.18);transition:transform .25s cubic-bezier(.16,1,.3,1),box-shadow .25s}
+  .cls div:hover{transform:translateY(-4px);box-shadow:0 18px 36px -14px rgba(15,23,42,.28)}
+  .cls .ph{width:84px;height:84px;border-radius:9999px;margin-bottom:.6rem;font-size:11px}
+  .cls strong{font-family:'Plus Jakarta Sans',sans-serif;font-size:17px;color:#0f172a}
+  .cls span{font-size:12px;color:#64748b}
+  .area-btn{display:flex;align-items:center;justify-content:space-between;width:100%;padding:.85rem 1rem;border-radius:14px;border:1px solid #e2e8f0;background:#fff;font:600 15px Inter,sans-serif;color:#0f172a;cursor:pointer;text-align:left}
+  .area-btn:hover,.area-btn.is-on{border-color:#059669;background:#d1fae5;color:#065f46}
+  .area-btn small{font-weight:600;color:#64748b}
+  details.faq{border-bottom:1px solid #e2e8f0}
+  details.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.15rem 0;font:600 17px 'Plus Jakarta Sans',sans-serif;color:#0f172a}
+  details.faq summary::-webkit-details-marker{display:none}
+  details.faq summary .material-symbols-outlined{transition:transform .2s;color:#64748b}
+  details.faq[open] summary .material-symbols-outlined{transform:rotate(45deg)}
+  details.faq p{margin:0 0 1.25rem;color:#475569;font-size:15px;line-height:1.65;max-width:60ch}
+  .gal{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:150px;gap:.75rem}
+  .gal .ph{border-radius:16px} .gal .big{grid-column:span 2;grid-row:span 2}
+  @media (max-width:767px){.gal{grid-template-columns:repeat(2,1fr);grid-auto-rows:120px}.gal .big{grid-column:span 2;grid-row:span 1}}
+  .subnav{position:sticky;top:calc(72px + env(safe-area-inset-top,0px));z-index:40;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);border-bottom:1px solid #e2e8f0}
+  .subnav a{font-size:14px;font-weight:600;color:#475569;padding:1rem .25rem;border-bottom:2px solid transparent;white-space:nowrap;text-decoration:none}
+  .subnav a:hover{color:#065f46;border-color:#d1fae5}
+  .levels{display:grid;grid-template-columns:repeat(var(--n),1fr);gap:.75rem;position:relative}
+  .levels::before{content:"";position:absolute;left:5%;right:5%;top:28px;height:2px;background:#d1fae5;z-index:0}
+  .levels li{list-style:none;position:relative;text-align:center}
+  .levels .n{width:56px;height:56px;border-radius:9999px;margin:0 auto;display:flex;align-items:center;justify-content:center;font:800 18px 'Plus Jakarta Sans',sans-serif;background:#fff;border:3px solid #059669;color:#065f46;position:relative;z-index:1}
+  @media (max-width:767px){.levels{grid-template-columns:1fr;gap:1.25rem}.levels::before{display:none}.levels li{display:flex;gap:1rem;text-align:left;align-items:center}.levels .n{margin:0}}
+  .step{display:grid;grid-template-columns:48px 1fr;gap:1.25rem;align-items:start}
+  .step>b{width:48px;height:48px;border-radius:14px;background:#0b1430;color:#ffe247;display:flex;align-items:center;justify-content:center;font:800 18px 'Plus Jakarta Sans',sans-serif}
+  .logo-float{filter:drop-shadow(0 30px 40px rgba(0,0,0,.55));animation:bob2 7s ease-in-out infinite}
+  @keyframes bob2{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+  .tl{position:relative;padding-left:2rem;border-left:2px solid #e2e8f0;display:grid;gap:2.5rem}
+  .tl li{list-style:none;position:relative}
+  .tl li::before{content:"";position:absolute;left:calc(-2rem - 7px);top:6px;width:12px;height:12px;border-radius:9999px;background:#059669;box-shadow:0 0 0 4px #fff}
+  .tl b{font:800 14px Inter,sans-serif;letter-spacing:.1em;color:#065f46}
+</style>
+</head>
+<body data-page="ministries">
+<div data-site="nav"></div>
+
+<header class="hero relative overflow-hidden text-white"><div class="lines absolute inset-0" aria-hidden="true"></div>
+<div class="wrap relative pt-10 pb-16 lg:pt-14 lg:pb-24">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../index.html">Home</a><span class="sep">/</span><a href="#">Ministries</a><span class="sep">/</span><a href="../ay-ministries.html">AY Ministries</a><span class="sep">/</span><span class="text-white">Public Campus Ministry</span></nav>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center mt-8">
+<div class="lg:col-span-7"><p class="text-xs font-bold tracking-[0.18em] uppercase text-[#ffe247]">AY Ministries · Students · Faith on campus</p>
+<h1 class="mt-4 font-heading font-extrabold text-4xl sm:text-6xl lg:text-7xl leading-[1.02] tracking-[-0.03em]" style="text-wrap:balance">Public Campus Ministry</h1>
+<p class="slot mt-5 text-lg sm:text-xl leading-relaxed text-white/85 max-w-xl" data-slot="PCM-02" data-spec="Text · intro, 30–50 words">Adventist student groups on public and private campuses across New York City and Long Island, so no student has to walk through university alone.</p>
+<div class="mt-8 flex flex-col sm:flex-row gap-3"><a class="slot inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-white text-slate-900 hover:bg-slate-100 font-semibold" href="#join" data-slot="PCM-03" data-spec="Link · sign-up or registration URL + deadline">Find your campus</a><a class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full border border-white/40 hover:bg-white/10 font-semibold" href="#resources">Resources</a></div>
+
+</div>
+<div class="lg:col-span-5 flex justify-center lg:justify-end"><div class="ph slot ph-dark rounded-[28px] w-64 sm:w-72 aspect-[4/5]" data-slot="PCM-01" data-spec="Photo or key art · 1200px+ · a campus group meeting on a quad or in a student union"><span><span class="material-symbols-outlined">photo_camera</span>a campus group meeting on a quad or in a student union</span></div></div></div></div></header>
+
+<div class="subnav"><div class="wrap flex gap-6 overflow-x-auto no-scrollbar"><a href="#about">This year</a><a href="#levels">Campuses</a><a href="#join">Start a chapter</a><a href="#resources">Resources</a><a href="#how">What chapters do</a><a href="#highlights">Stories</a><a href="#faq">FAQ</a></div></div>
+
+<section class="section bg-white" id="about"><div class="wrap grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+<div class="lg:col-span-6"><p class="eyebrow acc">This year</p><h2 class="slot h-section" data-slot="PCM-04" data-spec="Text · number of active chapters, this year&#x27;s kickoff and rally dates">Campus chapters</h2><p class="lede">Chapters meet weekly for Bible study, prayer and friendship, and gather across campuses for rallies and service days.</p>
+<div class="slot mt-8 grid grid-cols-2 gap-4" data-slot="PCM-05" data-spec="Dates · key dates and venues this season">
+<div class="rounded-2xl border p-5" style="background:#d1fae533;border-color:#d1fae5"><p class="eyebrow acc">Kickoff</p><p class="font-heading font-extrabold text-2xl mt-1 tabular">Date TBA</p><p class="text-sm text-slate-600 mt-1">Start of the fall semester</p></div><div class="rounded-2xl border p-5" style="background:#d1fae533;border-color:#d1fae5"><p class="eyebrow acc">Spring rally</p><p class="font-heading font-extrabold text-2xl mt-1 tabular">Date TBA</p><p class="text-sm text-slate-600 mt-1">Venue TBA</p></div>
+</div></div>
+<div class="lg:col-span-6"><div class="ph slot rounded-[28px] aspect-[16/10]" data-slot="PCM-06" data-spec="Photo · 1600×1000 · students at a campus rally"><span><span class="material-symbols-outlined">photo_camera</span>students at a campus rally</span></div></div></div></section>
+
+<section class="section border-y border-slate-200/80" id="levels"><div class="wrap">
+<p class="eyebrow acc">Campuses</p><h2 class="h-section">Where we are</h2><p class="lede">Chapters and contacts by campus; the full list is maintained by the PCM coordinator.</p>
+<ol class="levels mt-12 p-0" style="--n:4"><li><div class="n">1</div><div><h3 class="font-heading font-bold text-lg mt-3">CUNY</h3><p class="text-sm text-slate-600 mt-1">Chapters at several senior and community colleges.</p></div></li><li><div class="n">2</div><div><h3 class="font-heading font-bold text-lg mt-3">SUNY & Long Island</h3><p class="text-sm text-slate-600 mt-1">Stony Brook, Old Westbury and others.</p></div></li><li><div class="n">3</div><div><h3 class="font-heading font-bold text-lg mt-3">Private universities</h3><p class="text-sm text-slate-600 mt-1">Columbia, NYU, Fordham and more.</p></div></li><li><div class="n">4</div><div><h3 class="font-heading font-bold text-lg mt-3">Your campus</h3><p class="text-sm text-slate-600 mt-1">Not listed? Start a chapter below.</p></div></li></ol></div></section>
+
+<section class="section bg-white" id="join"><div class="wrap grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
+<div class="lg:col-span-5"><p class="eyebrow acc">Start a chapter</p><h2 class="h-section">Three students and a room</h2><p class="lede">That is all it takes to begin. The coordinator handles the rest.</p><a class="slot btn-primary mt-6 !py-3.5 !px-7 !text-[15px]" href="#" data-slot="PCM-07" data-spec="Link · form URL (Google Form or Events portal), fee if any">Tell us about your campus</a></div>
+<div class="lg:col-span-7 grid gap-7"><div class="step"><b>1</b><div><h3 class="font-heading font-bold text-lg">Gather three students</h3><p class="text-[15px] text-slate-700 mt-1 leading-relaxed">Adventist or not; the group is open.</p></div></div><div class="step"><b>2</b><div><h3 class="font-heading font-bold text-lg">Register with the campus</h3><p class="text-[15px] text-slate-700 mt-1 leading-relaxed">Most schools recognise a faith club with a faculty adviser; the coordinator helps.</p></div></div><div class="step"><b>3</b><div><h3 class="font-heading font-bold text-lg">Set a weekly time</h3><p class="text-[15px] text-slate-700 mt-1 leading-relaxed">Lunch or evening, same slot every week.</p></div></div><div class="step"><b>4</b><div><h3 class="font-heading font-bold text-lg">Connect to a local church</h3><p class="text-[15px] text-slate-700 mt-1 leading-relaxed">A partner congregation nearby supports the chapter.</p></div></div></div></div></section>
+
+<section class="section border-y border-slate-200/80" id="resources"><div class="wrap">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4"><div><p class="eyebrow acc">Prepare</p><h2 class="h-section">Resources</h2><p class="lede">Chapter toolkit and study material.</p></div><a class="link" href="../../resources.html">All resources <span aria-hidden="true">&rarr;</span></a></div>
+<ul class="slot grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10 list-none p-0 m-0" data-slot="PCM-08" data-spec="Files · 3–6 PDFs or links: Chapter toolkit, Study series, Partner churches, Rallies &amp; service days">
+<li class="card acc-emerald p-6 flex flex-col"><span class="material-symbols-outlined text-3xl acc" aria-hidden="true">menu_book</span><h3 class="font-heading font-bold text-lg mt-4">Chapter toolkit</h3><p class="text-sm text-slate-600 mt-1 flex-1">Registration, adviser letter, first-meeting plan.</p><a class="link mt-5" href="#">Download PDF <span aria-hidden="true">&rarr;</span></a></li><li class="card acc-emerald p-6 flex flex-col"><span class="material-symbols-outlined text-3xl acc" aria-hidden="true">auto_stories</span><h3 class="font-heading font-bold text-lg mt-4">Study series</h3><p class="text-sm text-slate-600 mt-1 flex-1">Short studies written for campus.</p><a class="link mt-5" href="#">Open folder <span aria-hidden="true">&rarr;</span></a></li><li class="card acc-emerald p-6 flex flex-col"><span class="material-symbols-outlined text-3xl acc" aria-hidden="true">church</span><h3 class="font-heading font-bold text-lg mt-4">Partner churches</h3><p class="text-sm text-slate-600 mt-1 flex-1">Congregations near each campus.</p><a class="link mt-5" href="#">See the list <span aria-hidden="true">&rarr;</span></a></li><li class="card acc-emerald p-6 flex flex-col"><span class="material-symbols-outlined text-3xl acc" aria-hidden="true">event</span><h3 class="font-heading font-bold text-lg mt-4">Rallies & service days</h3><p class="text-sm text-slate-600 mt-1 flex-1">This year’s dates.</p><a class="link mt-5" href="../../events.html">See events <span aria-hidden="true">&rarr;</span></a></li>
+</ul></div></section>
+
+<section class="section bg-white" id="how"><div class="wrap grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+<div class="lg:col-span-5"><p class="eyebrow acc">What chapters do</p><h2 class="h-section">A week in a chapter</h2><p class="slot lede" data-slot="PCM-09" data-spec="Text · confirm requirements / rules, 80–120 words">One weekly meeting, one shared meal a month, one service project a semester, and a Sabbath together with the partner church. Confirm the chapter standards with the coordinator.</p></div>
+<div class="lg:col-span-7 grid sm:grid-cols-2 gap-5"><div class="rounded-2xl border border-slate-200 p-6"><span class="material-symbols-outlined text-2xl acc">menu_book</span><h3 class="font-heading font-bold text-lg mt-3">Weekly study</h3><p class="text-sm text-slate-600 mt-1">Forty-five minutes, same slot.</p></div><div class="rounded-2xl border border-slate-200 p-6"><span class="material-symbols-outlined text-2xl acc">restaurant</span><h3 class="font-heading font-bold text-lg mt-3">Shared meals</h3><p class="text-sm text-slate-600 mt-1">Where friendships form.</p></div><div class="rounded-2xl border border-slate-200 p-6"><span class="material-symbols-outlined text-2xl acc">volunteer_activism</span><h3 class="font-heading font-bold text-lg mt-3">Service</h3><p class="text-sm text-slate-600 mt-1">One project a semester.</p></div><div class="rounded-2xl border border-slate-200 p-6"><span class="material-symbols-outlined text-2xl acc">church</span><h3 class="font-heading font-bold text-lg mt-3">Sabbath together</h3><p class="text-sm text-slate-600 mt-1">With the partner church.</p></div></div></div></section>
+
+<section class="section border-y border-slate-200/80" id="highlights"><div class="wrap">
+<p class="eyebrow acc">Stories</p><h2 class="h-section">From the campuses</h2><p class="lede">Students finding faith and friends at university.</p>
+<div class="slot mt-10 grid grid-cols-1 md:grid-cols-3 gap-6" data-slot="PCM-10" data-spec="Highlights · 3 recent achievements or stories + 1 photo each (1600×1000)">
+<div class="card acc-emerald overflow-hidden"><div class="ph h-44"><span><span class="material-symbols-outlined">photo_camera</span>Photo</span></div><div class="p-6"><p class="eyebrow acc">Campus</p><h3 class="font-heading font-bold text-lg mt-1">Story title</h3><p class="text-sm text-slate-600">Two lines of summary</p></div></div><div class="card acc-emerald overflow-hidden"><div class="ph h-44"><span><span class="material-symbols-outlined">photo_camera</span>Photo</span></div><div class="p-6"><p class="eyebrow acc">Campus</p><h3 class="font-heading font-bold text-lg mt-1">Story title</h3><p class="text-sm text-slate-600">Two lines of summary</p></div></div><div class="card acc-emerald overflow-hidden"><div class="ph h-44"><span><span class="material-symbols-outlined">photo_camera</span>Photo</span></div><div class="p-6"><p class="eyebrow acc">Campus</p><h3 class="font-heading font-bold text-lg mt-1">Story title</h3><p class="text-sm text-slate-600">Two lines of summary</p></div></div>
+</div></div></section>
+
+<section class="section bg-white" id="faq"><div class="wrap grid grid-cols-1 lg:grid-cols-12 gap-10">
+<div class="lg:col-span-4"><p class="eyebrow acc">Questions</p><h2 class="h-section">Students ask</h2>
+<div class="slot mt-8 rounded-2xl bg-slate-50 border border-slate-200 p-5 flex gap-4 items-start" data-slot="PCM-11" data-spec="Contact · coordinator name, email, phone + 400×400 headshot"><div class="ph rounded-full w-14 h-14 shrink-0"><span class="material-symbols-outlined !m-0 !text-2xl">person</span></div><div><p class="font-semibold text-slate-900 m-0">PCM Coordinator</p><p class="text-sm text-slate-600 m-0">Name, email and phone to be provided</p></div></div></div>
+<div class="slot lg:col-span-8 border-t border-slate-200" data-slot="PCM-12" data-spec="Text · confirm answers"><details class="faq" open><summary>Do I have to be Adventist to come?<span class="material-symbols-outlined">add</span></summary><p>No. Chapters are open to every student.</p></details><details class="faq"><summary>What if there is no chapter at my school?<span class="material-symbols-outlined">add</span></summary><p>Start one; three students is enough, and the coordinator walks you through campus registration.</p></details><details class="faq"><summary>Is there a cost?<span class="material-symbols-outlined">add</span></summary><p>No.</p></details></div>
+</div></section>
+
+<div data-site="footer"></div>
+<script src="../../assets/site.js"></script>
+</body>
+</html>

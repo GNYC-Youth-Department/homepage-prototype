@@ -7,19 +7,19 @@
   function u(p) { return ROOT + p; }
 
   var clubs = [
-    { key: 'adventurers', name: 'Adventurers', ages: 'Ages 4–9', crest: u('img/07.png'), dot: '#0ea5e9', href: u('brief.html#AD'),
-      sub: [['Awards & classes', u('brief.html#AD')], ['Family events', u('brief.html#AD')], ['Start a club', u('brief.html#AD')]] },
+    { key: 'adventurers', name: 'Adventurers', ages: 'Ages 4–9', crest: u('img/07.png'), dot: '#0ea5e9', href: u('ministries/adventurers.html'),
+      sub: [['Awards & classes', u('ministries/adventurers.html#classes')], ['Family Network', u('ministries/adventurers.html')], ['Start a club', u('ministries/adventurers.html#find')]] },
     { key: 'pathfinders', name: 'Pathfinders', ages: 'Ages 10–16', crest: u('img/08.png'), dot: '#dc2626', href: u('ministries/pathfinders.html'),
-      sub: [['Pathfinder Bible Experience', u('ministries/pathfinders/bible-experience.html'), u('img/pbe-logo.png')], ['Teen Leadership Training', u('brief.html#TLT'), u('img/tlt-logo.png')], ['Drum Corps', u('brief.html#DC')], ['Drilling & Marching', u('brief.html#DM')]] },
-    { key: 'masterguides', name: 'Master Guides', ages: 'Grade 11 to adult', crest: u('img/crest-mg.png'), dot: '#1e40af', href: u('brief.html#MG'),
-      sub: [['Curriculum & investiture', u('brief.html#MG')], ['Leadership certification', u('brief.html#MG')], ['Clubs & chapters', u('brief.html#MG')]] },
-    { key: 'ay', name: 'AY Ministries', ages: 'Young adults', crest: u('img/crest-ay.png'), dot: '#0284c7', href: u('brief.html#AY'),
-      sub: [['Young Adults', u('brief.html#YA')], ['School of Evangelism', u('brief.html#SOE')], ['Public Campus Ministry', u('brief.html#PCM')]] }
+      sub: [['Pathfinder Bible Experience', u('ministries/pathfinders/bible-experience.html'), u('img/pbe-logo.png')], ['Teen Leadership Training', u('ministries/pathfinders/teen-leadership-training.html'), u('img/tlt-logo.png')], ['Drum Corps', u('ministries/pathfinders/drum-corps.html')], ['Drilling & Marching', u('ministries/pathfinders/drilling-marching.html')]] },
+    { key: 'masterguides', name: 'Master Guides', ages: 'Grade 11 to adult', crest: u('img/crest-mg.png'), dot: '#1e40af', href: u('ministries/master-guides.html'),
+      sub: [['Curriculum & investiture', u('ministries/master-guides.html#classes')], ['Basic Staff Training', u('ministries/master-guides.html')], ['Master Guide clubs', u('ministries/master-guides.html#find')]] },
+    { key: 'ay', name: 'AY Ministries', ages: 'Young adults', crest: u('img/crest-ay.png'), dot: '#0284c7', href: u('ministries/ay-ministries.html'),
+      sub: [['Young Adults', u('ministries/ay/young-adults.html')], ['School of Evangelism', u('ministries/ay/school-of-evangelism.html')], ['Public Campus Ministry', u('ministries/ay/public-campus-ministry.html')]] }
   ];
   var about = [
     ['info', 'About us', 'Mission and who we serve', u('about.html')],
     ['groups', 'Leadership', 'Directors and coordinators', u('about.html#leadership')],
-    ['history_edu', 'Our history', 'Youth ministry in New York', u('brief.html#HS')],
+    ['history_edu', 'Our history', 'Youth ministry in New York', u('history.html')],
     ['mail', 'Contact', 'Youth office, Manhasset', u('about.html#contact')]
   ];
 
@@ -46,7 +46,7 @@
       '<a class="nav-link' + cur('events') + '" href="' + u('events.html') + '">Events</a>' +
       '<div class="nav-item"><button class="nav-link' + cur('ministries') + '" aria-expanded="false" aria-haspopup="true">Ministries<span class="material-symbols-outlined" aria-hidden="true">expand_more</span></button>' + megaHTML() + '</div>' +
       '<a class="nav-link' + cur('resources') + '" href="' + u('resources.html') + '">Resources</a>' +
-      '<a class="nav-link' + cur('news') + '" href="' + u('index.html#news') + '">News</a>' +
+      '<a class="nav-link' + cur('news') + '" href="' + u('news.html') + '">News</a>' +
       '<div class="nav-item"><button class="nav-link' + cur('about') + '" aria-expanded="false" aria-haspopup="true">About<span class="material-symbols-outlined" aria-hidden="true">expand_more</span></button>' + aboutHTML() + '</div>' +
       '<a class="nav-link" href="#">Store</a>' +
     '</div>' +
@@ -60,7 +60,7 @@
       '<a href="' + u('events.html') + '">Events</a>' +
       '<button aria-expanded="false" data-acc="m-min">Ministries<span class="material-symbols-outlined">expand_more</span></button><div class="m-sub" id="m-min" hidden>' +
         clubs.map(function (c) { return '<a class="m-club" href="' + c.href + '"><span><img src="' + c.crest + '" alt="">' + c.name + '</span><small>' + c.ages + '</small></a><div class="m-sub">' + c.sub.map(function (s) { return '<a href="' + s[1] + '">' + s[0] + '</a>'; }).join('') + '</div>'; }).join('') + '</div>' +
-      '<a href="' + u('resources.html') + '">Resources</a><a href="' + u('index.html#news') + '">News</a>' +
+      '<a href="' + u('resources.html') + '">Resources</a><a href="' + u('news.html') + '">News</a>' +
       '<button aria-expanded="false" data-acc="m-about">About<span class="material-symbols-outlined">expand_more</span></button><div class="m-sub" id="m-about" hidden>' + about.map(function (a) { return '<a href="' + a[3] + '">' + a[1] + '</a>'; }).join('') + '</div>' +
       '<a href="#">Store</a><a class="btn-primary" style="justify-content:center;margin-top:.5rem" href="' + CONGRESS + '">Register for AY Congress XVIII</a>' +
     '</div></div></nav>' +
@@ -74,7 +74,7 @@
     '<p style="max-width:24rem;font-size:14px;line-height:1.6;color:rgba(224,242,254,.8)">Reaching young hearts across the five boroughs of New York City, Long Island and the surrounding upstate counties with everlasting hope and purpose.</p>' +
     '<div style="display:grid;gap:.5rem;font-size:14px;color:rgba(224,242,254,.9)"><span>7 Shelter Rock Rd, Manhasset, NY 11030</span><a href="tel:+15166279350">(516) 627-9350</a><a href="mailto:info@gnycyouth.com">info@gnycyouth.com</a></div>' +
     '<div style="display:flex;gap:.75rem;margin-top:1.5rem"><a class="soc" href="https://www.instagram.com/gnycyouth/" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3.5" y="3.5" width="17" height="17" rx="4.8"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg></a><a class="soc" href="https://www.facebook.com/GNYCYouth/" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.6-1.5h1.5V4.4c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.4H8.2v3h2.5V21z"/></svg></a><a class="soc" href="https://www.tiktok.com/@gnycyouth" aria-label="TikTok"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.8a4.3 4.3 0 0 1-1-2.8h-3v12.4a2.6 2.6 0 1 1-2.6-2.7c.3 0 .5 0 .8.1V9.7a5.7 5.7 0 1 0 4.9 5.7V9.1a7.3 7.3 0 0 0 4.2 1.3v-3a4.3 4.3 0 0 1-3.3-1.6z"/></svg></a></div></div>' +
-    '<div><h4>Ministries</h4><ul>' + clubs.map(function (c) { return '<li><a class="f-club" href="' + c.href + '"><img src="' + c.crest + '" alt="">' + c.name + '</a></li>'; }).join('') + '<li><a href="' + u('ministries/pathfinders/bible-experience.html') + '">Bible Experience (PBE)</a></li><li><a href="' + u('brief.html#TLT') + '">Teen Leadership Training</a></li></ul></div>' +
+    '<div><h4>Ministries</h4><ul>' + clubs.map(function (c) { return '<li><a class="f-club" href="' + c.href + '"><img src="' + c.crest + '" alt="">' + c.name + '</a></li>'; }).join('') + '<li><a href="' + u('ministries/pathfinders/bible-experience.html') + '">Bible Experience (PBE)</a></li><li><a href="' + u('ministries/pathfinders/teen-leadership-training.html') + '">Teen Leadership Training</a></li></ul></div>' +
     '<div><h4>Events</h4><ul><li><a href="' + CONGRESS + '" style="color:#fcd34d;font-weight:600">AY Congress XVIII</a></li><li><a href="' + u('events.html') + '">Upcoming events</a></li><li><a href="' + u('events.html') + '">Annual Camporee</a></li><li><a href="' + u('events.html') + '">Young Adult Retreat</a></li><li><a href="https://drive.google.com/file/d/1R9X7ByCJo2Y_s8DfSZvJ8EKGKVcLDpny/view?usp=drive_link">Year calendar (PDF)</a></li></ul></div>' +
     '<div><h4>Quick access</h4><ul><li><a href="#">Store</a></li><li><a href="' + u('resources.html') + '">Forms &amp; downloads</a></li><li><a href="' + u('about.html#leadership') + '">Leadership</a></li><li><a href="' + u('about.html') + '">About GNYC Youth</a></li><li><a href="' + u('about.html#contact') + '">Contact</a></li></ul></div></div>' +
     '<div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;padding-top:2rem;font-size:13px;color:rgba(186,230,253,.8)"><p style="margin:0">&copy; 2026 Greater New York Conference of Seventh-day Adventists. All rights reserved.</p><div style="display:flex;gap:1.5rem"><a href="#">Terms &amp; Conditions</a><a href="#">Privacy Policy</a><a href="#">Risk Management</a></div></div>' +

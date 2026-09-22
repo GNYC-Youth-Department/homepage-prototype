@@ -12,7 +12,7 @@ Design prototype of the proposed gnycyouth.org homepage revamp, published so rev
 
 ## What it is
 
-Static pages, no build step: `index.html` (home), `ministries/pathfinders.html` (ministry page layout), `ministries/pathfinders/bible-experience.html` (sub-ministry layout), `events.html`, `resources.html`, `about.html`, `design.html` (design guidelines) and `brief.html` (content brief with every slot the Director provides). `assets/site.js` renders the shared nav, footer and content-slot overlay (`?slots=1`). Styling comes from the Tailwind CDN and Google Fonts; there is no build step and no data is collected. The event filters, resource filters and mobile menu work; the EN | ES switch is visual only.
+Static pages, no build step: `index.html` (home), the four ministry pages under `ministries/` (Adventurers, Pathfinders, Master Guides, AY Ministries) and their program pages under `ministries/pathfinders/` (Bible Experience, TLT, Drum Corps, Drilling & Marching) and `ministries/ay/` (Young Adults, School of Evangelism, Public Campus Ministry), `news.html`, `history.html`, `events.html`, `resources.html`, `about.html`, `design.html` (design guidelines) and `brief.html` (content brief with every slot the Director provides). `assets/site.js` renders the shared nav, footer and content-slot overlay (`?slots=1`). Styling comes from the Tailwind CDN and Google Fonts; there is no build step and no data is collected. The event filters, resource filters and mobile menu work; the EN | ES switch is visual only.
 
 ## Placeholders
 
