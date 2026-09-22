@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en" data-root="../../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Adventurer Awards · GNYC Youth prototype</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/site.css">
+<style>
+  .hero-light{color:#0f172a;background:#bfe6fb}
+  .hero-light .crumbs{color:#475569}.hero-light .crumbs .cur{color:#0f172a}
+  .search{display:flex;align-items:center;gap:.75rem;background:#fff;border:1px solid #d5dbe6;border-radius:9999px;padding:.5rem .5rem .5rem 1.25rem;box-shadow:0 10px 30px -12px rgba(0,97,148,.25)}
+  .search input{flex:1;border:0;outline:0;font:500 16px Inter,sans-serif;background:none;min-width:0}
+  .cls-pill{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem .9rem .4rem .4rem;border-radius:9999px;font:600 14px Inter,sans-serif;background:#fff;border:1px solid #d5dbe6;color:#334155;cursor:pointer;white-space:nowrap}
+  .cls-pill img{width:28px;height:28px;object-fit:contain}
+  .cls-pill.is-on{background:#131b2e;color:#fff;border-color:#131b2e}
+  .cls-pill:hover:not(.is-on){background:#f2f3ff}
+  .aw{--c:#0284c7;background:#fff;border-radius:20px;border:1px solid #e2e8f0;border-top:4px solid var(--c);padding:1.1rem 1rem 1rem;display:flex;flex-direction:column;align-items:center;text-align:center;gap:.2rem;cursor:pointer;transition:transform .25s cubic-bezier(.16,1,.3,1),box-shadow .25s;box-shadow:0 1px 2px rgba(15,23,42,.04),0 10px 24px -12px rgba(15,23,42,.18)}
+  .aw:hover,.aw:focus-visible{transform:translateY(-4px);box-shadow:0 18px 36px -14px rgba(15,23,42,.28)}
+  .aw img{width:88px;height:88px;object-fit:contain;margin-bottom:.4rem;filter:drop-shadow(0 8px 12px rgba(0,0,0,.18))}
+  .aw .noimg{width:88px;height:88px;border-radius:9999px;margin-bottom:.4rem;background:repeating-linear-gradient(135deg,#eef1f6 0 8px,#e5e9f1 8px 16px);display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:11px;font-weight:600;padding:.5rem;line-height:1.2}
+  .aw b{font:700 15px 'Plus Jakarta Sans',sans-serif;color:#0f172a;line-height:1.25}
+  .aw small{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--c)}
+  .grp{scroll-margin-top:110px}
+  .grp h2{display:flex;align-items:center;gap:.9rem;font:800 clamp(24px,3vw,32px) 'Plus Jakarta Sans',sans-serif;letter-spacing:-.02em;margin:0}
+  .grp h2 img{width:56px;height:56px;object-fit:contain}
+  .grp h2 small{font:600 13px Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#64748b;margin-left:auto}
+  dialog{border:0;border-radius:28px;padding:0;max-width:min(760px,calc(100vw - 2rem));width:100%;box-shadow:0 40px 80px -20px rgba(11,20,48,.5)}
+  dialog::backdrop{background:rgba(11,20,48,.55);backdrop-filter:blur(6px)}
+  .req h3{font:700 17px 'Plus Jakarta Sans',sans-serif;color:#0f172a;margin:1.25rem 0 .4rem}
+  .req ol{counter-reset:r;list-style:none;padding:0;margin:0;display:grid;gap:.5rem}
+  .req ol li{position:relative;padding-left:2.2rem;font-size:15px;line-height:1.55;color:#334155}
+  .req ol li::before{counter-increment:r;content:counter(r);position:absolute;left:0;top:.1rem;width:24px;height:24px;border-radius:9999px;background:var(--c,#e0f2fe);color:#fff;font:700 12px/24px Inter,sans-serif;text-align:center}
+  .req p{font-size:15px;line-height:1.6;color:#475569;margin:.5rem 0}
+  .sticky-filters{position:sticky;top:calc(72px + env(safe-area-inset-top,0px));z-index:30;background:rgba(250,248,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid #e2e8f0}
+</style>
+</head>
+<body data-page="ministries">
+<div data-site="nav"></div>
+
+<header class="hero-light relative overflow-hidden">
+<img class="absolute inset-0 w-full h-full object-cover object-bottom" src="../../img/adv-scene.jpg" alt="" aria-hidden="true">
+<div class="absolute inset-0" style="background:linear-gradient(90deg,rgba(255,255,255,.94) 0%,rgba(255,255,255,.82) 45%,rgba(255,255,255,.3) 75%,rgba(255,255,255,0) 100%)" aria-hidden="true"></div>
+<div class="wrap relative pt-10 pb-14 lg:pt-14 lg:pb-20">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../index.html">Home</a><span class="sep">/</span><a href="#">Ministries</a><span class="sep">/</span><a href="../adventurers.html">Adventurers</a><span class="sep">/</span><span class="cur">Awards</span></nav>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mt-8">
+<div class="lg:col-span-7"><p class="text-xs font-bold tracking-[0.18em] uppercase text-[#0369a1]">Adventurers · Stars, chips and awards</p><h1 class="mt-3 font-heading font-extrabold text-5xl sm:text-6xl tracking-[-0.03em] leading-[1.02]">Adventurer Awards</h1>
+<p class="slot mt-4 text-lg text-slate-700 max-w-xl" data-slot="ADA-01" data-spec="Text · intro 30–50 words; confirm which awards GNYC clubs teach most"><span id="count">151</span> awards from Little Lamb to Helping Hand, with the official North American Division requirements for each. Tap an award to read what an Adventurer does to earn it.</p></div>
+<div class="lg:col-span-5"><form class="search" role="search" onsubmit="return false"><span class="material-symbols-outlined text-slate-400">search</span><input id="q" type="search" placeholder="Search awards… “bee”, “safety”, “Bible”" aria-label="Search awards"></form><p class="text-xs text-slate-600 mt-2 pl-4">Requirements from clubministries.org and the NAD Adventurer Awards wiki.</p></div>
+</div></div></header>
+
+<div class="sticky-filters"><div class="wrap flex items-center gap-2 overflow-x-auto no-scrollbar py-3" role="group" aria-label="Filter by class" id="filters">
+<button class="cls-pill is-on" data-cls="all" aria-pressed="true"><span class="w-7 h-7 rounded-full bg-slate-900 text-white grid place-items-center text-xs font-bold">All</span>All classes</button>
+<button class="cls-pill" data-cls="Little Lamb"><img src="../../img/adv-class-little-lamb.png" alt="">Little Lamb</button>
+<button class="cls-pill" data-cls="Eager Beaver"><img src="../../img/adv-class-eager-beaver.png" alt="">Eager Beaver</button>
+<button class="cls-pill" data-cls="Busy Bee"><img src="../../img/adv-class-busy-bee.png" alt="">Busy Bee</button>
+<button class="cls-pill" data-cls="Sunbeam"><img src="../../img/adv-class-sunbeam.png" alt="">Sunbeam</button>
+<button class="cls-pill" data-cls="Builder"><img src="../../img/adv-class-builder.png" alt="">Builder</button>
+<button class="cls-pill" data-cls="Helping Hand"><img src="../../img/adv-class-helping-hand.png" alt="">Helping Hand</button>
+<button class="cls-pill" data-cls="Multi-level"><span class="w-7 h-7 rounded-full bg-[#e0e7ff] text-[#3730a3] grid place-items-center text-xs font-bold">M</span>Multi-level</button>
+<button class="cls-pill" data-cls="Special"><span class="w-7 h-7 rounded-full bg-[#fef3c7] text-[#92400e] grid place-items-center text-xs font-bold">S</span>Special</button>
+</div></div>
+
+<main class="wrap section slot" id="list" data-slot="ADA-02" data-spec="Photos · patch photos for the awards still showing a grey circle (117 of 151); the 34 shown come from the Climb Higher camporee app"></main>
+
+<section class="wrap pb-20"><div class="rounded-[28px] bg-white border border-slate-200 p-8 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+<div class="lg:col-span-8"><p class="eyebrow">For club staff</p><h2 class="font-heading font-extrabold text-2xl sm:text-3xl tracking-tight mt-1">Teaching an award?</h2><p class="lede">Each award page on the NAD wiki carries the full requirements and answer notes. Patches and record cards are sold through AdventSource and the GNYC Youth Store.</p></div>
+<div class="lg:col-span-4 flex flex-col gap-3"><a class="btn-primary !py-3.5 !px-7 !text-[15px]" href="https://www.clubministries.org/adventurers/adventurer-awards/" target="_blank" rel="noopener noreferrer">NAD awards page</a><a class="pill !py-3.5 !px-7 !text-[15px] text-center" href="https://www.adventsource.org" target="_blank" rel="noopener noreferrer">AdventSource</a></div></div></section>
+
+<dialog id="dlg" aria-labelledby="dlg-title"><div class="p-6 sm:p-8">
+<div class="flex items-start gap-5"><div id="dlg-img" class="shrink-0"></div><div class="flex-1 min-w-0"><p id="dlg-cls" class="text-xs font-bold tracking-[0.14em] uppercase"></p><h2 id="dlg-title" class="font-heading font-extrabold text-2xl sm:text-3xl tracking-tight text-slate-900 mt-1"></h2><a id="dlg-src" class="link mt-2" target="_blank" rel="noopener noreferrer">Source page <span aria-hidden="true">&rarr;</span></a></div><button id="dlg-close" class="nav-link !p-2" aria-label="Close"><span class="material-symbols-outlined">close</span></button></div>
+<div id="dlg-req" class="req mt-4 max-h-[60vh] overflow-y-auto pr-2"></div>
+</div></dialog>
+
+<div data-site="footer"></div>
+<script src="../../assets/site.js"></script>
+<script>
+(function(){
+  var COLORS={'Little Lamb':'#7dd3fc','Eager Beaver':'#a16207','Busy Bee':'#2563eb','Sunbeam':'#eab308','Builder':'#16a34a','Helping Hand':'#dc2626','Multi-level':'#4f46e5','Special':'#d97706','To confirm':'#94a3b8'};
+  var ICON={'Little Lamb':'little-lamb','Eager Beaver':'eager-beaver','Busy Bee':'busy-bee','Sunbeam':'sunbeam','Builder':'builder','Helping Hand':'helping-hand'};
+  var AGE={'Little Lamb':'Age 4','Eager Beaver':'Age 5','Busy Bee':'Age 6 · Grade 1','Sunbeam':'Age 7 · Grade 2','Builder':'Age 8 · Grade 3','Helping Hand':'Age 9 · Grade 4','Multi-level':'Any class','Special':'Club-wide','To confirm':'Class to confirm'};
+  var list=document.getElementById('list'),data=[],cls='all',q='';
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function card(a,i){var c=COLORS[a.cls]||'#0284c7';return '<button class="aw" style="--c:'+c+'" data-i="'+i+'" type="button">'+(a.img?'<img src="../../'+a.img+'" alt="" loading="lazy">':'<span class="noimg">patch photo</span>')+'<b>'+esc(a.name)+'</b><small>'+esc(a.cls)+'</small></button>'}
+  function render(){var groups={},order=[];data.forEach(function(a,i){var hit=(cls==='all'||a.cls===cls)&&(!q||(a.name+' '+a.cls+' '+JSON.stringify(a.req)).toLowerCase().indexOf(q)>-1);if(!hit)return;if(!groups[a.cls]){groups[a.cls]=[];order.push(a.cls)}groups[a.cls].push(card(a,i))});
+    var n=0;list.innerHTML=order.map(function(g){n+=groups[g].length;var ic=ICON[g]?'<img src="../../img/adv-class-'+ICON[g]+'.png" alt="">':'';return '<section class="grp mb-14" id="g-'+g.replace(/\W+/g,'-')+'"><h2>'+ic+esc(g)+'<small>'+(AGE[g]||'')+' · '+groups[g].length+' awards</small></h2><div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 mt-6">'+groups[g].join('')+'</div></section>'}).join('')||'<p class="text-slate-600 py-10">No awards match. Try another word.</p>';
+    document.getElementById('count').textContent=n;}
+  fetch('../../data/adventurer-awards.json').then(function(r){return r.json()}).then(function(d){data=d;render()});
+  document.getElementById('filters').addEventListener('click',function(e){var b=e.target.closest('[data-cls]');if(!b)return;cls=b.dataset.cls;document.querySelectorAll('#filters .cls-pill').forEach(function(x){var on=x===b;x.classList.toggle('is-on',on);x.setAttribute('aria-pressed',on)});render()});
+  var t;document.getElementById('q').addEventListener('input',function(e){clearTimeout(t);t=setTimeout(function(){q=e.target.value.trim().toLowerCase();render()},120)});
+  var dlg=document.getElementById('dlg');
+  list.addEventListener('click',function(e){var b=e.target.closest('.aw');if(!b)return;var a=data[+b.dataset.i],c=COLORS[a.cls]||'#0284c7';
+    document.getElementById('dlg-img').innerHTML=a.img?'<img src="../../'+a.img+'" alt="" style="width:110px;height:110px;object-fit:contain;filter:drop-shadow(0 12px 18px rgba(0,0,0,.25))">':'<span class="noimg" style="width:110px;height:110px;border-radius:9999px;background:repeating-linear-gradient(135deg,#eef1f6 0 8px,#e5e9f1 8px 16px);display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:11px;font-weight:600;text-align:center;padding:.5rem">patch photo to be added</span>';
+    document.getElementById('dlg-cls').textContent=a.cls+(AGE[a.cls]?' · '+AGE[a.cls]:'');document.getElementById('dlg-cls').style.color=c;document.getElementById('dlg-title').textContent=a.name;document.getElementById('dlg-src').href=a.src;
+    var h='',started=false;a.req.forEach(function(p){if(p[0]==='h'){h+='<h3>'+esc(p[1])+'</h3>'}else if(p[0]==='l'){h+='<ol style="--c:'+c+'">'+p[1].map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ol>'}else{h+='<p>'+esc(p[1])+'</p>'}});
+    document.getElementById('dlg-req').innerHTML=h||'<p>Requirements were not available for this award. Use the source link above.</p>';dlg.showModal();});
+  document.getElementById('dlg-close').onclick=function(){dlg.close()};dlg.addEventListener('click',function(e){if(e.target===dlg)dlg.close()});
+})();
+</script>
+</body>
+</html>
