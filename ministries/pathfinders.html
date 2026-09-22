@@ -21,10 +21,13 @@
   .year::before{content:"";position:absolute;left:0;right:0;top:22px;height:2px;background:linear-gradient(90deg,#dc2626,#f59e0b,#dc2626)}
   .year li{position:relative;padding-top:3.25rem;list-style:none}
   .year li::before{content:"";position:absolute;top:14px;left:0;width:18px;height:18px;border-radius:9999px;background:#fff;border:4px solid #dc2626;box-shadow:0 0 0 6px #faf8ff}
-  .cls{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.75rem}
-  .cls div{border-radius:16px;padding:1rem;color:#fff;min-height:118px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 12px 24px -10px rgba(15,23,42,.4)}
-  .cls strong{font-family:'Plus Jakarta Sans',sans-serif;font-size:18px}
-  .cls span{font-size:12px;opacity:.85}
+  .cls{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem}
+  @media (max-width:420px){.cls{grid-template-columns:repeat(2,1fr)}}
+  .cls div{border-radius:18px;padding:1.1rem .75rem 1rem;background:#fff;border:1px solid #e2e8f0;border-top:4px solid var(--c);text-align:center;display:flex;flex-direction:column;align-items:center;gap:.15rem;box-shadow:0 1px 2px rgba(15,23,42,.04),0 10px 24px -12px rgba(15,23,42,.18);transition:transform .25s cubic-bezier(.16,1,.3,1),box-shadow .25s}
+  .cls div:hover{transform:translateY(-4px);box-shadow:0 18px 36px -14px rgba(15,23,42,.28)}
+  .cls img{width:84px;height:84px;object-fit:contain;margin-bottom:.6rem;filter:drop-shadow(0 8px 14px rgba(0,0,0,.22))}
+  .cls strong{font-family:'Plus Jakarta Sans',sans-serif;font-size:17px;color:#0f172a}
+  .cls span{font-size:12px;color:#64748b}
   .area-btn{display:flex;align-items:center;justify-content:space-between;width:100%;padding:.85rem 1rem;border-radius:14px;border:1px solid #e2e8f0;background:#fff;font:600 15px Inter,sans-serif;color:#0f172a;cursor:pointer;text-align:left}
   .area-btn:hover,.area-btn.is-on{border-color:#dc2626;background:#fff5f5;color:#991b1b}
   .area-btn small{font-weight:600;color:#64748b}
@@ -138,14 +141,7 @@
 <p class="eyebrow">Growth track</p>
 <h2 class="h-section">Six classes, one for every year</h2>
 <p class="lede">Each class year covers Bible, personal growth, health, outdoor skills and service. Pathfinders are invested in their class each June.</p>
-<div class="cls mt-8">
-<div style="background:linear-gradient(160deg,#2563eb,#1e40af)"><strong>Friend</strong><span>Grade 5 · age 10</span></div>
-<div style="background:linear-gradient(160deg,#dc2626,#991b1b)"><strong>Companion</strong><span>Grade 6 · age 11</span></div>
-<div style="background:linear-gradient(160deg,#16a34a,#166534)"><strong>Explorer</strong><span>Grade 7 · age 12</span></div>
-<div style="background:linear-gradient(160deg,#94a3b8,#475569)"><strong>Ranger</strong><span>Grade 8 · age 13</span></div>
-<div style="background:linear-gradient(160deg,#9f1239,#4c0519)"><strong>Voyager</strong><span>Grade 9 · age 14</span></div>
-<div style="background:linear-gradient(160deg,#facc15,#ca8a04);color:#3f2a00"><strong>Guide</strong><span>Grade 10 · age 15</span></div>
-</div>
+<div class="cls mt-8"><div style="--c:#1d4ed8"><img src="../img/class-friend.png" alt="Friend class emblem" width="96" height="96"><strong>Friend</strong><span>Grade 5 · age 10</span></div><div style="--c:#dc2626"><img src="../img/class-companion.png" alt="Companion class emblem" width="96" height="96"><strong>Companion</strong><span>Grade 6 · age 11</span></div><div style="--c:#15803d"><img src="../img/class-explorer.png" alt="Explorer class emblem" width="96" height="96"><strong>Explorer</strong><span>Grade 7 · age 12</span></div><div style="--c:#64748b"><img src="../img/class-ranger.png" alt="Ranger class emblem" width="96" height="96"><strong>Ranger</strong><span>Grade 8 · age 13</span></div><div style="--c:#7f1d1d"><img src="../img/class-voyager.png" alt="Voyager class emblem" width="96" height="96"><strong>Voyager</strong><span>Grade 9 · age 14</span></div><div style="--c:#b45309"><img src="../img/class-guide.png" alt="Guide class emblem" width="96" height="96"><strong>Guide</strong><span>Grade 10 · age 15</span></div></div>
 </div>
 <div class="lg:col-span-7">
 <div class="card acc-amber p-7 sm:p-9 overflow-hidden relative">
