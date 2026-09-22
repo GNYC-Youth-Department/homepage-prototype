@@ -77,7 +77,7 @@ var P = [
  {code:'DM', name:'Drilling & Marching', tmpl:'PBE', url:'ministries/pathfinders/drilling-marching.html', group:'Built pages · program layout', slots:null},
  {code:'YA', name:'Young Adults', tmpl:'PBE', url:'ministries/ay/young-adults.html', group:'Built pages · program layout', slots:null},
  {code:'SOE', name:'School of Evangelism', tmpl:'PBE', url:'ministries/ay/school-of-evangelism.html', group:'Built pages · program layout', slots:null},
- {code:'PCM', name:'Public Campus Ministry', tmpl:'PBE', url:'ministries/ay/public-campus-ministry.html', group:'Built pages · program layout', slots:null},
+ {code:'PCM', name:'Public Campus Ministry', tmpl:'PBE', url:'ministries/ay/public-campus-ministry.html', group:'Built pages · program layout', slots:null, note:'Logo supplied 22 Sep 2026 (PCM-01 done)'},
  {code:'NW', name:'News & stories', url:'news.html', group:'Built pages · other', slots:[
   ['NW-01','text','Stories to launch with','6–10 real stories: headline, 300–600 words, month, author. Assign writers by ministry'],
   ['NW-02','photo','Story photos','1600×1000 per story from the event, plus 2–4 inside photos; photo consent on file for minors'],

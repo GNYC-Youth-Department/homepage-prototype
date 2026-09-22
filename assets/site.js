@@ -14,7 +14,7 @@
     { key: 'masterguides', name: 'Master Guides', ages: 'Grade 11 to adult', crest: u('img/crest-mg.png'), dot: '#1e40af', href: u('ministries/master-guides.html'),
       sub: [['Curriculum & investiture', u('ministries/master-guides.html#classes')], ['Basic Staff Training', u('ministries/master-guides.html')], ['Master Guide clubs', u('ministries/master-guides.html#find')]] },
     { key: 'ay', name: 'AY Ministries', ages: 'Young adults', crest: u('img/crest-ay.png'), dot: '#0284c7', href: u('ministries/ay-ministries.html'),
-      sub: [['Young Adults', u('ministries/ay/young-adults.html')], ['School of Evangelism', u('ministries/ay/school-of-evangelism.html')], ['Public Campus Ministry', u('ministries/ay/public-campus-ministry.html')]] }
+      sub: [['Young Adults', u('ministries/ay/young-adults.html')], ['School of Evangelism', u('ministries/ay/school-of-evangelism.html')], ['Public Campus Ministry', u('ministries/ay/public-campus-ministry.html'), u('img/pcm-logo.png')]] }
   ];
   var about = [
     ['info', 'About us', 'Mission and who we serve', u('about.html')],
