@@ -10,7 +10,7 @@
     { key: 'adventurers', name: 'Adventurers', ages: 'Ages 4–9', crest: u('img/07.png'), dot: '#0ea5e9', href: u('brief.html#AD'),
       sub: [['Awards & classes', u('brief.html#AD')], ['Family events', u('brief.html#AD')], ['Start a club', u('brief.html#AD')]] },
     { key: 'pathfinders', name: 'Pathfinders', ages: 'Ages 10–16', crest: u('img/08.png'), dot: '#dc2626', href: u('ministries/pathfinders.html'),
-      sub: [['Pathfinder Bible Experience', u('ministries/pathfinders/bible-experience.html')], ['Teen Leadership Training', u('brief.html#TLT')], ['Drum Corps', u('brief.html#DC')], ['Drilling & Marching', u('brief.html#DM')]] },
+      sub: [['Pathfinder Bible Experience', u('ministries/pathfinders/bible-experience.html'), u('img/pbe-logo.png')], ['Teen Leadership Training', u('brief.html#TLT'), u('img/tlt-logo.png')], ['Drum Corps', u('brief.html#DC')], ['Drilling & Marching', u('brief.html#DM')]] },
     { key: 'masterguides', name: 'Master Guides', ages: 'Grade 11 to adult', crest: u('img/crest-mg.png'), dot: '#1e40af', href: u('brief.html#MG'),
       sub: [['Curriculum & investiture', u('brief.html#MG')], ['Leadership certification', u('brief.html#MG')], ['Clubs & chapters', u('brief.html#MG')]] },
     { key: 'ay', name: 'AY Ministries', ages: 'Young adults', crest: u('img/crest-ay.png'), dot: '#0284c7', href: u('brief.html#AY'),
@@ -26,7 +26,7 @@
   function megaHTML() {
     return '<div class="menu-panel mega" role="menu">' + clubs.map(function (c) {
       return '<div class="mega-col" style="--dot:' + c.dot + '"><a class="mega-head" href="' + c.href + '"><img src="' + c.crest + '" alt=""><span><strong>' + c.name + '</strong><span>' + c.ages + '</span></span></a>' +
-        '<ul class="mega-sub">' + c.sub.map(function (s) { return '<li><a href="' + s[1] + '">' + s[0] + '</a></li>'; }).join('') + '</ul></div>';
+        '<ul class="mega-sub">' + c.sub.map(function (s) { return '<li><a href="' + s[1] + '"' + (s[2] ? ' class="has-mark"' : '') + '>' + (s[2] ? '<img src="' + s[2] + '" alt="">' : '') + s[0] + '</a></li>'; }).join('') + '</ul></div>';
     }).join('') + '<div class="mega-foot"><span>Not sure where your child fits? Every club is grouped by age, and directors help families move up together.</span><a href="' + u('ministries/pathfinders.html#find') + '">Find a club near you →</a></div></div>';
   }
   function aboutHTML() {
