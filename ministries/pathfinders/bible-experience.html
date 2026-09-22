@@ -22,7 +22,9 @@
   @media (max-width:767px){.levels{grid-template-columns:1fr;gap:1.25rem}.levels::before{display:none}.levels li{display:flex;gap:1rem;text-align:left;align-items:center}.levels .n{margin:0}}
   .step{display:grid;grid-template-columns:48px 1fr;gap:1.25rem;align-items:start}
   .step b{width:48px;height:48px;border-radius:14px;background:#0b1430;color:#ffe247;display:flex;align-items:center;justify-content:center;font:800 18px 'Plus Jakarta Sans',sans-serif}
-  .book{transform:rotate(-4deg);box-shadow:0 30px 60px -20px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.1)}
+  .pbe-logo{filter:drop-shadow(0 30px 40px rgba(0,0,0,.55));animation:bob 7s ease-in-out infinite}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+  .nad{display:inline-flex;align-items:center;gap:.5rem;font-size:14px;font-weight:600;color:rgba(255,255,255,.85);text-decoration:none}.nad:hover{color:#fff}
   details.faq{border-bottom:1px solid #e2e8f0}
   details.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.15rem 0;font:600 17px 'Plus Jakarta Sans',sans-serif;color:#0f172a}
   details.faq summary::-webkit-details-marker{display:none}
@@ -45,9 +47,10 @@
 <a class="slot inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-white text-slate-900 hover:bg-slate-100 font-semibold" href="#register" data-slot="PBE-03" data-spec="Link · team registration form URL + deadline">Register a team</a>
 <a class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full border border-white/40 hover:bg-white/10 font-semibold" href="#study">Study resources</a>
 </div>
+<a class="nad mt-6" href="https://nadpbe.org/" target="_blank" rel="noopener noreferrer"><span class="material-symbols-outlined text-lg" aria-hidden="true">public</span>Official North American Division PBE site: nadpbe.org<span class="material-symbols-outlined text-base" aria-hidden="true">open_in_new</span></a>
 </div>
 <div class="lg:col-span-5 flex justify-center lg:justify-end">
-<div class="slot book ph ph-dark rounded-2xl w-56 sm:w-64 aspect-[3/4]" data-slot="PBE-01" data-spec="Image · this year's book cover or PBE key art, 800×1067"><span><span class="material-symbols-outlined">menu_book</span>This year's book<br>cover art</span></div>
+<img class="pbe-logo w-72 sm:w-80 lg:w-96" src="../../img/pbe-logo.png" alt="The Pathfinder Bible Experience" width="518" height="369">
 </div></div></div>
 </header>
 
@@ -58,10 +61,12 @@
 <div class="wrap grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
 <div class="lg:col-span-6">
 <p class="eyebrow !text-[#b91c1c]">This year's study</p>
-<h2 class="slot h-section" data-slot="PBE-04" data-spec="Text · book(s) of the Bible for the current season and the Bible version">Book and version to be confirmed</h2>
-<p class="lede">Each season the North American Division names the book of the Bible every team studies, and the version questions are drawn from. Teams learn the text, the introduction and the SDA Bible Commentary notes that go with it.</p>
-<div class="slot mt-8 grid grid-cols-2 gap-4" data-slot="PBE-05" data-spec="Dates · club, area, conference, union, division rounds for this season">
+<h2 class="slot h-section" data-slot="PBE-04" data-spec="Text · confirm the season's books and the Bible version (NKJV is the NAD standard)">2026–27: Mark, 1 &amp; 2 Peter, 1, 2 &amp; 3 John</h2>
+<p class="lede">Each season the North American Division names the books every team studies; they alternate between the Old and New Testament. Teams learn the text plus the introductions from the SDA Bible Commentary. Coming seasons: Isaiah 34–66 (2028), Daniel and Revelation (2029).</p>
+<a class="link mt-4" href="https://nadpbe.org/pbe-resources/" target="_blank" rel="noopener noreferrer">Study texts and commentary on nadpbe.org <span aria-hidden="true">&rarr;</span></a>
+<div class="slot mt-8 grid grid-cols-2 sm:grid-cols-3 gap-4" data-slot="PBE-05" data-spec="Dates · club, area, conference, union, division rounds for this season">
 <div class="rounded-2xl bg-amber-50 border border-amber-200 p-5"><p class="eyebrow !text-[#92400e]">Conference finals</p><p class="font-heading font-extrabold text-2xl mt-1 tabular">Date TBA</p><p class="text-sm text-slate-600 mt-1">Venue TBA</p></div>
+<div class="rounded-2xl bg-white border border-slate-200 p-5 col-span-2 sm:col-span-1"><p class="eyebrow">NAD finals</p><p class="font-heading font-extrabold text-2xl mt-1 tabular">April 23–24, 2027</p><p class="text-sm text-slate-600 mt-1">Location to be announced by the NAD</p></div>
 <div class="rounded-2xl bg-slate-50 border border-slate-200 p-5"><p class="eyebrow">Registration closes</p><p class="font-heading font-extrabold text-2xl mt-1 tabular">Date TBA</p><p class="text-sm text-slate-600 mt-1">Per team, via the club director</p></div>
 </div></div>
 <div class="lg:col-span-6">
@@ -80,7 +85,7 @@
 <li class="done"><div class="n">2</div><div><h3 class="font-heading font-bold text-lg mt-3">Area</h3><p class="text-sm text-slate-600 mt-1">Clubs from one borough or region, February.</p></div></li>
 <li><div class="n">3</div><div><h3 class="font-heading font-bold text-lg mt-3">Conference</h3><p class="text-sm text-slate-600 mt-1">Greater New York finals, March.</p></div></li>
 <li><div class="n">4</div><div><h3 class="font-heading font-bold text-lg mt-3">Union</h3><p class="text-sm text-slate-600 mt-1">Atlantic Union Conference, April.</p></div></li>
-<li><div class="n">5</div><div><h3 class="font-heading font-bold text-lg mt-3">Division</h3><p class="text-sm text-slate-600 mt-1">North American Division finals, late April.</p></div></li>
+<li><div class="n">5</div><div><h3 class="font-heading font-bold text-lg mt-3">Division</h3><p class="text-sm text-slate-600 mt-1">NAD finals, April 23–24, 2027.</p></div></li>
 </ol>
 </div>
 </section>
@@ -101,12 +106,12 @@
 <!-- STUDY -->
 <section class="section border-y border-slate-200/80" id="study">
 <div class="wrap">
-<div class="flex flex-col md:flex-row md:items-end justify-between gap-4"><div><p class="eyebrow !text-[#b91c1c]">Prepare</p><h2 class="h-section">Study resources</h2><p class="lede">Downloads for coaches and teams. Files marked TBA are to be supplied for the current season.</p></div><a class="link" href="../../resources.html">All resources <span aria-hidden="true">&rarr;</span></a></div>
-<ul class="slot grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10 list-none p-0 m-0" data-slot="PBE-08" data-spec="Files · 4–6 PDFs: study guide, sample questions, commentary excerpt, rules; plus NAD/AdventSource links">
-<li class="card acc-amber p-6 flex flex-col"><span class="material-symbols-outlined text-3xl text-amber-700" aria-hidden="true">auto_stories</span><h3 class="font-heading font-bold text-lg mt-4">Official study guide</h3><p class="text-sm text-slate-600 mt-1 flex-1">Chapter outlines and memory-work plan for this year's book.</p><a class="link mt-5" href="#">Download PDF <span aria-hidden="true">&rarr;</span></a></li>
-<li class="card acc-amber p-6 flex flex-col"><span class="material-symbols-outlined text-3xl text-amber-700" aria-hidden="true">quiz</span><h3 class="font-heading font-bold text-lg mt-4">Sample questions</h3><p class="text-sm text-slate-600 mt-1 flex-1">Practice sets in the same format the judges use.</p><a class="link mt-5" href="#">Download PDF <span aria-hidden="true">&rarr;</span></a></li>
-<li class="card acc-amber p-6 flex flex-col"><span class="material-symbols-outlined text-3xl text-amber-700" aria-hidden="true">library_books</span><h3 class="font-heading font-bold text-lg mt-4">SDA Bible Commentary notes</h3><p class="text-sm text-slate-600 mt-1 flex-1">The introduction and commentary sections questions may draw from.</p><a class="link mt-5" href="#">Open <span aria-hidden="true">&rarr;</span></a></li>
-<li class="card acc-amber p-6 flex flex-col"><span class="material-symbols-outlined text-3xl text-amber-700" aria-hidden="true">gavel</span><h3 class="font-heading font-bold text-lg mt-4">Rules and scoring</h3><p class="text-sm text-slate-600 mt-1 flex-1">NAD rules, question format, appeals and first-place bands.</p><a class="link mt-5" href="#rules">Read the rules <span aria-hidden="true">&rarr;</span></a></li>
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4"><div><p class="eyebrow !text-[#b91c1c]">Prepare</p><h2 class="h-section">Study resources</h2><p class="lede">Official material from the North American Division, plus GNYC round details as they are published.</p></div><a class="link" href="../../resources.html">All resources <span aria-hidden="true">&rarr;</span></a></div>
+<ul class="slot grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10 list-none p-0 m-0" data-slot="PBE-08" data-spec="Files · GNYC additions: area/conference round details, sample questions; NAD links already in place">
+<li class="card acc-amber p-6 flex flex-col"><span class="material-symbols-outlined text-3xl text-amber-700" aria-hidden="true">auto_stories</span><h3 class="font-heading font-bold text-lg mt-4">Study texts &amp; commentary</h3><p class="text-sm text-slate-600 mt-1 flex-1">The season's Bible text and SDA Bible Commentary introductions, in English, Spanish and French.</p><a class="link mt-5" href="https://nadpbe.org/pbe-resources/" target="_blank" rel="noopener noreferrer">nadpbe.org resources <span aria-hidden="true">&rarr;</span></a></li>
+<li class="card acc-amber p-6 flex flex-col"><span class="material-symbols-outlined text-3xl text-amber-700" aria-hidden="true">help_center</span><h3 class="font-heading font-bold text-lg mt-4">PBE how-to guide</h3><p class="text-sm text-slate-600 mt-1 flex-1">The NAD guide for coaches: forming a team, studying, and what happens at each level.</p><a class="link mt-5" href="https://nadpbe.org/wp-content/uploads/2023/11/How-to-Bible-Experience-2023-24.pdf" target="_blank" rel="noopener noreferrer">Download PDF <span aria-hidden="true">&rarr;</span></a></li>
+<li class="card acc-amber p-6 flex flex-col"><span class="material-symbols-outlined text-3xl text-amber-700" aria-hidden="true">verified</span><h3 class="font-heading font-bold text-lg mt-4">Statement of Integrity &amp; media release</h3><p class="text-sm text-slate-600 mt-1 flex-1">Every team signs the NAD Statement of Integrity; the photo and video release covers filmed rounds.</p><span class="mt-5 flex flex-col gap-1"><a class="link" href="https://www.clubministries.org/wp-content/uploads/PBE_StatementIntegrity.pdf" target="_blank" rel="noopener noreferrer">Statement of Integrity <span aria-hidden="true">&rarr;</span></a><a class="link" href="https://nadpbe.org/wp-content/uploads/2026/03/PBE_VideographyPhotographyReleaseForm.pdf" target="_blank" rel="noopener noreferrer">Media release form <span aria-hidden="true">&rarr;</span></a></span></li>
+<li class="card acc-amber p-6 flex flex-col"><span class="material-symbols-outlined text-3xl text-amber-700" aria-hidden="true">gavel</span><h3 class="font-heading font-bold text-lg mt-4">Testing at each level</h3><p class="text-sm text-slate-600 mt-1 flex-1">How the area, conference, union and division rounds run, from the NAD.</p><span class="mt-5 flex flex-col gap-1"><a class="link" href="https://nadpbe.org/pbe-area-level-testing/" target="_blank" rel="noopener noreferrer">Area <span aria-hidden="true">&rarr;</span></a><a class="link" href="https://nadpbe.org/pbe-conference-level-testing/" target="_blank" rel="noopener noreferrer">Conference <span aria-hidden="true">&rarr;</span></a><a class="link" href="https://nadpbe.org/pbe-division-level-testing-finale/" target="_blank" rel="noopener noreferrer">Division finale <span aria-hidden="true">&rarr;</span></a></span></li>
 </ul></div>
 </section>
 
@@ -142,7 +147,7 @@
 <div class="slot mt-8 rounded-2xl bg-slate-50 border border-slate-200 p-5 flex gap-4 items-start" data-slot="PBE-11" data-spec="Contact · PBE coordinator name, email, phone + 400×400 headshot"><div class="ph rounded-full w-14 h-14 shrink-0"><span class="material-symbols-outlined !m-0 !text-2xl">person</span></div><div><p class="font-semibold text-slate-900 m-0">PBE Coordinator</p><p class="text-sm text-slate-600 m-0">Name, email and phone to be provided</p></div></div></div>
 <div class="slot lg:col-span-8 border-t border-slate-200" data-slot="PBE-12" data-spec="Text · confirm answers">
 <details class="faq" open><summary>Can a team have fewer than six members?<span class="material-symbols-outlined">add</span></summary><p>Yes. Two is the minimum. Six is the maximum at the table, and substitutions between rounds must be registered members.</p></details>
-<details class="faq"><summary>Which Bible version is used?<span class="material-symbols-outlined">add</span></summary><p>The version is set by the North American Division each season and is printed on this page under "This year's study".</p></details>
+<details class="faq"><summary>Which Bible version is used?<span class="material-symbols-outlined">add</span></summary><p>The North American Division sets it each season and publishes the text on nadpbe.org; the books for 2026–27 are printed on this page under "This year's study".</p></details>
 <details class="faq"><summary>What happens if two of our teams both place first?<span class="material-symbols-outlined">add</span></summary><p>Both advance. Teams are measured against the top score, not against each other.</p></details>
 <details class="faq"><summary>Who pays for travel to union and division?<span class="material-symbols-outlined">add</span></summary><p>The club raises most of it; the conference youth department helps coordinate group travel and may offer a subsidy. Ask the coordinator early.</p></details>
 </div></div>
