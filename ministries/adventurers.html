@@ -13,6 +13,8 @@
   .hero{background:radial-gradient(90% 120% at 100% 0%,rgba(14,165,233,.55) 0%,transparent 55%),radial-gradient(60% 80% at 0% 100%,rgba(16,185,129,.22),transparent 60%),linear-gradient(135deg,#0b1430 0%,#064e3b 100%)}
   .lines{background:repeating-linear-gradient(135deg,rgba(255,255,255,.05) 0 1px,transparent 1px 16px);mask-image:linear-gradient(90deg,transparent,#000 40%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 40%,transparent)}
   .crest-float{filter:drop-shadow(0 30px 40px rgba(0,0,0,.55));animation:bob 7s ease-in-out infinite}
+  .hero-light{color:#0f172a} .hero-light .crumbs{color:#475569} .hero-light .crumbs .text-white{color:#0f172a} .hero-light .text-\[\#ffe247\]{color:#0369a1} .hero-light .text-white\/85{color:#334155} .hero-light .text-white\/60{color:#64748b} .hero-light .border-white\/15{border-color:rgba(15,23,42,.12)}
+  .hero-light a.bg-white{background:#0b1430;color:#fff} .hero-light a.bg-white:hover{background:#1e293b} .hero-light a.border-white\/40{border-color:rgba(15,23,42,.3);color:#0f172a} .hero-light a.border-white\/40:hover{background:rgba(15,23,42,.06)} .hero-light .crest-float{filter:drop-shadow(0 24px 30px rgba(15,23,42,.35))}
   @keyframes bob{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-10px) rotate(-2deg)}}
   .acc{color:#0ea5e9} .acc-bg{background:#0ea5e9} .acc-soft{background:#e0f2fe;color:#0369a1}
   .law{counter-reset:law;list-style:none;margin:0;padding:0;display:grid;gap:.75rem}
@@ -27,6 +29,7 @@
   .cls div{border-radius:18px;padding:1.1rem .75rem 1rem;background:#fff;border:1px solid #e2e8f0;border-top:4px solid var(--c);text-align:center;display:flex;flex-direction:column;align-items:center;gap:.15rem;box-shadow:0 1px 2px rgba(15,23,42,.04),0 10px 24px -12px rgba(15,23,42,.18);transition:transform .25s cubic-bezier(.16,1,.3,1),box-shadow .25s}
   .cls div:hover{transform:translateY(-4px);box-shadow:0 18px 36px -14px rgba(15,23,42,.28)}
   .cls .ph{width:84px;height:84px;border-radius:9999px;margin-bottom:.6rem;font-size:11px}
+  .cls .cls-img{width:92px;height:92px;object-fit:contain;margin-bottom:.5rem;filter:drop-shadow(0 8px 14px rgba(0,0,0,.18))}
   .cls strong{font-family:'Plus Jakarta Sans',sans-serif;font-size:17px;color:#0f172a}
   .cls span{font-size:12px;color:#64748b}
   .area-btn{display:flex;align-items:center;justify-content:space-between;width:100%;padding:.85rem 1rem;border-radius:14px;border:1px solid #e2e8f0;background:#fff;font:600 15px Inter,sans-serif;color:#0f172a;cursor:pointer;text-align:left}
@@ -61,8 +64,7 @@
 </head>
 <body data-page="ministries">
 <div data-site="nav"></div>
-
-<header class="hero relative overflow-hidden text-white"><div class="lines absolute inset-0" aria-hidden="true"></div>
+<header class="relative overflow-hidden hero-light" style="background:#bfe6fb"><img class="absolute inset-0 w-full h-full object-cover object-[50%_100%]" src="../img/adv-scene.jpg" alt="" aria-hidden="true"><div class="absolute inset-0" style="background:linear-gradient(90deg,rgba(255,255,255,.94) 0%,rgba(255,255,255,.82) 40%,rgba(255,255,255,.25) 70%,rgba(255,255,255,0) 100%)" aria-hidden="true"></div>
 <div class="wrap relative pt-10 pb-16 lg:pt-14 lg:pb-24">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><a href="#">Ministries</a><span class="sep">/</span><span class="text-white">Adventurers</span></nav>
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center mt-8">
@@ -77,10 +79,7 @@
 <dl class="slot mt-10 grid grid-cols-3 gap-6 max-w-lg border-t border-white/15 pt-7" data-slot="AD-03" data-spec="Numbers · 3 real figures">
 <div><dt class="text-xs uppercase tracking-wider text-white/60">Clubs</dt><dd class="font-heading font-extrabold text-3xl tabular mt-1">45+</dd></div><div><dt class="text-xs uppercase tracking-wider text-white/60">Adventurers</dt><dd class="font-heading font-extrabold text-3xl tabular mt-1">900</dd></div><div><dt class="text-xs uppercase tracking-wider text-white/60">Families</dt><dd class="font-heading font-extrabold text-3xl tabular mt-1">600</dd></div>
 </dl></div>
-<div class="lg:col-span-5 relative">
-<div class="ph slot ph-dark rounded-[28px] aspect-[4/5] max-w-md mx-auto" data-slot="AD-01" data-spec="Photo · 1600×2000 portrait · Adventurers in uniform with parents, outdoors"><span><span class="material-symbols-outlined">photo_camera</span>Adventurers in uniform with parents, outdoors</span></div>
-<img class="crest-float absolute -left-6 -bottom-8 w-36 sm:w-44 lg:w-52" src="../img/07.png" alt="" aria-hidden="true">
-</div></div></div></header>
+<div class="lg:col-span-5 relative"><div class="relative w-full max-w-md mx-auto aspect-[4/5] flex items-start justify-center pt-4"><img class="crest-float w-56 sm:w-64" src="../img/07.png" alt="" aria-hidden="true"></div></div></div></div></header>
 
 <section class="section bg-white border-b border-slate-200/80">
 <div class="wrap grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
@@ -95,7 +94,7 @@
 <div><p class="eyebrow">Inside the ministry</p><h2 class="h-section">What Adventurers do</h2><p class="lede">Four strands run through every club year.</p></div>
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10"><a class="card acc-sky group flex flex-col overflow-hidden" href="../resources.html">
 <div class="relative h-40 bg-gradient-to-br from-[#0c4a6e] via-[#0284c7] to-[#38bdf8] flex items-end p-5 overflow-hidden"><span class="material-symbols-outlined absolute -right-4 -top-4 text-[140px] text-white/15" aria-hidden="true">stars</span><span class="inline-flex px-3 py-1 rounded-full text-[11px] font-extrabold tracking-wider uppercase bg-white/20 text-white border border-white/30 backdrop-blur">Awards</span></div>
-<div class="p-6 flex flex-col flex-1"><h3 class="font-heading font-bold text-xl text-slate-900">Adventurer Awards</h3><p class="text-[15px] text-slate-700 mt-2 leading-relaxed">More than 80 awards, from Bible stories and pets to safety and gardening, each earned in a few meetings.</p><span class="link mt-auto pt-5">See the awards <span aria-hidden="true">&rarr;</span></span></div></a><a class="card acc-emerald group flex flex-col overflow-hidden" href="../ministries/adventurers.html">
+<div class="p-6 flex flex-col flex-1"><h3 class="font-heading font-bold text-xl text-slate-900">Adventurer Awards</h3><p class="text-[15px] text-slate-700 mt-2 leading-relaxed">More than 80 awards, from Bible stories and pets to safety and gardening, each earned in a few meetings.</p><span class="link mt-auto pt-5">See the awards <span aria-hidden="true">&rarr;</span></span></div></a><a class="card acc-emerald group flex flex-col overflow-hidden" href="../brief.html#AD">
 <div class="relative h-40 bg-gradient-to-br from-[#064e3b] via-[#059669] to-[#34d399] flex items-end p-5 overflow-hidden"><span class="material-symbols-outlined absolute -right-4 -top-4 text-[140px] text-white/15" aria-hidden="true">family_restroom</span><span class="inline-flex px-3 py-1 rounded-full text-[11px] font-extrabold tracking-wider uppercase bg-white/20 text-white border border-white/30 backdrop-blur">Families</span></div>
 <div class="p-6 flex flex-col flex-1"><h3 class="font-heading font-bold text-xl text-slate-900">Family Network</h3><p class="text-[15px] text-slate-700 mt-2 leading-relaxed">Parent classes and family activities that make the club a place for the whole household.</p><span class="link mt-auto pt-5">Learn more <span aria-hidden="true">&rarr;</span></span></div></a><a class="card acc-amber group flex flex-col overflow-hidden" href="../events.html">
 <div class="relative h-40 bg-gradient-to-br from-[#78350f] via-[#d97706] to-[#fbbf24] flex items-end p-5 overflow-hidden"><span class="material-symbols-outlined absolute -right-4 -top-4 text-[140px] text-white/15" aria-hidden="true">celebration</span><span class="inline-flex px-3 py-1 rounded-full text-[11px] font-extrabold tracking-wider uppercase bg-white/20 text-white border border-white/30 backdrop-blur">Spring</span></div>
@@ -110,10 +109,10 @@
 <li><p class="eyebrow acc">September</p><h3 class="font-heading font-bold text-lg mt-1">Induction</h3><p class="text-sm text-slate-600 mt-1">New Adventurers and parents are welcomed into the club.</p></li><li><p class="eyebrow acc">October–March</p><h3 class="font-heading font-bold text-lg mt-1">Awards & classes</h3><p class="text-sm text-slate-600 mt-1">Weekly or twice-monthly meetings at the church.</p></li><li><p class="eyebrow acc">Spring</p><h3 class="font-heading font-bold text-lg mt-1">Adventurer Fun Day</h3><p class="text-sm text-slate-600 mt-1">All clubs together for one day of games and worship.</p></li><li><p class="eyebrow acc">June</p><h3 class="font-heading font-bold text-lg mt-1">Investiture</h3><p class="text-sm text-slate-600 mt-1">Classes are awarded and families celebrate.</p></li>
 </ol><a class="link mt-4" href="../events.html">See this year's dates <span aria-hidden="true">&rarr;</span></a></div></section>
 
-<section class="section" id="classes"><div class="wrap grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+<section class="section"><div class="wrap grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
 <div class="lg:col-span-5"><p class="eyebrow">Growth track</p><h2 class="h-section">Six classes, one for every age</h2><p class="lede">Each class is built for one school year. Children move up together with the friends they started with.</p>
-<div class="slot cls mt-8" data-slot="AD-07" data-spec="Confirm class names, ages and colours; supply class emblems (transparent PNG) if available">
-<div style="--c:#a78bfa"><div class="ph">Little Lamb</div><strong>Little Lamb</strong><span>Age 4 · Pre-K</span></div><div style="--c:#f472b6"><div class="ph">Eager Beaver</div><strong>Eager Beaver</strong><span>Age 5 · Kindergarten</span></div><div style="--c:#2563eb"><div class="ph">Busy Bee</div><strong>Busy Bee</strong><span>Age 6 · Grade 1</span></div><div style="--c:#eab308"><div class="ph">Sunbeam</div><strong>Sunbeam</strong><span>Age 7 · Grade 2</span></div><div style="--c:#16a34a"><div class="ph">Builder</div><strong>Builder</strong><span>Age 8 · Grade 3</span></div><div style="--c:#dc2626"><div class="ph">Helping Hand</div><strong>Helping Hand</strong><span>Age 9 · Grade 4</span></div>
+<div class="slot cls mt-8" data-slot="AD-07" data-spec="Class emblems from the NAD Club Ministries site are in place; confirm ages and grades">
+<div style="--c:#7dd3fc"><img class="cls-img" src="../img/adv-class-little-lamb.png" alt="Little Lamb class emblem"><strong>Little Lamb</strong><span>Age 4 · Pre-K</span></div><div style="--c:#a16207"><img class="cls-img" src="../img/adv-class-eager-beaver.png" alt="Eager Beaver class emblem"><strong>Eager Beaver</strong><span>Age 5 · Kindergarten</span></div><div style="--c:#2563eb"><img class="cls-img" src="../img/adv-class-busy-bee.png" alt="Busy Bee class emblem"><strong>Busy Bee</strong><span>Age 6 · Grade 1</span></div><div style="--c:#eab308"><img class="cls-img" src="../img/adv-class-sunbeam.png" alt="Sunbeam class emblem"><strong>Sunbeam</strong><span>Age 7 · Grade 2</span></div><div style="--c:#16a34a"><img class="cls-img" src="../img/adv-class-builder.png" alt="Builder class emblem"><strong>Builder</strong><span>Age 8 · Grade 3</span></div><div style="--c:#dc2626"><img class="cls-img" src="../img/adv-class-helping-hand.png" alt="Helping Hand class emblem"><strong>Helping Hand</strong><span>Age 9 · Grade 4</span></div>
 </div></div>
 <div class="lg:col-span-7"><div class="card acc-sky p-7 sm:p-9 overflow-hidden relative">
 <span class="material-symbols-outlined absolute -right-6 -bottom-8 text-[200px] opacity-10 acc" aria-hidden="true">stars</span>
@@ -163,10 +162,11 @@
 </div></section>
 
 <section class="wrap pb-20"><div class="relative overflow-hidden rounded-[28px] text-white p-8 sm:p-12 lg:p-16" style="background:linear-gradient(135deg,#0b1430,#064e3b)">
-<img class="absolute -right-10 -bottom-16 w-72 opacity-20 rotate-12" src="../img/07.png" alt="" aria-hidden="true">
+<img class="absolute inset-0 w-full h-full object-cover object-bottom" src="../img/adv-welcome.jpg" alt="" aria-hidden="true"><div class="absolute inset-0" style="background:linear-gradient(90deg,rgba(8,14,34,.9) 0%,rgba(8,14,34,.8) 45%,rgba(8,14,34,.35) 70%,rgba(8,14,34,0) 100%)" aria-hidden="true"></div>
 <div class="relative grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-<div class="lg:col-span-8"><p class="text-xs font-bold tracking-[0.18em] uppercase text-[#ffe247]">Ready to start?</p><h2 class="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight mt-3" style="text-wrap:balance">Start your child’s adventure this year.</h2><p class="text-white/80 text-lg mt-4 max-w-xl">The Adventurer office will connect you with a club near you or help your church start one.</p></div>
-<div class="lg:col-span-4 flex flex-col gap-3"><a class="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-white text-slate-900 hover:bg-slate-100 font-semibold" href="#find">Find a club near you</a><a class="slot inline-flex items-center justify-center px-7 py-3.5 rounded-full border border-white/40 hover:bg-white/10 font-semibold" href="mailto:info@gnycyouth.com" data-slot="AD-16" data-spec="Email · office address for enquiries">Start a new club</a></div>
+<div class="lg:col-span-7"><p class="text-xs font-bold tracking-[0.18em] uppercase text-[#ffe247]">Ready to start?</p><h2 class="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight mt-3" style="text-wrap:balance">Welcome to the Adventurer Club.</h2><p class="text-white/85 text-lg mt-4 max-w-xl">The Adventurer office will connect you with a club near you or help your church start one.</p>
+<div class="mt-8 flex flex-col sm:flex-row gap-3"><a class="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-white text-slate-900 hover:bg-slate-100 font-semibold" href="#find">Find a club near you</a><a class="slot inline-flex items-center justify-center px-7 py-3.5 rounded-full border border-white/50 hover:bg-white/10 font-semibold" href="mailto:info@gnycyouth.com" data-slot="AD-16" data-spec="Email · office address for enquiries">Start a new club</a></div></div>
+<div class="lg:col-span-5 min-h-[120px] lg:min-h-[220px]" aria-hidden="true"></div>
 </div></div></section>
 
 <div data-site="footer"></div>
