@@ -22,6 +22,37 @@
   .tl li{list-style:none;position:relative}
   .tl li::before{content:"";position:absolute;left:calc(-2rem - 7px);top:6px;width:12px;height:12px;border-radius:9999px;background:#006194;box-shadow:0 0 0 4px #fff}
   .tl b{font:800 14px Inter,sans-serif;letter-spacing:.1em;color:#006194}
+  /* how we're organized */
+  .org{background:radial-gradient(60% 60% at 50% 20%,rgba(56,189,248,.28),rgba(56,189,248,0) 70%),linear-gradient(170deg,#0b1430 0%,#0c2d5c 55%,#0b1430 100%)}
+  .org-lines{background:repeating-linear-gradient(135deg,rgba(255,255,255,.04) 0 1px,transparent 1px 16px)}
+  .org-chart{--ln:rgba(255,255,255,.35)}
+  .org-top{display:flex;align-items:center;justify-content:center;gap:1rem;width:fit-content;margin:0 auto;padding:.75rem 1.5rem .75rem .75rem;border-radius:9999px;background:linear-gradient(180deg,#1e4e8c,#0f2f5f);border:1px solid rgba(255,255,255,.25);box-shadow:0 20px 40px -20px rgba(0,0,0,.7)}
+  .org-top img{width:64px;height:64px;object-fit:contain}
+  .org-top span{font:800 clamp(18px,2.4vw,26px) 'Plus Jakarta Sans',sans-serif;letter-spacing:.02em;text-transform:uppercase}
+  .org-branches{display:grid;grid-template-columns:1fr;gap:2.5rem;margin-top:2.5rem;position:relative}
+  @media (min-width:1024px){.org-branches{grid-template-columns:2fr 3fr;gap:2rem;padding-top:2.5rem}
+    .org-branches::before{content:"";position:absolute;top:-2.5rem;left:50%;height:2.5rem;border-left:2px solid var(--ln)}
+    .org-branches::after{content:"";position:absolute;top:0;left:20%;right:30%;border-top:2px solid var(--ln)}
+    .org-branch{position:relative}.org-branch::before{content:"";position:absolute;top:-2.5rem;left:50%;height:2.5rem;border-left:2px solid var(--ln)}}
+  .org-branch{display:flex;flex-direction:column;align-items:center;padding:1.5rem;border-radius:24px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12)}
+  .org-head{padding:.6rem 1.75rem;border-radius:16px;background:linear-gradient(180deg,#2563eb,#1e3a8a);font:800 18px 'Plus Jakarta Sans',sans-serif;letter-spacing:.08em;text-transform:uppercase;box-shadow:0 12px 24px -12px rgba(0,0,0,.7)}
+  .org-lead{display:flex;align-items:center;gap:1rem;margin-top:1.75rem;padding:.75rem 1.25rem .75rem .75rem;border-radius:9999px;background:rgba(255,255,255,.08);border:1px solid rgba(252,211,77,.4);color:#fff;text-decoration:none;position:relative}
+  .org-lead::before{content:"";position:absolute;bottom:100%;left:50%;height:1.75rem;border-left:2px solid var(--ln)}
+  a.org-lead:hover{background:rgba(255,255,255,.14)}
+  .org-lead img{width:64px;height:64px;object-fit:contain;filter:drop-shadow(0 8px 12px rgba(0,0,0,.5))}
+  .org-lead b{display:block;font:800 17px 'Plus Jakarta Sans',sans-serif}.org-lead small{display:block;font-size:13px;color:rgba(255,255,255,.75)}
+  .org-kids{display:grid;gap:1rem;width:100%;margin-top:1.75rem;position:relative}
+  .org-kids::before{content:"";position:absolute;bottom:100%;left:50%;height:1.75rem;border-left:2px solid var(--ln)}
+  .org-kids-2{grid-template-columns:repeat(2,1fr)}.org-kids-3{grid-template-columns:repeat(3,1fr)}
+  @media (max-width:520px){.org-kids-3{grid-template-columns:repeat(2,1fr)}.org-kids-3>:last-child{grid-column:1/-1;justify-self:center;width:50%}}
+  .org-node{display:flex;flex-direction:column;align-items:center;text-align:center;gap:.25rem;padding:1rem .5rem;border-radius:16px;color:#fff;text-decoration:none;position:relative;border-top:3px solid var(--d)}
+  a.org-node:hover{background:rgba(255,255,255,.08)}
+  .org-node img{width:96px;height:96px;object-fit:contain;filter:drop-shadow(0 12px 16px rgba(0,0,0,.5));margin-bottom:.5rem}
+  .org-node b{font:800 15px/1.2 'Plus Jakarta Sans',sans-serif}.org-node small{font:700 12px Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.75)}
+  .org-progs{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:.5rem;margin-top:1.25rem;padding-top:1.25rem;border-top:1px dashed rgba(255,255,255,.2);width:100%}
+  .org-progs-h{font:700 11px Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#fcd34d;margin-right:.25rem}
+  .org-progs a{display:inline-flex;align-items:center;min-height:36px;padding:.25rem .8rem;border-radius:9999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#fff;font:600 13px Inter,sans-serif;text-decoration:none}
+  .org-progs a:hover{background:rgba(255,255,255,.16)}
 </style>
 </head>
 <body data-page="about">
@@ -50,9 +81,50 @@
 <div class="slot grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-10" data-slot="AB-05" data-spec="Text · confirm or rewrite the four pillars (title + 25 words each)">
 <div class="pillar"><span class="material-symbols-outlined">groups</span><h3 class="font-heading font-bold text-xl mt-3">Club ministries</h3><p class="text-[15px] text-slate-600 mt-2">Adventurers, Pathfinders and Master Guides in local churches, supported by area coordinators.</p></div>
 <div class="pillar"><span class="material-symbols-outlined">celebration</span><h3 class="font-heading font-bold text-xl mt-3">Conference events</h3><p class="text-[15px] text-slate-600 mt-2">Congress, camporees, retreats, PBE and rallies that bring the whole conference together.</p></div>
-<div class="pillar"><span class="material-symbols-outlined">school</span><h3 class="font-heading font-bold text-xl mt-3">Leadership training</h3><p class="text-[15px] text-slate-600 mt-2">Certifying directors, counsellors and teen leaders so every club is safe and well run.</p></div>
+<div class="pillar"><span class="material-symbols-outlined">school</span><h3 class="font-heading font-bold text-xl mt-3">Leadership training</h3><p class="text-[15px] text-slate-600 mt-2">Certifying directors, counselors and teen leaders so every club is safe and well run.</p></div>
 <div class="pillar"><span class="material-symbols-outlined">volunteer_activism</span><h3 class="font-heading font-bold text-xl mt-3">Young adult mission</h3><p class="text-[15px] text-slate-600 mt-2">AY societies, campus ministry and the School of Evangelism for ages 18 and up.</p></div>
 </div></div>
+</section>
+
+<!-- ================= HOW WE'RE ORGANIZED ================= -->
+<section class="org section relative overflow-hidden text-white" id="structure">
+<div class="org-lines absolute inset-0" aria-hidden="true"></div>
+<div class="wrap relative">
+<div class="max-w-3xl mx-auto text-center">
+<p class="text-xs font-bold tracking-[0.18em] uppercase text-[#fcd34d]">How we're organized</p>
+<h2 class="font-heading font-extrabold text-4xl sm:text-5xl tracking-[-0.02em] leading-[1.05] mt-3" style="text-wrap:balance">One youth ministry, every age</h2>
+<p class="text-lg text-white/80 leading-relaxed mt-4">GNYC Youth follows the structure of Adventist Youth Ministries worldwide: junior youth clubs led by Master Guides, and senior youth ministries led by leaders certified through AYLC.</p>
+</div>
+
+<div class="org-chart mt-14">
+<div class="org-top"><img src="img/00.png" alt="GNYC Adventist Youth Ministries seal"><span>GNYC Adventist Youth Ministries</span></div>
+<div class="org-branches">
+
+<div class="org-branch">
+<div class="org-head">Junior Youth</div>
+<a class="org-lead" href="ministries/master-guides.html"><img src="img/crest-mg.png" alt=""><span><b>Master Guides</b><small>Leaders of the junior youth clubs</small></span></a>
+<div class="org-kids org-kids-2">
+<a class="org-node" style="--d:#7c3aed" href="ministries/adventurers.html"><img src="img/07.png" alt=""><b>Adventurers</b><small>Ages 4–9</small></a>
+<a class="org-node" style="--d:#eab308" href="ministries/pathfinders.html"><img src="img/08.png" alt=""><b>Pathfinders</b><small>Ages 10–15</small></a>
+</div>
+<div class="org-progs"><span class="org-progs-h">In GNYC</span><a href="ministries/adventurers/awards.html">Adventurer Awards</a><a href="ministries/pathfinders/honors.html">Pathfinder Honors</a><a href="ministries/pathfinders/bible-experience.html">Bible Experience</a><a href="ministries/pathfinders/teen-leadership-training.html">Teen Leadership Training</a><a href="ministries/pathfinders/drum-corps.html">Drum Corps</a><a href="ministries/pathfinders/drilling-marching.html">Drilling &amp; Marching</a></div>
+</div>
+
+<div class="org-branch">
+<div class="org-head">Senior Youth</div>
+<div class="org-lead org-lead-plain"><img src="img/crest-ay.png" alt=""><span><b>AYLC</b><small>Adventist Youth Leadership Certification</small></span></div>
+<div class="slot org-kids org-kids-3" data-slot="AB-10" data-spec="Data · DRAFT confirm which senior youth ministries GNYC runs (Ambassadors?) and the age ranges used">
+<div class="org-node" style="--d:#06b6d4"><img src="img/org/ambassadors.webp" alt=""><b>Ambassadors</b><small>Ages 16–21</small></div>
+<a class="org-node" style="--d:#ec4899" href="ministries/ay/young-adults.html"><img src="img/crest-ay.png" alt=""><b>Young Adults</b><small>Ages 22–30</small></a>
+<a class="org-node" style="--d:#94a3b8" href="ministries/ay/public-campus-ministry.html"><img src="img/pcm-logo.png" alt=""><b>Public Campus Ministry</b><small>Ages 16–30+</small></a>
+</div>
+<div class="org-progs"><span class="org-progs-h">In GNYC</span><a href="ministries/ay-ministries.html">AY Ministries</a><a href="ministries/ay/school-of-evangelism.html">School of Evangelism</a></div>
+</div>
+
+</div>
+</div>
+<p class="text-center text-sm text-white/60 mt-10">Structure and age ranges from Adventist Youth Ministries of the General Conference.</p>
+</div>
 </section>
 
 <section class="section" id="leadership">
