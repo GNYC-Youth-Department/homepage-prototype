@@ -67,7 +67,7 @@ var P = [
   ['AB-07','people','Lead area coordinators','15 names and areas done from gnycyouth.org (Club and AY tracks); add headshots 800×1000 and emails'],
   ['AB-08','data','Timeline','Youth directors since 1979 done; add founding dates (first club, first camporee, first congress)'],
   ['AB-09','text','Office hours and contacts','Hours, and the best contact per ministry'],
-  ['AB-10','data','How we’re organized','DRAFT confirm which senior youth ministries GNYC runs (Ambassadors?) and the age ranges used in the structure chart']]},
+  ['AB-10','data','How we’re organized','DRAFT confirm the age ranges used in the structure chart']]},
  {code:'ADA', name:'Adventurer Awards', url:'ministries/adventurers/awards.html', group:'Built pages', slots:[
   ['ADA-01','text','Intro','30–50 words; which awards GNYC clubs teach most'],
   ['ADA-02','photo','Patch photos','73 of 156 awards have a patch photo and are listed (34 from the Climb Higher camporee app, 39 from clubministries.org, Sep 27, 2026). The other 83 are hidden until a photo is supplied: photograph or scan them on a plain background, 600×600, and they appear automatically'],
