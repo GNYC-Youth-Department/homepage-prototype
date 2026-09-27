@@ -81,9 +81,9 @@
   .uni-mg img{width:132px;filter:drop-shadow(0 20px 26px rgba(0,0,0,.5))}
   .uni-combo{list-style:none;margin:.75rem 0 0;padding:0;display:grid;gap:.5rem}.uni-combo li{padding:.6rem .9rem;border-radius:16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);font-size:15px}
   .uni-mg-items{list-style:none;margin:0;padding:0;display:grid;gap:1rem;grid-template-columns:1fr}@media (min-width:640px){.uni-mg-items{grid-template-columns:1fr 1fr}}
-  .uni-mg-items li{display:flex;gap:1rem;align-items:flex-start;background:#fff;border:1px solid #dbeafe;border-radius:24px;padding:1.25rem;box-shadow:0 12px 26px -18px rgba(30,58,138,.4)}
+  .uni-mg-items li{display:flex;gap:1rem;align-items:center;background:#fff;border:1px solid #dbeafe;border-radius:24px;padding:1.25rem;box-shadow:0 12px 26px -18px rgba(30,58,138,.4)}
   .uni-mg-items .material-symbols-outlined{flex:none;width:44px;height:44px;border-radius:16px;display:grid;place-items:center;background:color-mix(in srgb,var(--c) 12%,#fff);color:var(--c);font-size:24px}
-  .uni-mg-items h3{font:800 16px 'Plus Jakarta Sans',sans-serif;color:#0f172a;margin:0 0 .25rem}.uni-mg-items p{font-size:14px;line-height:1.5;color:#475569;margin:0}
+  .uni-mg-items h3{font:800 16px 'Plus Jakarta Sans',sans-serif;color:#0f172a;margin:0}.uni-mg-items p{font-size:14px;line-height:1.5;color:#475569;margin:0}
   /* why join */
   .why{display:grid;grid-template-columns:repeat(1,1fr);gap:1rem}
   @media (min-width:640px){.why{grid-template-columns:repeat(2,1fr)}}
@@ -280,6 +280,7 @@
 <li style="--c:#b45309"><span class="material-symbols-outlined" aria-hidden="true">groups</span>Leadership development</li>
 <li style="--c:#0369a1"><span class="material-symbols-outlined" aria-hidden="true">fitness_center</span>Fitness and lifestyle development</li>
 </ul>
+<a class="link mt-4" href="https://www.clubministries.org/master-guide-requirements/">Requirements for each area</a>
 <div class="ph slot rounded-2xl mt-6 flex-1 min-h-[10rem]" data-slot="MG-25" data-spec="Photo · 1600×900 · candidates at a Master Guide class night"><span><span class="material-symbols-outlined">photo_camera</span>Candidates at a Master Guide class night</span></div>
 </div>
 <div class="lg:col-span-5 mg-serve relative overflow-hidden rounded-[24px] text-white p-7 sm:p-9">
@@ -332,17 +333,18 @@
 <p class="lede lg:col-span-5 !mt-0">Master Guides serving with Pathfinders wear the Pathfinder Class A uniform with the insignia they have earned.</p>
 </div>
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-12">
-<div class="uni-mg lg:col-span-4"><img src="../img/crest-mg.png" alt="Master Guide emblem"><p class="text-xs font-bold tracking-[0.18em] uppercase text-[#ffe247] mt-6">Four authorized combinations</p><ul class="uni-combo"><li>Tan shirt, black skirt or slacks</li><li>Tan shirt, black skirt or slacks, black uniform jacket</li><li>Tan shirt, green skirt or slacks</li><li>Tan shirt, green skirt or slacks, green uniform jacket</li></ul><p class="text-sm text-white/70 mt-4">Most conferences encourage a jacket but do not require one.</p></div>
-<ul class="slot uni-mg-items lg:col-span-8" data-slot="MG-17" data-spec="Text · confirm GNYC's Master Guide uniform: bottoms color, jacket, shoulder cords and any conference additions">
-<li style="--c:#1d4ed8"><span class="material-symbols-outlined" aria-hidden="true">workspace_premium</span><div><h3>Master Guide pin</h3><p>On the flap of the left chest pocket, with the class level pins.</p></div></li>
-<li style="--c:#b45309"><span class="material-symbols-outlined" aria-hidden="true">badge</span><div><h3>Name stripe</h3><p>Across the top of the left chest pocket.</p></div></li>
-<li style="--c:#0369a1"><span class="material-symbols-outlined" aria-hidden="true">star</span><div><h3>Master Guide star</h3><p>On the left sleeve below the world patch; with six class chevrons once every Investiture Achievement level is earned.</p></div></li>
-<li style="--c:#a16207"><span class="material-symbols-outlined" aria-hidden="true">checkroom</span><div><h3>Master Guide neckerchief</h3><p>Yellow with red edging, the six-color ribbon and the Master Guide logo, worn with the blue slide.</p></div></li>
-<li style="--c:#be185d"><span class="material-symbols-outlined" aria-hidden="true">diversity_1</span><div><h3>With Adventurers</h3><p>Master Guides on Adventurer staff may wear the yellow Adventurer Master Guide scarf with its level stripes.</p></div></li>
-<li style="--c:#475569"><span class="material-symbols-outlined" aria-hidden="true">face</span><div><h3>Beret</h3><p>Optional, with the Master Guide flash over the left eye.</p></div></li>
+<div class="uni-mg lg:col-span-4"><img src="../img/crest-mg.png" alt="Master Guide emblem"><p class="text-white/85 text-[15px] leading-relaxed mt-6">A Master Guide serves in the uniform of the club they lead, and wears the insignia of the calling on it.</p></div>
+<ul class="slot uni-mg-items lg:col-span-8" data-slot="MG-17" data-spec="Text · DRAFT confirm anything GNYC adds to the NAD Master Guide uniform">
+<li style="--c:#1d4ed8"><span class="material-symbols-outlined" aria-hidden="true">workspace_premium</span><div><h3>Master Guide pin</h3></div></li>
+<li style="--c:#b45309"><span class="material-symbols-outlined" aria-hidden="true">badge</span><div><h3>Name stripe</h3></div></li>
+<li style="--c:#0369a1"><span class="material-symbols-outlined" aria-hidden="true">star</span><div><h3>Master Guide star</h3></div></li>
+<li style="--c:#a16207"><span class="material-symbols-outlined" aria-hidden="true">checkroom</span><div><h3>Master Guide neckerchief</h3></div></li>
+<li style="--c:#be185d"><span class="material-symbols-outlined" aria-hidden="true">diversity_1</span><div><h3>With Adventurers</h3></div></li>
+<li style="--c:#475569"><span class="material-symbols-outlined" aria-hidden="true">face</span><div><h3>Beret</h3></div></li>
 </ul>
 </div>
-<div class="flex flex-col sm:flex-row gap-3 mt-8"><a class="btn-primary !py-3.5 !px-7 !text-[15px]" href="https://gnycyouth.org/shop/"><span class="material-symbols-outlined text-xl" aria-hidden="true">shopping_bag</span>Shop the uniform</a><a class="pill !py-3.5 !px-7 !text-[15px] text-center" href="https://www.clubministries.org/masterguides/master-guide-uniform/" target="_blank" rel="noopener noreferrer">NAD Master Guide uniform page</a></div>
+<div class="mt-8"><a class="card p-6 sm:p-7 flex gap-4 items-start" href="https://www.clubministries.org/masterguides/master-guide-uniform/"><img src="../img/org/nad.webp" alt="" class="w-12 h-12 object-contain shrink-0"><span class="flex-1 min-w-0"><small class="block text-[11px] font-bold tracking-[0.12em] uppercase text-slate-500">North American Division · official standard</small><strong class="font-heading text-lg text-slate-900 block mt-1">Master Guide Uniform</strong><span class="text-sm text-slate-600 block">The authorized combinations and where every Master Guide insignia is worn, kept up to date by the North American Division.</span><span class="link mt-3">See the official standard</span></span></a></div>
+<div class="flex flex-col sm:flex-row gap-3 mt-8"><a class="btn-primary !py-3.5 !px-7 !text-[15px]" href="https://gnycyouth.org/shop/"><span class="material-symbols-outlined text-xl" aria-hidden="true">shopping_bag</span>Shop the uniform</a></div>
 </div>
 </section>
 <section class="section border-y border-blue-100" style="background:linear-gradient(180deg,#eff6ff,#f8faff)" id="year"><div class="wrap">

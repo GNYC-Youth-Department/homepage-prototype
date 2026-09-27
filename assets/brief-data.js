@@ -34,7 +34,7 @@ var P = [
   ['PF-19','text','Aim and Motto','Pathfinders page only. Confirm the Aim and Motto wording GNYC uses'],
   ['PF-20','text','Class focus lines','Pathfinders page only. DRAFT: one focus line per class (Friend to Guide), 15–25 words, checked against the NAD class descriptions'],
   ['PF-21','data','Curriculum areas','Pathfinders page only. Confirm the Investiture Achievement area names used in GNYC clubs; some editions call the last area Honor Enrichment rather than Lifestyle Enrichment'],
-  ['PF-22','text','Levels of dress','DRAFT NAD defines only Class A; confirm which of Modified A, Class B and Class C GNYC uses and when'],
+  ['PF-22','text','Levels of dress','Removed Sep 27, 2026: levels of dress follow the NAD Pathfinder Uniform page, linked from the uniform section'],
   ['PF-23','text','How to start a club','DRAFT five steps shown in How to start. Confirm the GNYC process: who approves, how a club registers with the conference, fees, and Basic Staff Training dates']]},
  {code:'PBE', name:'Pathfinder Bible Experience', url:'ministries/pathfinders/bible-experience.html', group:'Built pages', note:'Sub-ministry page layout. TLT, Drum Corps, Drilling & Marching, Young Adults, School of Evangelism and Public Campus Ministry use the same layout.', slots:[
   ['PBE-01','photo','PBE logo','Supplied Sep 21, 2026 (518×369 PNG); a larger or vector copy is in the NAD logo pack on nadpbe.org'],
@@ -103,7 +103,7 @@ var P = [
   ['AD-21','link','Monthly club report','monthly report form or portal URL'],
   ['AD-22','text','Family Network','DRAFT confirm how the Family Network runs in GNYC clubs: parent sessions, home requirements, family events'],
   ['AD-24','text','How to start a club','DRAFT five steps shown in How to start. Confirm the GNYC process to start an Adventurer club: who approves, registration with the conference, fees, training dates'],
-  ['AD-23','text','Adventurer uniform','Confirm the GNYC dress uniform options (blouse and shirt color, socks, beret) and where families buy']], note:'Reworked Sep 27, 2026 around families: why join, a club meeting, the four curriculum areas (My God, My Self, My Family, My World), the Pledge and Law, and the six-class journey with the Family Network, investiture and awards. Its own slot list, no longer the Pathfinders layout.'},
+  ['AD-23','text','Adventurer uniform','DRAFT one line on anything GNYC adds to the NAD uniform; the pieces and placement link to the NAD Adventurer Club Uniform page']], note:'Reworked Sep 27, 2026 around families: why join, a club meeting, the four curriculum areas (My God, My Self, My Family, My World), the Pledge and Law, and the six-class journey with the Family Network, investiture and awards. Its own slot list, no longer the Pathfinders layout.'},
  {code:'MG', name:'Master Guides', tmpl:'PF', url:'ministries/master-guides.html', group:'Built pages · ministry layout', note:'Reworked Sep 27, 2026 for adults and older youth answering a call to lead: why become a Master Guide, the NAD purpose, mission, vision and philosophy, the official Pledge and Law, the five-step leadership journey, and ways to keep growing.', slots:[
   ['MG-01','photo','Hero photo','1600×2000 portrait · a NAD photo of the Master Guide neckerchief is in place; replace with GNYC Master Guides at investiture when available'],
   ['MG-02','text','Tagline','tagline, 25–40 words'],
@@ -121,7 +121,7 @@ var P = [
   ['MG-14','photo','Gallery','6 images, 1200px+ on the long side: Investiture, Camporee staff, Class night, Camp skills, Mentoring, Summit'],
   ['MG-15','text','FAQ','confirm or rewrite each answer'],
   ['MG-16','link','Inquiries email','office address for inquiries'],
-  ['MG-17','text','Master Guide uniform','confirm GNYC’s Master Guide uniform: bottoms color, jacket, shoulder cords and any conference additions'],
+  ['MG-17','text','Master Guide uniform','DRAFT confirm anything GNYC adds; the combinations and insignia placement link to the NAD Master Guide Uniform page'],
   ['MG-18','link','Record card','Done: links to the NAD Master Guide Requirements page, where the record card and portfolio are maintained'],
   ['MG-19','text','Why become a Master Guide: six reasons','DRAFT six reasons; confirm or rewrite each in 20–30 words'],
   ['MG-20','text','Voices','one invested Master Guide and one current candidate, 25–40 words each, with full name, club and permission'],
