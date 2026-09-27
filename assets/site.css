@@ -110,5 +110,13 @@ body.show-slots .slot{outline:2px dashed rgba(217,119,6,.75);outline-offset:4px;
 body.show-slots .slot::after{content:attr(data-slot) "  ·  " attr(data-spec);position:absolute;top:-12px;left:8px;z-index:20;background:#d97706;color:#fff;font:700 11px/1 'Inter',system-ui,sans-serif;letter-spacing:.04em;padding:5px 8px;border-radius:6px;box-shadow:0 4px 10px -2px rgba(0,0,0,.35);white-space:nowrap;max-width:calc(100% - 16px);overflow:hidden;text-overflow:ellipsis;pointer-events:none}
 .slot-toggle{position:fixed;right:1rem;bottom:calc(1rem + env(safe-area-inset-bottom,0px));z-index:70;display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.1rem;border-radius:9999px;border:0;background:#0f172a;color:#fff;font:600 14px Inter,system-ui,sans-serif;box-shadow:0 12px 30px -8px rgba(0,0,0,.45);cursor:pointer}
 .slot-toggle .material-symbols-outlined{font-size:20px;color:#ffe247}
+body.show-slots .slot-here{outline:3px solid #d97706;outline-offset:6px;box-shadow:0 0 0 12px rgba(217,119,6,.18);animation:slot-here 1.6s ease-in-out 3}
+@keyframes slot-here{50%{box-shadow:0 0 0 24px rgba(217,119,6,.05)}}
+@media (prefers-reduced-motion:reduce){body.show-slots .slot-here{animation:none}}
 body.show-slots .slot-toggle{background:#d97706}
 body.show-slots .slot-toggle .material-symbols-outlined{color:#fff}
+
+/* content whose link is not supplied yet: not clickable, marked as coming */
+.no-link{cursor:default}
+.card.no-link:hover,.no-link:hover{transform:none!important}
+.soon{display:inline-block;align-self:flex-start;margin-top:.5rem;font:700 11px/1.4 Inter,system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#92400e;background:#fef3c7;border-radius:6px;padding:3px 8px;white-space:nowrap}

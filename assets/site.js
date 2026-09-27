@@ -77,7 +77,7 @@
     '<div><h4>Ministries</h4><ul>' + clubs.map(function (c) { return '<li><a class="f-club" href="' + c.href + '"><img src="' + c.crest + '" alt="">' + c.name + '</a></li>'; }).join('') + '<li><a class="f-club" href="' + u('ministries/pathfinders/bible-experience.html') + '"><img src="' + u('img/pbe-logo.png') + '" alt="">Bible Experience (PBE)</a></li><li><a class="f-club" href="' + u('ministries/pathfinders/teen-leadership-training.html') + '"><img src="' + u('img/tlt-logo.png') + '" alt="">Teen Leadership Training</a></li></ul></div>' +
     '<div><h4>Events</h4><ul><li><a href="' + CONGRESS + '" style="color:#fcd34d;font-weight:600">AY Congress XVIII</a></li><li><a href="' + u('events.html') + '">Upcoming events</a></li><li><a href="' + u('events.html') + '">Annual Camporee</a></li><li><a href="' + u('events.html') + '">Young Adult Retreat</a></li><li><a href="https://drive.google.com/file/d/1R9X7ByCJo2Y_s8DfSZvJ8EKGKVcLDpny/view?usp=drive_link">Year calendar (PDF)</a></li></ul></div>' +
     '<div><h4>Quick access</h4><ul><li><a href="https://gnycyouth.org/shop/">Store</a></li><li><a href="' + u('resources.html') + '">Forms &amp; downloads</a></li><li><a href="' + u('about.html#leadership') + '">Leadership</a></li><li><a href="' + u('about.html') + '">About GNYC Youth</a></li><li><a href="' + u('about.html#contact') + '">Contact</a></li></ul></div></div>' +
-    '<div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;padding-top:2rem;font-size:13px;color:rgba(186,230,253,.8)"><p style="margin:0">&copy; 2026 Greater New York Conference of Seventh-day Adventists. All rights reserved.</p><div style="display:flex;gap:1.5rem"><a href="#">Terms &amp; Conditions</a><a href="#">Privacy Policy</a><a href="#">Risk Management</a></div></div>' +
+    '<div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;padding-top:2rem;font-size:13px;color:rgba(186,230,253,.8)"><p style="margin:0">&copy; 2026 Greater New York Conference of Seventh-day Adventists. All rights reserved.</p><div style="display:flex;gap:1.5rem"><a href="https://gnycyouth.org/legal/terms-conditions/">Terms &amp; Conditions</a><a href="https://gnycyouth.org/legal/privacy-policy/">Privacy Policy</a></div></div>' +
     '</div></footer>' +
     '<button class="slot-toggle" id="slot-toggle" type="button" aria-pressed="false"><span class="material-symbols-outlined" aria-hidden="true">sell</span><span class="slot-toggle-label">Show content slots</span></button>';
 
@@ -113,5 +113,8 @@
   if (st) {
     var want = /[?&]slots=1/.test(location.search); try { if (!want && sessionStorage.getItem('slots') === '1') want = true; } catch (e) {}
     slots(want); st.addEventListener('click', function () { slots(!document.body.classList.contains('show-slots')); });
+    /* a slot code in the address (#PF-06) shows the slots, scrolls to that one and lights it */
+    function toSlot() { var m = /^#([A-Z]{2,3}-\d\d)$/.exec(location.hash); if (!m) return; var el = document.querySelector('[data-slot="' + m[1] + '"]'); if (!el) return; slots(true); document.querySelectorAll('.slot-here').forEach(function (x) { x.classList.remove('slot-here'); }); el.classList.add('slot-here'); el.scrollIntoView({ block: 'center' }); }
+    toSlot(); window.addEventListener('hashchange', toSlot);
   }
 })();
