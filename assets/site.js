@@ -53,7 +53,7 @@
     '<div style="display:flex;align-items:center;gap:.5rem">' +
       '<div class="lang" role="group" aria-label="Language"><button id="lang-en" aria-pressed="true">EN</button><button id="lang-es" aria-pressed="false">ES</button></div>' +
       '<button type="button" aria-label="Search" data-open-search class="nav-link" style="padding:.6rem"><span class="material-symbols-outlined" style="font-size:22px">search</span></button>' +
-      '<a class="btn-primary nav-register" href="' + CONGRESS + '" target="_blank" rel="noopener noreferrer" style="display:none">Register</a>' +
+      '<a class="btn-primary nav-register" href="' + CONGRESS + '" target="_blank" rel="noopener noreferrer" style="display:none">Register<span class="material-symbols-outlined" aria-hidden="true" style="font-size:17px;color:#fcd34d">arrow_outward</span></a>' +
       '<button id="menu-btn" class="nav-link nav-burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" style="padding:.5rem"><span class="material-symbols-outlined">menu</span></button>' +
     '</div></div>' +
     '<div id="mobile-menu" class="m-menu" hidden>' +

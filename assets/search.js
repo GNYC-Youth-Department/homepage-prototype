@@ -146,6 +146,9 @@
 
   document.querySelectorAll('input[data-search]').forEach(attach);
 
+  /* page filter bars (Resources, Honors, Awards) share the look; Search jumps to the results */
+  document.querySelectorAll('.ss-bar-page').forEach(function (f) { f.addEventListener('submit', function (e) { e.preventDefault(); var t = document.getElementById('results-top') || document.getElementById('list') || document.querySelector('main'); if (t) t.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' }); }); });
+
   /* the nav search button opens a search dialog on every page */
   var dlg = document.createElement('dialog'); dlg.className = 'ss-dlg'; dlg.setAttribute('aria-label', 'Search the site');
   dlg.innerHTML = '<form class="ss-bar ss-bar-dlg" role="search"><span class="ss-lead" aria-hidden="true"><span class="material-symbols-outlined">search</span></span><input type="search" placeholder="Search events, clubs, honors, forms…" aria-label="Search the site"><button type="button" class="ss-x" aria-label="Close search"><span class="material-symbols-outlined" aria-hidden="true">close</span></button></form>';
@@ -158,7 +161,9 @@
   document.querySelectorAll('[data-open-search]').forEach(function (b) { b.addEventListener('click', function () { var h = heroInView(); if (h) h.focus(); else openDlg(); }); });
   document.addEventListener('keydown', function (e) {
     var tag = (document.activeElement && document.activeElement.tagName) || '';
-    if ((e.key === '/' && !/INPUT|TEXTAREA|SELECT/.test(tag) && !document.querySelector('#q')) || ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k')) {
+    var pf = document.querySelector('.ss-bar-page input');
+    if (e.key === '/' && pf && !/INPUT|TEXTAREA|SELECT/.test(tag)) { e.preventDefault(); pf.focus(); return; }
+    if ((e.key === '/' && !/INPUT|TEXTAREA|SELECT/.test(tag)) || ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k')) {
       e.preventDefault(); var h = heroInView(); if (h) h.focus(); else openDlg();
     }
   });

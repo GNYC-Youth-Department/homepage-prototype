@@ -106,3 +106,9 @@ dialog.ss-dlg::backdrop{background:rgba(6,12,32,.72);backdrop-filter:blur(8px)}
 .ss-bar-dlg .ss-list{width:100%}
 .ss-x{width:44px;height:44px;flex:none;border:0;border-radius:9999px;background:#f1f5f9;cursor:pointer;display:grid;place-items:center;color:#334155}
 .ss-x:hover{background:#e2e8f0}
+
+/* page filter bars on light heroes keep the same bar, with a softer glow */
+.ss-bar-page{box-shadow:0 18px 40px -22px rgba(15,23,42,.45),0 0 0 6px rgba(255,255,255,.6)}
+.ss-bar-page:focus-within{box-shadow:0 18px 40px -22px rgba(15,23,42,.45),0 0 0 6px rgba(252,211,77,.35)}
+.ss-bar-page.ss-dark{box-shadow:0 24px 48px -22px rgba(2,8,23,.7),0 0 0 6px rgba(255,255,255,.08)}
+.ss-bar-page.ss-dark:focus-within{box-shadow:0 24px 48px -22px rgba(2,8,23,.7),0 0 0 6px rgba(252,211,77,.28)}
