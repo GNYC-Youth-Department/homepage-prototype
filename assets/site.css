@@ -131,3 +131,6 @@ body.show-slots .slot-toggle .material-symbols-outlined{color:#fff}
 .org-card p{margin:0;font-size:15px;line-height:1.55;color:#475569}
 .org-card .link{margin-top:.75rem}
 @media (max-width:639px){.org-card{grid-template-columns:1fr}.org-logo{height:110px}}
+
+/* leadership photos: cut-out portraits on one branded studio backdrop */
+img[src*="img/people/"]{background:radial-gradient(90% 70% at 50% 18%,#ffffff 0%,rgba(255,255,255,0) 60%),linear-gradient(165deg,#e0f2fe 0%,#dbeafe 45%,#fde68a 130%);object-fit:cover;object-position:50% 100%}
