@@ -60,6 +60,80 @@
   .tl li{list-style:none;position:relative}
   .tl li::before{content:"";position:absolute;left:calc(-2rem - 7px);top:6px;width:12px;height:12px;border-radius:9999px;background:#0284c7;box-shadow:0 0 0 4px #fff}
   .tl b{font:800 14px Inter,sans-serif;letter-spacing:.1em;color:#0369a1}
+  /* why join */
+  .why{display:grid;grid-template-columns:repeat(1,1fr);gap:1rem}
+  @media (min-width:640px){.why{grid-template-columns:repeat(2,1fr)}}
+  @media (min-width:1024px){.why{grid-template-columns:repeat(3,1fr);gap:1.5rem}}
+  .why li{position:relative;background:linear-gradient(160deg,var(--t) 0%,#fff 55%);border:1px solid color-mix(in srgb,var(--c) 18%,#e2e8f0);border-radius:24px;padding:1.5rem;box-shadow:0 1px 2px rgba(15,23,42,.04),0 14px 30px -18px color-mix(in srgb,var(--c) 55%,rgba(15,23,42,.3));transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s}
+  .why li:hover{transform:translateY(-4px);box-shadow:0 24px 44px -18px color-mix(in srgb,var(--c) 60%,rgba(15,23,42,.3))}
+  .why-ic{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:var(--c);color:#fff;font-size:28px;box-shadow:0 10px 20px -8px var(--c)}
+  .why h3{font:800 20px/1.2 'Plus Jakarta Sans',sans-serif;color:#0f172a;margin:1rem 0 .5rem;letter-spacing:-.01em}
+  .why p{font-size:15px;line-height:1.6;color:#475569;margin:0}
+  @media (max-width:639px){.why li{display:grid;grid-template-columns:44px 1fr;column-gap:1rem;padding:1.25rem}.why-ic{width:44px;height:44px;font-size:24px;border-radius:16px;grid-row:span 2}.why h3{margin:0 0 .25rem;font-size:18px;align-self:center}}
+  .voice{position:relative;margin:0;border-radius:24px;padding:2rem 2rem 1.5rem;background:#fff;border:1px solid #e2e8f0;box-shadow:0 14px 30px -18px rgba(15,23,42,.3)}
+  .voice .q{display:block;height:40px;margin:-.5rem 0 .25rem;font:800 80px/1 'Plus Jakarta Sans',sans-serif;color:#f59e0b}
+  .voice blockquote{position:relative;margin:0;font:600 19px/1.5 'Plus Jakarta Sans',sans-serif;color:#0f172a}
+  .voice figcaption{display:flex;align-items:center;gap:.75rem;margin-top:1.5rem}
+  .voice figcaption b{display:block;font-size:15px;color:#0f172a}.voice figcaption small{display:block;font-size:13px;color:#64748b}
+  .voice .av{width:48px;height:48px;border-radius:9999px;flex:none}.voice .av .material-symbols-outlined{font-size:24px;margin:0}
+  .voice-dark{background:linear-gradient(135deg,#0b1430,#3b0d1a);border-color:transparent}
+  .voice-dark blockquote,.voice-dark figcaption b{color:#fff}.voice-dark figcaption small{color:rgba(255,255,255,.65)}.voice-dark .q{color:#ffe247}
+  .jr-ends{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.75rem 1rem}
+  .jr-end,.jr-now{display:inline-flex;align-items:center;gap:.75rem;padding:.5rem 1.25rem .5rem .5rem;border-radius:9999px;background:#fff;border:1px solid #e2e8f0;text-decoration:none;color:#0f172a;box-shadow:0 8px 20px -12px rgba(15,23,42,.3);transition:border-color .2s,transform .2s}
+  .jr-end:hover{border-color:#94a3b8;transform:translateY(-2px)}
+  .jr-end img,.jr-now img{width:40px;height:40px;object-fit:contain}
+  .jr-end small{display:block;font:600 12px Inter,sans-serif;color:#64748b}.jr-end b,.jr-now b{display:block;font:700 15px 'Plus Jakarta Sans',sans-serif}
+  .jr-now{background:#0b1430;color:#fff;border-color:#0b1430}
+  .jr-arrow{color:#94a3b8}
+  .jr-sep{width:1px;height:40px;border-left:2px dashed #cbd5e1;margin:0 .5rem}
+  .jr-next{background:transparent;border-style:dashed;border-color:#cbd5e1;box-shadow:none}
+  .jr-next img{opacity:.85}
+  @media (max-width:1023px){.jr-arrow{transform:rotate(90deg)}.jr-ends{flex-direction:column}.jr-sep{width:40px;height:1px;border-left:0;border-top:2px dashed #cbd5e1;margin:.5rem 0}}
+  /* the AY model */
+  .aym{background:radial-gradient(55% 60% at 50% 42%,rgba(250,204,21,.22) 0%,rgba(250,204,21,0) 65%),linear-gradient(170deg,#050b1f 0%,#0b1d4d 55%,#1d4ed8 130%)}
+  .aym{padding-bottom:9rem}@media (min-width:1024px){.aym{padding-bottom:12rem}}
+  .aym-sky{position:absolute;left:0;right:0;bottom:-2px;width:100%;opacity:.16;pointer-events:none;filter:brightness(0) invert(1)}
+  .aym-grid{display:grid;gap:1.25rem;grid-template-columns:1fr}
+  @media (min-width:1024px){.aym-grid{grid-template-columns:1fr 240px 1fr;grid-template-rows:auto auto;gap:1.5rem 2rem;align-items:center}
+    .aym-card:nth-child(1){grid-area:1/1/3/2}.aym-core{grid-area:1/2/3/3}.aym-card:nth-child(3){grid-area:1/3}.aym-card:nth-child(4){grid-area:2/3}}
+  .aym-core{display:grid;place-items:center;order:-1}
+  .aym-core img{width:200px;filter:drop-shadow(0 26px 36px rgba(0,0,0,.6));animation:bob 7s ease-in-out infinite}
+  @media (max-width:1023px){.aym-core img{width:130px}}
+  .aym-card{position:relative;padding:1.5rem;border-radius:24px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-top:3px solid var(--c);backdrop-filter:blur(6px)}
+  .aym-dir{display:inline-flex;align-items:center;gap:.35rem;font:800 12px Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--c)}
+  .aym-dir .material-symbols-outlined{font-size:18px}
+  .aym-card h3{font:800 24px/1.15 'Plus Jakarta Sans',sans-serif;margin:.5rem 0}
+  .aym-card p{margin:0;font-size:15px;line-height:1.6;color:rgba(255,255,255,.8)}
+  .aym-card small{display:block;margin-top:.75rem;font:700 12px Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+  /* mission, aim, motto, pledge */
+  .ay-creed{display:grid;gap:1rem;grid-template-columns:1fr}
+  @media (min-width:768px){.ay-creed{grid-template-columns:repeat(2,1fr)}}
+  @media (min-width:1024px){.ay-creed{grid-template-columns:repeat(4,1fr)}.ay-c-wide{grid-column:span 2}.ay-c-pledge{grid-column:span 4}}
+  .ay-c{padding:1.5rem;border-radius:24px;background:linear-gradient(160deg,#0b1430,#1e3a8a);color:#fff;box-shadow:0 18px 36px -20px rgba(30,58,138,.7)}
+  .ay-k{display:inline-block;font:800 12px Inter,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#facc15}
+  .ay-c p{margin:.6rem 0 0;font:700 20px/1.4 'Plus Jakarta Sans',sans-serif;letter-spacing:-.01em}
+  .ay-c-pledge{background:linear-gradient(120deg,#facc15,#fde68a);color:#0f172a;box-shadow:0 18px 36px -20px rgba(202,138,4,.7)}
+  .ay-c-pledge .ay-k{color:#1e3a8a}.ay-c-pledge p{font-size:clamp(19px,2.1vw,24px)}
+  .ay-heritage{display:flex;align-items:center;gap:1.25rem;padding:1.25rem 1.5rem;border-radius:24px;border:1px dashed #cbd5e1;background:#f8fafc}
+  .ay-year{flex:none;font:800 40px/1 'Plus Jakarta Sans',sans-serif;color:#1e3a8a;letter-spacing:-.03em}
+  .ay-heritage p{margin:0;font-size:15px;line-height:1.6;color:#334155}
+  @media (max-width:639px){.ay-heritage{flex-direction:column;align-items:flex-start}}
+  /* ways to belong */
+  @media (max-width:1023px){.jr-arrow{transform:rotate(90deg)}.jr-ends{flex-direction:column}.jr-sep{width:40px;height:1px;border-left:0;border-top:2px dashed #cbd5e1;margin:.5rem 0}}
+  .belong{display:grid;gap:1.5rem;grid-template-columns:1fr}
+  @media (min-width:640px){.belong{grid-template-columns:repeat(2,1fr)}}
+  @media (min-width:1024px){.belong{grid-template-columns:repeat(4,1fr)}}
+  .bl{display:flex;flex-direction:column;border-radius:24px;overflow:hidden;background:#fff;border:1px solid #e2e8f0;text-decoration:none;color:#0f172a;box-shadow:0 1px 2px rgba(15,23,42,.04),0 16px 32px -18px rgba(15,23,42,.35);transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s}
+  .bl:hover{transform:translateY(-5px);box-shadow:0 28px 50px -20px rgba(15,23,42,.45)}
+  .bl-top{height:170px;display:grid;place-items:center;background:radial-gradient(70% 80% at 50% 30%,rgba(255,255,255,.18),rgba(255,255,255,0) 70%),linear-gradient(145deg,var(--g1),var(--g2))}
+  .bl-logo{height:120px;width:auto;filter:drop-shadow(0 16px 20px rgba(0,0,0,.45));transition:transform .3s}
+  .bl:hover .bl-logo{transform:scale(1.06)}
+  .bl-photo{padding:0}.bl-photo img{width:100%;height:100%;object-fit:cover}
+  .bl-ic{font-size:84px;color:#fff;opacity:.95}
+  .bl-body{display:flex;flex-direction:column;flex:1;padding:1.5rem}
+  .bl-tag{align-self:flex-start;font:800 11px Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#1e3a8a;background:#eff6ff;border-radius:6px;padding:4px 8px}
+  .bl h3{font:800 21px/1.2 'Plus Jakarta Sans',sans-serif;margin:.75rem 0 .5rem}
+  .bl p{font-size:15px;line-height:1.6;color:#475569;margin:0 0 1.25rem}
 </style>
 </head>
 <body data-page="ministries">
@@ -80,28 +154,77 @@
 <div><dt class="text-xs uppercase tracking-wider text-white/60">Societies</dt><dd class="font-heading font-extrabold text-3xl tabular mt-1">70+</dd></div><div><dt class="text-xs uppercase tracking-wider text-white/60">Young adults</dt><dd class="font-heading font-extrabold text-3xl tabular mt-1">3,000</dd></div><div><dt class="text-xs uppercase tracking-wider text-white/60">Ages</dt><dd class="font-heading font-extrabold text-3xl tabular mt-1">16–30</dd></div>
 </dl></div>
 <div class="lg:col-span-5 relative"><div class="ph slot ph-dark rounded-[28px] aspect-[4/5] max-w-md mx-auto" data-slot="AY-01" data-spec="Photo · 1600×2000 portrait · young adults in worship or on a mission project"><span><span class="material-symbols-outlined">photo_camera</span>young adults in worship or on a mission project</span></div><img class="crest-float absolute -left-6 -bottom-8 w-36 sm:w-44 lg:w-52" src="../img/crest-ay.png" alt="" aria-hidden="true"></div></div></div></header>
+<!-- ================= WHY AY ================= -->
+<section class="section" id="why">
+<div class="wrap">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-end">
+<div class="lg:col-span-7"><p class="eyebrow">Why AY</p><h2 class="h-section" style="text-wrap:balance">Your faith, your generation, your city</h2></div>
+<p class="slot lede lg:col-span-5 !mt-0" data-slot="AY-04" data-spec="Text · why this ministry, 60–90 words, in the Director's voice">The department encourages leaders and churches to take whatever approach is necessary, the traditional model or another creative method, to ensure that youth and young adults in our churches and their communities are ministered to and reached for Jesus.</p>
+</div>
+<ul class="slot why mt-12 list-none p-0" data-slot="AY-17" data-spec="Text · DRAFT six reasons; confirm or rewrite each in 20–30 words">
+<li style="--c:#1d4ed8;--t:#eff6ff"><span class="why-ic material-symbols-outlined" aria-hidden="true">local_fire_department</span><h3>A faith that's yours</h3><p>Not your parents' youth group. Real questions, honest worship and a walk with Jesus you choose for yourself.</p></li>
+<li style="--c:#ca8a04;--t:#fefce8"><span class="why-ic material-symbols-outlined" aria-hidden="true">diversity_3</span><h3>Community in a big city</h3><p>Small groups, retreats and Sabbath afternoons with people your age who pray for you by name.</p></li>
+<li style="--c:#7c3aed;--t:#f5f3ff"><span class="why-ic material-symbols-outlined" aria-hidden="true">campaign</span><h3>Lead now, not later</h3><p>AY is created by youth for youth. You plan the programs, preach, lead worship and run the events.</p></li>
+<li style="--c:#dc2626;--t:#fef2f2"><span class="why-ic material-symbols-outlined" aria-hidden="true">volunteer_activism</span><h3>Serve New York</h3><p>Outreach, service projects and mission trips across the five boroughs, Long Island and beyond.</p></li>
+<li style="--c:#0369a1;--t:#f0f9ff"><span class="why-ic material-symbols-outlined" aria-hidden="true">school</span><h3>Grow your gifts</h3><p>Evangelism training, leadership certification and campus ministry that sharpen what God has given you.</p></li>
+<li style="--c:#047857;--t:#ecfdf5"><span class="why-ic material-symbols-outlined" aria-hidden="true">public</span><h3>Part of a worldwide movement</h3><p>Millions of Adventist young people on every continent, united by one aim and one motto.</p></li>
+</ul>
+</div>
+</section>
 
-<section class="section bg-white border-b border-slate-200/80">
-<div class="wrap grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
-<div class="lg:col-span-5"><p class="eyebrow">Aim and motto</p><h2 class="h-section">The AY Aim</h2>
-<blockquote class="mt-6 font-heading font-bold text-2xl sm:text-3xl leading-snug tracking-tight text-slate-900 border-l-4 pl-6" style="border-color:#0284c7">“The Advent message to all the world in my generation.”</blockquote>
-<p class="slot lede" data-slot="AY-04" data-spec="Text · why this ministry, 60–90 words, in the Director's voice">The department encourages leaders and churches to take whatever approach is necessary, the traditional model or another creative method, to ensure that youth and young adults in our churches and their communities are ministered to and reached for Jesus.</p>
-<div class="slot mt-6 flex items-center gap-4 rounded-2xl bg-slate-50 border border-slate-200 p-4" data-slot="AY-05" data-spec="Done from gnycyouth.org; add email"><img src="../img/people/dignangely-jimenez.webp" alt="Dignangely Jimenez" class="rounded-full w-14 h-14 object-cover shrink-0"><div><p class="font-semibold text-slate-900 m-0">Dignangely Jimenez</p><p class="text-sm text-slate-600 m-0">Associate Director · AY Ministry</p></div></div></div>
-<div class="lg:col-span-7"><p class="eyebrow">The AY Motto and Pledge</p><ol class="law mt-4"><li>Motto: “The love of Christ compels us.”</li><li>Pledge: “Loving the Lord Jesus, I promise to take an active part in the youth ministry of the church, doing what I can to help others and to finish the work of the gospel in all the world.”</li><li>Sabbath afternoon AY programs in the local church</li><li>Small groups, service projects and outreach through the week</li></ol></div>
-</div></section>
+<!-- ================= THE AY MODEL ================= -->
+<section class="aym section relative overflow-hidden text-white" id="model">
+<img class="aym-sky" src="../img/skyline.svg" alt="" aria-hidden="true">
+<div class="wrap relative">
+<div class="max-w-3xl mx-auto text-center">
+<p class="text-xs font-bold tracking-[0.18em] uppercase text-[#facc15]">Our model</p>
+<h2 class="font-heading font-extrabold text-4xl sm:text-5xl tracking-[-0.02em] leading-[1.05] mt-3" style="text-wrap:balance">Jesus at the center</h2>
+<blockquote class="mt-6 text-lg sm:text-xl text-white/85 leading-relaxed">“And I, if I be lifted up from the earth, will draw all men unto me.”<cite class="block not-italic text-sm font-semibold tracking-wider uppercase text-white/60 mt-2">John 12:32</cite></blockquote>
+</div>
+<div class="aym-grid mt-14">
+<div class="aym-card" style="--c:#facc15"><span class="aym-dir"><span class="material-symbols-outlined" aria-hidden="true">north</span>Reach up</span><h3>Discipleship</h3><p>Spiritual renewal: time with God in prayer and the Word, following Jesus as His apprentices.</p><small>Luke 6:12</small></div>
+<div class="aym-core" aria-hidden="true"><img src="../img/crest-ay.png" alt=""></div>
+<div class="aym-card" style="--c:#7dd3fc"><span class="aym-dir"><span class="material-symbols-outlined" aria-hidden="true">sync_alt</span>Reach across</span><h3>Church community</h3><p>Relational, incarnational and intergenerational: small groups and communities of faith that belong together.</p><small>Luke 6:13</small></div>
+<div class="aym-card" style="--c:#fca5a5"><span class="aym-dir"><span class="material-symbols-outlined" aria-hidden="true">south</span>Reach out</span><h3>Mission and service</h3><p>My story, His story, our story: sharing Jesus one to one, in small groups and in public evangelism.</p><small>Luke 6:17–19</small></div>
+</div>
+<p class="text-center text-sm text-white/65 mt-10 max-w-2xl mx-auto">The Adventist Youth ministry model of the General Conference, drawn from a day in the life of Jesus in Luke 6.</p>
+</div>
+</section>
 
-<section class="section"><div class="wrap">
-<div><p class="eyebrow">Inside the ministry</p><h2 class="h-section">Four ways to belong</h2><p class="lede">Each strand has its own page, leaders and calendar.</p></div>
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10"><a class="card acc-sky group flex flex-col overflow-hidden" href="ay/young-adults.html">
-<div class="relative h-40 bg-gradient-to-br from-[#0c4a6e] via-[#0284c7] to-[#38bdf8] flex items-end p-5 overflow-hidden"><span class="material-symbols-outlined absolute -right-4 -top-4 text-[140px] text-white/15" aria-hidden="true">diversity_3</span><span class="inline-flex px-3 py-1 rounded-full text-[11px] font-extrabold tracking-wider uppercase bg-white/20 text-white border border-white/30 backdrop-blur">Ages 22–35</span></div>
-<div class="p-6 flex flex-col flex-1"><h3 class="font-heading font-bold text-xl text-slate-900">Young Adults</h3><p class="text-[15px] text-slate-700 mt-2 leading-relaxed">Retreats, LIFE Tour, small groups and the annual young adult retreat in the Berkshires.</p><span class="link mt-auto pt-5">Explore Young Adults <span aria-hidden="true">&rarr;</span></span></div></a><a class="card acc-amber group flex flex-col overflow-hidden" href="ay/school-of-evangelism.html">
-<div class="relative h-40 bg-gradient-to-br from-[#78350f] via-[#d97706] to-[#fbbf24] flex items-end p-5 overflow-hidden"><span class="material-symbols-outlined absolute -right-4 -top-4 text-[140px] text-white/15" aria-hidden="true">campaign</span><span class="inline-flex px-3 py-1 rounded-full text-[11px] font-extrabold tracking-wider uppercase bg-white/20 text-white border border-white/30 backdrop-blur">Training</span></div>
-<div class="p-6 flex flex-col flex-1"><h3 class="font-heading font-bold text-xl text-slate-900">School of Evangelism</h3><p class="text-[15px] text-slate-700 mt-2 leading-relaxed">A practical course in sharing faith, giving Bible studies and leading public outreach.</p><span class="link mt-auto pt-5">Explore SOE <span aria-hidden="true">&rarr;</span></span></div></a><a class="card acc-emerald group flex flex-col overflow-hidden" href="ay/public-campus-ministry.html">
-<div class="relative h-40 bg-gradient-to-br from-[#1e3a8a] via-[#6d28d9] to-[#dc2626] flex items-end p-5 overflow-hidden"><img class="absolute right-4 top-3 w-28 drop-shadow-2xl transition-transform group-hover:scale-105" src="../img/pcm-logo.png" alt=""><span class="inline-flex px-3 py-1 rounded-full text-[11px] font-extrabold tracking-wider uppercase bg-white/20 text-white border border-white/30 backdrop-blur">Campus</span></div>
-<div class="p-6 flex flex-col flex-1"><h3 class="font-heading font-bold text-xl text-slate-900">Public Campus Ministry</h3><p class="text-[15px] text-slate-700 mt-2 leading-relaxed">Adventist student groups on public and private campuses across the city and Long Island.</p><span class="link mt-auto pt-5">Explore PCM <span aria-hidden="true">&rarr;</span></span></div></a><a class="card acc-indigo group flex flex-col overflow-hidden" href="#find">
-<div class="relative h-40 bg-gradient-to-br from-[#312e81] via-[#4f46e5] to-[#a5b4fc] flex items-end p-5 overflow-hidden"><span class="material-symbols-outlined absolute -right-4 -top-4 text-[140px] text-white/15" aria-hidden="true">church</span><span class="inline-flex px-3 py-1 rounded-full text-[11px] font-extrabold tracking-wider uppercase bg-white/20 text-white border border-white/30 backdrop-blur">Local</span></div>
-<div class="p-6 flex flex-col flex-1"><h3 class="font-heading font-bold text-xl text-slate-900">AY Society</h3><p class="text-[15px] text-slate-700 mt-2 leading-relaxed">The Sabbath afternoon program in every local church, led by young people for young people.</p><span class="link mt-auto pt-5">Find a society <span aria-hidden="true">&rarr;</span></span></div></a></div>
-</div></section>
+<!-- ================= MISSION, AIM, MOTTO, PLEDGE ================= -->
+<section class="section bg-white border-b border-slate-200/80" id="pledge">
+<div class="wrap">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-end">
+<div class="lg:col-span-7"><p class="eyebrow">What AY stands for</p><h2 class="h-section">Mission, Aim, Motto and Pledge</h2></div>
+<div class="lg:col-span-5 flex items-center gap-4 rounded-2xl bg-slate-50 border border-slate-200 p-4 slot" data-slot="AY-05" data-spec="Done from gnycyouth.org; add email"><img src="../img/people/dignangely-jimenez.webp" alt="Dignangely Jimenez" class="rounded-full w-14 h-14 object-cover shrink-0"><div><p class="font-semibold text-slate-900 m-0">Dignangely Jimenez</p><p class="text-sm text-slate-600 m-0">Associate Director · AY Ministry</p></div></div>
+</div>
+<div class="ay-creed mt-10">
+<div class="ay-c ay-c-wide"><span class="ay-k">Mission</span><p>To lead young people into a saving relationship with Jesus Christ and help them embrace His call to discipleship.</p></div>
+<div class="ay-c"><span class="ay-k">Aim</span><p>The Advent message to all the world in my generation.</p></div>
+<div class="ay-c"><span class="ay-k">Motto</span><p>The love of Christ compels us.</p></div>
+<div class="ay-c ay-c-pledge"><span class="ay-k">Pledge</span><p>“Loving the Lord Jesus, I promise to take an active part in the youth ministry of the church, doing what I can to help others and to finish the work of the gospel in all the world.”</p></div>
+</div>
+<div class="ay-heritage slot mt-6" data-slot="AY-18" data-spec="Text · DRAFT confirm the heritage line (Luther Warren and Harry Fenner, Michigan, 1879) and the 1926 objective"><span class="ay-year">1879</span><p>It began with two boys, Luther Warren and Harry Fenner, kneeling in prayer on a country lane in Michigan. Since 1926 its objective has been <b>“to save from sin and guide into service.”</b></p></div>
+</div>
+</section>
+
+<!-- ================= WAYS TO BELONG ================= -->
+<section class="section" id="belong">
+<div class="wrap">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-end">
+<div class="lg:col-span-7"><p class="eyebrow">Find your place</p><h2 class="h-section" style="text-wrap:balance">Four ways to belong</h2></div>
+<p class="lede lg:col-span-5 !mt-0">Many young adults grew up as Pathfinders and Teen Leadership Trainees; many find AY for the first time through a friend, a campus group or a retreat.</p>
+</div>
+<div class="jr-ends mt-12"><a class="jr-end" href="pathfinders.html"><img src="../img/08.png" alt=""><span><small>Ages 10–15</small><b>Pathfinders</b></span></a><span class="jr-arrow material-symbols-outlined" aria-hidden="true">arrow_forward</span><a class="jr-end" href="pathfinders/teen-leadership-training.html"><img src="../img/tlt-logo.png" alt=""><span><small>Ages 14–17</small><b>Teen Leadership Training</b></span></a><span class="jr-arrow material-symbols-outlined" aria-hidden="true">arrow_forward</span><span class="jr-now"><img src="../img/crest-ay.png" alt=""><b>AY Ministries · 16 and up</b></span><span class="jr-sep" aria-hidden="true"></span><a class="jr-end jr-next" href="../about.html#structure"><img src="../img/crest-ay.png" alt=""><span><small>For leaders</small><b>AYLC certification</b></span></a></div>
+<div class="belong mt-10">
+<a class="bl" href="#find" style="--g1:#0b1430;--g2:#1d4ed8"><div class="bl-top"><img class="bl-logo" src="../img/crest-ay.png" alt=""></div><div class="bl-body"><span class="bl-tag">Local church</span><h3>AY Society</h3><p>The Sabbath afternoon program in every local church, led by young people for young people.</p><span class="link mt-auto">Find a society <span aria-hidden="true">&rarr;</span></span></div></a>
+<a class="bl" href="ay/young-adults.html" style="--g1:#450a0a;--g2:#9a3412"><div class="bl-top bl-photo"><img src="../img/retreat-2026.jpg" alt="Forgiven, the 2026 Young Adult Retreat"></div><div class="bl-body"><span class="bl-tag">Ages 22–35</span><h3>Young Adults</h3><p>Retreats, the LIFE Tour, small groups and the annual young adult retreat at Camp Berkshire.</p><span class="link mt-auto">Explore Young Adults <span aria-hidden="true">&rarr;</span></span></div></a>
+<a class="bl" href="ay/public-campus-ministry.html" style="--g1:#1e3a8a;--g2:#be185d"><div class="bl-top"><img class="bl-logo" src="../img/pcm-logo.png" alt=""></div><div class="bl-body"><span class="bl-tag">Students</span><h3>Public Campus Ministry</h3><p>Adventist student groups on public and private campuses across the city and Long Island.</p><span class="link mt-auto">Explore PCM <span aria-hidden="true">&rarr;</span></span></div></a>
+<a class="bl" href="ay/school-of-evangelism.html" style="--g1:#78350f;--g2:#ca8a04"><div class="bl-top"><span class="material-symbols-outlined bl-ic" aria-hidden="true">campaign</span></div><div class="bl-body"><span class="bl-tag">Training</span><h3>School of Evangelism</h3><p>A practical course in sharing faith, giving Bible studies and leading public outreach.</p><span class="link mt-auto">Explore the School <span aria-hidden="true">&rarr;</span></span></div></a>
+</div>
+</div>
+</section>
+
 
 <section class="section bg-white border-y border-slate-200/80"><div class="wrap">
 <p class="eyebrow">Plan the year</p><h2 class="h-section">A year in AY Ministries</h2><p class="lede">The rhythm every society follows. Dates change each year; the current calendar is on the Events page.</p>
@@ -131,7 +254,7 @@
 <section class="section" id="directors"><div class="wrap grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
 <div class="lg:col-span-4"><p class="eyebrow">AY leaders</p><h2 class="h-section">Lead your society</h2><p class="lede">Program ideas, training and the forms for trips and events.</p><a class="btn-primary mt-6 !py-3.5 !px-7 !text-[15px]" href="../resources.html">Open the resource library</a></div>
 <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-5">
-<a class="card acc-sky p-6 flex gap-4 items-start" href="../resources.html"><span class="material-symbols-outlined text-3xl text-[#006194]" aria-hidden="true">assignment</span><span><strong class="font-heading text-lg text-slate-900 block">Forms & waivers</strong><span class="text-sm text-slate-600">Registration, releases, risk memo</span></span></a><a class="card acc-indigo p-6 flex gap-4 items-start" href="../resources.html"><span class="material-symbols-outlined text-3xl text-indigo-700" aria-hidden="true">checkroom</span><span><strong class="font-heading text-lg text-slate-900 block">Uniform guidelines</strong><span class="text-sm text-slate-600">Class A and B, insignia placement</span></span></a><div class="slot card acc-emerald p-6 flex gap-4 items-start no-link" data-slot="AY-09" data-spec="Link · program resource page or folder"><span class="material-symbols-outlined text-3xl text-emerald-700" aria-hidden="true">lightbulb</span><span><strong class="font-heading text-lg text-slate-900 block">AY program ideas</strong><span class="text-sm text-slate-600">Sabbath afternoon templates and videos</span></span><span class="soon">Coming soon</span></div><div class="slot card acc-amber p-6 flex gap-4 items-start no-link" data-slot="AY-10" data-spec="Link · mission trip forms"><span class="material-symbols-outlined text-3xl text-amber-700" aria-hidden="true">flight_takeoff</span><span><strong class="font-heading text-lg text-slate-900 block">Mission trip & travel forms</strong><span class="text-sm text-slate-600">Releases, insurance and payment plans</span></span><span class="soon">Coming soon</span></div>
+<a class="card acc-sky p-6 flex gap-4 items-start" href="../resources.html"><span class="material-symbols-outlined text-3xl text-[#006194]" aria-hidden="true">assignment</span><span><strong class="font-heading text-lg text-slate-900 block">Forms & waivers</strong><span class="text-sm text-slate-600">Registration, releases, risk memo</span></span></a><a class="card acc-indigo p-6 flex gap-4 items-start" href="../resources.html"><span class="material-symbols-outlined text-3xl text-indigo-700" aria-hidden="true">checkroom</span><span><strong class="font-heading text-lg text-slate-900 block">Uniform guidelines</strong><span class="text-sm text-slate-600">Class A and B, insignia placement</span></span></a><div class="slot card acc-emerald p-6 flex gap-4 items-start no-link" data-slot="AY-19" data-spec="Link · program resource page or folder"><span class="material-symbols-outlined text-3xl text-emerald-700" aria-hidden="true">lightbulb</span><span><strong class="font-heading text-lg text-slate-900 block">AY program ideas</strong><span class="text-sm text-slate-600">Sabbath afternoon templates and videos</span></span><span class="soon">Coming soon</span></div><div class="slot card acc-amber p-6 flex gap-4 items-start no-link" data-slot="AY-10" data-spec="Link · mission trip forms"><span class="material-symbols-outlined text-3xl text-amber-700" aria-hidden="true">flight_takeoff</span><span><strong class="font-heading text-lg text-slate-900 block">Mission trip & travel forms</strong><span class="text-sm text-slate-600">Releases, insurance and payment plans</span></span><span class="soon">Coming soon</span></div>
 </div></div></section>
 
 <section class="section bg-white border-y border-slate-200/80"><div class="wrap">
@@ -159,7 +282,7 @@
 
 <section class="section"><div class="wrap grid grid-cols-1 lg:grid-cols-12 gap-10">
 <div class="lg:col-span-4"><p class="eyebrow">For young adults</p><h2 class="h-section">Questions young adults ask</h2><p class="lede">Answers below are drafts for the Director to confirm.</p></div>
-<div class="slot lg:col-span-8 border-t border-slate-200" data-slot="AY-15" data-spec="Text · confirm or rewrite each answer"><details class="faq" open><summary>What ages does AY cover?<span class="material-symbols-outlined">add</span></summary><p>Adventist Youth spans 16 to 35: Ambassadors (16–21) and Young Adults (22–35). Pathfinders and Adventurers are the ministries for younger children.</p></details><details class="faq"><summary>I am not in church right now. Can I still come?<span class="material-symbols-outlined">add</span></summary><p>Yes. Retreats, small groups and campus meetings are open to anyone; many people find their way back through a friend.</p></details><details class="faq"><summary>How do I join a campus group?<span class="material-symbols-outlined">add</span></summary><p>See the Public Campus Ministry page for the list of campuses, or email the PCM coordinator to start one where you study.</p></details><details class="faq"><summary>How do I become a delegate to Congress?<span class="material-symbols-outlined">add</span></summary><p>Each church sends delegates through its AY society; registration is open now on the Events page.</p></details></div>
+<div class="slot lg:col-span-8 border-t border-slate-200" data-slot="AY-15" data-spec="Text · confirm or rewrite each answer"><details class="faq" open><summary>What ages does AY cover?<span class="material-symbols-outlined">add</span></summary><p>AY Ministries serves young people from 16 to 35 through local AY societies, Young Adults, Public Campus Ministry and the School of Evangelism. Pathfinders and Adventurers are the ministries for younger children.</p></details><details class="faq"><summary>I am not in church right now. Can I still come?<span class="material-symbols-outlined">add</span></summary><p>Yes. Retreats, small groups and campus meetings are open to anyone; many people find their way back through a friend.</p></details><details class="faq"><summary>How do I join a campus group?<span class="material-symbols-outlined">add</span></summary><p>See the Public Campus Ministry page for the list of campuses, or email the PCM coordinator to start one where you study.</p></details><details class="faq"><summary>How do I become a delegate to Congress?<span class="material-symbols-outlined">add</span></summary><p>Each church sends delegates through its AY society; registration is open now on the Events page.</p></details></div>
 </div></section>
 
 <!-- ================= BEYOND GREATER NEW YORK ================= -->
