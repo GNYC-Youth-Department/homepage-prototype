@@ -10,6 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/site.css">
 <style>
+  :root{--pa:#b91c1c}
   .pf-hero{background:radial-gradient(90% 120% at 100% 0%,rgba(220,38,38,.55) 0%,rgba(220,38,38,0) 55%),radial-gradient(60% 80% at 0% 100%,rgba(245,214,10,.18),rgba(245,214,10,0) 60%),linear-gradient(135deg,#0b1430 0%,#1a1033 50%,#3b0d1a 100%)}
   .pf-lines{background:repeating-linear-gradient(135deg,rgba(255,255,255,.05) 0 1px,transparent 1px 16px);mask-image:linear-gradient(90deg,transparent,#000 40%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 40%,transparent)}
   .crest-float{filter:drop-shadow(0 30px 40px rgba(0,0,0,.55));animation:bob 7s ease-in-out infinite}
@@ -92,6 +93,8 @@
   .journey .jr-g{font:700 12px Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--c);margin:.75rem 0 0}
   .journey h3{font:800 24px/1.1 'Plus Jakarta Sans',sans-serif;color:#0f172a;margin:.25rem 0 .5rem}
   .journey .jr-t{font-size:14px;line-height:1.55;color:#475569;margin:0}
+  .journey .jr-req{margin-top:.6rem;font-size:14px;color:var(--c);grid-column:2}
+  @media (min-width:1280px){.journey .jr-req{margin-top:auto;padding-top:.75rem}}
   .jr-dot{display:none}
   @media (max-width:639px){.journey{padding-left:1.75rem}.journey::before{content:"";position:absolute;left:.5rem;top:1rem;bottom:1rem;width:3px;border-radius:3px;background:linear-gradient(#1d4ed8,#dc2626,#15803d,#64748b,#7f1d1d,#b45309)}
     .jr-dot{display:block;position:absolute;left:calc(-1.25rem - 9px);top:2rem;width:18px;height:18px;border-radius:9999px;background:#fff;border:4px solid var(--c)}
@@ -167,7 +170,7 @@
 <p class="slot mt-5 text-lg sm:text-xl leading-relaxed text-white/85 max-w-xl" data-slot="PF-02" data-spec="Text · from gnycyouth.org (grades 5–8, ages 10–15); confirm against the grade 5–10 class range shown below">The flagship club ministry for grades 5–8, ages 10 to 15: Junior Pathfinders in grades 5–6 and Teen Pathfinders in grades 7–8, a diverse and inclusive club that welcomes any young person, whatever their background, who wants adventure, community service and a commitment to the Pathfinder Pledge and Law.</p>
 <div class="mt-8 flex flex-col sm:flex-row gap-3">
 <a class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-white text-slate-900 hover:bg-slate-100 font-semibold text-base transition-colors" href="#find"><span class="material-symbols-outlined text-xl" aria-hidden="true">location_on</span>Find a club near you</a>
-<a class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full border border-white/40 text-white hover:bg-white/10 font-semibold text-base transition-colors" href="#directors">For club directors</a>
+<a class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full border border-white/40 text-white hover:bg-white/10 font-semibold text-base transition-colors" href="#leaders">Start or lead a club</a>
 </div>
 <dl class="slot mt-10 grid grid-cols-3 gap-6 max-w-lg border-t border-white/15 pt-7" data-slot="PF-03" data-spec="Numbers · 3 real figures (clubs, Pathfinders, staff)">
 <div><dt class="text-xs uppercase tracking-wider text-white/60">Clubs</dt><dd class="font-heading font-extrabold text-3xl tabular mt-1">60+</dd></div>
@@ -181,6 +184,8 @@
 </div>
 </div></div>
 </header>
+<div class="wrap"><nav class="paths" aria-label="Choose your path"><div class="path"><div class="path-head"><span class="path-ic material-symbols-outlined" aria-hidden="true">waving_hand</span><span><small>New to Pathfinders</small><b>For young people and parents</b></span></div><div class="path-links"><a href="#why"><span class="material-symbols-outlined" aria-hidden="true">favorite</span>Why join</a><a href="#classes"><span class="material-symbols-outlined" aria-hidden="true">route</span>The six classes</a><a href="#find"><span class="material-symbols-outlined" aria-hidden="true">location_on</span>Find a club</a><a href="#faq"><span class="material-symbols-outlined" aria-hidden="true">help</span>Questions</a></div></div><div class="path lead"><div class="path-head"><span class="path-ic material-symbols-outlined" aria-hidden="true">flag</span><span><small>Starting or leading a club</small><b>For directors, staff and pastors</b></span></div><div class="path-links"><a href="#start"><span class="material-symbols-outlined" aria-hidden="true">rocket_launch</span>How to start</a><a href="#directors"><span class="material-symbols-outlined" aria-hidden="true">handyman</span>Run your club</a><a href="#people"><span class="material-symbols-outlined" aria-hidden="true">call</span>People to call</a><a href="#beyond"><span class="material-symbols-outlined" aria-hidden="true">public</span>NAD & GC resources</a></div></div></nav></div>
+
 
 <!-- ================= WHY JOIN ================= -->
 <section class="section" id="why">
@@ -257,12 +262,12 @@
 <div class="jr-ends mt-12"><a class="jr-end" href="adventurers.html"><img src="../img/07.png" alt=""><span><small>Before Pathfinders</small><b>Adventurers · ages 4–9</b></span></a><span class="jr-arrow material-symbols-outlined" aria-hidden="true">arrow_forward</span><span class="jr-now"><img src="../img/08.png" alt=""><b>Pathfinders · six classes</b></span><span class="jr-arrow material-symbols-outlined" aria-hidden="true">arrow_forward</span><a class="jr-end" href="pathfinders/teen-leadership-training.html"><img src="../img/tlt-logo.png" alt=""><span><small>Older Pathfinders · ages 14–17</small><b>Teen Leadership Training</b></span></a><span class="jr-sep" aria-hidden="true"></span><a class="jr-end jr-next" href="master-guides.html"><img src="../img/crest-mg.png" alt=""><span><small>What comes next</small><b>Master Guide</b></span></a></div>
 
 <ol class="slot journey mt-10" data-slot="PF-20" data-spec="Text · DRAFT one focus line per class, 15–25 words; confirm against the NAD class descriptions">
-<li style="--c:#1d4ed8"><span class="jr-dot" aria-hidden="true"></span><img src="../img/class-friend.png" alt="" width="112" height="112"><p class="jr-g">Grade 5 · age 10</p><h3>Friend</h3><p class="jr-t">A friend of Jesus, of nature and of others. The first year: the Pledge and Law, a first campout and first honors.</p></li>
-<li style="--c:#dc2626"><span class="jr-dot" aria-hidden="true"></span><img src="../img/class-companion.png" alt="" width="112" height="112"><p class="jr-g">Grade 6 · age 11</p><h3>Companion</h3><p class="jr-t">Walking alongside others: learning to serve, to share faith and to be the teammate a unit can count on.</p></li>
-<li style="--c:#15803d"><span class="jr-dot" aria-hidden="true"></span><img src="../img/class-explorer.png" alt="" width="112" height="112"><p class="jr-g">Grade 7 · age 12</p><h3>Explorer</h3><p class="jr-t">Exploring God's Word and God's world further, with longer hikes, deeper Bible study and new honors.</p></li>
-<li style="--c:#64748b"><span class="jr-dot" aria-hidden="true"></span><img src="../img/class-ranger.png" alt="" width="112" height="112"><p class="jr-g">Grade 8 · age 13</p><h3>Ranger</h3><p class="jr-t">Self-reliance on the trail and in life: outdoor skill, good choices and care for the people around them.</p></li>
-<li style="--c:#7f1d1d"><span class="jr-dot" aria-hidden="true"></span><img src="../img/class-voyager.png" alt="" width="112" height="112"><p class="jr-g">Grade 9 · age 14</p><h3>Voyager</h3><p class="jr-t">Going further: mentoring younger Pathfinders, planning service projects and taking a bigger role in the club.</p></li>
-<li style="--c:#b45309"><span class="jr-dot" aria-hidden="true"></span><img src="../img/class-guide.png" alt="" width="112" height="112"><p class="jr-g">Grade 10 · age 15</p><h3>Guide</h3><p class="jr-t">Guiding others: leadership that prepares a Pathfinder for Teen Leadership Training and the Master Guide path.</p></li>
+<li style="--c:#1d4ed8"><span class="jr-dot" aria-hidden="true"></span><img src="../img/class-friend.png" alt="" width="112" height="112"><p class="jr-g">Grade 5 · age 10</p><h3>Friend</h3><p class="jr-t">A friend of Jesus, of nature and of others. The first year: the Pledge and Law, a first campout and first honors.</p><a class="link jr-req" href="https://www.clubministries.org/investiture-achievement/friend-level/" target="_blank" rel="noopener noreferrer" aria-label="Friend requirements on clubministries.org (opens in a new tab)">Requirements <span class="material-symbols-outlined text-base" aria-hidden="true">open_in_new</span></a></li>
+<li style="--c:#dc2626"><span class="jr-dot" aria-hidden="true"></span><img src="../img/class-companion.png" alt="" width="112" height="112"><p class="jr-g">Grade 6 · age 11</p><h3>Companion</h3><p class="jr-t">Walking alongside others: learning to serve, to share faith and to be the teammate a unit can count on.</p><a class="link jr-req" href="https://www.clubministries.org/investiture-achievement/companion-level/" target="_blank" rel="noopener noreferrer" aria-label="Companion requirements on clubministries.org (opens in a new tab)">Requirements <span class="material-symbols-outlined text-base" aria-hidden="true">open_in_new</span></a></li>
+<li style="--c:#15803d"><span class="jr-dot" aria-hidden="true"></span><img src="../img/class-explorer.png" alt="" width="112" height="112"><p class="jr-g">Grade 7 · age 12</p><h3>Explorer</h3><p class="jr-t">Exploring God's Word and God's world further, with longer hikes, deeper Bible study and new honors.</p><a class="link jr-req" href="https://www.clubministries.org/investiture-achievement/explorer-level/" target="_blank" rel="noopener noreferrer" aria-label="Explorer requirements on clubministries.org (opens in a new tab)">Requirements <span class="material-symbols-outlined text-base" aria-hidden="true">open_in_new</span></a></li>
+<li style="--c:#64748b"><span class="jr-dot" aria-hidden="true"></span><img src="../img/class-ranger.png" alt="" width="112" height="112"><p class="jr-g">Grade 8 · age 13</p><h3>Ranger</h3><p class="jr-t">Self-reliance on the trail and in life: outdoor skill, good choices and care for the people around them.</p><a class="link jr-req" href="https://www.clubministries.org/investiture-achievement/ranger-level/" target="_blank" rel="noopener noreferrer" aria-label="Ranger requirements on clubministries.org (opens in a new tab)">Requirements <span class="material-symbols-outlined text-base" aria-hidden="true">open_in_new</span></a></li>
+<li style="--c:#7f1d1d"><span class="jr-dot" aria-hidden="true"></span><img src="../img/class-voyager.png" alt="" width="112" height="112"><p class="jr-g">Grade 9 · age 14</p><h3>Voyager</h3><p class="jr-t">Going further: mentoring younger Pathfinders, planning service projects and taking a bigger role in the club.</p><a class="link jr-req" href="https://www.clubministries.org/investiture-achievement/voyager-level/" target="_blank" rel="noopener noreferrer" aria-label="Voyager requirements on clubministries.org (opens in a new tab)">Requirements <span class="material-symbols-outlined text-base" aria-hidden="true">open_in_new</span></a></li>
+<li style="--c:#b45309"><span class="jr-dot" aria-hidden="true"></span><img src="../img/class-guide.png" alt="" width="112" height="112"><p class="jr-g">Grade 10 · age 15</p><h3>Guide</h3><p class="jr-t">Guiding others: leadership that prepares a Pathfinder for Teen Leadership Training and the Master Guide path.</p><a class="link jr-req" href="https://www.clubministries.org/investiture-achievement/guide-level/" target="_blank" rel="noopener noreferrer" aria-label="Guide requirements on clubministries.org (opens in a new tab)">Requirements <span class="material-symbols-outlined text-base" aria-hidden="true">open_in_new</span></a></li>
 </ol>
 <p class="text-sm text-slate-600 mt-6 flex items-start gap-2 max-w-3xl"><span class="material-symbols-outlined text-[20px] text-[#b45309]" aria-hidden="true">military_tech</span><span>Every class also has an <b class="text-slate-800">Advanced</b> level for Pathfinders ready for more in the same year.</span></p>
 
@@ -270,7 +275,7 @@
 <div class="lg:col-span-7 card p-7 sm:p-9">
 <p class="eyebrow">What every class covers</p>
 <h3 class="font-heading font-extrabold text-2xl sm:text-3xl tracking-tight text-slate-900 mt-1">The same areas, deeper each year</h3>
-<p class="text-[15px] text-slate-700 mt-3 leading-relaxed max-w-xl">Each class follows the Investiture Achievement curriculum. The areas stay the same from Friend to Guide; what grows is the depth, the responsibility and the independence.</p>
+<p class="text-[15px] text-slate-700 mt-3 leading-relaxed max-w-xl">Each class follows the <a class="underline underline-offset-2 decoration-slate-300 hover:decoration-current" href="https://www.clubministries.org/investiture-achievement/" target="_blank" rel="noopener noreferrer">Investiture Achievement curriculum</a>. The areas stay the same from Friend to Guide; what grows is the depth, the responsibility and the independence.</p>
 <ul class="areas slot mt-6" data-slot="PF-21" data-spec="List · confirm the curriculum area names used in GNYC clubs">
 <li style="--c:#b91c1c"><span class="material-symbols-outlined" aria-hidden="true">badge</span>General: Pledge, Law and club life</li>
 <li style="--c:#1e3a8a"><span class="material-symbols-outlined" aria-hidden="true">menu_book</span>Spiritual discovery</li>
@@ -363,7 +368,7 @@
 </section>
 
 <!-- ================= THE PATHFINDER YEAR ================= -->
-<section class="section">
+<section class="section" id="year">
 <div class="wrap">
 <p class="eyebrow">Plan the year</p>
 <h2 class="h-section">A year in the life of a club</h2>
@@ -381,7 +386,7 @@
 </section>
 
 <!-- ================= UPCOMING EVENTS ================= -->
-<section class="section bg-white border-y border-slate-200/80">
+<section class="section bg-white border-y border-slate-200/80" id="events">
 <div class="wrap">
 <div class="flex flex-col md:flex-row md:items-end justify-between gap-4"><div><p class="eyebrow">Coming up</p><h2 class="h-section">Pathfinder events</h2></div><a class="link" href="../events.html">All events <span aria-hidden="true">&rarr;</span></a></div>
 <ul class="slot grid grid-cols-1 md:grid-cols-3 gap-6 mt-10 list-none p-0 m-0" data-slot="PF-08" data-spec="Auto · pulled from the Events calendar, tagged Pathfinders">
@@ -391,34 +396,21 @@
 </ul></div>
 </section>
 
-<!-- ================= FOR DIRECTORS ================= -->
-<section class="section" id="directors">
-<div class="wrap grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
-<div class="lg:col-span-4">
-<p class="eyebrow">Club directors &amp; staff</p>
-<h2 class="h-section">Run your club well</h2>
-<p class="lede">Everything a director needs in one place: forms, standards, training dates and the people to call.</p>
-<a class="btn-primary mt-6 !py-3.5 !px-7 !text-[15px]" href="../resources.html">Open the resource library</a>
-</div>
-<div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-5">
-<a class="card acc-sky p-6 flex gap-4 items-start" href="../resources.html"><span class="material-symbols-outlined text-3xl text-[#006194]" aria-hidden="true">assignment</span><span><strong class="font-heading text-lg text-slate-900 block">Camporee &amp; travel forms</strong><span class="text-sm text-slate-600">Registration, tent release, risk memo</span></span></a>
-<a class="card acc-indigo p-6 flex gap-4 items-start" href="#uniform"><span class="material-symbols-outlined text-3xl text-indigo-700" aria-hidden="true">checkroom</span><span><strong class="font-heading text-lg text-slate-900 block">Uniform guidelines</strong><span class="text-sm text-slate-600">Class A pieces and levels of dress</span></span></a>
-<div class="slot card acc-emerald p-6 flex gap-4 items-start no-link" data-slot="PF-09" data-spec="Link · monthly report form or portal URL"><span class="material-symbols-outlined text-3xl text-emerald-700" aria-hidden="true">fact_check</span><span><strong class="font-heading text-lg text-slate-900 block">Monthly club report</strong><span class="text-sm text-slate-600">Due the 5th of each month</span></span><span class="soon">Coming soon</span></div>
-<div class="slot card acc-amber p-6 flex gap-4 items-start no-link" data-slot="PF-10" data-spec="Link · safety / background-check (Sterling Volunteers) instructions"><span class="material-symbols-outlined text-3xl text-amber-700" aria-hidden="true">verified_user</span><span><strong class="font-heading text-lg text-slate-900 block">Staff safety &amp; screening</strong><span class="text-sm text-slate-600">Background checks and child protection training</span></span><span class="soon">Coming soon</span></div>
+<!-- ================= GALLERY ================= -->
+<section class="section" id="life">
+<div class="wrap">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4"><div><p class="eyebrow">Life in the club</p><h2 class="h-section">Moments from this year</h2></div><a class="link" href="https://www.instagram.com/gnycyouth/">@gnycyouth on Instagram <span aria-hidden="true">&rarr;</span></a></div>
+<div class="slot gal mt-10" data-slot="PF-14" data-spec="Photos · 6 images, 1200px+ on the long side, mixed portrait/landscape · campout, drill, PBE, service, worship, investiture">
+<div class="ph big"><span><span class="material-symbols-outlined">photo_camera</span>Camporee</span></div>
+<div class="ph"><span>Drill</span></div><div class="ph"><span>PBE</span></div>
+<div class="ph"><span>Service</span></div><div class="ph"><span>Worship</span></div>
+<div class="ph"><span>Investiture</span></div><div class="ph"><span>Drum corps</span></div>
+<div class="ph"><span>Honors</span></div><div class="ph"><span>Campfire</span></div>
 </div></div>
 </section>
 
-<!-- ================= COORDINATORS ================= -->
-<section class="section bg-white border-y border-slate-200/80">
-<div class="wrap">
-<p class="eyebrow">People to call</p>
-<h2 class="h-section">Pathfinder leadership</h2>
-<p class="lede">The conference team and the area coordinators who support every club.</p>
-<ul class="slot grid grid-cols-2 md:grid-cols-4 gap-6 mt-10 list-none p-0 m-0" data-slot="PF-11" data-spec="People · names and roles from gnycyouth.org; add headshots 600×600 and emails for the coordinators"><li><img src="../img/people/andrew-gordon.webp" alt="Dr. Andrew Gordon" class="rounded-3xl aspect-square object-cover w-full"><p class="font-heading font-bold text-lg mt-3 mb-0">Dr. Andrew Gordon</p><p class="text-sm text-slate-600 m-0">Associate Director · Club Ministry</p></li><li><div class="ph rounded-3xl aspect-square"><span><span class="material-symbols-outlined">person</span>Headshot</span></div><p class="font-heading font-bold text-lg mt-3 mb-0">Abigail Osei</p><p class="text-sm text-slate-600 m-0">Lead Area Coordinator · The Bronx</p></li><li><div class="ph rounded-3xl aspect-square"><span><span class="material-symbols-outlined">person</span>Headshot</span></div><p class="font-heading font-bold text-lg mt-3 mb-0">Kahina Augustin</p><p class="text-sm text-slate-600 m-0">Lead Area Coordinator · Brooklyn</p></li><li><div class="ph rounded-3xl aspect-square"><span><span class="material-symbols-outlined">person</span>Headshot</span></div><p class="font-heading font-bold text-lg mt-3 mb-0">Stephanie Barrientos</p><p class="text-sm text-slate-600 m-0">Lead Area Coordinator · Long Island</p></li><li><div class="ph rounded-3xl aspect-square"><span><span class="material-symbols-outlined">person</span>Headshot</span></div><p class="font-heading font-bold text-lg mt-3 mb-0">Ruth Lopez</p><p class="text-sm text-slate-600 m-0">Lead Area Coordinator · Manhattan</p></li><li><div class="ph rounded-3xl aspect-square"><span><span class="material-symbols-outlined">person</span>Headshot</span></div><p class="font-heading font-bold text-lg mt-3 mb-0">Maria Carcamo-Perez</p><p class="text-sm text-slate-600 m-0">Lead Area Coordinator · Queens</p></li><li><div class="ph rounded-3xl aspect-square"><span><span class="material-symbols-outlined">person</span>Headshot</span></div><p class="font-heading font-bold text-lg mt-3 mb-0">Judey Austin</p><p class="text-sm text-slate-600 m-0">Lead Area Coordinator · Staten Island</p></li><li><div class="ph rounded-3xl aspect-square"><span><span class="material-symbols-outlined">person</span>Headshot</span></div><p class="font-heading font-bold text-lg mt-3 mb-0">Nydia Pagan-Howard</p><p class="text-sm text-slate-600 m-0">Lead Area Coordinator · Upstate</p></li></ul></div>
-</section>
-
 <!-- ================= FIND A CLUB ================= -->
-<section class="section" id="find">
+<section class="section bg-white border-y border-slate-200/80" id="find">
 <div class="wrap grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
 <div class="lg:col-span-5">
 <p class="eyebrow">Join</p>
@@ -445,21 +437,8 @@
 </div></div>
 </section>
 
-<!-- ================= GALLERY ================= -->
-<section class="section bg-white border-y border-slate-200/80">
-<div class="wrap">
-<div class="flex flex-col md:flex-row md:items-end justify-between gap-4"><div><p class="eyebrow">Life in the club</p><h2 class="h-section">Moments from this year</h2></div><a class="link" href="https://www.instagram.com/gnycyouth/">@gnycyouth on Instagram <span aria-hidden="true">&rarr;</span></a></div>
-<div class="slot gal mt-10" data-slot="PF-14" data-spec="Photos · 6 images, 1200px+ on the long side, mixed portrait/landscape · campout, drill, PBE, service, worship, investiture">
-<div class="ph big"><span><span class="material-symbols-outlined">photo_camera</span>Camporee</span></div>
-<div class="ph"><span>Drill</span></div><div class="ph"><span>PBE</span></div>
-<div class="ph"><span>Service</span></div><div class="ph"><span>Worship</span></div>
-<div class="ph"><span>Investiture</span></div><div class="ph"><span>Drum corps</span></div>
-<div class="ph"><span>Honors</span></div><div class="ph"><span>Campfire</span></div>
-</div></div>
-</section>
-
 <!-- ================= FAQ ================= -->
-<section class="section">
+<section class="section" id="faq">
 <div class="wrap grid grid-cols-1 lg:grid-cols-12 gap-10">
 <div class="lg:col-span-4"><p class="eyebrow">For parents</p><h2 class="h-section">Questions families ask</h2><p class="lede">Answers below are drafts for the Director to confirm.</p></div>
 <div class="slot lg:col-span-8 border-t border-slate-200" data-slot="PF-15" data-spec="Text · confirm or rewrite each answer; add cost and uniform supplier">
@@ -469,6 +448,39 @@
 <details class="faq"><summary>How are children kept safe?<span class="material-symbols-outlined">add</span></summary><p>Every adult staff member completes a background check and child-protection training before serving, and clubs follow Adventist Risk Management guidelines for trips and camping.</p></details>
 <details class="faq"><summary>Where do I buy the uniform?<span class="material-symbols-outlined">add</span></summary><p>Class A uniform pieces, sashes and insignia are available through the GNYC Youth Store. Your director will tell you what a new Pathfinder needs first.</p></details>
 </div></div>
+</section>
+
+<!-- ================= FOR LEADERS ================= -->
+<section class="lead-zone" id="leaders"><div class="wrap grid grid-cols-1 lg:grid-cols-12 gap-8 items-end"><div class="lg:col-span-7"><p class="eyebrow">For leaders</p><h2>Start a club, run it well, grow with the world church</h2><p>The steps to open a Pathfinder club at your church, the tools for the club year, the people who support you, and the official guides from the North American Division and the General Conference.</p></div><nav class="lg:col-span-5 path-links lg:justify-end" aria-label="Leader sections"><a href="#start"><span class="material-symbols-outlined" aria-hidden="true">rocket_launch</span>How to start</a><a href="#directors"><span class="material-symbols-outlined" aria-hidden="true">handyman</span>Run your club</a><a href="#people"><span class="material-symbols-outlined" aria-hidden="true">call</span>People to call</a><a href="#beyond"><span class="material-symbols-outlined" aria-hidden="true">public</span>NAD & GC resources</a></nav></div></section>
+
+<!-- ================= HOW TO START ================= -->
+<section class="section" id="start"><div class="wrap"><div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-end"><div class="lg:col-span-7"><p class="eyebrow">How to start</p><h2 class="h-section" style="text-wrap:balance">Start a Pathfinder club at your church</h2></div><p class="lede lg:col-span-5 !mt-0">Any Seventh-day Adventist church can sponsor a club. These are the steps in Greater New York; the conference office walks you through each one.</p></div><ol class="slot steps five mt-8" data-slot="PF-23" data-spec="Steps · DRAFT. Confirm the GNYC process to start a club: who approves, how a club registers with the conference, fees, and training dates"><li><h3>Talk with your pastor and board<span class="draft">DRAFT</span></h3><p>The church board votes to sponsor a club and appoints a director.</p></li><li><h3>Register with the conference<span class="draft">DRAFT</span></h3><p>Tell the Pathfinder office you are starting and register the club for the year.</p></li><li><h3>Build and screen your staff<span class="draft">DRAFT</span></h3><p>Every adult completes a background check, child-protection training and Basic Staff Training.</p></li><li><h3>Plan the year and invite families<span class="draft">DRAFT</span></h3><p>Set the calendar, the classes you will teach, dues and uniform needs, then hold a parent meeting.</p></li><li><h3>Launch and be commissioned<span class="draft">DRAFT</span></h3><p>Hold your first meeting and induct your Pathfinders on Pathfinder Day.</p></li></ol><div class="mt-8 flex flex-col sm:flex-row sm:items-center gap-4"><a class="slot btn-primary !py-3.5 !px-7 !text-[15px]" href="mailto:youth@gnycyouth.org" data-slot="PF-16" data-spec="Email · Pathfinder office address for new-club inquiries"><span class="material-symbols-outlined text-xl" aria-hidden="true">mail</span>Email the Pathfinder office</a><p class="text-sm text-slate-600 m-0">We will connect you with your area coordinator.</p></div><div class="mt-14"><p class="eyebrow">Official guides</p><h3 class="font-heading font-extrabold text-2xl sm:text-3xl tracking-tight text-slate-900 mt-2">Start with the handbooks</h3><p class="text-[15px] text-slate-600 mt-2 max-w-2xl">Maintained by the North American Division and the General Conference, so you always get the current edition.</p><div class="res-grid mt-6"><a class="res" href="https://www.gcyouthministries.org/ministries/pathfinders/how-to-organize-a-pathfinder-club/"><span class="res-top"><span class="res-pub"><img src="../img/org/gc-youth.webp" alt="">General Conference</span><span class="res-tag start">To start</span></span><b>How to Organize a Pathfinder Club</b><p>The official sequence, from talking with the conference and your pastor to the board vote, staff training, enrollment night and induction.</p></a><a class="res" href="https://www.clubministries.org/pathfinder-bst/"><span class="res-top"><span class="res-pub"><img src="../img/org/nad.webp" alt="">North American Division</span><span class="res-tag start">To start</span></span><b>Pathfinder Club Basic Staff Certification</b><p>The first training for every staff member: free presenter and participant guides, a record card and an online course.</p></a></div></div></div></section>
+
+<!-- ================= FOR DIRECTORS ================= -->
+<section class="section bg-white border-y border-slate-200/80" id="directors">
+<div class="wrap grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
+<div class="lg:col-span-4">
+<p class="eyebrow">Club directors &amp; staff</p>
+<h2 class="h-section">Run your club well</h2>
+<p class="lede">Everything a director needs in one place: forms, standards, training dates and the people to call.</p>
+<a class="btn-primary mt-6 !py-3.5 !px-7 !text-[15px]" href="../resources.html">Open the resource library</a>
+</div>
+<div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-5">
+<a class="card acc-red p-6 flex gap-4 items-start sm:col-span-2" href="https://www.clubministries.org/investiture-achievement/" target="_blank" rel="noopener noreferrer"><img src="../img/org/nad.webp" alt="" class="w-12 h-12 object-contain shrink-0"><span class="flex-1 min-w-0"><small class="block text-[11px] font-bold tracking-[0.12em] uppercase text-slate-500">North American Division guide</small><strong class="font-heading text-lg text-slate-900 block mt-1">Investiture Achievement</strong><span class="text-sm text-slate-600 block">The core Pathfinder curriculum: the six levels from Friend to Guide in seven tracks, and the IA Director’s Guide with teaching tips for you and your instructors, free to download in English and Spanish.</span><span class="link mt-3">Open the guide</span></span></a>
+<a class="card acc-sky p-6 flex gap-4 items-start" href="../resources.html"><span class="material-symbols-outlined text-3xl text-[#006194]" aria-hidden="true">assignment</span><span><strong class="font-heading text-lg text-slate-900 block">Camporee &amp; travel forms</strong><span class="text-sm text-slate-600">Registration, tent release, risk memo</span></span></a>
+<a class="card acc-indigo p-6 flex gap-4 items-start" href="#uniform"><span class="material-symbols-outlined text-3xl text-indigo-700" aria-hidden="true">checkroom</span><span><strong class="font-heading text-lg text-slate-900 block">Uniform guidelines</strong><span class="text-sm text-slate-600">Class A pieces and levels of dress</span></span></a>
+<div class="slot card acc-emerald p-6 flex gap-4 items-start no-link" data-slot="PF-09" data-spec="Link · monthly report form or portal URL"><span class="material-symbols-outlined text-3xl text-emerald-700" aria-hidden="true">fact_check</span><span><strong class="font-heading text-lg text-slate-900 block">Monthly club report</strong><span class="text-sm text-slate-600">Due the 5th of each month</span></span><span class="soon">Coming soon</span></div>
+<div class="slot card acc-amber p-6 flex gap-4 items-start no-link" data-slot="PF-10" data-spec="Link · safety / background-check (Sterling Volunteers) instructions"><span class="material-symbols-outlined text-3xl text-amber-700" aria-hidden="true">verified_user</span><span><strong class="font-heading text-lg text-slate-900 block">Staff safety &amp; screening</strong><span class="text-sm text-slate-600">Background checks and child protection training</span></span><span class="soon">Coming soon</span></div>
+</div></div>
+</section>
+
+<!-- ================= COORDINATORS ================= -->
+<section class="section" id="people">
+<div class="wrap">
+<p class="eyebrow">People to call</p>
+<h2 class="h-section">Pathfinder leadership</h2>
+<p class="lede">The conference team and the area coordinators who support every club.</p>
+<ul class="slot grid grid-cols-2 md:grid-cols-4 gap-6 mt-10 list-none p-0 m-0" data-slot="PF-11" data-spec="People · names and roles from gnycyouth.org; add headshots 600×600 and emails for the coordinators"><li><img src="../img/people/andrew-gordon.webp" alt="Dr. Andrew Gordon" class="rounded-3xl aspect-square object-cover w-full"><p class="font-heading font-bold text-lg mt-3 mb-0">Dr. Andrew Gordon</p><p class="text-sm text-slate-600 m-0">Associate Director · Club Ministry</p></li><li><div class="ph rounded-3xl aspect-square"><span><span class="material-symbols-outlined">person</span>Headshot</span></div><p class="font-heading font-bold text-lg mt-3 mb-0">Abigail Osei</p><p class="text-sm text-slate-600 m-0">Lead Area Coordinator · The Bronx</p></li><li><div class="ph rounded-3xl aspect-square"><span><span class="material-symbols-outlined">person</span>Headshot</span></div><p class="font-heading font-bold text-lg mt-3 mb-0">Kahina Augustin</p><p class="text-sm text-slate-600 m-0">Lead Area Coordinator · Brooklyn</p></li><li><div class="ph rounded-3xl aspect-square"><span><span class="material-symbols-outlined">person</span>Headshot</span></div><p class="font-heading font-bold text-lg mt-3 mb-0">Stephanie Barrientos</p><p class="text-sm text-slate-600 m-0">Lead Area Coordinator · Long Island</p></li><li><div class="ph rounded-3xl aspect-square"><span><span class="material-symbols-outlined">person</span>Headshot</span></div><p class="font-heading font-bold text-lg mt-3 mb-0">Ruth Lopez</p><p class="text-sm text-slate-600 m-0">Lead Area Coordinator · Manhattan</p></li><li><div class="ph rounded-3xl aspect-square"><span><span class="material-symbols-outlined">person</span>Headshot</span></div><p class="font-heading font-bold text-lg mt-3 mb-0">Maria Carcamo-Perez</p><p class="text-sm text-slate-600 m-0">Lead Area Coordinator · Queens</p></li><li><div class="ph rounded-3xl aspect-square"><span><span class="material-symbols-outlined">person</span>Headshot</span></div><p class="font-heading font-bold text-lg mt-3 mb-0">Judey Austin</p><p class="text-sm text-slate-600 m-0">Lead Area Coordinator · Staten Island</p></li><li><div class="ph rounded-3xl aspect-square"><span><span class="material-symbols-outlined">person</span>Headshot</span></div><p class="font-heading font-bold text-lg mt-3 mb-0">Nydia Pagan-Howard</p><p class="text-sm text-slate-600 m-0">Lead Area Coordinator · Upstate</p></li></ul></div>
 </section>
 
 <!-- ================= BEYOND GREATER NEW YORK ================= -->
@@ -481,6 +493,7 @@
 <a class="org-card" href="https://www.clubministries.org/pathfinders/" target="_blank" rel="noopener noreferrer"><span class="org-logo"><img src="../img/org/nad.webp" alt="North American Division logo"></span><span><small>North American Division</small><b>Pathfinders at NAD Club Ministries</b><p>Pathfinder curriculum, honors, uniform standards and leader training for North America.</p><span class="link">Visit clubministries.org <span class="material-symbols-outlined text-base" aria-hidden="true">open_in_new</span></span></span></a>
 <a class="org-card" href="https://www.gcyouthministries.org/ministries/pathfinders/" target="_blank" rel="noopener noreferrer"><span class="org-logo"><img src="../img/org/gc-youth.webp" alt="Adventist Youth Ministries logo"></span><span><small>General Conference · Adventist Youth Ministries</small><b>The Pathfinder Club</b><p>The worldwide Pathfinder ministry, World Pathfinder Day and resources for clubs everywhere.</p><span class="link">Visit gcyouthministries.org <span class="material-symbols-outlined text-base" aria-hidden="true">open_in_new</span></span></span></a>
 </div>
+<div class="mt-12"><p class="eyebrow">For leaders</p><h3 class="font-heading font-extrabold text-2xl sm:text-3xl tracking-tight text-slate-900 mt-2">Official guides and training</h3><p class="text-[15px] text-slate-600 mt-2 max-w-2xl">Manuals, certifications and curriculum, kept current by the North American Division and the General Conference.</p><div class="res-grid mt-6"><a class="res" href="https://www.clubministries.org/pathfinder-training-and-certification/"><span class="res-top"><span class="res-pub"><img src="../img/org/nad.webp" alt="">North American Division</span><span class="res-tag lead">For leaders</span></span><b>Pathfinder Training and Certification</b><p>Every certification in one place: Basic Staff, Instructor, Counselor, Secretary/Treasurer, Director and TLT.</p></a><a class="res" href="https://www.clubministries.org/pathfinder-director/"><span class="res-top"><span class="res-pub"><img src="../img/org/nad.webp" alt="">North American Division</span><span class="res-tag lead">For leaders</span></span><b>Pathfinder Club Director Certification</b><p>Director training with free workshop and participant guides, field work and a portfolio.</p></a><a class="res" href="https://www.gcyouthministries.org/ministries/pathfinders/download-pathfinder-resource-manuals/"><span class="res-top"><span class="res-pub"><img src="../img/org/gc-youth.webp" alt="">General Conference</span><span class="res-tag lead">For leaders</span></span><b>Pathfinder Resource Manuals</b><p>The world church’s manuals for all six classes, the Honor Book and Pathfinder Day booklets.</p></a></div></div>
 </div></section>
 
 <!-- ================= CTA ================= -->
@@ -489,7 +502,7 @@
 <img class="absolute -right-10 -bottom-16 w-72 opacity-20 rotate-12" src="../img/08.png" alt="" aria-hidden="true">
 <div class="relative grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
 <div class="lg:col-span-8"><p class="text-xs font-bold tracking-[0.18em] uppercase text-[#ffe247]">Ready to start?</p><h2 class="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight mt-3" style="text-wrap:balance">Join a club, or start one at your church.</h2><p class="text-white/80 text-lg mt-4 max-w-xl">The conference Pathfinder office will connect you with a club near you or walk your church through chartering a new one.</p></div>
-<div class="lg:col-span-4 flex flex-col gap-3"><a class="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-white text-slate-900 hover:bg-slate-100 font-semibold" href="#find">Find a club</a><a class="slot inline-flex items-center justify-center px-7 py-3.5 rounded-full border border-white/40 hover:bg-white/10 font-semibold" href="mailto:youth@gnycyouth.org" data-slot="PF-16" data-spec="Email · Pathfinder office address for new-club inquiries">Start a new club</a></div>
+<div class="lg:col-span-4 flex flex-col gap-3"><a class="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-white text-slate-900 hover:bg-slate-100 font-semibold" href="#find">Find a club</a><a class="inline-flex items-center justify-center px-7 py-3.5 rounded-full border border-white/40 hover:bg-white/10 font-semibold" href="#start">Start a new club</a></div>
 </div></div>
 </section>
 

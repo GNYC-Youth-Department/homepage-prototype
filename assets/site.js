@@ -117,6 +117,30 @@
     function toSlot() { var m = /^#([A-Z]{2,3}-\d\d)$/.exec(location.hash); if (!m) return; var el = document.querySelector('[data-slot="' + m[1] + '"]'); if (!el) return; slots(true); document.querySelectorAll('.slot-here').forEach(function (x) { x.classList.remove('slot-here'); }); el.classList.add('slot-here'); el.scrollIntoView({ block: 'center' }); }
     toSlot(); window.addEventListener('hashchange', toSlot);
   }
+  /* external links: one quiet mark everywhere. Cards and link lines name the site; text links show
+     the name on hover or focus; screen readers hear "opens <site> in a new tab". */
+  var EXT_ICONS = /^(open_in_new|arrow_outward|north_east|launch)$/;
+  function extLinks(root) {
+    root.querySelectorAll('a[href^="http"]:not([data-ext])').forEach(function (a) {
+      var h; try { h = new URL(a.href).hostname; } catch (e) { return; }
+      if (h === location.hostname) return;
+      var host = h.replace(/^www\./, '');
+      a.dataset.ext = host; a.target = '_blank'; a.rel = 'noopener noreferrer';
+      a.querySelectorAll('.material-symbols-outlined').forEach(function (i) { if (EXT_ICONS.test(i.textContent.trim())) i.remove(); });
+      a.querySelectorAll('span[aria-hidden="true"]').forEach(function (x) { if (x.textContent.trim() === '→') x.remove(); });
+      var sr = '<span class="sr-only"> (opens ' + host + ' in a new tab)</span>';
+      var ic = '<span class="ext-ic material-symbols-outlined" aria-hidden="true">arrow_outward</span>';
+      var named = function (el) { return el.textContent.toLowerCase().indexOf(host) > -1; };
+      if (!a.textContent.trim()) { a.title = 'Opens ' + host; if (a.getAttribute('aria-label')) a.setAttribute('aria-label', a.getAttribute('aria-label') + ' (opens ' + host + ' in a new tab)'); return; }
+      var line = a.querySelector('.link');
+      if (line) { a.classList.add('ext-card'); line.insertAdjacentHTML('beforeend', named(line) ? ic + sr : '<span class="ext-host">' + host + ic + '</span>' + sr); return; }
+      if (a.querySelector('div,p,h2,h3,h4,img,strong,b')) { a.classList.add('ext-card'); a.insertAdjacentHTML('beforeend', '<span class="ext-note">' + host + ic + '</span>' + sr); return; }
+      a.classList.add('ext-inline'); a.insertAdjacentHTML('beforeend', ic + sr);
+    });
+  }
+  extLinks(document);
+  window.gnycExtLinks = extLinks;
+  new MutationObserver(function () { extLinks(document); }).observe(document.body, { childList: true, subtree: true });
   /* site search: loaded on every page */
   var sl = document.createElement('link'); sl.rel = 'stylesheet'; sl.href = u('assets/search.css'); document.head.appendChild(sl);
   var ss = document.createElement('script'); ss.src = u('assets/search.js'); ss.defer = true; document.body.appendChild(ss);
