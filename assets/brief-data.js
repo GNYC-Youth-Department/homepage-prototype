@@ -65,6 +65,9 @@ var P = [
   ['ADA-01','text','Intro','30–50 words; which awards GNYC clubs teach most'],
   ['ADA-02','photo','Patch photos','117 awards still show a grey circle; 34 patch photos came from the Climb Higher camporee app. Photograph or scan the rest on a plain background, 600×600'],
   ['ADA-03','text','Class check','Confirm the class assignment for Potato and Trikes & Bikes, and whether Healthy Me and Insects (Little Lamb) are still current']]},
+ {code:'PFH', name:'Pathfinder Honors', url:'ministries/pathfinders/honors.html', group:'Built pages', note:'All 567 honors, categories, approval, skill levels and patch images come from the AY Honors list on the Pathfinder Wiki (10 Aug 2026). Each patch links to its wiki page, so requirements are not kept on our site.', slots:[
+  ['PFH-01','text','Intro','30–50 words; name the honors GNYC teaches at camporee, if any'],
+  ['PFH-02','link','Patch image permission','Before the live site: written permission from NAD Youth Ministries to host the 567 patch images, or switch to linking them from the wiki']]},
  {code:'DS', name:'Design guidelines', url:'design.html', group:'Built pages', slots:[
   ['DS-01','file','Official seal','GNYC Youth seal as vector (SVG/AI/EPS) or PNG 2000px, transparent'],
   ['DS-02','file','Club emblems','Adventurer, Pathfinder, Master Guide, AY emblems as vector or PNG 2000px, transparent (we have web-size copies)'],

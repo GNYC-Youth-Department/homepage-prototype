@@ -13,7 +13,8 @@ a:focus-visible,button:focus-visible{outline:2px solid #0284c7;outline-offset:3p
 .proto-ribbon strong{color:#ffe247;font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:11px}
 .proto-ribbon a{color:#fff;font-weight:600;text-decoration:underline;text-underline-offset:2px}
 
-/* nav */
+/* nav (the wrapper div is transparent to layout so .glass-nav can stick to the viewport) */
+[data-site="nav"]{display:contents}
 .glass-nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(255,255,255,.85);border-bottom:1px solid rgba(226,232,240,.8);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px)}
 .nav-link{padding:.5rem .875rem;border-radius:9999px;font-weight:500;font-size:15px;color:#334155;display:inline-flex;align-items:center;gap:.25rem;transition:background .15s,color .15s;white-space:nowrap;background:none;border:0;cursor:pointer;font-family:inherit}
 .nav-link:hover,.nav-link[aria-expanded="true"],.nav-link.is-current{color:#006194;background:#f0f9ff}

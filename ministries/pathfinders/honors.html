@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en" data-root="../../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Pathfinder Honors · GNYC Youth prototype</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/site.css">
+<style>
+  .pf-hero{background:radial-gradient(90% 120% at 100% 0%,rgba(220,38,38,.55) 0%,rgba(220,38,38,0) 55%),radial-gradient(60% 80% at 0% 100%,rgba(245,214,10,.18),rgba(245,214,10,0) 60%),linear-gradient(135deg,#0b1430 0%,#1a1033 50%,#3b0d1a 100%)}
+  .pf-lines{background:repeating-linear-gradient(135deg,rgba(255,255,255,.05) 0 1px,transparent 1px 16px);mask-image:linear-gradient(90deg,transparent,#000 40%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 40%,transparent)}
+  /* hero patch wall */
+  .wall{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;align-items:center}
+  .wall a{display:block;border-radius:16px;transition:transform .35s cubic-bezier(.16,1,.3,1)}
+  .wall a:nth-child(even){transform:translateY(22px)}
+  .wall a:hover{transform:translateY(-6px) scale(1.06)}.wall a:nth-child(even):hover{transform:translateY(14px) scale(1.06)}
+  .wall img{width:100%;aspect-ratio:1;object-fit:contain;filter:drop-shadow(0 16px 22px rgba(0,0,0,.5))}
+  .search{display:flex;align-items:center;gap:.75rem;background:#fff;border-radius:9999px;padding:.5rem .5rem .5rem 1.25rem;box-shadow:0 18px 40px -14px rgba(0,0,0,.55)}
+  .search input{flex:1;border:0;outline:0;font:500 16px Inter,sans-serif;background:none;min-width:0;color:#0f172a}
+  .search input:focus{box-shadow:none}
+  .search kbd{font:600 12px Inter,sans-serif;color:#64748b;border:1px solid #d5dbe6;border-radius:6px;padding:2px 7px;margin-right:.5rem}
+  /* explainer tiles */
+  .tile{background:#fff;border-radius:24px;border:1px solid #e2e8f0;padding:1.5rem;box-shadow:0 1px 2px rgba(15,23,42,.04),0 14px 30px -16px rgba(15,23,42,.22)}
+  .tile h3{font:700 17px 'Plus Jakarta Sans',sans-serif;color:#0f172a;margin:.7rem 0 .35rem}
+  .tile p{font-size:14px;line-height:1.55;color:#475569;margin:0}
+  .tile .ic{width:44px;height:44px;border-radius:14px;display:grid;place-items:center}
+  /* filters */
+  .sticky-filters{position:sticky;top:calc(72px + env(safe-area-inset-top,0px));z-index:30;background:rgba(250,248,255,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid #e2e8f0}
+  /* category tiles: three fanned patches on a tint of the category colour */
+  .ct{--c:#0f172a;--sw:#fff;position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:.25rem;padding:1rem 1rem 1rem;border-radius:22px;border:1px solid color-mix(in srgb,var(--c) 22%,#e2e8f0);background:linear-gradient(160deg,color-mix(in srgb,var(--c) 14%,#fff) 0%,#fff 62%);text-align:left;cursor:pointer;overflow:hidden;box-shadow:0 1px 2px rgba(15,23,42,.04),0 12px 26px -14px color-mix(in srgb,var(--c) 45%,rgba(15,23,42,.3));transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s,border-color .3s;font-family:inherit}
+  .ct:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--c) 50%,#e2e8f0);box-shadow:0 24px 44px -16px color-mix(in srgb,var(--c) 55%,rgba(15,23,42,.3))}
+  .ct[aria-pressed="true"]{border-color:var(--c);box-shadow:0 0 0 2px var(--c),0 18px 36px -16px color-mix(in srgb,var(--c) 60%,rgba(15,23,42,.3))}
+  .ct .fan{display:flex;height:84px;margin:0 0 .5rem -.25rem}
+  .ct .fan img{width:78px;height:78px;object-fit:contain;filter:drop-shadow(0 10px 12px rgba(0,0,0,.22));transition:transform .35s cubic-bezier(.16,1,.3,1)}
+  .ct .fan img+img{margin-left:-26px}
+  .ct .fan img:nth-child(1){transform:rotate(-9deg) translateY(4px)}.ct .fan img:nth-child(3){transform:rotate(9deg) translateY(4px)}
+  .ct:hover .fan img:nth-child(1){transform:rotate(-14deg) translate(-6px,2px)}.ct:hover .fan img:nth-child(2){transform:translateY(-5px) scale(1.05)}.ct:hover .fan img:nth-child(3){transform:rotate(14deg) translate(6px,2px)}
+  .ct b{font:700 16px/1.2 'Plus Jakarta Sans',sans-serif;color:#0f172a}
+  .ct small{font:600 13px Inter,sans-serif;color:var(--c)}
+  .ct .chk{position:absolute;top:.8rem;right:.8rem;width:26px;height:26px;border-radius:9999px;background:var(--c);color:#fff;display:none;place-items:center;font-size:18px}
+  .ct[aria-pressed="true"] .chk{display:grid}
+  @media (max-width:1023px){.ct .fan{height:60px;margin-bottom:.5rem}.ct .fan img{width:56px;height:56px}.ct .fan img+img{margin-left:-20px}}
+  @media (max-width:639px){.ct{padding:.75rem}.ct b{font-size:14px}}
+  .catsel{--c:#0f172a;--sw:#fff;position:relative;display:inline-flex;align-items:center;background:#fff;border:1px solid #d5dbe6;border-radius:9999px;padding-left:.5rem}
+  .catsel:focus-within{outline:2px solid #0284c7;outline-offset:2px}
+  .catsel .sw{width:22px;height:22px;border-radius:9999px;background:var(--sw);border:3px solid #fff;box-shadow:0 0 0 1.5px var(--c);flex:none}
+  .catsel select{appearance:none;-webkit-appearance:none;border:0;background:none;font:600 14px Inter,sans-serif;color:#0f172a;padding:.5rem 2.2rem .5rem .55rem;cursor:pointer;max-width:62vw}
+  .catsel select:focus{outline:0;box-shadow:none}
+  .catsel .material-symbols-outlined{position:absolute;right:.6rem;pointer-events:none;font-size:20px;color:#64748b}
+  .seg{display:inline-flex;background:#fff;border:1px solid #d5dbe6;border-radius:9999px;padding:3px;gap:2px}
+  .seg button{border:0;background:none;border-radius:9999px;padding:.5rem .75rem;min-height:36px;min-width:40px;justify-content:center;font:600 13px Inter,sans-serif;color:#475569;cursor:pointer;white-space:nowrap;display:inline-flex;align-items:center;gap:.3rem}
+  .seg button:hover:not([aria-pressed="true"]){background:#f2f3ff}
+  .seg button[aria-pressed="true"]{background:#131b2e;color:#fff}
+  .seg .material-symbols-outlined{font-size:18px}
+  @media (pointer:coarse),(max-width:639px){.seg button{min-height:44px;min-width:44px}.catsel select{min-height:44px}}
+  .flabel{font:700 11px Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#64748b}
+  /* honor cards */
+  .hn{--c:#0f172a;--sw:#fff;position:relative;background:#fff;border-radius:20px;border:1px solid #e2e8f0;border-top:4px solid var(--c);padding:1rem .75rem .75rem;display:flex;flex-direction:column;align-items:center;text-align:center;gap:.25rem;text-decoration:none;transition:transform .25s cubic-bezier(.16,1,.3,1),box-shadow .25s,border-color .25s;box-shadow:0 1px 2px rgba(15,23,42,.04),0 10px 24px -12px rgba(15,23,42,.18)}
+  .hn:hover,.hn:focus-visible{transform:translateY(-4px);border-color:color-mix(in srgb,var(--c) 45%,#e2e8f0);box-shadow:0 20px 38px -14px color-mix(in srgb,var(--c) 45%,rgba(15,23,42,.3))}
+  .hn:focus-visible{outline:2px solid #0284c7;outline-offset:3px}
+  .hn img{width:96px;height:96px;object-fit:contain;margin-bottom:.25rem;filter:drop-shadow(0 8px 12px rgba(0,0,0,.2));transition:transform .3s cubic-bezier(.16,1,.3,1)}
+  .hn:hover img{transform:scale(1.06) rotate(-2deg)}
+  .hn b{font:700 15px/1.25 'Plus Jakarta Sans',sans-serif;color:#0f172a;flex:1;display:flex;align-items:center}
+  .hn .ext{position:absolute;top:.55rem;right:.55rem;font-size:18px;color:#94a3b8;opacity:0;transition:opacity .2s}
+  .hn:hover .ext,.hn:focus-visible .ext{opacity:1}
+  .meta{display:flex;align-items:center;justify-content:center;gap:.5rem;flex-wrap:wrap;margin-top:.25rem}
+  .lv{display:inline-flex;align-items:center;gap:.25rem;font:600 12px Inter,sans-serif;color:#475569}
+  .lv i{display:inline-flex;gap:2px}.lv i s{width:6px;height:6px;border-radius:9999px;background:#d5dbe6;text-decoration:none}
+  .lv i s.on{background:var(--c)}
+  .ap{font:700 11px Inter,sans-serif;letter-spacing:.06em;padding:3px 7px;border-radius:6px;background:#eef2ff;color:#3730a3}
+  .ap.nad{background:#e0f2fe;color:#075985}
+  .grp{scroll-margin-top:190px}
+  .grp h2{display:flex;align-items:center;gap:.85rem;font:800 clamp(22px,3vw,30px)/1.15 'Plus Jakarta Sans',sans-serif;letter-spacing:-.02em;margin:0;color:#0f172a}
+  .grp h2 .sw{flex:none;width:36px;height:36px;border-radius:9999px;background:var(--sw);border:5px solid #fff;box-shadow:0 0 0 2px var(--c),0 8px 16px -6px rgba(15,23,42,.35)}
+  .grp h2 small{font:600 13px Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#64748b;margin-left:auto;white-space:nowrap}
+  /* list view */
+  .tbl{width:100%;border-collapse:separate;border-spacing:0;background:#fff;border:1px solid #e2e8f0;border-radius:20px;overflow:hidden;box-shadow:0 10px 30px -18px rgba(15,23,42,.25)}
+  .tbl th{background:#f8fafc;text-align:left;font:700 12px Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#475569;padding:0;border-bottom:1px solid #e2e8f0}
+  .tbl th button,.tbl th>span{display:flex;align-items:center;gap:.25rem;width:100%;padding:.85rem 1rem;background:none;border:0;font:inherit;letter-spacing:inherit;text-transform:inherit;color:inherit;cursor:pointer;text-align:left}
+  .tbl th>span{cursor:default}
+  .tbl .w-patch{width:84px}.tbl .w-ap{width:130px}.tbl .w-lv{width:150px}
+  .tbl th button .material-symbols-outlined{font-size:16px;opacity:.35}
+  .tbl th[aria-sort] button .material-symbols-outlined{opacity:1;color:#006194}
+  .tbl td{padding:.55rem 1rem;border-bottom:1px solid #eef1f6;font-size:15px;color:#334155;vertical-align:middle}
+  .tbl tr:last-child td{border-bottom:0}
+  .tbl tbody tr{transition:background .15s}.tbl tbody tr:hover{background:#faf8ff}
+  .tbl td a{font-weight:600;color:#0f172a;text-decoration:none}.tbl td a:hover{color:#006194;text-decoration:underline;text-underline-offset:3px}
+  .tbl td img{width:52px;height:52px;object-fit:contain;filter:drop-shadow(0 4px 6px rgba(0,0,0,.18))}
+  .tbl .catc{display:inline-flex;align-items:center;gap:.5rem;white-space:nowrap}
+  .tbl .catc i{width:14px;height:14px;border-radius:9999px;background:var(--sw);box-shadow:0 0 0 1.5px var(--c)}
+  .tbl .sub{display:none;font-size:13px;color:#64748b;margin-top:2px}
+  @media (max-width:639px){.tbl .c-cat{display:none}.tbl .sub{display:block}.tbl td,.tbl th button,.tbl th>span{padding-inline:.5rem}.tbl td img{width:44px;height:44px}.tbl .w-patch{width:60px}.tbl .w-ap{width:64px}.tbl .w-lv{width:78px}.tbl .lvw{display:none}}
+  @media (max-width:639px){.sticky-filters{position:static}}
+  @media (max-width:1023px){.tile{display:grid;grid-template-columns:44px 1fr;column-gap:1rem;padding:1rem}.tile .ic{grid-row:span 2}.tile h3{margin:0 0 .2rem;align-self:center}}
+  .cta-band{background:radial-gradient(70% 120% at 100% 0%,rgba(220,38,38,.4),rgba(220,38,38,0) 60%),linear-gradient(135deg,#0b1430,#1a1033 60%,#3b0d1a)}
+</style>
+</head>
+<body data-page="ministries">
+<div data-site="nav"></div>
+
+<header class="pf-hero relative overflow-hidden text-white">
+<div class="pf-lines absolute inset-0" aria-hidden="true"></div>
+<div class="wrap relative pt-10 pb-16 lg:pt-14 lg:pb-20">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../index.html">Home</a><span class="sep">/</span><a href="#">Ministries</a><span class="sep">/</span><a href="../pathfinders.html">Pathfinders</a><span class="sep">/</span><span class="text-white">Honors</span></nav>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center mt-8">
+<div class="lg:col-span-7">
+<p class="text-xs font-bold tracking-[0.18em] uppercase text-[#ffe247]">Pathfinders · AY Honors</p>
+<h1 class="mt-4 font-heading font-extrabold text-5xl sm:text-6xl leading-[1.02] tracking-[-0.03em]">Pathfinder Honors</h1>
+<p class="slot mt-5 text-lg leading-relaxed text-white/85 max-w-xl" data-slot="PFH-01" data-spec="Text · intro 30–50 words; name the honors GNYC teaches at camporee if any"><span class="tabular" data-total>567</span> honors across eight categories, from knot tying and birds to first aid and Bible study. Find a patch here, then open its page on the Pathfinder Wiki for the full requirements and answers.</p>
+<form class="search mt-8 max-w-xl" role="search" onsubmit="return false"><span class="material-symbols-outlined text-slate-400" aria-hidden="true">search</span><input id="q" type="search" placeholder="Search honors, e.g. “knots”" aria-label="Search honors" autocomplete="off"><kbd class="hidden sm:inline" aria-hidden="true">/</kbd></form>
+<dl class="mt-9 grid grid-cols-3 gap-6 max-w-md border-t border-white/15 pt-6">
+<div><dt class="text-xs uppercase tracking-wider text-white/60">Honors</dt><dd class="font-heading font-extrabold text-3xl tabular mt-1" data-total>567</dd></div>
+<div><dt class="text-xs uppercase tracking-wider text-white/60">Categories</dt><dd class="font-heading font-extrabold text-3xl tabular mt-1">8</dd></div>
+<div><dt class="text-xs uppercase tracking-wider text-white/60">Skill levels</dt><dd class="font-heading font-extrabold text-3xl tabular mt-1">1–3</dd></div>
+</dl>
+</div>
+<div class="lg:col-span-5"><div class="wall max-w-md mx-auto lg:max-w-none" id="wall" aria-label="A few honor patches"></div></div>
+</div></div></header>
+
+<section class="wrap -mt-8 relative z-10" aria-label="How to read an honor">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+<div class="tile"><span class="ic bg-amber-50 text-amber-700"><span class="material-symbols-outlined" aria-hidden="true">signal_cellular_alt</span></span><h3>Skill level 1 to 3</h3><p>Level 1 honors suit a first-year Pathfinder. Level 2 takes more practice, and Level 3 is advanced work, often for older teens and staff.</p></div>
+<div class="tile"><span class="ic bg-indigo-50 text-indigo-700"><span class="material-symbols-outlined" aria-hidden="true">public</span></span><h3>GC or NAD approval</h3><p><span class="ap">GC</span> honors are approved by the General Conference and taught worldwide. <span class="ap nad">NAD</span> honors are approved by the North American Division.</p></div>
+<div class="tile"><span class="ic bg-sky-50 text-sky-700"><span class="material-symbols-outlined" aria-hidden="true">menu_book</span></span><h3>Requirements on the wiki</h3><p>Each patch opens its page on the Pathfinder Wiki, which keeps the current requirements, answers and teaching notes up to date.</p></div>
+</div></section>
+
+<section class="wrap pt-16 lg:pt-20" aria-labelledby="browse-h">
+<div class="flex flex-wrap items-end justify-between gap-4"><div><p class="eyebrow">Eight categories</p><h2 class="h-section" id="browse-h">Browse by category</h2></div><button type="button" class="link" id="cat-all" hidden>Show all categories <span aria-hidden="true">&rarr;</span></button></div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mt-8" role="group" aria-label="Filter by category" id="cats"></div>
+</section>
+
+<div class="sticky-filters mt-12" id="results-top"><div class="wrap py-3">
+<div class="flex flex-wrap items-center gap-x-5 gap-y-2.5">
+<label class="catsel"><span class="sr-only">Category</span><span class="sw" id="cat-sw" aria-hidden="true"></span><select id="cat"></select><span class="material-symbols-outlined" aria-hidden="true">expand_more</span></label>
+<div class="flex items-center gap-2"><span class="flabel" id="lv-l">Skill</span><div class="seg" role="group" aria-labelledby="lv-l" id="lv"><button data-v="" aria-pressed="true">All</button><button data-v="1" aria-pressed="false">1</button><button data-v="2" aria-pressed="false">2</button><button data-v="3" aria-pressed="false">3</button></div></div>
+<div class="flex items-center gap-2"><span class="flabel" id="ap-l">Approval</span><div class="seg" role="group" aria-labelledby="ap-l" id="ap"><button data-v="" aria-pressed="true">All</button><button data-v="GC" aria-pressed="false">GC</button><button data-v="NAD" aria-pressed="false">NAD</button></div></div>
+<p class="text-sm text-slate-600 sm:ml-auto" aria-live="polite"><span id="count" class="font-semibold text-slate-900 tabular">567</span> <span id="count-w">honors</span></p>
+<div class="seg" role="group" aria-label="View" id="view"><button data-v="grid" aria-pressed="true"><span class="material-symbols-outlined" aria-hidden="true">grid_view</span>Patches</button><button data-v="list" aria-pressed="false"><span class="material-symbols-outlined" aria-hidden="true">table_rows</span>List</button></div>
+</div></div></div>
+
+<main class="wrap pt-10 pb-16" id="list"><p class="text-slate-600 py-10">Loading honors…</p></main>
+
+<section class="wrap pb-20"><div class="cta-band relative overflow-hidden rounded-[28px] text-white p-8 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+<div class="pf-lines absolute inset-0" aria-hidden="true"></div>
+<div class="relative lg:col-span-8"><p class="text-xs font-bold tracking-[0.18em] uppercase text-[#ffe247]">For club staff</p><h2 class="font-heading font-extrabold text-2xl sm:text-3xl tracking-tight mt-2">Teaching an honor?</h2><p class="text-white/80 text-[15px] leading-relaxed mt-2 max-w-xl">The Pathfinder Wiki has the requirements, answer notes and resources for every honor, kept current by Pathfinder leaders worldwide. Patches and record cards are sold through AdventSource.</p></div>
+<div class="relative lg:col-span-4 flex flex-col gap-3"><a class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-white text-slate-900 hover:bg-slate-100 font-semibold text-[15px] transition-colors" href="https://wiki.pathfindersonline.org/w/AY_Honors" target="_blank" rel="noopener noreferrer">All honors on the Pathfinder Wiki<span class="material-symbols-outlined text-lg" aria-hidden="true">open_in_new</span></a><a class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full border border-white/40 text-white hover:bg-white/10 font-semibold text-[15px] transition-colors" href="https://www.adventsource.org" target="_blank" rel="noopener noreferrer">Patches at AdventSource</a></div>
+</div>
+<p class="text-xs text-slate-500 mt-4 px-2">Honor names, categories, approval, skill levels and patch images are from the <a class="underline" href="https://wiki.pathfindersonline.org/w/AY_Honors" target="_blank" rel="noopener noreferrer">AY Honors list on the Pathfinder Wiki</a>, as of 10 August 2026, by Pathfinder Wiki contributors under <a class="underline" href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener noreferrer">CC BY-SA</a>. Honor patch designs belong to the General Conference and North American Division Youth Ministries.</p>
+</section>
+
+<div data-site="footer"></div>
+<script src="../../assets/site.js"></script>
+<script>
+(function(){
+  var WIKI='https://wiki.pathfindersonline.org/w/AY_Honors/';
+  /* colours sampled from the patches: c = accent (text-safe on white), sw = the patch background */
+  var CATS=[
+    {k:'Arts, Crafts and Hobbies',s:'Arts & Crafts',c:'#1d6a96',sw:'#2f7aa6',f:['origami','model-rocketry','lego-design']},
+    {k:'Health and Science',s:'Health & Science',c:'#6b2f7a',sw:'#5b2d6e',f:['basic-rescue','heart-and-circulation','red-alert']},
+    {k:'Household Arts',s:'Household Arts',c:'#b45309',sw:'#e0902a',f:['baking','cooking','basic-sewing']},
+    {k:'Nature',s:'Nature',c:'#15803d',sw:'#f4f4f0',f:['dogs','insects','trees']},
+    {k:'Outdoor Industries',s:'Outdoor Industries',c:'#6b5a1e',sw:'#4a4222',f:['gardening','horse-husbandry','flower-culture']},
+    {k:'Recreation',s:'Recreation',c:'#0f6b5c',sw:'#0e5a4e',f:['archery','cycling','hiking']},
+    {k:'Spiritual Growth, Outreach and Heritage',s:'Spiritual Growth',c:'#1e3a8a',sw:'#1c2a6e',f:['prayer','sign-language','hymns']},
+    {k:'Vocational',s:'Vocational',c:'#b91c1c',sw:'#a80d12',f:['robotics','drones','computers']}];
+  var WALL=['knot-tying','camping-skills-i','birds','drilling-marching','first-aid-basic','stars','fire-building-camp-cookery','christian-citizenship'];
+  var list=document.getElementById('list'),data=[],st={cat:'',lv:'',ap:'',q:'',view:'grid',sort:'name',dir:1};
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function img(h){return '../../img/honors/'+h.s+'.webp'}
+  function dots(n){var o='';for(var i=1;i<=3;i++)o+='<s'+(i<=n?' class="on"':'')+'></s>';return '<span class="lv" aria-label="Skill level '+n+' of 3"><i aria-hidden="true">'+o+'</i><span aria-hidden="true"><span class="lvw">Level </span>'+n+'</span></span>'}
+  function apb(a){return '<span class="ap'+(a==='NAD'?' nad':'')+'" title="'+(a==='GC'?'General Conference: taught worldwide':'North American Division')+'">'+esc(a)+'</span>'}
+  function card(h){var c=CATS[h.c];return '<a class="hn" style="--c:'+c.c+';--sw:'+c.sw+'" href="'+WIKI+esc(h.p)+'" target="_blank" rel="noopener noreferrer"><span class="ext material-symbols-outlined" aria-hidden="true">open_in_new</span><img src="'+img(h)+'" alt="" loading="lazy" decoding="async" width="96" height="96"><b>'+esc(h.n)+'</b><span class="meta">'+dots(h.l)+apb(h.a)+'</span><span class="sr-only"> ('+c.s+', opens the Pathfinder Wiki)</span></a>'}
+  function hits(){var q=st.q;return data.filter(function(h){return (!st.cat||CATS[h.c].k===st.cat)&&(!st.lv||h.l==st.lv)&&(!st.ap||h.a===st.ap)&&(!q||(h.n+' '+CATS[h.c].k).toLowerCase().indexOf(q)>-1)})}
+  function grid(rows){var g={};rows.forEach(function(h){(g[h.c]=g[h.c]||[]).push(h)});
+    return CATS.map(function(c,i){var r=g[i];if(!r)return '';return '<section class="grp mb-14" id="c-'+c.s.replace(/\W+/g,'-').toLowerCase()+'" style="--c:'+c.c+';--sw:'+c.sw+'"><h2><span class="sw" aria-hidden="true"></span>'+esc(c.k)+'<small>'+r.length+(r.length===1?' honor':' honors')+'</small></h2><div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 mt-6">'+r.map(card).join('')+'</div></section>'}).join('')}
+  function table(rows){var k=st.sort,d=st.dir;rows=rows.slice().sort(function(a,b){var x=k==='cat'?CATS[a.c].k:k==='ap'?a.a:k==='lv'?a.l:a.n,y=k==='cat'?CATS[b.c].k:k==='ap'?b.a:k==='lv'?b.l:b.n;return (x<y?-1:x>y?1:a.n.localeCompare(b.n))*(x===y?1:d)});
+    function th(key,label,cls){var s=st.sort===key;return '<th'+(cls?' class="'+cls+'"':'')+(s?' aria-sort="'+(d>0?'ascending':'descending')+'"':'')+'><button type="button" data-sort="'+key+'">'+label+'<span class="material-symbols-outlined" aria-hidden="true">'+(s&&d<0?'arrow_downward':'arrow_upward')+'</span></button></th>'}
+    return '<table class="tbl"><caption class="sr-only">List of honors</caption><thead><tr>'+th('name','Honor')+'<th class="w-patch"><span>Patch</span></th>'+th('cat','Category','c-cat')+th('ap','Approval','w-ap')+th('lv','Skill level','w-lv')+'</tr></thead><tbody>'+rows.map(function(h){var c=CATS[h.c];return '<tr style="--c:'+c.c+';--sw:'+c.sw+'"><td><a href="'+WIKI+esc(h.p)+'" target="_blank" rel="noopener noreferrer">'+esc(h.n)+'</a><span class="sub">'+esc(c.s)+'</span></td><td><img src="'+img(h)+'" alt="" loading="lazy" decoding="async" width="52" height="52"></td><td class="c-cat"><span class="catc"><i aria-hidden="true"></i>'+esc(c.k)+'</span></td><td>'+apb(h.a)+'</td><td>'+dots(h.l)+'</td></tr>'}).join('')+'</tbody></table>'}
+  function sync(){var p=new URLSearchParams();if(st.cat)p.set('cat',CATS.filter(function(c){return c.k===st.cat})[0].s);if(st.lv)p.set('level',st.lv);if(st.ap)p.set('approval',st.ap);if(st.q)p.set('q',st.q);if(st.view!=='grid')p.set('view',st.view);var s=p.toString();history.replaceState(null,'',location.pathname+(s?'?'+s:''))}
+  function render(){var rows=hits();list.innerHTML=rows.length?(st.view==='list'?table(rows):grid(rows)):'<div class="text-center py-16"><span class="material-symbols-outlined text-5xl text-slate-300" aria-hidden="true">search_off</span><p class="font-heading font-bold text-xl text-slate-900 mt-3">No honors match</p><p class="text-slate-600 mt-1">Try a shorter word, or <button type="button" class="link !inline" id="reset">clear the filters</button>.</p></div>';
+    document.getElementById('count').textContent=rows.length;document.getElementById('count-w').textContent=rows.length===1?'honor':'honors';
+    var cnt={};data.forEach(function(h){if((!st.lv||h.l==st.lv)&&(!st.ap||h.a===st.ap)&&(!st.q||(h.n+' '+CATS[h.c].k).toLowerCase().indexOf(st.q)>-1))cnt[h.c]=(cnt[h.c]||0)+1});
+    var all=0;for(var k in cnt)all+=cnt[k];
+    document.querySelectorAll('#cats [data-i]').forEach(function(b){var n=cnt[b.dataset.i]||0;b.querySelector('small').textContent=n+(n===1?' honor':' honors')});
+    var sel=document.getElementById('cat');[].forEach.call(sel.options,function(o,i){o.textContent=(i?CATS[i-1].k:'All categories')+' ('+(i?cnt[i-1]||0:all)+')'});sync()}
+  function press(group,v){document.querySelectorAll(group+' button').forEach(function(b){var on=(b.dataset.v!==undefined?b.dataset.v:b.dataset.cat)===v;b.setAttribute('aria-pressed',on);b.classList.toggle('is-on',on)})}
+  function setCat(v){st.cat=v;press('#cats',v);var i=-1;CATS.forEach(function(c,j){if(c.k===v)i=j});var sel=document.getElementById('cat');sel.selectedIndex=i+1;var l=sel.parentNode,c=i<0?null:CATS[i];l.style.setProperty('--c',c?c.c:'#0f172a');l.style.setProperty('--sw',c?c.sw:ALLSW);document.getElementById('cat-all').hidden=!v}
+  var ALLSW='conic-gradient('+CATS.map(function(c,i){return c.sw+' '+(i*45)+'deg '+((i+1)*45)+'deg'}).join(',')+')';
+  document.getElementById('cats').innerHTML=CATS.map(function(c,i){return '<button type="button" class="ct" style="--c:'+c.c+';--sw:'+c.sw+'" data-cat="'+esc(c.k)+'" data-i="'+i+'" aria-pressed="false" title="'+esc(c.k)+'"><span class="chk material-symbols-outlined" aria-hidden="true">check</span><span class="fan" aria-hidden="true">'+c.f.map(function(s){return '<img src="../../img/honors/'+s+'.webp" alt="" loading="lazy">'}).join('')+'</span><b>'+esc(c.s)+'</b><small></small></button>'}).join('');
+  document.getElementById('cat').innerHTML='<option value="">All categories</option>'+CATS.map(function(c){return '<option value="'+esc(c.k)+'">'+esc(c.k)+'</option>'}).join('');
+  function toResults(){var t=document.getElementById('results-top');if(t.getBoundingClientRect().top>200)t.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})}
+  document.getElementById('cats').addEventListener('click',function(e){var b=e.target.closest('[data-cat]');if(!b)return;setCat(st.cat===b.dataset.cat?'':b.dataset.cat);render();if(st.cat)toResults()});
+  document.getElementById('cat').addEventListener('change',function(e){setCat(e.target.value);render()});
+  document.getElementById('cat-all').addEventListener('click',function(){setCat('');render()});
+  document.getElementById('lv').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;st.lv=b.dataset.v;press('#lv',st.lv);render()});
+  document.getElementById('ap').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;st.ap=b.dataset.v;press('#ap',st.ap);render()});
+  document.getElementById('view').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;st.view=b.dataset.v;press('#view',st.view);render()});
+  list.addEventListener('click',function(e){var s=e.target.closest('[data-sort]');if(s){var k=s.dataset.sort;st.dir=st.sort===k?-st.dir:1;st.sort=k;render();var f=list.querySelector('[data-sort="'+k+'"]');if(f)f.focus();return}
+    if(e.target.id==='reset'){st.cat='';st.lv='';st.ap='';st.q='';document.getElementById('q').value='';setCat('');press('#lv','');press('#ap','');render()}});
+  var qi=document.getElementById('q'),t;qi.addEventListener('input',function(){clearTimeout(t);t=setTimeout(function(){st.q=qi.value.trim().toLowerCase();render()},120)});
+  document.addEventListener('keydown',function(e){if(e.key==='/'&&!/input|textarea|select/i.test(document.activeElement.tagName)){e.preventDefault();qi.focus()}});
+  /* read ?cat=Nature&level=1&approval=GC&q=knot&view=list so other pages can link to a filtered view */
+  var p=new URLSearchParams(location.search),pc=(p.get('cat')||'').toLowerCase();
+  CATS.forEach(function(c){if(c.s.toLowerCase()===pc||c.k.toLowerCase()===pc)st.cat=c.k});
+  if(/^[123]$/.test(p.get('level')||''))st.lv=p.get('level');if(/^(GC|NAD)$/.test(p.get('approval')||''))st.ap=p.get('approval');
+  if(p.get('q')){st.q=p.get('q').toLowerCase();qi.value=p.get('q')}if(p.get('view')==='list')st.view='list';
+  setCat(st.cat);press('#lv',st.lv);press('#ap',st.ap);press('#view',st.view);
+  fetch('../../data/pathfinder-honors.json').then(function(r){if(!r.ok)throw new Error(r.status);return r.json()}).then(function(d){data=d;
+    document.querySelectorAll('[data-total]').forEach(function(x){x.textContent=d.length});
+    document.getElementById('wall').innerHTML=WALL.map(function(s){var h=d.filter(function(x){return x.s===s})[0];return h?'<a href="'+WIKI+esc(h.p)+'" target="_blank" rel="noopener noreferrer" title="'+esc(h.n)+'"><img src="'+img(h)+'" alt="'+esc(h.n)+' honor patch"></a>':''}).join('');
+    render()}).catch(function(){list.innerHTML='<div class="text-center py-16"><span class="material-symbols-outlined text-5xl text-slate-300" aria-hidden="true">cloud_off</span><p class="font-heading font-bold text-xl text-slate-900 mt-3">Could not load the honors list</p><p class="text-slate-600 mt-1">Reload the page, or see the full list on the <a class="link !inline" href="https://wiki.pathfindersonline.org/w/AY_Honors" target="_blank" rel="noopener noreferrer">Pathfinder Wiki</a>.</p></div>'});
+})();
+</script>
+</body>
+</html>
