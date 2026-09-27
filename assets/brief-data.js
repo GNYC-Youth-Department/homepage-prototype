@@ -3,7 +3,7 @@
 var P = [
  {code:'HM', name:'Homepage', url:'index.html', group:'Built pages', slots:[
   ['HM-01','photo','Hero photo','2400×1200 landscape, New York skyline or a large gathering; the current one is a stock skyline'],
-  ['HM-02','text','Hero headline and one-line intro','Confirm “Helping New York youth live, lead and love like Jesus.” or supply your own, plus 25 words'],
+  ['HM-02','text','Hero headline and one-line intro','Confirm “Helping New York youth live, lead and love like Jesus.” or supply your own, plus 25 words. Since Sep 27, 2026 the word love turns into a beating red heart after the page loads'],
   ['HM-03','file','Featured event flyer','AY Congress flyer at 1600px+ (current copy is small and says XIX; confirm XVIII vs XIX)'],
   ['HM-04','data','Three next events','Dates from gnycyouth.org (Retreat Sep 25–27, TLT Convention Oct 3–4, Bible Olympics Oct 24); add venues, blurbs, links and flyers'],
   ['HM-11','link','2027 club registration','URL of the club registration form (banner on gnycyouth.org)'],

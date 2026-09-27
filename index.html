@@ -98,7 +98,7 @@
 <link rel="stylesheet" href="assets/site.css">
 
 <style>
-  /* preview (?heart=1): "love" turns into a gently beating red heart */
+  /* headline: "love" turns into a gently beating red heart */
   .love-swap{position:relative;display:inline-block;vertical-align:baseline;white-space:nowrap}
   .love-swap .lh{display:none}
   .heart-on .love-swap{transition:width .7s cubic-bezier(.16,1,.3,1)}
@@ -434,8 +434,8 @@
 </div>
 <script src="assets/site.js"></script>
 <script>
-/* preview: ?heart=1 swaps "love" for a beating heart; the word stays for screen readers and reduced motion */
-(function(){if(!/[?&]heart=1/.test(location.search))return;if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+/* "love" becomes a gently beating heart; the word stays for screen readers and reduced motion */
+(function(){if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
  var w=document.querySelector('.love-swap');if(!w)return;var lw=w.querySelector('.lw');
  w.setAttribute('role','img');w.setAttribute('aria-label','love');lw.setAttribute('aria-hidden','true');
  document.documentElement.classList.add('heart-on');
