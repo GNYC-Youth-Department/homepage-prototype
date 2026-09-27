@@ -23,15 +23,7 @@
   .year{display:grid;grid-template-columns:repeat(4,minmax(200px,1fr));gap:1rem;position:relative}
   .year::before{content:"";position:absolute;left:0;right:0;top:22px;height:2px;background:linear-gradient(90deg,#0ea5e9,#f59e0b,#0ea5e9)}
   .year li{position:relative;padding-top:3.25rem;list-style:none}
-  .year li::before{content:"";position:absolute;top:14px;left:0;width:18px;height:18px;border-radius:9999px;background:#fff;border:4px solid #0ea5e9;box-shadow:0 0 0 6px #faf8ff}
-  .cls{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem}
-  @media (max-width:420px){.cls{grid-template-columns:repeat(2,1fr)}}
-  .cls div{border-radius:18px;padding:1.1rem .75rem 1rem;background:#fff;border:1px solid #e2e8f0;border-top:4px solid var(--c);text-align:center;display:flex;flex-direction:column;align-items:center;gap:.15rem;box-shadow:0 1px 2px rgba(15,23,42,.04),0 10px 24px -12px rgba(15,23,42,.18);transition:transform .25s cubic-bezier(.16,1,.3,1),box-shadow .25s}
-  .cls div:hover{transform:translateY(-4px);box-shadow:0 18px 36px -14px rgba(15,23,42,.28)}
-  .cls .ph{width:84px;height:84px;border-radius:9999px;margin-bottom:.6rem;font-size:11px}
-  .cls .cls-img{width:92px;height:92px;object-fit:contain;margin-bottom:.5rem;filter:drop-shadow(0 8px 14px rgba(0,0,0,.18))}
-  .cls strong{font-family:'Plus Jakarta Sans',sans-serif;font-size:17px;color:#0f172a}
-  .cls span{font-size:12px;color:#64748b}
+  .year li::before{content:"";position:absolute;top:14px;left:0;width:18px;height:18px;border-radius:9999px;background:#fff;border:4px solid #0ea5e9;box-shadow:0 0 0 6px #f0f9ff}
   .area-btn{display:flex;align-items:center;justify-content:space-between;width:100%;padding:.85rem 1rem;border-radius:14px;border:1px solid #e2e8f0;background:#fff;font:600 15px Inter,sans-serif;color:#0f172a;cursor:pointer;text-align:left}
   .area-btn:hover,.area-btn.is-on{border-color:#0ea5e9;background:#e0f2fe;color:#0369a1}
   .area-btn small{font-weight:600;color:#64748b}
@@ -60,6 +52,99 @@
   .tl li{list-style:none;position:relative}
   .tl li::before{content:"";position:absolute;left:calc(-2rem - 7px);top:6px;width:12px;height:12px;border-radius:9999px;background:#0ea5e9;box-shadow:0 0 0 4px #fff}
   .tl b{font:800 14px Inter,sans-serif;letter-spacing:.1em;color:#0369a1}
+  /* why join */
+  .why{display:grid;grid-template-columns:repeat(1,1fr);gap:1rem}
+  @media (min-width:640px){.why{grid-template-columns:repeat(2,1fr)}}
+  @media (min-width:1024px){.why{grid-template-columns:repeat(3,1fr);gap:1.5rem}}
+  .why li{position:relative;background:linear-gradient(160deg,var(--t) 0%,#fff 55%);border:1px solid color-mix(in srgb,var(--c) 18%,#e2e8f0);border-radius:24px;padding:1.5rem;box-shadow:0 1px 2px rgba(15,23,42,.04),0 14px 30px -18px color-mix(in srgb,var(--c) 55%,rgba(15,23,42,.3));transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s}
+  .why li:hover{transform:translateY(-4px);box-shadow:0 24px 44px -18px color-mix(in srgb,var(--c) 60%,rgba(15,23,42,.3))}
+  .why-ic{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:var(--c);color:#fff;font-size:28px;box-shadow:0 10px 20px -8px var(--c)}
+  .why h3{font:800 20px/1.2 'Plus Jakarta Sans',sans-serif;color:#0f172a;margin:1rem 0 .5rem;letter-spacing:-.01em}
+  .why p{font-size:15px;line-height:1.6;color:#475569;margin:0}
+  @media (max-width:639px){.why li{display:grid;grid-template-columns:44px 1fr;column-gap:1rem;padding:1.25rem}.why-ic{width:44px;height:44px;font-size:24px;border-radius:16px;grid-row:span 2}.why h3{margin:0 0 .25rem;font-size:18px;align-self:center}}
+  .voice{position:relative;margin:0;border-radius:24px;padding:2rem 2rem 1.5rem;background:#fff;border:1px solid #e2e8f0;box-shadow:0 14px 30px -18px rgba(15,23,42,.3)}
+  .voice .q{display:block;height:40px;margin:-.5rem 0 .25rem;font:800 80px/1 'Plus Jakarta Sans',sans-serif;color:#f59e0b}
+  .voice blockquote{position:relative;margin:0;font:600 19px/1.5 'Plus Jakarta Sans',sans-serif;color:#0f172a}
+  .voice figcaption{display:flex;align-items:center;gap:.75rem;margin-top:1.5rem}
+  .voice figcaption b{display:block;font-size:15px;color:#0f172a}.voice figcaption small{display:block;font-size:13px;color:#64748b}
+  .voice .av{width:48px;height:48px;border-radius:9999px;flex:none}.voice .av .material-symbols-outlined{font-size:24px;margin:0}
+  .voice-dark{background:linear-gradient(135deg,#0b1430,#064e3b);border-color:transparent}
+  .voice-dark blockquote,.voice-dark figcaption b{color:#fff}.voice-dark figcaption small{color:rgba(255,255,255,.65)}.voice-dark .q{color:#ffe247}
+  /* philosophy */
+  .phil{background:radial-gradient(70% 90% at 50% 45%,rgba(14,165,233,.35) 0%,rgba(14,165,233,0) 60%),linear-gradient(160deg,#0b1430 0%,#0c3b5e 55%,#064e3b 100%)}
+  .quad{display:grid;grid-template-columns:1fr;gap:1rem}
+  .qd{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-top:3px solid var(--c);border-radius:24px;padding:1.5rem;backdrop-filter:blur(6px)}
+  .qd .material-symbols-outlined{font-size:32px;color:var(--c)}
+  .qd .qk{font:700 12px Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--c);margin:.75rem 0 0}
+  .qd h3{font:800 22px/1.2 'Plus Jakarta Sans',sans-serif;margin:.25rem 0 .5rem}
+  .qd p:last-child{font-size:15px;line-height:1.6;color:rgba(255,255,255,.78);margin:0}
+  .qc{display:grid;place-items:center;order:-1;grid-column:1/-1}.qc img{width:120px;filter:drop-shadow(0 20px 30px rgba(0,0,0,.55))}
+  @media (min-width:1024px){.quad{grid-template-columns:1fr 240px 1fr;grid-template-rows:auto auto;gap:1.5rem 2rem;align-items:center}
+    .qd:nth-child(1){grid-area:1/1}.qd:nth-child(2){grid-area:2/1}.qc{grid-area:1/2/3/3;order:0}.qd:nth-child(4){grid-area:1/3}.qd:nth-child(5){grid-area:2/3}
+    .qc img{width:220px;filter:drop-shadow(0 30px 40px rgba(0,0,0,.55));animation:bob 7s ease-in-out infinite}}
+  @media (min-width:640px) and (max-width:1023px){.quad{grid-template-columns:1fr 1fr}}
+  .aim div{border-radius:16px;padding:1.25rem 1.5rem;background:rgba(255,226,71,.08);border:1px solid rgba(255,226,71,.28);text-align:center}
+  .aim dt{font:700 12px Inter,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#ffe247}
+  .aim dd{margin:.5rem 0 0;font:700 19px/1.4 'Plus Jakarta Sans',sans-serif;color:#fff}
+  /* growth journey */
+  .jr-ends{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.75rem 1rem}
+  .jr-end,.jr-now{display:inline-flex;align-items:center;gap:.75rem;padding:.5rem 1.25rem .5rem .5rem;border-radius:9999px;background:#fff;border:1px solid #e2e8f0;text-decoration:none;color:#0f172a;box-shadow:0 8px 20px -12px rgba(15,23,42,.3);transition:border-color .2s,transform .2s}
+  .jr-end:hover{border-color:#94a3b8;transform:translateY(-2px)}
+  .jr-end img,.jr-now img{width:40px;height:40px;object-fit:contain}
+  .jr-end small{display:block;font:600 12px Inter,sans-serif;color:#64748b}.jr-end b,.jr-now b{display:block;font:700 15px 'Plus Jakarta Sans',sans-serif}
+  .jr-now{background:#0b1430;color:#fff;border-color:#0b1430}
+  .jr-arrow{color:#94a3b8}
+  .jr-sep{width:1px;height:40px;border-left:2px dashed #cbd5e1;margin:0 .5rem}
+  .jr-next{background:transparent;border-style:dashed;border-color:#cbd5e1;box-shadow:none}
+  .jr-next img{opacity:.85}
+  @media (max-width:1023px){.jr-arrow{transform:rotate(90deg)}.jr-ends{flex-direction:column}.jr-sep{width:40px;height:1px;border-left:0;border-top:2px dashed #cbd5e1;margin:.5rem 0}}
+  .journey{list-style:none;margin:0;padding:0;display:grid;gap:1rem;position:relative}
+  .journey li{position:relative;background:#fff;border-radius:24px;border:1px solid #e2e8f0;border-top:4px solid var(--c);padding:1.5rem 1.25rem 1.25rem;box-shadow:0 1px 2px rgba(15,23,42,.04),0 14px 30px -16px color-mix(in srgb,var(--c) 50%,rgba(15,23,42,.3));transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s}
+  .journey li:hover{transform:translateY(-4px)}
+  .journey img{width:96px;height:96px;object-fit:contain;filter:drop-shadow(0 10px 14px rgba(0,0,0,.25))}
+  .journey .jr-g{font:700 12px Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--c);margin:.75rem 0 0}
+  .journey h3{font:800 24px/1.1 'Plus Jakarta Sans',sans-serif;color:#0f172a;margin:.25rem 0 .5rem}
+  .journey .jr-t{font-size:14px;line-height:1.55;color:#475569;margin:0}
+  .jr-dot{display:none}
+  @media (max-width:639px){.journey{padding-left:1.75rem}.journey::before{content:"";position:absolute;left:.5rem;top:1rem;bottom:1rem;width:3px;border-radius:3px;background:linear-gradient(#38bdf8,#a16207,#2563eb,#ca8a04,#16a34a,#dc2626)}
+    .jr-dot{display:block;position:absolute;left:calc(-1.25rem - 9px);top:2rem;width:18px;height:18px;border-radius:9999px;background:#fff;border:4px solid var(--c)}
+    .journey li{display:grid;grid-template-columns:72px 1fr;column-gap:1rem;padding:1.25rem 1rem}.journey img{width:72px;height:72px;grid-row:span 3}.journey .jr-g{margin:0}}
+  @media (min-width:640px){.journey{grid-template-columns:repeat(3,1fr)}}
+  @media (min-width:1280px){.journey{grid-template-columns:repeat(6,1fr);gap:1rem;padding-top:1.5rem}
+    .journey::before{content:"";position:absolute;left:4%;right:4%;top:0;height:4px;border-radius:4px;background:linear-gradient(90deg,#38bdf8,#a16207,#2563eb,#ca8a04,#16a34a,#dc2626)}
+    .jr-dot{display:block;position:absolute;top:calc(-1.5rem - 9px);left:50%;margin-left:-11px;width:22px;height:22px;border-radius:9999px;background:#fff;border:5px solid var(--c);box-shadow:0 0 0 6px #faf8ff}
+    .journey li{text-align:center;display:flex;flex-direction:column;align-items:center;padding:1.5rem 1rem 1.25rem}}
+  .areas{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr;gap:.5rem}
+  @media (min-width:640px){.areas{grid-template-columns:1fr 1fr}}
+  .areas li{display:flex;align-items:center;gap:.75rem;padding:.75rem 1rem;border-radius:16px;background:color-mix(in srgb,var(--c) 7%,#fff);border:1px solid color-mix(in srgb,var(--c) 20%,#fff);font:600 14px Inter,sans-serif;color:#1e293b}
+  .areas .material-symbols-outlined{font-size:22px;color:var(--c)}
+  .invest{background:radial-gradient(90% 120% at 100% 0%,rgba(14,165,233,.45),rgba(14,165,233,0) 60%),linear-gradient(135deg,#0b1430,#064e3b)}
+  .aw-row{display:flex;width:fit-content;gap:.25rem}
+  .aw-row img{width:60px;height:60px;object-fit:contain;filter:drop-shadow(0 8px 10px rgba(0,0,0,.2));transition:transform .3s cubic-bezier(.16,1,.3,1)}
+  .aw-row img:nth-child(odd){transform:rotate(-6deg)}.aw-row img:nth-child(even){transform:rotate(6deg) translateY(4px)}
+  a:hover .aw-row img{transform:translateY(-4px) rotate(0)}
+  @media (max-width:420px){.aw-row img{width:48px;height:48px}}
+  /* a club meeting */
+  .meet{list-style:none;margin:0;padding:0;display:grid;gap:1rem;grid-template-columns:1fr}
+  @media (min-width:640px){.meet{grid-template-columns:repeat(2,1fr)}}
+  @media (min-width:1024px){.meet{grid-template-columns:repeat(4,1fr);gap:1.5rem}}
+  .meet li{position:relative;border-radius:24px;padding:1.5rem;background:linear-gradient(170deg,var(--t),#fff 70%);border:1px solid color-mix(in srgb,var(--c) 22%,#e2e8f0);box-shadow:0 14px 30px -18px color-mix(in srgb,var(--c) 55%,rgba(15,23,42,.3))}
+  .meet-n{position:absolute;top:1.25rem;right:1.25rem;font:800 40px/1 'Plus Jakarta Sans',sans-serif;color:var(--k)}
+  .meet-ic{width:52px;height:52px;border-radius:9999px;display:grid;place-items:center;background:var(--c);color:#fff;font-size:26px;box-shadow:0 10px 20px -8px var(--c)}
+  .meet h3{font:800 19px/1.2 'Plus Jakarta Sans',sans-serif;color:#0f172a;margin:1rem 0 .5rem}
+  .meet p{font-size:15px;line-height:1.6;color:#475569;margin:0}
+  @media (min-width:1024px){.meet li:not(:last-child)::after{content:"";position:absolute;top:2.9rem;right:-1.25rem;width:1rem;height:2px;background:#cbd5e1}}
+  /* philosophy, light and warm for the youngest club */
+  .phil-light{background:radial-gradient(60% 70% at 50% 50%,rgba(255,226,71,.35) 0%,rgba(255,226,71,0) 65%),linear-gradient(180deg,#e0f2fe 0%,#f0f9ff 45%,#fefce8 100%);color:#0f172a}
+  .phil-light .qd{background:linear-gradient(170deg,var(--t),#fff 65%);border:1px solid color-mix(in srgb,var(--c) 22%,#e2e8f0);border-top:4px solid var(--c);backdrop-filter:none;box-shadow:0 14px 30px -18px color-mix(in srgb,var(--c) 55%,rgba(15,23,42,.3))}
+  .phil-light .qd p:last-child{color:#475569}
+  .phil-light .qd h3{color:#0f172a}
+  .phil-light .qc img{filter:drop-shadow(0 20px 30px rgba(3,105,161,.35))}
+  /* the Law as ten bright tiles */
+  .law-tiles{grid-template-columns:repeat(2,1fr);gap:.75rem}
+  .law-tiles li{padding:.75rem 1rem;border-radius:16px;background:#fff;border:1px solid #e2e8f0;font:600 16px 'Plus Jakarta Sans',sans-serif;color:#0f172a;align-items:center;box-shadow:0 6px 16px -10px rgba(15,23,42,.25)}
+  .law-tiles li::before{width:32px;height:32px;line-height:32px;font-size:13px;color:#fff}
+  .law-tiles li:nth-child(5n+1)::before{background:#0ea5e9}.law-tiles li:nth-child(5n+2)::before{background:#f59e0b}.law-tiles li:nth-child(5n+3)::before{background:#10b981}.law-tiles li:nth-child(5n+4)::before{background:#ec4899}.law-tiles li:nth-child(5n)::before{background:#7c3aed}
 </style>
 </head>
 <body data-page="ministries">
@@ -81,46 +166,129 @@
 </dl></div>
 <div class="lg:col-span-5 relative"><div class="relative w-full max-w-md mx-auto aspect-[4/5] flex items-start justify-center pt-4"><img class="crest-float w-56 sm:w-64" src="../img/07.png" alt="" aria-hidden="true"></div></div></div></div></header>
 
+<!-- ================= WHY JOIN ================= -->
+<section class="section" id="why">
+<div class="wrap">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-end">
+<div class="lg:col-span-7"><p class="eyebrow">Why Adventurers</p><h2 class="h-section" style="text-wrap:balance">Why every family should join an Adventurer club</h2></div>
+<p class="slot lede lg:col-span-5 !mt-0" data-slot="AD-04" data-spec="Text · why this ministry, 60–90 words, in the Director's voice">Adventurers supports parents as the primary educators and spiritual mentors of their children, fosters growth that is spiritual, physical, mental and social, and leads each child toward a personal commitment to Jesus Christ and a positive attitude to Christian living.</p>
+</div>
+<ul class="slot why mt-12 list-none p-0" data-slot="AD-17" data-spec="Text · DRAFT six reasons; confirm or rewrite each in 20–30 words">
+<li style="--c:#0284c7;--t:#f0f9ff"><span class="why-ic material-symbols-outlined" aria-hidden="true">auto_stories</span><h3>Faith from the start</h3><p>Bible stories, songs and simple prayers at the age when children believe with their whole hearts, so knowing Jesus feels natural.</p></li>
+<li style="--c:#059669;--t:#ecfdf5"><span class="why-ic material-symbols-outlined" aria-hidden="true">family_restroom</span><h3>Parents at the centre</h3><p>Adventurers is a family club. Parents learn alongside their children and take home ideas for worship, play and talking about God.</p></li>
+<li style="--c:#d97706;--t:#fffbeb"><span class="why-ic material-symbols-outlined" aria-hidden="true">toys</span><h3>Learning by doing</h3><p>Crafts, games, nature walks and short projects. Every award is earned with hands, eyes and questions, a few meetings at a time.</p></li>
+<li style="--c:#db2777;--t:#fdf2f8"><span class="why-ic material-symbols-outlined" aria-hidden="true">diversity_1</span><h3>A place to belong</h3><p>Small groups by age, the same friends year after year, and grown-ups at church who know every child by name.</p></li>
+<li style="--c:#7c3aed;--t:#f5f3ff"><span class="why-ic material-symbols-outlined" aria-hidden="true">emoji_events</span><h3>Confidence and character</h3><p>Being kind, helpful and true, practised every week and celebrated with a patch they can point to on their sash.</p></li>
+<li style="--c:#0369a1;--t:#f0f9ff"><span class="why-ic material-symbols-outlined" aria-hidden="true">shield_person</span><h3>Safe, caring adults</h3><p>Every staff member is screened and trained, and parents are always welcome in the room.</p></li>
+</ul>
+<div class="slot voices mt-12 grid grid-cols-1 md:grid-cols-2 gap-6" data-slot="AD-18" data-spec="Quotes · one parent and one club director or counselor, 25–40 words each, with full name, club and permission">
+<figure class="voice"><span class="q" aria-hidden="true">“</span><blockquote>A parent's words about what Adventurers has meant for their child and their family go here, in their own voice.</blockquote><figcaption><span class="av ph"><span class="material-symbols-outlined">person</span></span><span><b>Parent's full name</b><small>Parent of a Sunbeam · club name</small></span></figcaption></figure>
+<figure class="voice voice-dark"><span class="q" aria-hidden="true">“</span><blockquote>A club director's or counselor's words about watching children grow through the classes go here.</blockquote><figcaption><span class="av ph ph-dark"><span class="material-symbols-outlined">person</span></span><span><b>Director's full name</b><small>Club director · club name</small></span></figcaption></figure>
+</div>
+</div>
+</section>
+
+<!-- ================= A CLUB MEETING ================= -->
+<section class="section bg-white border-y border-slate-200/80" id="meeting">
+<div class="wrap">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-end">
+<div class="lg:col-span-7"><p class="eyebrow">For parents</p><h2 class="h-section" style="text-wrap:balance">What a club meeting looks like</h2></div>
+<p class="lede lg:col-span-5 !mt-0">Meetings are short and active, made for small attention spans and busy hands.</p>
+</div>
+<ol class="slot meet mt-12" data-slot="AD-20" data-spec="Text · DRAFT four steps of a typical meeting; confirm the order, the usual length and when clubs meet">
+<li style="--c:#f59e0b;--k:#b45309;--t:#fffbeb"><span class="meet-n" aria-hidden="true">1</span><span class="meet-ic material-symbols-outlined" aria-hidden="true">music_note</span><h3>Welcome and worship</h3><p>Songs, a short Bible story and prayer, and everyone says the Pledge and Law together.</p></li>
+<li style="--c:#0ea5e9;--k:#0369a1;--t:#f0f9ff"><span class="meet-n" aria-hidden="true">2</span><span class="meet-ic material-symbols-outlined" aria-hidden="true">groups</span><h3>Class time</h3><p>Children split into their class with a counselor they know and work on the year's requirements.</p></li>
+<li style="--c:#10b981;--k:#047857;--t:#ecfdf5"><span class="meet-n" aria-hidden="true">3</span><span class="meet-ic material-symbols-outlined" aria-hidden="true">palette</span><h3>Award activity</h3><p>A craft, game, nature walk or visit that counts toward an award, learned by doing.</p></li>
+<li style="--c:#ec4899;--k:#be185d;--t:#fdf2f8"><span class="meet-n" aria-hidden="true">4</span><span class="meet-ic material-symbols-outlined" aria-hidden="true">home</span><h3>Closing and take-home</h3><p>A closing prayer, and a note for parents with something to talk about or practise at home that week.</p></li>
+</ol>
+</div>
+</section>
+
+<!-- ================= PHILOSOPHY ================= -->
+<section class="phil phil-light section relative overflow-hidden" id="philosophy">
+<div class="wrap relative">
+<div class="max-w-3xl mx-auto text-center">
+<p class="eyebrow">Our philosophy</p>
+<h2 class="font-heading font-extrabold text-4xl sm:text-5xl tracking-[-0.02em] leading-[1.05] mt-3" style="text-wrap:balance">Faith grows best at home, and the club comes alongside</h2>
+<blockquote class="mt-6 text-lg sm:text-xl text-slate-700 leading-relaxed">“And thou shalt teach them diligently unto thy children, and shalt talk of them when thou sittest in thine house, and when thou walkest by the way, and when thou liest down, and when thou risest up.”<cite class="block not-italic text-sm font-semibold tracking-wider uppercase text-slate-500 mt-2">Deuteronomy 6:7</cite></blockquote>
+</div>
+<div class="slot quad mt-14" data-slot="AD-19" data-spec="Text · confirm the four curriculum areas and their one-line descriptions">
+<div class="qd" style="--c:#b45309;--t:#fffbeb"><span class="material-symbols-outlined" aria-hidden="true">church</span><p class="qk">My God</p><h3>Knowing Jesus</h3><p>Bible stories, prayer, worship and the Adventurer Pledge and Law help children love God and trust Him.</p></div>
+<div class="qd" style="--c:#0369a1;--t:#f0f9ff"><span class="material-symbols-outlined" aria-hidden="true">self_improvement</span><p class="qk">My Self</p><h3>Growing healthy and wise</h3><p>Safety, good choices, healthy habits and new skills build a child who feels capable and cared for.</p></div>
+<div class="qc" aria-hidden="true"><img src="../img/07.png" alt=""></div>
+<div class="qd" style="--c:#047857;--t:#ecfdf5"><span class="material-symbols-outlined" aria-hidden="true">family_restroom</span><p class="qk">My Family</p><h3>Home at the heart</h3><p>Children learn to love, help and honor their families, and parents take part in every class year.</p></div>
+<div class="qd" style="--c:#be185d;--t:#fdf2f8"><span class="material-symbols-outlined" aria-hidden="true">public</span><p class="qk">My World</p><h3>Caring for God's world</h3><p>Nature, neighbors and community helpers show children how to care for creation and for the people around them.</p></div>
+</div>
+<p class="text-center text-sm text-slate-600 mt-10 max-w-2xl mx-auto">Every Adventurer class follows these four areas of the NAD Adventurer curriculum, from Little Lamb to Helping Hand.</p>
+</div>
+</section>
+
 <section class="section bg-white border-b border-slate-200/80">
 <div class="wrap grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
-<div class="lg:col-span-5"><p class="eyebrow">What we promise</p><h2 class="h-section">The Adventurer Pledge</h2>
+<div class="lg:col-span-5"><p class="eyebrow">What an Adventurer promises</p><h2 class="h-section">The Adventurer Pledge</h2>
 <blockquote class="mt-6 font-heading font-bold text-2xl sm:text-3xl leading-snug tracking-tight text-slate-900 border-l-4 pl-6" style="border-color:#0ea5e9">“Because Jesus loves me, I will always do my best.”</blockquote>
-<p class="slot lede" data-slot="AD-04" data-spec="Text · why this ministry, 60–90 words, in the Director's voice">Adventurers supports parents as the primary educators and spiritual mentors of their children, fosters growth that is spiritual, physical, mental and social, and leads each child toward a personal commitment to Jesus Christ and a positive attitude to Christian living.</p>
+<p class="lede">Adventurers say the Pledge together at every meeting. The Law is ten simple ways Jesus helps them live it, one day at a time.</p>
 <div class="slot mt-6 flex items-center gap-4 rounded-2xl bg-slate-50 border border-slate-200 p-4" data-slot="AD-05" data-spec="Done from gnycyouth.org; add email"><img src="../img/people/andrew-gordon.jpg" alt="Dr. Andrew Gordon" class="rounded-full w-14 h-14 object-cover shrink-0"><div><p class="font-semibold text-slate-900 m-0">Dr. Andrew Gordon</p><p class="text-sm text-slate-600 m-0">Associate Director · Club Ministry</p></div></div></div>
-<div class="lg:col-span-7"><p class="eyebrow">The Adventurer Law · Jesus can help me to</p><ol class="law mt-4"><li>Be obedient</li><li>Be pure</li><li>Be true</li><li>Be kind</li><li>Be respectful</li><li>Be attentive</li><li>Be helpful</li><li>Be cheerful</li><li>Be thoughtful</li><li>Be reverent</li></ol></div>
+<div class="lg:col-span-7"><p class="eyebrow">The Adventurer Law · Jesus can help me to</p><ol class="law law-tiles mt-4"><li>Be obedient</li><li>Be pure</li><li>Be true</li><li>Be kind</li><li>Be respectful</li><li>Be attentive</li><li>Be helpful</li><li>Be cheerful</li><li>Be thoughtful</li><li>Be reverent</li></ol></div>
 </div></section>
 
-<section class="section"><div class="wrap">
-<div><p class="eyebrow">Inside the ministry</p><h2 class="h-section">What Adventurers do</h2><p class="lede">Four strands run through every club year.</p></div>
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10"><a class="card acc-sky group flex flex-col overflow-hidden" href="adventurers/awards.html">
-<div class="relative h-40 bg-gradient-to-br from-[#0c4a6e] via-[#0284c7] to-[#38bdf8] flex items-end p-5 overflow-hidden"><span class="material-symbols-outlined absolute -right-4 -top-4 text-[140px] text-white/15" aria-hidden="true">stars</span><span class="inline-flex px-3 py-1 rounded-full text-[11px] font-extrabold tracking-wider uppercase bg-white/20 text-white border border-white/30 backdrop-blur">Awards</span></div>
-<div class="p-6 flex flex-col flex-1"><h3 class="font-heading font-bold text-xl text-slate-900">Adventurer Awards</h3><p class="text-[15px] text-slate-700 mt-2 leading-relaxed">Stars, chips and awards for every class, from Bible stories and pets to safety and gardening, each earned in a few meetings.</p><span class="link mt-auto pt-5">See the awards <span aria-hidden="true">&rarr;</span></span></div></a><a class="card acc-emerald group flex flex-col overflow-hidden" href="../brief.html#AD">
-<div class="relative h-40 bg-gradient-to-br from-[#064e3b] via-[#059669] to-[#34d399] flex items-end p-5 overflow-hidden"><span class="material-symbols-outlined absolute -right-4 -top-4 text-[140px] text-white/15" aria-hidden="true">family_restroom</span><span class="inline-flex px-3 py-1 rounded-full text-[11px] font-extrabold tracking-wider uppercase bg-white/20 text-white border border-white/30 backdrop-blur">Families</span></div>
-<div class="p-6 flex flex-col flex-1"><h3 class="font-heading font-bold text-xl text-slate-900">Family Network</h3><p class="text-[15px] text-slate-700 mt-2 leading-relaxed">Parent classes and family activities that make the club a place for the whole household.</p><span class="link mt-auto pt-5">Learn more <span aria-hidden="true">&rarr;</span></span></div></a><a class="card acc-amber group flex flex-col overflow-hidden" href="../events.html">
-<div class="relative h-40 bg-gradient-to-br from-[#78350f] via-[#d97706] to-[#fbbf24] flex items-end p-5 overflow-hidden"><span class="material-symbols-outlined absolute -right-4 -top-4 text-[140px] text-white/15" aria-hidden="true">celebration</span><span class="inline-flex px-3 py-1 rounded-full text-[11px] font-extrabold tracking-wider uppercase bg-white/20 text-white border border-white/30 backdrop-blur">Spring</span></div>
-<div class="p-6 flex flex-col flex-1"><h3 class="font-heading font-bold text-xl text-slate-900">Adventurer Fun Day</h3><p class="text-[15px] text-slate-700 mt-2 leading-relaxed">The conference-wide day of games, awards and worship for every club, every spring.</p><span class="link mt-auto pt-5">See the date <span aria-hidden="true">&rarr;</span></span></div></a><a class="card acc-indigo group flex flex-col overflow-hidden" href="#classes">
-<div class="relative h-40 bg-gradient-to-br from-[#312e81] via-[#4f46e5] to-[#a5b4fc] flex items-end p-5 overflow-hidden"><span class="material-symbols-outlined absolute -right-4 -top-4 text-[140px] text-white/15" aria-hidden="true">workspace_premium</span><span class="inline-flex px-3 py-1 rounded-full text-[11px] font-extrabold tracking-wider uppercase bg-white/20 text-white border border-white/30 backdrop-blur">June</span></div>
-<div class="p-6 flex flex-col flex-1"><h3 class="font-heading font-bold text-xl text-slate-900">Investiture</h3><p class="text-[15px] text-slate-700 mt-2 leading-relaxed">Each Adventurer receives the class earned that year, from Little Lamb to Helping Hand.</p><span class="link mt-auto pt-5">How classes work <span aria-hidden="true">&rarr;</span></span></div></a></div>
-</div></section>
+<!-- ================= GROWTH JOURNEY: CLASSES, AWARDS, INVESTITURE ================= -->
+<section class="section" id="classes">
+<div class="wrap">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-end">
+<div class="lg:col-span-7"><p class="eyebrow">The growth journey</p><h2 class="h-section" style="text-wrap:balance">Six classes, one for every year of early childhood</h2></div>
+<p class="lede lg:col-span-5 !mt-0">Each class is built for one school year. Children move up together with the friends they started with, and at the end of the club year they are invested before their family and church.</p>
+</div>
 
-<section class="section bg-white border-y border-slate-200/80"><div class="wrap">
+<div class="jr-ends mt-12"><span class="jr-now"><img src="../img/07.png" alt=""><b>Adventurers · six classes</b></span><span class="jr-sep" aria-hidden="true"></span><a class="jr-end jr-next" href="pathfinders.html"><img src="../img/08.png" alt=""><span><small>What comes next · age 10</small><b>Pathfinders</b></span></a></div>
+
+<ol class="slot journey mt-10" data-slot="AD-07" data-spec="Class emblems from NAD Club Ministries are in place. DRAFT focus lines: confirm one line per class, 15–25 words, and the ages and grades">
+<li style="--c:#38bdf8"><span class="jr-dot" aria-hidden="true"></span><img src="../img/adv-class-little-lamb.png" alt="" width="112" height="112"><p class="jr-g">Age 4 · Pre-K</p><h3>Little Lamb</h3><p class="jr-t">Held close by the Good Shepherd: first Bible stories, songs and prayers, with a parent right beside them.</p></li>
+<li style="--c:#a16207"><span class="jr-dot" aria-hidden="true"></span><img src="../img/adv-class-eager-beaver.png" alt="" width="112" height="112"><p class="jr-g">Age 5 · K</p><h3>Eager Beaver</h3><p class="jr-t">Eager to learn: the colors of creation, helping at home, and discovering that God made them special.</p></li>
+<li style="--c:#2563eb"><span class="jr-dot" aria-hidden="true"></span><img src="../img/adv-class-busy-bee.png" alt="" width="112" height="112"><p class="jr-g">Age 6 · Grade 1</p><h3>Busy Bee</h3><p class="jr-t">Busy hands and a willing heart: first reading awards, caring for others and learning to follow Jesus every day.</p></li>
+<li style="--c:#ca8a04"><span class="jr-dot" aria-hidden="true"></span><img src="../img/adv-class-sunbeam.png" alt="" width="112" height="112"><p class="jr-g">Age 7 · Grade 2</p><h3>Sunbeam</h3><p class="jr-t">Shining Jesus' light: kindness, safety at home and on the road, and exploring God's world outdoors.</p></li>
+<li style="--c:#16a34a"><span class="jr-dot" aria-hidden="true"></span><img src="../img/adv-class-builder.png" alt="" width="112" height="112"><p class="jr-g">Age 8 · Grade 3</p><h3>Builder</h3><p class="jr-t">Building skill and faith: bigger projects, Bible heroes and serving family and friends with growing independence.</p></li>
+<li style="--c:#dc2626"><span class="jr-dot" aria-hidden="true"></span><img src="../img/adv-class-helping-hand.png" alt="" width="112" height="112"><p class="jr-g">Age 9 · Grade 4</p><h3>Helping Hand</h3><p class="jr-t">Ready to help: leading small tasks, serving the community and getting ready to become a Pathfinder.</p></li>
+</ol>
+
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-14">
+<div class="lg:col-span-7 card acc-emerald p-7 sm:p-9 flex flex-col">
+<p class="eyebrow !text-[#047857]">The Family Network</p>
+<h3 class="font-heading font-extrabold text-2xl sm:text-3xl tracking-tight text-slate-900 mt-1">Parents grow too</h3>
+<p class="slot text-[15px] text-slate-700 mt-3 leading-relaxed max-w-xl" data-slot="AD-22" data-spec="Text · DRAFT confirm how the Family Network runs in GNYC clubs: parent sessions, home requirements, family events">Alongside each class, parents take part in family activities and short parenting sessions. Many requirements are done together at home, so the club week carries into the family week.</p>
+<ul class="areas mt-6">
+<li style="--c:#047857"><span class="material-symbols-outlined" aria-hidden="true">menu_book</span>Family worship ideas</li>
+<li style="--c:#0369a1"><span class="material-symbols-outlined" aria-hidden="true">home</span>Requirements done at home</li>
+<li style="--c:#b45309"><span class="material-symbols-outlined" aria-hidden="true">school</span>Parenting sessions</li>
+<li style="--c:#7c3aed"><span class="material-symbols-outlined" aria-hidden="true">celebration</span>Family events and Fun Day</li>
+</ul>
+<div class="ph slot rounded-2xl h-48 mt-6 flex-1 min-h-[12rem]" data-slot="AD-08" data-spec="Photo · 1600×900 · a parent and child working on a requirement together"><span><span class="material-symbols-outlined">photo_camera</span>A parent and child working on a requirement together</span></div>
+</div>
+<div class="lg:col-span-5 grid gap-6">
+<div class="invest relative overflow-hidden rounded-[24px] text-white p-7">
+<img class="absolute -right-12 -bottom-16 w-40 opacity-10 rotate-12" src="../img/07.png" alt="" aria-hidden="true">
+<div class="relative"><p class="text-xs font-bold tracking-[0.18em] uppercase text-[#ffe247]">End of the club year</p><h3 class="font-heading font-extrabold text-2xl tracking-tight mt-1">Investiture</h3><p class="text-[15px] text-white/80 mt-2 leading-relaxed">When a class is complete, the Adventurer is invested before family and church. It marks a year of growing up in faith, not just a finished checklist.</p></div>
+</div>
+<a class="card acc-sky p-7 group block" href="adventurers/awards.html">
+<p class="eyebrow">Along the way</p>
+<h3 class="font-heading font-extrabold text-2xl tracking-tight text-slate-900 mt-1">Awards a child can finish</h3>
+<p class="text-[15px] text-slate-700 mt-2 leading-relaxed">Stars, chips and awards earned in two or three meetings each, from Bible friends and bees to safety and sewing.</p>
+<span class="aw-row mt-4" aria-hidden="true"><img src="../img/awards/award-abcs.webp" alt=""><img src="../img/awards/award-butterfly.png" alt=""><img src="../img/awards/award-bible-friends.webp" alt=""><img src="../img/awards/award-honeybee.png" alt=""><img src="../img/awards/award-prayer.webp" alt=""></span>
+<span class="link mt-4">Browse the awards <span aria-hidden="true">&rarr;</span></span>
+</a>
+</div>
+</div>
+</div>
+</section>
+
+
+<section class="section border-y border-sky-100" style="background:linear-gradient(180deg,#f0f9ff,#f8fbff)"><div class="wrap">
 <p class="eyebrow">Plan the year</p><h2 class="h-section">A year in Adventurers</h2><p class="lede">The rhythm every club follows. Dates change each year; the current calendar is on the Events page.</p>
 <div class="mt-8 rounded-2xl border-2 border-dashed border-amber-400 bg-amber-50 p-5 flex flex-col sm:flex-row sm:items-center gap-4"><span class="material-symbols-outlined text-3xl text-amber-600 shrink-0" aria-hidden="true">event_repeat</span><div class="flex-1"><p class="font-heading font-bold text-lg text-amber-900 m-0">Cycle to be confirmed</p><p class="text-sm text-amber-800 mt-1 mb-0">The milestones and months below are a draft frame, not the real calendar. The Director confirms the correct annual cycle for this ministry: which events happen, in what order, and in which month.</p></div><a class="btn-primary !bg-amber-600 hover:!bg-amber-700 !py-2.5 shrink-0" href="../sitemap.html">Assign in the page map</a></div>
 <ol class="slot year mt-10 overflow-x-auto pb-4 no-scrollbar" data-slot="AD-06" data-spec="Cycle · DRAFT. Confirm the real annual cycle: events, order and month for each milestone">
 <li><p class="eyebrow acc">September <span class="ml-1 px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 text-[10px] font-extrabold tracking-wider">DRAFT</span></p><h3 class="font-heading font-bold text-lg mt-1">Induction</h3><p class="text-sm text-slate-600 mt-1">New Adventurers and parents are welcomed into the club.</p></li><li><p class="eyebrow acc">October–March <span class="ml-1 px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 text-[10px] font-extrabold tracking-wider">DRAFT</span></p><h3 class="font-heading font-bold text-lg mt-1">Awards & classes</h3><p class="text-sm text-slate-600 mt-1">Weekly or twice-monthly meetings at the church.</p></li><li><p class="eyebrow acc">Spring <span class="ml-1 px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 text-[10px] font-extrabold tracking-wider">DRAFT</span></p><h3 class="font-heading font-bold text-lg mt-1">Adventurer Fun Day</h3><p class="text-sm text-slate-600 mt-1">All clubs together for one day of games and worship.</p></li><li><p class="eyebrow acc">June <span class="ml-1 px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 text-[10px] font-extrabold tracking-wider">DRAFT</span></p><h3 class="font-heading font-bold text-lg mt-1">Investiture</h3><p class="text-sm text-slate-600 mt-1">Classes are awarded and families celebrate.</p></li>
 </ol><a class="link mt-4" href="../events.html">See this year's dates <span aria-hidden="true">&rarr;</span></a></div></section>
 
-<section class="section"><div class="wrap grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-<div class="lg:col-span-5"><p class="eyebrow">Growth track</p><h2 class="h-section">Six classes, one for every age</h2><p class="lede">Each class is built for one school year. Children move up together with the friends they started with.</p>
-<div class="slot cls mt-8" data-slot="AD-07" data-spec="Class emblems from the NAD Club Ministries site are in place; confirm ages and grades">
-<div style="--c:#7dd3fc"><img class="cls-img" src="../img/adv-class-little-lamb.png" alt="Little Lamb class emblem"><strong>Little Lamb</strong><span>Age 4 · Pre-K</span></div><div style="--c:#a16207"><img class="cls-img" src="../img/adv-class-eager-beaver.png" alt="Eager Beaver class emblem"><strong>Eager Beaver</strong><span>Age 5 · Kindergarten</span></div><div style="--c:#2563eb"><img class="cls-img" src="../img/adv-class-busy-bee.png" alt="Busy Bee class emblem"><strong>Busy Bee</strong><span>Age 6 · Grade 1</span></div><div style="--c:#eab308"><img class="cls-img" src="../img/adv-class-sunbeam.png" alt="Sunbeam class emblem"><strong>Sunbeam</strong><span>Age 7 · Grade 2</span></div><div style="--c:#16a34a"><img class="cls-img" src="../img/adv-class-builder.png" alt="Builder class emblem"><strong>Builder</strong><span>Age 8 · Grade 3</span></div><div style="--c:#dc2626"><img class="cls-img" src="../img/adv-class-helping-hand.png" alt="Helping Hand class emblem"><strong>Helping Hand</strong><span>Age 9 · Grade 4</span></div>
-</div></div>
-<div class="lg:col-span-7"><div class="card acc-sky p-7 sm:p-9 overflow-hidden relative">
-<span class="material-symbols-outlined absolute -right-6 -bottom-8 text-[200px] opacity-10 acc" aria-hidden="true">stars</span>
-<div class="relative"><p class="eyebrow acc">Awards</p><h3 class="font-heading font-extrabold text-3xl tracking-tight text-slate-900 mt-1">Awards a six-year-old can finish</h3><p class="text-[15px] text-slate-700 mt-3 leading-relaxed max-w-md">Each award takes two or three meetings and ends with a patch for the sash. Clubs choose the mix; families can also earn awards at home.</p>
-<div class="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-3 text-sm font-semibold text-slate-800"><span class="rounded-xl bg-white/80 border px-3 py-2" style="border-color:#e0f2fe">Bible</span><span class="rounded-xl bg-white/80 border px-3 py-2" style="border-color:#e0f2fe">Nature</span><span class="rounded-xl bg-white/80 border px-3 py-2" style="border-color:#e0f2fe">Household</span><span class="rounded-xl bg-white/80 border px-3 py-2" style="border-color:#e0f2fe">Health</span><span class="rounded-xl bg-white/80 border px-3 py-2" style="border-color:#e0f2fe">Safety</span><span class="rounded-xl bg-white/80 border px-3 py-2" style="border-color:#e0f2fe">Recreation</span><span class="rounded-xl bg-white/80 border px-3 py-2" style="border-color:#e0f2fe">Outreach</span><span class="rounded-xl bg-white/80 border px-3 py-2" style="border-color:#e0f2fe">Crafts</span></div>
-<div class="ph slot rounded-2xl h-40 mt-6" data-slot="AD-08" data-spec="Photo · 1600×700 · close-up of an Adventurer sash with awards"><span><span class="material-symbols-outlined">photo_camera</span>close-up of an Adventurer sash with awards</span></div>
-</div></div></div></div></section>
 
 <section class="section bg-white border-y border-slate-200/80"><div class="wrap">
 <div class="flex flex-col md:flex-row md:items-end justify-between gap-4"><div><p class="eyebrow">Coming up</p><h2 class="h-section">Adventurers events</h2></div><a class="link" href="../events.html">All events <span aria-hidden="true">&rarr;</span></a></div>
@@ -131,7 +299,7 @@
 <section class="section" id="directors"><div class="wrap grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
 <div class="lg:col-span-4"><p class="eyebrow">Club directors & staff</p><h2 class="h-section">Run your club well</h2><p class="lede">Forms, standards, training dates and the people to call.</p><a class="btn-primary mt-6 !py-3.5 !px-7 !text-[15px]" href="../resources.html">Open the resource library</a></div>
 <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-5">
-<a class="card acc-sky p-6 flex gap-4 items-start" href="../resources.html"><span class="material-symbols-outlined text-3xl text-[#006194]" aria-hidden="true">assignment</span><span><strong class="font-heading text-lg text-slate-900 block">Forms & waivers</strong><span class="text-sm text-slate-600">Registration, releases, risk memo</span></span></a><a class="card acc-indigo p-6 flex gap-4 items-start" href="../resources.html"><span class="material-symbols-outlined text-3xl text-indigo-700" aria-hidden="true">checkroom</span><span><strong class="font-heading text-lg text-slate-900 block">Uniform guidelines</strong><span class="text-sm text-slate-600">Class A and B, insignia placement</span></span></a><a class="slot card acc-emerald p-6 flex gap-4 items-start" href="#" data-slot="AD-09" data-spec="Link · monthly report form or portal URL"><span class="material-symbols-outlined text-3xl text-emerald-700" aria-hidden="true">fact_check</span><span><strong class="font-heading text-lg text-slate-900 block">Monthly club report</strong><span class="text-sm text-slate-600">Due the 5th of each month</span></span></a><a class="slot card acc-amber p-6 flex gap-4 items-start" href="#" data-slot="AD-10" data-spec="Link · screening instructions"><span class="material-symbols-outlined text-3xl text-amber-700" aria-hidden="true">verified_user</span><span><strong class="font-heading text-lg text-slate-900 block">Staff safety & screening</strong><span class="text-sm text-slate-600">Background checks and child protection training</span></span></a>
+<a class="card acc-sky p-6 flex gap-4 items-start" href="../resources.html"><span class="material-symbols-outlined text-3xl text-[#006194]" aria-hidden="true">assignment</span><span><strong class="font-heading text-lg text-slate-900 block">Forms & waivers</strong><span class="text-sm text-slate-600">Registration, releases, risk memo</span></span></a><a class="card acc-indigo p-6 flex gap-4 items-start" href="../resources.html"><span class="material-symbols-outlined text-3xl text-indigo-700" aria-hidden="true">checkroom</span><span><strong class="font-heading text-lg text-slate-900 block">Uniform guidelines</strong><span class="text-sm text-slate-600">Class A and B, insignia placement</span></span></a><a class="slot card acc-emerald p-6 flex gap-4 items-start" href="#" data-slot="AD-21" data-spec="Link · monthly report form or portal URL"><span class="material-symbols-outlined text-3xl text-emerald-700" aria-hidden="true">fact_check</span><span><strong class="font-heading text-lg text-slate-900 block">Monthly club report</strong><span class="text-sm text-slate-600">Due the 5th of each month</span></span></a><a class="slot card acc-amber p-6 flex gap-4 items-start" href="#" data-slot="AD-10" data-spec="Link · screening instructions"><span class="material-symbols-outlined text-3xl text-amber-700" aria-hidden="true">verified_user</span><span><strong class="font-heading text-lg text-slate-900 block">Staff safety & screening</strong><span class="text-sm text-slate-600">Background checks and child protection training</span></span></a>
 </div></div></section>
 
 <section class="section bg-white border-y border-slate-200/80"><div class="wrap">
