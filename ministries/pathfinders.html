@@ -144,6 +144,12 @@
   .uni-mg-items li{display:flex;gap:1rem;align-items:flex-start;background:#fff;border:1px solid #dbeafe;border-radius:24px;padding:1.25rem;box-shadow:0 12px 26px -18px rgba(30,58,138,.4)}
   .uni-mg-items .material-symbols-outlined{flex:none;width:44px;height:44px;border-radius:16px;display:grid;place-items:center;background:color-mix(in srgb,var(--c) 12%,#fff);color:var(--c);font-size:24px}
   .uni-mg-items h3{font:800 16px 'Plus Jakarta Sans',sans-serif;color:#0f172a;margin:0 0 .25rem}.uni-mg-items p{font-size:14px;line-height:1.5;color:#475569;margin:0}
+  /* the Law as eight tiles, in Pathfinder colors */
+  .law-tiles{grid-template-columns:1fr;gap:.75rem}
+  @media (min-width:640px){.law-tiles{grid-template-columns:repeat(2,1fr)}}
+  .law-tiles li{padding:.8rem 1rem;border-radius:16px;background:#fff;border:1px solid #e2e8f0;font:600 16px/1.35 'Plus Jakarta Sans',sans-serif;color:#0f172a;align-items:center;box-shadow:0 6px 16px -10px rgba(15,23,42,.25)}
+  .law-tiles li::before{width:32px;height:32px;line-height:32px;font-size:13px;color:#fff}
+  .law-tiles li:nth-child(3n+1)::before{background:#dc2626}.law-tiles li:nth-child(3n+2)::before{background:#b45309}.law-tiles li:nth-child(3n)::before{background:#1e3a8a}
 </style>
 </head>
 <body data-page="ministries">
@@ -233,7 +239,7 @@
 </div>
 <div class="lg:col-span-7">
 <p class="eyebrow">The Pathfinder Law</p>
-<ol class="law mt-4">
+<ol class="law law-tiles mt-4">
 <li>Keep the morning watch.</li><li>Do my honest part.</li><li>Care for my body.</li><li>Keep a level eye.</li>
 <li>Be courteous and obedient.</li><li>Walk softly in the sanctuary.</li><li>Keep a song in my heart.</li><li>Go on God’s errands.</li>
 </ol>
