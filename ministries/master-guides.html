@@ -17,9 +17,6 @@
   .hero-light a.bg-white{background:#0b1430;color:#fff} .hero-light a.bg-white:hover{background:#1e293b} .hero-light a.border-white\/40{border-color:rgba(15,23,42,.3);color:#0f172a} .hero-light a.border-white\/40:hover{background:rgba(15,23,42,.06)} .hero-light .crest-float{filter:drop-shadow(0 24px 30px rgba(15,23,42,.35))}
   @keyframes bob{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-10px) rotate(-2deg)}}
   .acc{color:#1e40af} .acc-bg{background:#1e40af} .acc-soft{background:#e0e7ff;color:#3730a3}
-  .law{counter-reset:law;list-style:none;margin:0;padding:0;display:grid;gap:.75rem}
-  .law li{display:flex;gap:.75rem;align-items:flex-start;font-size:15px;line-height:1.5;color:#334155}
-  .law li::before{content:counter(law);counter-increment:law;flex:none;width:26px;height:26px;border-radius:9999px;background:#e0e7ff;color:#3730a3;font:700 12px/26px Inter,sans-serif;text-align:center}
   .year{display:grid;grid-template-columns:repeat(5,minmax(200px,1fr));gap:1rem;position:relative}
   .year::before{content:"";position:absolute;left:0;right:0;top:22px;height:2px;background:linear-gradient(90deg,#1e40af,#f59e0b,#1e40af)}
   .year li{position:relative;padding-top:3.25rem;list-style:none}
@@ -94,6 +91,92 @@
   .uni-mg-items li{display:flex;gap:1rem;align-items:flex-start;background:#fff;border:1px solid #dbeafe;border-radius:24px;padding:1.25rem;box-shadow:0 12px 26px -18px rgba(30,58,138,.4)}
   .uni-mg-items .material-symbols-outlined{flex:none;width:44px;height:44px;border-radius:16px;display:grid;place-items:center;background:color-mix(in srgb,var(--c) 12%,#fff);color:var(--c);font-size:24px}
   .uni-mg-items h3{font:800 16px 'Plus Jakarta Sans',sans-serif;color:#0f172a;margin:0 0 .25rem}.uni-mg-items p{font-size:14px;line-height:1.5;color:#475569;margin:0}
+  /* why join */
+  .why{display:grid;grid-template-columns:repeat(1,1fr);gap:1rem}
+  @media (min-width:640px){.why{grid-template-columns:repeat(2,1fr)}}
+  @media (min-width:1024px){.why{grid-template-columns:repeat(3,1fr);gap:1.5rem}}
+  .why li{position:relative;background:linear-gradient(160deg,var(--t) 0%,#fff 55%);border:1px solid color-mix(in srgb,var(--c) 18%,#e2e8f0);border-radius:24px;padding:1.5rem;box-shadow:0 1px 2px rgba(15,23,42,.04),0 14px 30px -18px color-mix(in srgb,var(--c) 55%,rgba(15,23,42,.3));transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s}
+  .why li:hover{transform:translateY(-4px);box-shadow:0 24px 44px -18px color-mix(in srgb,var(--c) 60%,rgba(15,23,42,.3))}
+  .why-ic{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:var(--c);color:#fff;font-size:28px;box-shadow:0 10px 20px -8px var(--c)}
+  .why h3{font:800 20px/1.2 'Plus Jakarta Sans',sans-serif;color:#0f172a;margin:1rem 0 .5rem;letter-spacing:-.01em}
+  .why p{font-size:15px;line-height:1.6;color:#475569;margin:0}
+  @media (max-width:639px){.why li{display:grid;grid-template-columns:44px 1fr;column-gap:1rem;padding:1.25rem}.why-ic{width:44px;height:44px;font-size:24px;border-radius:16px;grid-row:span 2}.why h3{margin:0 0 .25rem;font-size:18px;align-self:center}}
+  .voice{position:relative;margin:0;border-radius:24px;padding:2rem 2rem 1.5rem;background:#fff;border:1px solid #e2e8f0;box-shadow:0 14px 30px -18px rgba(15,23,42,.3)}
+  .voice .q{display:block;height:40px;margin:-.5rem 0 .25rem;font:800 80px/1 'Plus Jakarta Sans',sans-serif;color:#f59e0b}
+  .voice blockquote{position:relative;margin:0;font:600 19px/1.5 'Plus Jakarta Sans',sans-serif;color:#0f172a}
+  .voice figcaption{display:flex;align-items:center;gap:.75rem;margin-top:1.5rem}
+  .voice figcaption b{display:block;font-size:15px;color:#0f172a}.voice figcaption small{display:block;font-size:13px;color:#64748b}
+  .voice .av{width:48px;height:48px;border-radius:9999px;flex:none}.voice .av .material-symbols-outlined{font-size:24px;margin:0}
+  .voice-dark{background:linear-gradient(135deg,#0b1430,#1e3a8a);border-color:transparent}
+  .voice-dark blockquote,.voice-dark figcaption b{color:#fff}.voice-dark figcaption small{color:rgba(255,255,255,.65)}.voice-dark .q{color:#ffe247}
+  /* philosophy */
+  .phil{background:radial-gradient(60% 80% at 50% 45%,rgba(202,138,4,.32) 0%,rgba(202,138,4,0) 62%),linear-gradient(160deg,#060d24 0%,#0b1430 45%,#1e3a8a 100%)}
+  .quad{display:grid;grid-template-columns:1fr;gap:1rem}
+  .qd{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-top:3px solid var(--c);border-radius:24px;padding:1.5rem;backdrop-filter:blur(6px)}
+  .qd .material-symbols-outlined{font-size:32px;color:var(--c)}
+  .qd .qk{font:700 12px Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--c);margin:.75rem 0 0}
+  .qd h3{font:800 22px/1.2 'Plus Jakarta Sans',sans-serif;margin:.25rem 0 .5rem}
+  .qd p:last-child{font-size:15px;line-height:1.6;color:rgba(255,255,255,.78);margin:0}
+  .qc{display:grid;place-items:center;order:-1;grid-column:1/-1}.qc img{width:120px;filter:drop-shadow(0 20px 30px rgba(0,0,0,.55))}
+  @media (min-width:1024px){.quad{grid-template-columns:1fr 240px 1fr;grid-template-rows:auto auto;gap:1.5rem 2rem;align-items:center}
+    .qd:nth-child(1){grid-area:1/1}.qd:nth-child(2){grid-area:2/1}.qc{grid-area:1/2/3/3;order:0}.qd:nth-child(4){grid-area:1/3}.qd:nth-child(5){grid-area:2/3}
+    .qc img{width:220px;filter:drop-shadow(0 30px 40px rgba(0,0,0,.55));animation:bob 7s ease-in-out infinite}}
+  @media (min-width:640px) and (max-width:1023px){.quad{grid-template-columns:1fr 1fr}}
+  .aim div{border-radius:16px;padding:1.25rem 1.5rem;background:rgba(255,226,71,.08);border:1px solid rgba(255,226,71,.28);text-align:center}
+  .aim dt{font:700 12px Inter,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#ffe247}
+  .aim dd{margin:.5rem 0 0;font:700 19px/1.4 'Plus Jakarta Sans',sans-serif;color:#fff}
+  .jr-ends{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.75rem 1rem}
+  .jr-end,.jr-now{display:inline-flex;align-items:center;gap:.75rem;padding:.5rem 1.25rem .5rem .5rem;border-radius:9999px;background:#fff;border:1px solid #e2e8f0;text-decoration:none;color:#0f172a;box-shadow:0 8px 20px -12px rgba(15,23,42,.3);transition:border-color .2s,transform .2s}
+  .jr-end:hover{border-color:#94a3b8;transform:translateY(-2px)}
+  .jr-end img,.jr-now img{width:40px;height:40px;object-fit:contain}
+  .jr-end small{display:block;font:600 12px Inter,sans-serif;color:#64748b}.jr-end b,.jr-now b{display:block;font:700 15px 'Plus Jakarta Sans',sans-serif}
+  .jr-now{background:#0b1430;color:#fff;border-color:#0b1430}
+  .jr-arrow{color:#94a3b8}
+  .jr-sep{width:1px;height:40px;border-left:2px dashed #cbd5e1;margin:0 .5rem}
+  .jr-next{background:transparent;border-style:dashed;border-color:#cbd5e1;box-shadow:none}
+  .jr-next img{opacity:.85}
+  @media (max-width:1023px){.jr-arrow{transform:rotate(90deg)}.jr-ends{flex-direction:column}.jr-sep{width:40px;height:1px;border-left:0;border-top:2px dashed #cbd5e1;margin:.5rem 0}}
+  .areas{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr;gap:.5rem}
+  @media (min-width:640px){.areas{grid-template-columns:1fr 1fr}}
+  .areas li{display:flex;align-items:center;gap:.75rem;padding:.75rem 1rem;border-radius:16px;background:color-mix(in srgb,var(--c) 7%,#fff);border:1px solid color-mix(in srgb,var(--c) 20%,#fff);font:600 14px Inter,sans-serif;color:#1e293b}
+  .areas .material-symbols-outlined{font-size:22px;color:var(--c)}
+  .jr-plus{font:700 12px Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#64748b}
+  .jr-adult .material-symbols-outlined{width:40px;height:40px;border-radius:9999px;display:grid;place-items:center;background:#eff6ff;color:#1e3a8a}
+  @media (max-width:1023px){.jr-plus{margin:.25rem 0}}
+  /* the Law: six examples */
+  .mg-law{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem}
+  @media (min-width:640px){.mg-law{grid-template-columns:repeat(3,1fr)}}
+  .mg-law li{display:flex;align-items:center;gap:.75rem;padding:1rem;border-radius:16px;background:linear-gradient(160deg,#0b1430,#1e3a8a);color:#fff;font:800 18px 'Plus Jakarta Sans',sans-serif;box-shadow:0 12px 24px -14px rgba(30,58,138,.7)}
+  .mg-law .material-symbols-outlined{width:40px;height:40px;border-radius:9999px;display:grid;place-items:center;background:rgba(252,211,77,.16);color:#fcd34d;font-size:22px;flex:none}
+  /* five steps */
+  .mg-steps{list-style:none;margin:0;padding:0;display:grid;gap:1rem;grid-template-columns:1fr;counter-reset:s}
+  @media (min-width:640px){.mg-steps{grid-template-columns:repeat(2,1fr)}}
+  @media (min-width:1024px){.mg-steps{grid-template-columns:repeat(5,1fr)}}
+  .mg-steps li{position:relative;background:#fff;border:1px solid #dbeafe;border-top:4px solid #ca8a04;border-radius:24px;padding:1.5rem 1.25rem;box-shadow:0 14px 30px -18px rgba(30,58,138,.45)}
+  .mg-steps li:last-child{background:linear-gradient(160deg,#0b1430,#1e3a8a);border-color:#1e3a8a;border-top-color:#fcd34d}
+  .mg-steps li:last-child h3,.mg-steps li:last-child p{color:#fff}.mg-steps li:last-child p{opacity:.85}
+  .mg-n{position:absolute;top:1rem;right:1.25rem;font:800 34px/1 'Plus Jakarta Sans',sans-serif;color:#a16207}
+  .mg-steps li:last-child .mg-n{color:#fcd34d}
+  .mg-steps .material-symbols-outlined{width:48px;height:48px;border-radius:16px;display:grid;place-items:center;background:#eff6ff;color:#1e3a8a;font-size:26px}
+  .mg-steps li:last-child .material-symbols-outlined{background:rgba(252,211,77,.16);color:#fcd34d}
+  .mg-steps h3{font:800 18px/1.2 'Plus Jakarta Sans',sans-serif;color:#0f172a;margin:1rem 0 .4rem}
+  .mg-steps p{font-size:14px;line-height:1.55;color:#475569;margin:0}
+  /* where Master Guides serve */
+  .mg-serve{background:radial-gradient(90% 120% at 100% 0%,rgba(202,138,4,.35),rgba(202,138,4,0) 60%),linear-gradient(135deg,#0b1430,#1e3a8a)}
+  .mg-where{list-style:none;margin:0;padding:0;display:grid;gap:.75rem}
+  .mg-where li{display:flex;align-items:center;gap:1rem;padding:.75rem 1rem;border-radius:16px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);font:600 16px Inter,sans-serif}
+  .mg-where img{width:40px;height:40px;object-fit:contain;flex:none}
+  /* keep growing */
+  .mg-hero-photo{margin:0;border-radius:24px;overflow:hidden;aspect-ratio:4/5;box-shadow:0 40px 70px -30px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.12)}
+  .mg-hero-photo img{width:100%;height:100%;object-fit:cover}
+  .mg-grow-logo img{height:96px;width:auto}
+  .mg-grow-img{padding:0;background:#f1e6cf}.mg-grow-img img{width:100%;height:100%;object-fit:contain}
+  .mg-grow-cover img{height:124px;width:auto;border-radius:8px;box-shadow:0 12px 24px -10px rgba(0,0,0,.5)}
+  .mg-grow-crest img{height:120px;width:auto;filter:drop-shadow(0 14px 18px rgba(0,0,0,.45))}
+  .mg-grow-top{height:160px;overflow:hidden;display:grid;place-items:center;background:linear-gradient(135deg,var(--g1),var(--g2));color:#fff}
+  .mg-grow-top .material-symbols-outlined{font-size:56px;opacity:.9}
+  .phil .qd .qk+p{margin-top:.5rem!important}
+  .uni-gold{background:linear-gradient(180deg,#fefce8,#fffdf5);border-color:#fde68a}
 </style>
 </head>
 <body data-page="ministries">
@@ -113,38 +196,112 @@
 <dl class="slot mt-10 grid grid-cols-3 gap-6 max-w-lg border-t border-white/15 pt-7" data-slot="MG-03" data-spec="Numbers · 3 real figures">
 <div><dt class="text-xs uppercase tracking-wider text-white/60">Clubs</dt><dd class="font-heading font-extrabold text-3xl tabular mt-1">18</dd></div><div><dt class="text-xs uppercase tracking-wider text-white/60">Master Guides</dt><dd class="font-heading font-extrabold text-3xl tabular mt-1">480</dd></div><div><dt class="text-xs uppercase tracking-wider text-white/60">Invested 2026</dt><dd class="font-heading font-extrabold text-3xl tabular mt-1">62</dd></div>
 </dl></div>
-<div class="lg:col-span-5 relative"><div class="ph slot ph-dark rounded-[28px] aspect-[4/5] max-w-md mx-auto" data-slot="MG-01" data-spec="Photo · 1600×2000 portrait · Master Guides in uniform at investiture"><span><span class="material-symbols-outlined">photo_camera</span>Master Guides in uniform at investiture</span></div><img class="crest-float absolute -left-6 -bottom-8 w-36 sm:w-44 lg:w-52" src="../img/crest-mg.png" alt="" aria-hidden="true"></div></div></div></header>
+<div class="lg:col-span-5 relative"><figure class="slot mg-hero-photo max-w-md mx-auto" data-slot="MG-01" data-spec="Photo · 1600×2000 portrait · a NAD photo of the Master Guide neckerchief is in place; replace with GNYC Master Guides at investiture when available"><img src="../img/mg/mg-scarf.webp" alt="The Master Guide emblem on the yellow Master Guide neckerchief"></figure></div></div></div></header>
+<!-- ================= WHY BECOME A MASTER GUIDE ================= -->
+<section class="section" id="why">
+<div class="wrap">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-end">
+<div class="lg:col-span-7"><p class="eyebrow">Why Master Guides</p><h2 class="h-section" style="text-wrap:balance">Why become a Master Guide</h2></div>
+<p class="slot lede lg:col-span-5 !mt-0" data-slot="MG-04" data-spec="Text · why this ministry, 60–90 words, in the Director's voice">The Master Guide ministry develops Christ-like leaders equipped to disciple children, youth and young adults; trains, equips and deploys them into active service; and is driven by one vision: to see all young people saved.</p>
+</div>
+<ul class="slot why mt-12 list-none p-0" data-slot="MG-19" data-spec="Text · DRAFT six reasons; confirm or rewrite each in 20–30 words">
+<li style="--c:#1e3a8a;--t:#eff6ff"><span class="why-ic material-symbols-outlined" aria-hidden="true">auto_stories</span><h3>Your own faith first</h3><p>The course begins with your walk with Jesus: Bible study, prayer and devotional life. You can't lead anyone where you haven't been.</p></li>
+<li style="--c:#b45309;--t:#fffbeb"><span class="why-ic material-symbols-outlined" aria-hidden="true">school</span><h3>Learn to lead young people</h3><p>How children and teens grow and learn, how to plan a meeting, teach an honor and build a team that works.</p></li>
+<li style="--c:#047857;--t:#ecfdf5"><span class="why-ic material-symbols-outlined" aria-hidden="true">volunteer_activism</span><h3>Serve where you're needed</h3><p>Adventurer and Pathfinder clubs across Greater New York need trained staff. Master Guides are the leaders clubs count on.</p></li>
+<li style="--c:#7c3aed;--t:#f5f3ff"><span class="why-ic material-symbols-outlined" aria-hidden="true">groups</span><h3>A community of leaders</h3><p>Master Guide clubs study, pray, camp and serve together, so no leader carries the work alone.</p></li>
+<li style="--c:#a16207;--t:#fefce8"><span class="why-ic material-symbols-outlined" aria-hidden="true">workspace_premium</span><h3>Invested leadership</h3><p>Master Guide is the highest invested level of leadership in Adventurer and Pathfinder ministry.</p></li>
+<li style="--c:#0369a1;--t:#f0f9ff"><span class="why-ic material-symbols-outlined" aria-hidden="true">landscape</span><h3>The adventure continues</h3><p>Camping, outdoor expeditions and service projects keep leaders growing long after investiture.</p></li>
+</ul>
+<div class="slot voices mt-12 grid grid-cols-1 md:grid-cols-2 gap-6" data-slot="MG-20" data-spec="Quotes · one invested Master Guide and one current candidate, 25–40 words each, with full name, club and permission">
+<figure class="voice"><span class="q" aria-hidden="true">“</span><blockquote>An invested Master Guide's words about what leading young people has meant to their own faith go here.</blockquote><figcaption><span class="av ph"><span class="material-symbols-outlined">person</span></span><span><b>Master Guide's full name</b><small>Invested Master Guide · club name</small></span></figcaption></figure>
+<figure class="voice voice-dark"><span class="q" aria-hidden="true">“</span><blockquote>A candidate's words about why they answered the call and what the course is teaching them go here.</blockquote><figcaption><span class="av ph ph-dark"><span class="material-symbols-outlined">person</span></span><span><b>Candidate's full name</b><small>Master Guide candidate · club name</small></span></figcaption></figure>
+</div>
+</div>
+</section>
 
+<!-- ================= PHILOSOPHY ================= -->
+<section class="phil section relative overflow-hidden text-white" id="philosophy">
+<div class="lines absolute inset-0" aria-hidden="true"></div>
+<div class="wrap relative">
+<div class="max-w-3xl mx-auto text-center">
+<p class="text-xs font-bold tracking-[0.18em] uppercase text-[#fcd34d]">Our philosophy</p>
+<h2 class="font-heading font-extrabold text-4xl sm:text-5xl tracking-[-0.02em] leading-[1.05] mt-3" style="text-wrap:balance">A responsibility, not a title</h2>
+<blockquote class="mt-6 text-lg sm:text-xl text-white/85 leading-relaxed">“You can't teach what you don't know, and you can't lead where you won't go.”<cite class="block not-italic text-sm font-semibold tracking-wider uppercase text-white/60 mt-2">A church leader of the past, quoted by NAD Club Ministries</cite></blockquote>
+</div>
+<div class="quad mt-14">
+<div class="qd" style="--c:#fcd34d"><span class="material-symbols-outlined" aria-hidden="true">flag</span><p class="qk">Purpose</p><p>Develop Christ-like leaders to disciple children, youth and young adults.</p></div>
+<div class="qd" style="--c:#93c5fd"><span class="material-symbols-outlined" aria-hidden="true">rocket_launch</span><p class="qk">Mission</p><p>To empower leaders through effective training and equipping, and deploying them for service.</p></div>
+<div class="qc" aria-hidden="true"><img src="../img/crest-mg.png" alt=""></div>
+<div class="qd" style="--c:#fde68a"><span class="material-symbols-outlined" aria-hidden="true">visibility</span><p class="qk">Vision</p><p>To see all young people saved.</p></div>
+<div class="qd" style="--c:#a5b4fc"><span class="material-symbols-outlined" aria-hidden="true">diversity_3</span><p class="qk">Philosophy</p><p>The Seventh-day Adventist Church is committed to training youth and young adults for leadership and service to God and humanity.</p></div>
+</div>
+<p class="text-center text-sm text-white/65 mt-10 max-w-2xl mx-auto">Purpose, mission, vision and philosophy of the Master Guide ministry, from the North American Division.</p>
+</div>
+</section>
+
+<!-- ================= PLEDGE & LAW ================= -->
 <section class="section bg-white border-b border-slate-200/80">
 <div class="wrap grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
-<div class="lg:col-span-5"><p class="eyebrow">What we promise</p><h2 class="h-section">The Master Guide commitment</h2>
-<blockquote class="mt-6 font-heading font-bold text-2xl sm:text-3xl leading-snug tracking-tight text-slate-900 border-l-4 pl-6" style="border-color:#1e40af">“Sent out, lifted up: leaders who serve so that every young person meets Jesus.”</blockquote>
-<p class="slot lede" data-slot="MG-04" data-spec="Text · why this ministry, 60–90 words, in the Director's voice">The Master Guide ministry develops Christ-like leaders equipped to disciple children, youth and young adults; trains, equips and deploys them into active service; and is driven by one vision, to see all young people saved and prepared for eternal life.</p>
+<div class="lg:col-span-5"><p class="eyebrow">What a Master Guide promises</p><h2 class="h-section">The Master Guide Pledge</h2>
+<blockquote class="mt-6 font-heading font-bold text-2xl sm:text-[28px] leading-snug tracking-tight text-slate-900 border-l-4 pl-6" style="border-color:#ca8a04">“Loving the Lord Jesus, I promise to take an active part in Adventurers, Pathfinders and Youth Ministries, doing what I can to finish the work of the gospel in all the world.”</blockquote>
+<p class="lede">Master Guides make this promise with the right hand over the heart, and take the Law as they are invested.</p>
 <div class="slot mt-6 flex items-center gap-4 rounded-2xl bg-slate-50 border border-slate-200 p-4" data-slot="MG-05" data-spec="Done from gnycyouth.org; add email"><img src="../img/people/abigail-osei.jpg" alt="Dr. Abigail Osei" class="rounded-full w-14 h-14 object-cover shrink-0"><div><p class="font-semibold text-slate-900 m-0">Dr. Abigail Osei</p><p class="text-sm text-slate-600 m-0">Assistant Director · Master Guide Ministry</p></div></div></div>
-<div class="lg:col-span-7"><p class="eyebrow">The five areas of the curriculum</p><ol class="law mt-4"><li>Spiritual development: Bible, prayer, sharing faith</li><li>Skills development: honors, camping, first aid</li><li>Child development: how children grow and learn</li><li>Leadership development: planning, teaching, team building</li><li>Fitness lifestyle development: health and the outdoors</li></ol></div>
+<div class="lg:col-span-7"><p class="eyebrow">The Master Guide Law · Based on 1 Timothy 4:12</p><p class="font-heading font-bold text-xl text-slate-900 mt-3">The Master Guide Law calls me to be an example in</p>
+<ul class="mg-law mt-5">
+<li><span class="material-symbols-outlined" aria-hidden="true">record_voice_over</span>Word</li>
+<li><span class="material-symbols-outlined" aria-hidden="true">directions_walk</span>Conduct</li>
+<li><span class="material-symbols-outlined" aria-hidden="true">favorite</span>Love</li>
+<li><span class="material-symbols-outlined" aria-hidden="true">local_fire_department</span>Spirit</li>
+<li><span class="material-symbols-outlined" aria-hidden="true">church</span>Faith</li>
+<li><span class="material-symbols-outlined" aria-hidden="true">spa</span>Purity</li>
+</ul>
+<blockquote class="mt-6 rounded-2xl p-5 text-[15px] leading-relaxed text-slate-700" style="background:#fefce8;border:1px solid #fde68a">“Let no man despise thy youth; but be thou an example of the believers, in word, in conversation, in charity, in spirit, in faith, in purity.”<cite class="block not-italic text-xs font-bold tracking-wider uppercase text-[#854d0e] mt-2">1 Timothy 4:12</cite></blockquote>
+</div>
 </div></section>
 
-<section class="section"><div class="wrap">
-<div><p class="eyebrow">Inside the ministry</p><h2 class="h-section">The leadership pathway</h2><p class="lede">From first-time staff to seasoned directors.</p></div>
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10"><a class="card acc-indigo group flex flex-col overflow-hidden" href="#classes">
-<div class="relative h-40 bg-gradient-to-br from-[#0b1430] via-[#1e3a8a] to-[#3b82f6] flex items-end p-5 overflow-hidden"><img class="absolute right-4 top-3 w-28 drop-shadow-2xl transition-transform group-hover:scale-105" src="../img/crest-mg.png" alt=""><span class="inline-flex px-3 py-1 rounded-full text-[11px] font-extrabold tracking-wider uppercase bg-white/20 text-white border border-white/30 backdrop-blur">Core</span></div>
-<div class="p-6 flex flex-col flex-1"><h3 class="font-heading font-bold text-xl text-slate-900">Master Guide curriculum</h3><p class="text-[15px] text-slate-700 mt-2 leading-relaxed">The full course, usually completed in one to two years through a local Master Guide club.</p><span class="link mt-auto pt-5">See the requirements <span aria-hidden="true">&rarr;</span></span></div></a><a class="card acc-sky group flex flex-col overflow-hidden" href="../events.html">
-<div class="relative h-40 bg-gradient-to-br from-[#0c4a6e] via-[#0284c7] to-[#38bdf8] flex items-end p-5 overflow-hidden"><span class="material-symbols-outlined absolute -right-4 -top-4 text-[140px] text-white/15" aria-hidden="true">school</span><span class="inline-flex px-3 py-1 rounded-full text-[11px] font-extrabold tracking-wider uppercase bg-white/20 text-white border border-white/30 backdrop-blur">Staff</span></div>
-<div class="p-6 flex flex-col flex-1"><h3 class="font-heading font-bold text-xl text-slate-900">Basic Staff Training</h3><p class="text-[15px] text-slate-700 mt-2 leading-relaxed">The 10-hour introduction every new club staff member completes in their first year.</p><span class="link mt-auto pt-5">Next training <span aria-hidden="true">&rarr;</span></span></div></a><a class="card acc-amber group flex flex-col overflow-hidden" href="../brief.html#MG">
-<div class="relative h-40 bg-gradient-to-br from-[#78350f] via-[#d97706] to-[#fbbf24] flex items-end p-5 overflow-hidden"><span class="material-symbols-outlined absolute -right-4 -top-4 text-[140px] text-white/15" aria-hidden="true">military_tech</span><span class="inline-flex px-3 py-1 rounded-full text-[11px] font-extrabold tracking-wider uppercase bg-white/20 text-white border border-white/30 backdrop-blur">Advanced</span></div>
-<div class="p-6 flex flex-col flex-1"><h3 class="font-heading font-bold text-xl text-slate-900">PLA & APLA</h3><p class="text-[15px] text-slate-700 mt-2 leading-relaxed">The Pathfinder Leadership Award and Advanced award for invested Master Guides who keep growing.</p><span class="link mt-auto pt-5">Learn more <span aria-hidden="true">&rarr;</span></span></div></a><a class="card acc-emerald group flex flex-col overflow-hidden" href="#find">
-<div class="relative h-40 bg-gradient-to-br from-[#064e3b] via-[#059669] to-[#34d399] flex items-end p-5 overflow-hidden"><span class="material-symbols-outlined absolute -right-4 -top-4 text-[140px] text-white/15" aria-hidden="true">groups</span><span class="inline-flex px-3 py-1 rounded-full text-[11px] font-extrabold tracking-wider uppercase bg-white/20 text-white border border-white/30 backdrop-blur">Community</span></div>
-<div class="p-6 flex flex-col flex-1"><h3 class="font-heading font-bold text-xl text-slate-900">Master Guide clubs</h3><p class="text-[15px] text-slate-700 mt-2 leading-relaxed">Local chapters that study together, staff camporees and mentor Pathfinder leaders.</p><span class="link mt-auto pt-5">Find a club <span aria-hidden="true">&rarr;</span></span></div></a></div>
-</div></section>
+<!-- ================= THE LEADERSHIP JOURNEY ================= -->
+<section class="section" id="pathway">
+<div class="wrap">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-end">
+<div class="lg:col-span-7"><p class="eyebrow">The leadership journey</p><h2 class="h-section" style="text-wrap:balance">From club staff to invested Master Guide</h2></div>
+<p class="slot lede lg:col-span-5 !mt-0" data-slot="MG-23" data-spec="Text · DRAFT confirm who starts the Master Guide course in GNYC (former Pathfinders and TLTs, adults new to clubs) and the TLT link">Some Master Guides grew up as Pathfinders and Teen Leadership Trainees; many begin as adults with no club background. The path is the same for both.</p>
+</div>
+<div class="jr-ends mt-12"><a class="jr-end" href="pathfinders/teen-leadership-training.html"><img src="../img/tlt-logo.png" alt=""><span><small>Teens · ages 14–17</small><b>Teen Leadership Training</b></span></a><span class="jr-plus" aria-hidden="true">or</span><span class="jr-end jr-adult"><span class="material-symbols-outlined" aria-hidden="true">person</span><span><small>Adults · any background</small><b>New club volunteers</b></span></span><span class="jr-arrow material-symbols-outlined" aria-hidden="true">arrow_forward</span><span class="jr-now"><img src="../img/crest-mg.png" alt=""><b>Master Guide</b></span></div>
+<ol class="slot mg-steps mt-10" data-slot="MG-21" data-spec="Text · DRAFT confirm the five steps and how GNYC runs them (who signs off, typical length)">
+<li><span class="mg-n">1</span><span class="material-symbols-outlined" aria-hidden="true">badge</span><h3>Join a club staff</h3><p>Serve with Adventurers or Pathfinders and complete Basic Staff Training.</p></li>
+<li><span class="mg-n">2</span><span class="material-symbols-outlined" aria-hidden="true">groups</span><h3>Become a candidate</h3><p>Join a Master Guide club and receive your record card from the coordinator.</p></li>
+<li><span class="mg-n">3</span><span class="material-symbols-outlined" aria-hidden="true">menu_book</span><h3>Complete the curriculum</h3><p>Personal and spiritual growth, skills, leadership and a healthy lifestyle, usually over one to two years.</p></li>
+<li><span class="mg-n">4</span><span class="material-symbols-outlined" aria-hidden="true">workspace_premium</span><h3>Be invested</h3><p>Receive the Master Guide scarf, slide and pin before your church and family.</p></li>
+<li><span class="mg-n">5</span><span class="material-symbols-outlined" aria-hidden="true">trending_up</span><h3>Lead and keep growing</h3><p>Direct a club, mentor TLTs, train new staff, and go on to the Pathfinder Leadership Awards.</p></li>
+</ol>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-14">
+<div class="lg:col-span-7 card p-7 sm:p-9 flex flex-col">
+<p class="eyebrow">The curriculum</p>
+<h3 class="font-heading font-extrabold text-2xl sm:text-3xl tracking-tight text-slate-900 mt-1">Four areas of growth</h3>
+<p class="text-[15px] text-slate-700 mt-3 leading-relaxed max-w-xl">The course is written for people who want to serve in junior youth ministry in their local church. It shapes the leader first, then the leadership.</p>
+<ul class="areas slot mt-6" data-slot="MG-22" data-spec="List · the four NAD curriculum areas; confirm the names GNYC uses on the record card">
+<li style="--c:#1e3a8a"><span class="material-symbols-outlined" aria-hidden="true">auto_stories</span>Personal and spiritual development</li>
+<li style="--c:#047857"><span class="material-symbols-outlined" aria-hidden="true">construction</span>Skills development</li>
+<li style="--c:#b45309"><span class="material-symbols-outlined" aria-hidden="true">groups</span>Leadership development</li>
+<li style="--c:#0369a1"><span class="material-symbols-outlined" aria-hidden="true">fitness_center</span>Fitness and lifestyle development</li>
+</ul>
+<div class="ph slot rounded-2xl mt-6 flex-1 min-h-[10rem]" data-slot="MG-25" data-spec="Photo · 1600×900 · candidates at a Master Guide class night"><span><span class="material-symbols-outlined">photo_camera</span>Candidates at a Master Guide class night</span></div>
+</div>
+<div class="lg:col-span-5 mg-serve relative overflow-hidden rounded-[24px] text-white p-7 sm:p-9">
+<img class="absolute -right-12 -bottom-14 w-44 opacity-10" src="../img/crest-mg.png" alt="" aria-hidden="true">
+<div class="relative"><p class="text-xs font-bold tracking-[0.18em] uppercase text-[#fcd34d]">Where Master Guides serve</p>
+<ul class="slot mg-where mt-5" data-slot="MG-24" data-spec="List · DRAFT confirm where GNYC Master Guides serve">
+<li><img src="../img/07.png" alt="">Adventurer club staff</li>
+<li><img src="../img/08.png" alt="">Pathfinder club staff and directors</li>
+<li><img src="../img/tlt-logo.png" alt="">Coaching Teen Leadership Trainees</li>
+<li><img src="../img/crest-mg.png" alt="">Master Guide club leadership</li>
+</ul></div>
+</div>
+</div>
+</div>
+</section>
 
-<section class="section bg-white border-y border-slate-200/80"><div class="wrap">
-<p class="eyebrow">Plan the year</p><h2 class="h-section">A year in Master Guides</h2><p class="lede">The rhythm every club follows. Dates change each year; the current calendar is on the Events page.</p>
-<div class="mt-8 rounded-2xl border-2 border-dashed border-amber-400 bg-amber-50 p-5 flex flex-col sm:flex-row sm:items-center gap-4"><span class="material-symbols-outlined text-3xl text-amber-600 shrink-0" aria-hidden="true">event_repeat</span><div class="flex-1"><p class="font-heading font-bold text-lg text-amber-900 m-0">Cycle to be confirmed</p><p class="text-sm text-amber-800 mt-1 mb-0">The milestones and months below are a draft frame, not the real calendar. The Director confirms the correct annual cycle for this ministry: which events happen, in what order, and in which month.</p></div><a class="btn-primary !bg-amber-600 hover:!bg-amber-700 !py-2.5 shrink-0" href="../sitemap.html">Assign in the page map</a></div>
-<ol class="slot year mt-10 overflow-x-auto pb-4 no-scrollbar" data-slot="MG-06" data-spec="Cycle · DRAFT. Confirm the real annual cycle: events, order and month for each milestone">
-<li><p class="eyebrow acc">September <span class="ml-1 px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 text-[10px] font-extrabold tracking-wider">DRAFT</span></p><h3 class="font-heading font-bold text-lg mt-1">Enrollment</h3><p class="text-sm text-slate-600 mt-1">Clubs open the year and candidates register with the conference.</p></li><li><p class="eyebrow acc">October–April <span class="ml-1 px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 text-[10px] font-extrabold tracking-wider">DRAFT</span></p><h3 class="font-heading font-bold text-lg mt-1">Classes & fieldwork</h3><p class="text-sm text-slate-600 mt-1">Monthly sessions plus hours served in a Pathfinder or Adventurer club.</p></li><li><p class="eyebrow acc">Spring <span class="ml-1 px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 text-[10px] font-extrabold tracking-wider">DRAFT</span></p><h3 class="font-heading font-bold text-lg mt-1">Camporee staffing</h3><p class="text-sm text-slate-600 mt-1">Candidates serve as staff at the conference camporee.</p></li><li><p class="eyebrow acc">Date TBA <span class="ml-1 px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 text-[10px] font-extrabold tracking-wider">DRAFT</span></p><h3 class="font-heading font-bold text-lg mt-1">Leadership Summit</h3><p class="text-sm text-slate-600 mt-1">Conference-wide training weekend with TLT.</p></li><li><p class="eyebrow acc">June <span class="ml-1 px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 text-[10px] font-extrabold tracking-wider">DRAFT</span></p><h3 class="font-heading font-bold text-lg mt-1">Investiture</h3><p class="text-sm text-slate-600 mt-1">Candidates who completed the curriculum are invested.</p></li>
-</ol><a class="link mt-4" href="../events.html">See this year's dates <span aria-hidden="true">&rarr;</span></a></div></section>
-
-<section class="section" id="classes"><div class="wrap grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+<section class="section bg-white border-y border-slate-200/80" id="classes"><div class="wrap grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
 <div class="lg:col-span-5"><p class="eyebrow">Requirements</p><h2 class="h-section">What it takes to be invested</h2><p class="lede">The curriculum is set by the North American Division; the conference coordinator signs off each candidate.</p>
 <div class="slot cls mt-8" data-slot="MG-07" data-spec="Confirm requirements and the GNYC investiture process">
 <div style="--c:#1e40af"><div class="ph">Baptized member</div><strong>Baptized member</strong><span>Age 16 or older</span></div><div style="--c:#0284c7"><div class="ph">Basic Staff Training</div><strong>Basic Staff Training</strong><span>10 hours</span></div><div style="--c:#d97706"><div class="ph">Honors</div><strong>Honors</strong><span>Two, incl. one outreach</span></div><div style="--c:#059669"><div class="ph">Service hours</div><strong>Service hours</strong><span>In a club, one year</span></div><div style="--c:#7c3aed"><div class="ph">Camping</div><strong>Camping</strong><span>Skills & nights out</span></div><div style="--c:#dc2626"><div class="ph">Reading & Bible</div><strong>Reading & Bible</strong><span>Books and memory work</span></div>
@@ -156,8 +313,24 @@
 <div class="ph slot rounded-2xl h-40 mt-6" data-slot="MG-08" data-spec="Photo · 1600×700 · investiture service, candidates receiving scarves"><span><span class="material-symbols-outlined">photo_camera</span>investiture service, candidates receiving scarves</span></div>
 </div></div></div></div></section>
 
+<!-- ================= KEEP GROWING ================= -->
+<section class="section" id="grow">
+<div class="wrap">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-end">
+<div class="lg:col-span-7"><p class="eyebrow">After investiture</p><h2 class="h-section" style="text-wrap:balance">Keep growing as a Master Guide</h2></div>
+<p class="lede lg:col-span-5 !mt-0">Investiture is a beginning. These North American Division ministries keep Master Guides learning, serving and exploring together.</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+<a class="card mg-grow group flex flex-col overflow-hidden" style="--g1:#064e3b;--g2:#047857" href="https://www.clubministries.org/masterguides/master-guide-outdoors-mgo/" target="_blank" rel="noopener noreferrer"><div class="mg-grow-top mg-grow-logo"><img src="../img/mg/mgo-logo.webp" alt="Master Guide Outdoors logo"></div><div class="p-6 flex flex-col flex-1"><h3 class="font-heading font-bold text-xl text-slate-900">Master Guide Outdoors</h3><p class="text-[15px] text-slate-700 mt-2 leading-relaxed">Expeditions for Master Guides and friends to explore creation, connect with God and practice camping skills.</p><span class="link mt-auto pt-5">About the expeditions <span class="material-symbols-outlined text-base" aria-hidden="true">open_in_new</span></span></div></a>
+<a class="card mg-grow group flex flex-col overflow-hidden" style="--g1:#78350f;--g2:#b45309" href="https://www.clubministries.org/masterguides/master-guide-bible-challenge/" target="_blank" rel="noopener noreferrer"><div class="mg-grow-top mg-grow-img"><img src="../img/mg/bible-challenge.webp" alt="Master Guide Bible Challenge pilot program manual"></div><div class="p-6 flex flex-col flex-1"><h3 class="font-heading font-bold text-xl text-slate-900">Master Guide Bible Challenge</h3><p class="text-[15px] text-slate-700 mt-2 leading-relaxed">A new pilot program to deepen biblical literacy and spiritual leadership among Master Guides.</p><span class="link mt-auto pt-5">About the challenge <span class="material-symbols-outlined text-base" aria-hidden="true">open_in_new</span></span></div></a>
+<a class="card mg-grow group flex flex-col overflow-hidden" style="--g1:#0b1430;--g2:#1e3a8a" href="https://www.clubministries.org/masterguides/master-guide-club-training/" target="_blank" rel="noopener noreferrer"><div class="mg-grow-top mg-grow-cover"><img src="../img/mg/club-manual.webp" alt="Cover of the Master Guide Club Manual"></div><div class="p-6 flex flex-col flex-1"><h3 class="font-heading font-bold text-xl text-slate-900">Master Guide club training</h3><p class="text-[15px] text-slate-700 mt-2 leading-relaxed">Four online sessions and the club manual for leaders who want to start or run a Master Guide club.</p><span class="link mt-auto pt-5">See the training <span class="material-symbols-outlined text-base" aria-hidden="true">open_in_new</span></span></div></a>
+<a class="card mg-grow group flex flex-col overflow-hidden" style="--g1:#4c1d95;--g2:#6d28d9" href="#find"><div class="mg-grow-top mg-grow-crest"><img src="../img/crest-mg.png" alt=""></div><div class="p-6 flex flex-col flex-1"><h3 class="font-heading font-bold text-xl text-slate-900">Master Guide clubs</h3><p class="text-[15px] text-slate-700 mt-2 leading-relaxed">Local chapters that study together, staff camporees and mentor the next generation of club leaders.</p><span class="link mt-auto pt-5">Find a club <span aria-hidden="true">&rarr;</span></span></div></a>
+</div>
+</div>
+</section>
+
 <!-- ================= UNIFORM ================= -->
-<section class="section border-y border-blue-100" id="uniform" style="background:linear-gradient(180deg,#eff6ff,#f8faff)">
+<section class="section uni-gold border-y" id="uniform">
 <div class="wrap">
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-end">
 <div class="lg:col-span-7"><p class="eyebrow">After investiture</p><h2 class="h-section" style="text-wrap:balance">The Master Guide uniform</h2></div>
@@ -177,6 +350,13 @@
 <div class="flex flex-col sm:flex-row gap-3 mt-8"><a class="btn-primary !py-3.5 !px-7 !text-[15px]" href="https://gnycyouth.org/shop/"><span class="material-symbols-outlined text-xl" aria-hidden="true">shopping_bag</span>Shop the uniform</a><a class="pill !py-3.5 !px-7 !text-[15px] text-center" href="https://www.clubministries.org/masterguides/master-guide-uniform/" target="_blank" rel="noopener noreferrer">NAD Master Guide uniform page</a></div>
 </div>
 </section>
+<section class="section border-y border-blue-100" style="background:linear-gradient(180deg,#eff6ff,#f8faff)"><div class="wrap">
+<p class="eyebrow">Plan the year</p><h2 class="h-section">A year in Master Guides</h2><p class="lede">The rhythm every club follows. Dates change each year; the current calendar is on the Events page.</p>
+<div class="mt-8 rounded-2xl border-2 border-dashed border-amber-400 bg-amber-50 p-5 flex flex-col sm:flex-row sm:items-center gap-4"><span class="material-symbols-outlined text-3xl text-amber-600 shrink-0" aria-hidden="true">event_repeat</span><div class="flex-1"><p class="font-heading font-bold text-lg text-amber-900 m-0">Cycle to be confirmed</p><p class="text-sm text-amber-800 mt-1 mb-0">The milestones and months below are a draft frame, not the real calendar. The Director confirms the correct annual cycle for this ministry: which events happen, in what order, and in which month.</p></div><a class="btn-primary !bg-amber-600 hover:!bg-amber-700 !py-2.5 shrink-0" href="../sitemap.html">Assign in the page map</a></div>
+<ol class="slot year mt-10 overflow-x-auto pb-4 no-scrollbar" data-slot="MG-06" data-spec="Cycle · DRAFT. Confirm the real annual cycle: events, order and month for each milestone">
+<li><p class="eyebrow acc">September <span class="ml-1 px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 text-[10px] font-extrabold tracking-wider">DRAFT</span></p><h3 class="font-heading font-bold text-lg mt-1">Enrollment</h3><p class="text-sm text-slate-600 mt-1">Clubs open the year and candidates register with the conference.</p></li><li><p class="eyebrow acc">October–April <span class="ml-1 px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 text-[10px] font-extrabold tracking-wider">DRAFT</span></p><h3 class="font-heading font-bold text-lg mt-1">Classes & fieldwork</h3><p class="text-sm text-slate-600 mt-1">Monthly sessions plus hours served in a Pathfinder or Adventurer club.</p></li><li><p class="eyebrow acc">Spring <span class="ml-1 px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 text-[10px] font-extrabold tracking-wider">DRAFT</span></p><h3 class="font-heading font-bold text-lg mt-1">Camporee staffing</h3><p class="text-sm text-slate-600 mt-1">Candidates serve as staff at the conference camporee.</p></li><li><p class="eyebrow acc">Date TBA <span class="ml-1 px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 text-[10px] font-extrabold tracking-wider">DRAFT</span></p><h3 class="font-heading font-bold text-lg mt-1">Leadership Summit</h3><p class="text-sm text-slate-600 mt-1">Conference-wide training weekend with TLT.</p></li><li><p class="eyebrow acc">June <span class="ml-1 px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 text-[10px] font-extrabold tracking-wider">DRAFT</span></p><h3 class="font-heading font-bold text-lg mt-1">Investiture</h3><p class="text-sm text-slate-600 mt-1">Candidates who completed the curriculum are invested.</p></li>
+</ol><a class="link mt-4" href="../events.html">See this year's dates <span aria-hidden="true">&rarr;</span></a></div></section>
+
 
 <section class="section bg-white border-y border-slate-200/80"><div class="wrap">
 <div class="flex flex-col md:flex-row md:items-end justify-between gap-4"><div><p class="eyebrow">Coming up</p><h2 class="h-section">Master Guides events</h2></div><a class="link" href="../events.html">All events <span aria-hidden="true">&rarr;</span></a></div>
@@ -223,7 +403,7 @@
 <div class="relative grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
 <div class="lg:col-span-8"><p class="text-xs font-bold tracking-[0.18em] uppercase text-[#ffe247]">Ready to start?</p><h2 class="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight mt-3" style="text-wrap:balance">Called to lead? Start the curriculum this year.</h2><p class="text-white/85 text-lg mt-4 max-w-xl">The coordinator will place you in a club near you and set up your record card.</p>
 </div>
-<div class="lg:col-span-4 flex flex-col gap-3"><a class="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-white text-slate-900 hover:bg-slate-100 font-semibold" href="#find">Find a Master Guide club</a><a class="slot inline-flex items-center justify-center px-7 py-3.5 rounded-full border border-white/40 hover:bg-white/10 font-semibold" href="mailto:youth@gnycyouth.org" data-slot="MG-16" data-spec="Email · office address for enquiries">Ask the coordinator</a></div>
+<div class="lg:col-span-4 flex flex-col gap-3"><a class="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-white text-slate-900 hover:bg-slate-100 font-semibold" href="#find">Find a Master Guide club</a><a class="slot inline-flex items-center justify-center px-7 py-3.5 rounded-full border border-white/40 hover:bg-white/10 font-semibold" href="mailto:youth@gnycyouth.org" data-slot="MG-16" data-spec="Email · office address for inquiries">Ask the coordinator</a></div>
 </div></div></section>
 
 <div data-site="footer"></div>

@@ -28,7 +28,7 @@ var P = [
   ['PF-13','link','Map','Google My Maps link, or we build it from the church addresses in PF-12'],
   ['PF-14','photo','Gallery','6 photos, 1200px+ long side: campout, drill, PBE, service, worship, investiture'],
   ['PF-15','text','FAQ','Confirm or rewrite the five answers; add cost range and uniform supplier'],
-  ['PF-16','link','New-club enquiries','Email address to receive them'],
+  ['PF-16','link','New-club inquiries','Email address to receive them'],
   ['PF-17','text','Why join: six reasons','Pathfinders page only. DRAFT: confirm or rewrite each reason, 20–30 words'],
   ['PF-18','text','Voices','Pathfinders page only. One parent and one Pathfinder quote, 25–40 words each, first name, club, and permission to publish'],
   ['PF-19','text','Aim and Motto','Pathfinders page only. Confirm the Aim and Motto wording GNYC uses'],
@@ -93,7 +93,7 @@ var P = [
   ['AD-13','link','Map','locations (Google My Maps link or list of addresses)'],
   ['AD-14','photo','Gallery','6 images, 1200px+ on the long side: Fun Day, Awards, Nature walk, Crafts, Family camp, Investiture'],
   ['AD-15','text','FAQ','confirm or rewrite each answer'],
-  ['AD-16','link','New-club enquiries','office address for enquiries'],
+  ['AD-16','link','New-club inquiries','office address for inquiries'],
   ['AD-17','text','Why join: six reasons','DRAFT six reasons; confirm or rewrite each in 20–30 words'],
   ['AD-18','text','Voices','one parent and one club director or counselor, 25–40 words each, with full name, club and permission'],
   ['AD-19','text','Curriculum areas','confirm the four curriculum areas and their one-line descriptions'],
@@ -101,8 +101,8 @@ var P = [
   ['AD-21','link','Monthly club report','monthly report form or portal URL'],
   ['AD-22','text','Family Network','DRAFT confirm how the Family Network runs in GNYC clubs: parent sessions, home requirements, family events'],
   ['AD-23','text','Adventurer uniform','Confirm the GNYC dress uniform options (blouse and shirt color, socks, beret) and where families buy']], note:'Reworked Sep 27, 2026 around families: why join, a club meeting, the four curriculum areas (My God, My Self, My Family, My World), the Pledge and Law, and the six-class journey with the Family Network, investiture and awards. Its own slot list, no longer the Pathfinders layout.'},
- {code:'MG', name:'Master Guides', tmpl:'PF', url:'ministries/master-guides.html', group:'Built pages · ministry layout', slots:[
-  ['MG-01','photo','Hero photo','1600×2000 portrait · Master Guides in uniform at investiture'],
+ {code:'MG', name:'Master Guides', tmpl:'PF', url:'ministries/master-guides.html', group:'Built pages · ministry layout', note:'Reworked Sep 27, 2026 for adults and older youth answering a call to lead: why become a Master Guide, the NAD purpose, mission, vision and philosophy, the official Pledge and Law, the five-step leadership journey, and ways to keep growing.', slots:[
+  ['MG-01','photo','Hero photo','1600×2000 portrait · a NAD photo of the Master Guide neckerchief is in place; replace with GNYC Master Guides at investiture when available'],
   ['MG-02','text','Tagline','tagline, 25–40 words'],
   ['MG-03','data','Three figures','3 real figures'],
   ['MG-04','text','Why Master Guides','why this ministry, 60–90 words, in the Director’s voice'],
@@ -117,9 +117,16 @@ var P = [
   ['MG-13','link','Map','locations (Google My Maps link or list of addresses)'],
   ['MG-14','photo','Gallery','6 images, 1200px+ on the long side: Investiture, Camporee staff, Class night, Camp skills, Mentoring, Summit'],
   ['MG-15','text','FAQ','confirm or rewrite each answer'],
-  ['MG-16','link','Enquiries email','office address for enquiries'],
+  ['MG-16','link','Inquiries email','office address for inquiries'],
   ['MG-17','text','Master Guide uniform','confirm GNYC’s Master Guide uniform: bottoms color, jacket, shoulder cords and any conference additions'],
-  ['MG-18','file','Record card','Master Guide record card PDF']]},
+  ['MG-18','file','Record card','Master Guide record card PDF'],
+  ['MG-19','text','Why become a Master Guide: six reasons','DRAFT six reasons; confirm or rewrite each in 20–30 words'],
+  ['MG-20','text','Voices','one invested Master Guide and one current candidate, 25–40 words each, with full name, club and permission'],
+  ['MG-21','text','The five steps','DRAFT confirm the five steps and how GNYC runs them (who signs off, typical length)'],
+  ['MG-22','data','Curriculum areas','the four NAD curriculum areas; confirm the names GNYC uses on the record card'],
+  ['MG-23','text','Who starts the course','DRAFT confirm who starts the Master Guide course in GNYC (former Pathfinders and TLTs, adults new to clubs) and the TLT link'],
+  ['MG-24','data','Where Master Guides serve','DRAFT confirm where GNYC Master Guides serve'],
+  ['MG-25','photo','Class night photo','1600×900 · candidates at a Master Guide class night']]},
  {code:'AY', name:'AY Ministries', tmpl:'PF', url:'ministries/ay-ministries.html', group:'Built pages · ministry layout', slots:null},
  {code:'TLT', name:'Teen Leadership Training', tmpl:'PBE', url:'ministries/pathfinders/teen-leadership-training.html', group:'Built pages · program layout', slots:null, note:'Logo supplied Sep 21, 2026 (TLT-01 done)'},
  {code:'DC', name:'Drum Corps (GNYC Drumline)', url:'ministries/pathfinders/drum-corps.html', group:'Built pages · program layout', owner:'Wilda (coordinating), Henry, Duece', note:'Confirmed Sep 22, 2026 by Wilda: enough material for a full page', slots:[
@@ -153,7 +160,7 @@ var P = [
 ];
 /* generic ministry / sub-ministry slot lists for sibling pages */
 var TEMPLATES={
- PF:[['01','photo','Hero photo','1600×2000 portrait, members in uniform or in action'],['02','text','Tagline','25–40 words'],['03','data','Three figures','Clubs / members / staff'],['04','text','Why this ministry','60–90 words'],['05','people','Ministry lead','Done from gnycyouth.org; add email'],['06','data','The year (cycle)','Confirm the real annual cycle for this ministry: events, order and month. The timeline shown is a draft'],['07','photo','Feature photo','1600×700'],['08','auto','Upcoming events','From the calendar'],['09','link','Director report / portal','URL'],['10','link','Safety & screening','URL'],['11','people','Leadership','Names done from gnycyouth.org; add coordinator headshots and emails'],['12','data','Club or group directory','Church, area, meeting time, contact'],['13','link','Map','Link or addresses'],['14','photo','Gallery','6 photos 1200px+'],['15','text','FAQ','5 questions and answers'],['16','link','Enquiries email','Address']],
+ PF:[['01','photo','Hero photo','1600×2000 portrait, members in uniform or in action'],['02','text','Tagline','25–40 words'],['03','data','Three figures','Clubs / members / staff'],['04','text','Why this ministry','60–90 words'],['05','people','Ministry lead','Done from gnycyouth.org; add email'],['06','data','The year (cycle)','Confirm the real annual cycle for this ministry: events, order and month. The timeline shown is a draft'],['07','photo','Feature photo','1600×700'],['08','auto','Upcoming events','From the calendar'],['09','link','Director report / portal','URL'],['10','link','Safety & screening','URL'],['11','people','Leadership','Names done from gnycyouth.org; add coordinator headshots and emails'],['12','data','Club or group directory','Church, area, meeting time, contact'],['13','link','Map','Link or addresses'],['14','photo','Gallery','6 photos 1200px+'],['15','text','FAQ','5 questions and answers'],['16','link','Inquiries email','Address']],
  PBE:[['01','photo','Key art or logo','800×1067 or emblem, transparent'],['02','text','Intro','30–50 words'],['03','link','Sign-up or registration','URL and deadline'],['04','text','What it is this year','Focus, level or theme for the season'],['05','data','Key dates','Dates and venues'],['06','photo','Action photo','1600×1000'],['07','link','Form','Registration or application form'],['08','file','Resources','3–6 PDFs or links'],['09','text','How it works','Rules, requirements or curriculum summary, 80–120 words'],['10','data','Highlights or results','Recent achievements + photos'],['11','people','Coordinator','Responsible director shown; name the program coordinator if appointed, with email'],['12','text','FAQ','4 questions and answers']]
 };
 
