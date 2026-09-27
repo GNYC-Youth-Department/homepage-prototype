@@ -52,7 +52,7 @@
     '</div>' +
     '<div style="display:flex;align-items:center;gap:.5rem">' +
       '<div class="lang" role="group" aria-label="Language"><button id="lang-en" aria-pressed="true">EN</button><button id="lang-es" aria-pressed="false">ES</button></div>' +
-      '<button aria-label="Search" class="nav-link" style="padding:.6rem"><span class="material-symbols-outlined" style="font-size:22px">search</span></button>' +
+      '<button type="button" aria-label="Search" data-open-search class="nav-link" style="padding:.6rem"><span class="material-symbols-outlined" style="font-size:22px">search</span></button>' +
       '<a class="btn-primary nav-register" href="' + CONGRESS + '" target="_blank" rel="noopener noreferrer" style="display:none">Register</a>' +
       '<button id="menu-btn" class="nav-link nav-burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" style="padding:.5rem"><span class="material-symbols-outlined">menu</span></button>' +
     '</div></div>' +
@@ -117,4 +117,6 @@
     function toSlot() { var m = /^#([A-Z]{2,3}-\d\d)$/.exec(location.hash); if (!m) return; var el = document.querySelector('[data-slot="' + m[1] + '"]'); if (!el) return; slots(true); document.querySelectorAll('.slot-here').forEach(function (x) { x.classList.remove('slot-here'); }); el.classList.add('slot-here'); el.scrollIntoView({ block: 'center' }); }
     toSlot(); window.addEventListener('hashchange', toSlot);
   }
+  /* site search: loaded on every page */
+  var ss = document.createElement('script'); ss.src = u('assets/search.js'); ss.defer = true; document.body.appendChild(ss);
 })();
