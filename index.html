@@ -96,6 +96,19 @@
   @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 </style>
 <link rel="stylesheet" href="assets/site.css">
+
+<style>
+  /* preview (?heart=1): "love" turns into a gently beating red heart */
+  .love-swap{position:relative;display:inline-block;vertical-align:baseline;white-space:nowrap}
+  .love-swap .lh{display:none}
+  .heart-on .love-swap{transition:width .7s cubic-bezier(.16,1,.3,1)}
+  .heart-on .love-swap .lw{display:inline-block;transition:opacity .45s ease,filter .45s ease,transform .45s ease}
+  .heart-on .love-swap .lh{display:block;position:absolute;left:50%;top:50%;width:.82em;height:.82em;margin:-.36em 0 0 -.41em;fill:#ef4444;opacity:0;transform:scale(.3);filter:drop-shadow(0 8px 22px rgba(239,68,68,.45));transition:opacity .5s ease .2s,transform .7s cubic-bezier(.34,1.56,.64,1) .2s}
+  .heart-on .love-swap.is-heart .lw{opacity:0;filter:blur(6px);transform:scale(.85)}
+  .heart-on .love-swap.is-heart .lh{opacity:1;transform:scale(1)}
+  .heart-on .love-swap.is-beating .lh{animation:beat 1.6s ease-in-out infinite;transition:none}
+  @keyframes beat{0%,100%{transform:scale(1)}14%{transform:scale(1.1)}28%{transform:scale(1)}42%{transform:scale(1.06)}56%{transform:scale(1)}}
+</style>
 </head>
 <body data-page="home">
 <div class="bg-[#faf8ff] text-[#131b2e] font-sans antialiased selection:bg-sky-100 selection:text-sky-900">
@@ -105,7 +118,7 @@
 <div class="hero-scrim absolute inset-0" aria-hidden="true"></div>
 <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-20 sm:pt-28 sm:pb-24 lg:pt-36 lg:pb-32">
 <div class="flex flex-wrap gap-2"><a class="inline-flex items-center gap-2 text-sm font-medium text-white/90 hover:text-white border border-white/25 bg-white/10 backdrop-blur-sm rounded-full pl-3 pr-4 py-1.5" href="https://events.gnycyouth.com/event/13/adventist-youth-congress-xviii?aff=P1A3HA0V"><span class="w-1.5 h-1.5 rounded-full bg-[#ffe247]" aria-hidden="true"></span>AY Congress XVIII registration is open <span aria-hidden="true">&rarr;</span></a><a class="slot inline-flex items-center gap-2 text-sm font-medium text-white/90 hover:text-white border border-white/25 bg-white/10 backdrop-blur-sm rounded-full pl-3 pr-4 py-1.5" href="https://gnycyouth.org/" data-slot="HM-11" data-spec="Link · 2027 club registration form URL"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400" aria-hidden="true"></span>2027 club registration is open <span aria-hidden="true">&rarr;</span></a></div>
-<h1 data-slot="HM-02" data-spec="Text · headline + 25-word intro" class="slot mt-6 max-w-3xl text-[40px] leading-[1.08] sm:text-6xl sm:leading-[1.05] lg:text-7xl lg:leading-[1.03] font-heading font-extrabold tracking-[-0.03em] text-white" style="text-wrap:balance">Helping New York youth live, lead and love <span class="text-[#ffe247]">like Jesus.</span></h1>
+<h1 data-slot="HM-02" data-spec="Text · headline + 25-word intro" class="slot mt-6 max-w-3xl text-[40px] leading-[1.08] sm:text-6xl sm:leading-[1.05] lg:text-7xl lg:leading-[1.03] font-heading font-extrabold tracking-[-0.03em] text-white" style="text-wrap:balance">Helping New York youth live, lead and <span class="love-swap"><span class="lw">love</span><svg class="lh" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.3 10.6 20C5.4 15.4 2 12.3 2 8.5 2 5.4 4.4 3 7.5 3c1.7 0 3.4.8 4.5 2.1C13.1 3.8 14.8 3 16.5 3 19.6 3 22 5.4 22 8.5c0 3.8-3.4 6.9-8.6 11.5L12 21.3z"/></svg></span> <span class="text-[#ffe247]">like Jesus.</span></h1>
 <p class="mt-6 max-w-xl text-lg sm:text-xl leading-relaxed text-white/85">Events, clubs and resources for Adventist Youth Ministries across the five boroughs, Long Island and upstate New York.</p>
 <div class="mt-10 max-w-3xl">
 <form class="ss-bar ss-bar-hero" role="search" action="#"><span class="ss-lead" aria-hidden="true"><span class="material-symbols-outlined">search</span></span><input type="search" data-search placeholder="Search events, clubs, honors, forms…" aria-label="Search the site"><kbd class="ss-kbd" aria-hidden="true">/</kbd><button type="submit" class="ss-btn">Search<span class="material-symbols-outlined" aria-hidden="true" style="font-size:18px">arrow_forward</span></button></form>
@@ -420,6 +433,14 @@
 <div data-site="footer"></div>
 </div>
 <script src="assets/site.js"></script>
+<script>
+/* preview: ?heart=1 swaps "love" for a beating heart; the word stays for screen readers and reduced motion */
+(function(){if(!/[?&]heart=1/.test(location.search))return;if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+ var w=document.querySelector('.love-swap');if(!w)return;var lw=w.querySelector('.lw');
+ w.setAttribute('role','img');w.setAttribute('aria-label','love');lw.setAttribute('aria-hidden','true');
+ document.documentElement.classList.add('heart-on');
+ (document.fonts?document.fonts.ready:Promise.resolve()).then(function(){setTimeout(function(){w.style.width=w.getBoundingClientRect().width+'px';void w.offsetWidth;w.classList.add('is-heart');w.style.width='.9em';setTimeout(function(){w.classList.add('is-beating')},900);},1800);});})();
+</script>
 <script>
 (function(){
   var c=document.getElementById('congress-count'),d=Math.ceil((new Date(2027,0,29)-new Date())/864e5);
