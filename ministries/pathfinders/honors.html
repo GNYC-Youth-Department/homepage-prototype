@@ -12,6 +12,8 @@
 <style>
   .pf-hero{background:radial-gradient(90% 120% at 100% 0%,rgba(220,38,38,.55) 0%,rgba(220,38,38,0) 55%),radial-gradient(60% 80% at 0% 100%,rgba(245,214,10,.18),rgba(245,214,10,0) 60%),linear-gradient(135deg,#0b1430 0%,#1a1033 50%,#3b0d1a 100%)}
   .pf-lines{background:repeating-linear-gradient(135deg,rgba(255,255,255,.05) 0 1px,transparent 1px 16px);mask-image:linear-gradient(90deg,transparent,#000 40%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 40%,transparent)}
+  .crest-float{filter:drop-shadow(0 30px 40px rgba(0,0,0,.6));animation:bob 7s ease-in-out infinite;z-index:2;pointer-events:none}
+  @keyframes bob{0%,100%{transform:translate(-50%,-50%) rotate(-4deg)}50%{transform:translate(-50%,calc(-50% - 10px)) rotate(-2deg)}}
   /* hero patch wall */
   .wall{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;align-items:center}
   .wall a{display:block;border-radius:16px;transition:transform .35s cubic-bezier(.16,1,.3,1)}
@@ -26,11 +28,11 @@
   .tile{background:#fff;border-radius:24px;border:1px solid #e2e8f0;padding:1.5rem;box-shadow:0 1px 2px rgba(15,23,42,.04),0 14px 30px -16px rgba(15,23,42,.22)}
   .tile h3{font:700 17px 'Plus Jakarta Sans',sans-serif;color:#0f172a;margin:.7rem 0 .35rem}
   .tile p{font-size:14px;line-height:1.55;color:#475569;margin:0}
-  .tile .ic{width:44px;height:44px;border-radius:14px;display:grid;place-items:center}
+  .tile .ic{width:44px;height:44px;border-radius:16px;display:grid;place-items:center}
   /* filters */
   .sticky-filters{position:sticky;top:calc(72px + env(safe-area-inset-top,0px));z-index:30;background:rgba(250,248,255,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid #e2e8f0}
   /* category tiles: three fanned patches on a tint of the category colour */
-  .ct{--c:#0f172a;--sw:#fff;position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:.25rem;padding:1rem 1rem 1rem;border-radius:22px;border:1px solid color-mix(in srgb,var(--c) 22%,#e2e8f0);background:linear-gradient(160deg,color-mix(in srgb,var(--c) 14%,#fff) 0%,#fff 62%);text-align:left;cursor:pointer;overflow:hidden;box-shadow:0 1px 2px rgba(15,23,42,.04),0 12px 26px -14px color-mix(in srgb,var(--c) 45%,rgba(15,23,42,.3));transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s,border-color .3s;font-family:inherit}
+  .ct{--c:#0f172a;--sw:#fff;position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:.25rem;padding:1rem 1rem 1rem;border-radius:24px;border:1px solid color-mix(in srgb,var(--c) 22%,#e2e8f0);background:linear-gradient(160deg,color-mix(in srgb,var(--c) 14%,#fff) 0%,#fff 62%);text-align:left;cursor:pointer;overflow:hidden;box-shadow:0 1px 2px rgba(15,23,42,.04),0 12px 26px -14px color-mix(in srgb,var(--c) 45%,rgba(15,23,42,.3));transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s,border-color .3s;font-family:inherit}
   .ct:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--c) 50%,#e2e8f0);box-shadow:0 24px 44px -16px color-mix(in srgb,var(--c) 55%,rgba(15,23,42,.3))}
   .ct[aria-pressed="true"]{border-color:var(--c);box-shadow:0 0 0 2px var(--c),0 18px 36px -16px color-mix(in srgb,var(--c) 60%,rgba(15,23,42,.3))}
   .ct .fan{display:flex;height:84px;margin:0 0 .5rem -.25rem}
@@ -58,7 +60,7 @@
   @media (pointer:coarse),(max-width:639px){.seg button{min-height:44px;min-width:44px}.catsel select{min-height:44px}}
   .flabel{font:700 11px Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#64748b}
   /* honor cards */
-  .hn{--c:#0f172a;--sw:#fff;position:relative;background:#fff;border-radius:20px;border:1px solid #e2e8f0;border-top:4px solid var(--c);padding:1rem .75rem .75rem;display:flex;flex-direction:column;align-items:center;text-align:center;gap:.25rem;text-decoration:none;transition:transform .25s cubic-bezier(.16,1,.3,1),box-shadow .25s,border-color .25s;box-shadow:0 1px 2px rgba(15,23,42,.04),0 10px 24px -12px rgba(15,23,42,.18)}
+  .hn{--c:#0f172a;--sw:#fff;position:relative;background:#fff;border-radius:24px;border:1px solid #e2e8f0;border-top:4px solid var(--c);padding:1rem .75rem .75rem;display:flex;flex-direction:column;align-items:center;text-align:center;gap:.25rem;text-decoration:none;transition:transform .25s cubic-bezier(.16,1,.3,1),box-shadow .25s,border-color .25s;box-shadow:0 1px 2px rgba(15,23,42,.04),0 10px 24px -12px rgba(15,23,42,.18)}
   .hn:hover,.hn:focus-visible{transform:translateY(-4px);border-color:color-mix(in srgb,var(--c) 45%,#e2e8f0);box-shadow:0 20px 38px -14px color-mix(in srgb,var(--c) 45%,rgba(15,23,42,.3))}
   .hn:focus-visible{outline:2px solid #0284c7;outline-offset:3px}
   .hn img{width:96px;height:96px;object-fit:contain;margin-bottom:.25rem;filter:drop-shadow(0 8px 12px rgba(0,0,0,.2));transition:transform .3s cubic-bezier(.16,1,.3,1)}
@@ -77,7 +79,7 @@
   .grp h2 .sw{flex:none;width:36px;height:36px;border-radius:9999px;background:var(--sw);border:5px solid #fff;box-shadow:0 0 0 2px var(--c),0 8px 16px -6px rgba(15,23,42,.35)}
   .grp h2 small{font:600 13px Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#64748b;margin-left:auto;white-space:nowrap}
   /* list view */
-  .tbl{width:100%;border-collapse:separate;border-spacing:0;background:#fff;border:1px solid #e2e8f0;border-radius:20px;overflow:hidden;box-shadow:0 10px 30px -18px rgba(15,23,42,.25)}
+  .tbl{width:100%;border-collapse:separate;border-spacing:0;background:#fff;border:1px solid #e2e8f0;border-radius:24px;overflow:hidden;box-shadow:0 10px 30px -18px rgba(15,23,42,.25)}
   .tbl th{background:#f8fafc;text-align:left;font:700 12px Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#475569;padding:0;border-bottom:1px solid #e2e8f0}
   .tbl th button,.tbl th>span{display:flex;align-items:center;gap:.25rem;width:100%;padding:.85rem 1rem;background:none;border:0;font:inherit;letter-spacing:inherit;text-transform:inherit;color:inherit;cursor:pointer;text-align:left}
   .tbl th>span{cursor:default}
@@ -117,7 +119,7 @@
 <div><dt class="text-xs uppercase tracking-wider text-white/60">Skill levels</dt><dd class="font-heading font-extrabold text-3xl tabular mt-1">1–3</dd></div>
 </dl>
 </div>
-<div class="lg:col-span-5"><div class="wall max-w-md mx-auto lg:max-w-none" id="wall" aria-label="A few honor patches"></div></div>
+<div class="lg:col-span-5 relative"><div class="wall max-w-md mx-auto lg:max-w-none" id="wall" aria-label="A few honor patches"></div><img class="crest-float absolute left-1/2 top-1/2 w-28 sm:w-36 lg:w-40 -translate-x-1/2 -translate-y-1/2" src="../../img/08.png" alt="Pathfinder Club emblem"></div>
 </div></div></header>
 
 <section class="wrap -mt-8 relative z-10" aria-label="How to read an honor">

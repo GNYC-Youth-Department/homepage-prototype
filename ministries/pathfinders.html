@@ -21,13 +21,6 @@
   .year::before{content:"";position:absolute;left:0;right:0;top:22px;height:2px;background:linear-gradient(90deg,#dc2626,#f59e0b,#dc2626)}
   .year li{position:relative;padding-top:3.25rem;list-style:none}
   .year li::before{content:"";position:absolute;top:14px;left:0;width:18px;height:18px;border-radius:9999px;background:#fff;border:4px solid #dc2626;box-shadow:0 0 0 6px #faf8ff}
-  .cls{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem}
-  @media (max-width:420px){.cls{grid-template-columns:repeat(2,1fr)}}
-  .cls div{border-radius:18px;padding:1.1rem .75rem 1rem;background:#fff;border:1px solid #e2e8f0;border-top:4px solid var(--c);text-align:center;display:flex;flex-direction:column;align-items:center;gap:.15rem;box-shadow:0 1px 2px rgba(15,23,42,.04),0 10px 24px -12px rgba(15,23,42,.18);transition:transform .25s cubic-bezier(.16,1,.3,1),box-shadow .25s}
-  .cls div:hover{transform:translateY(-4px);box-shadow:0 18px 36px -14px rgba(15,23,42,.28)}
-  .cls img{width:84px;height:84px;object-fit:contain;margin-bottom:.6rem;filter:drop-shadow(0 8px 14px rgba(0,0,0,.22))}
-  .cls strong{font-family:'Plus Jakarta Sans',sans-serif;font-size:17px;color:#0f172a}
-  .cls span{font-size:12px;color:#64748b}
   .area-btn{display:flex;align-items:center;justify-content:space-between;width:100%;padding:.85rem 1rem;border-radius:14px;border:1px solid #e2e8f0;background:#fff;font:600 15px Inter,sans-serif;color:#0f172a;cursor:pointer;text-align:left}
   .area-btn:hover,.area-btn.is-on{border-color:#dc2626;background:#fff5f5;color:#991b1b}
   .area-btn small{font-weight:600;color:#64748b}
@@ -43,8 +36,73 @@
   .hon-row img:nth-child(odd){transform:rotate(-6deg)}.hon-row img:nth-child(even){transform:rotate(6deg) translateY(4px)}
   .hon-row:hover img{transform:translateY(-4px) rotate(0)}
   @media (max-width:420px){.hon-row img{width:46px;height:46px}}
-  .hon-cat{display:block;border-radius:.75rem;background:rgba(255,255,255,.8);border:1px solid #fde68a;padding:.5rem .75rem;color:#1e293b;text-decoration:none;transition:background .15s,border-color .15s,color .15s}
+  .hon-cats{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:-.5rem}
+  .hon-cat{display:inline-flex;align-items:center;min-height:36px;border-radius:9999px;font:600 13px Inter,sans-serif;background:#fffbeb;border:1px solid #fde68a;padding:.25rem .75rem;color:#1e293b;text-decoration:none;transition:background .15s,border-color .15s,color .15s}
   .hon-cat:hover{background:#fff;border-color:#d97706;color:#92400e}
+  /* why join */
+  .why{display:grid;grid-template-columns:repeat(1,1fr);gap:1rem}
+  @media (min-width:640px){.why{grid-template-columns:repeat(2,1fr)}}
+  @media (min-width:1024px){.why{grid-template-columns:repeat(3,1fr);gap:1.5rem}}
+  .why li{position:relative;background:linear-gradient(160deg,var(--t) 0%,#fff 55%);border:1px solid color-mix(in srgb,var(--c) 18%,#e2e8f0);border-radius:24px;padding:1.5rem;box-shadow:0 1px 2px rgba(15,23,42,.04),0 14px 30px -18px color-mix(in srgb,var(--c) 55%,rgba(15,23,42,.3));transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s}
+  .why li:hover{transform:translateY(-4px);box-shadow:0 24px 44px -18px color-mix(in srgb,var(--c) 60%,rgba(15,23,42,.3))}
+  .why-ic{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:var(--c);color:#fff;font-size:28px;box-shadow:0 10px 20px -8px var(--c)}
+  .why h3{font:800 20px/1.2 'Plus Jakarta Sans',sans-serif;color:#0f172a;margin:1rem 0 .5rem;letter-spacing:-.01em}
+  .why p{font-size:15px;line-height:1.6;color:#475569;margin:0}
+  @media (max-width:639px){.why li{display:grid;grid-template-columns:44px 1fr;column-gap:1rem;padding:1.25rem}.why-ic{width:44px;height:44px;font-size:24px;border-radius:16px;grid-row:span 2}.why h3{margin:0 0 .25rem;font-size:18px;align-self:center}}
+  .voice{position:relative;margin:0;border-radius:24px;padding:2rem 2rem 1.5rem;background:#fff;border:1px solid #e2e8f0;box-shadow:0 14px 30px -18px rgba(15,23,42,.3)}
+  .voice .q{display:block;height:40px;margin:-.5rem 0 .25rem;font:800 80px/1 'Plus Jakarta Sans',sans-serif;color:#f59e0b}
+  .voice blockquote{position:relative;margin:0;font:600 19px/1.5 'Plus Jakarta Sans',sans-serif;color:#0f172a}
+  .voice figcaption{display:flex;align-items:center;gap:.75rem;margin-top:1.5rem}
+  .voice figcaption b{display:block;font-size:15px;color:#0f172a}.voice figcaption small{display:block;font-size:13px;color:#64748b}
+  .voice .av{width:48px;height:48px;border-radius:9999px;flex:none}.voice .av .material-symbols-outlined{font-size:24px;margin:0}
+  .voice-dark{background:linear-gradient(135deg,#0b1430,#3b0d1a);border-color:transparent}
+  .voice-dark blockquote,.voice-dark figcaption b{color:#fff}.voice-dark figcaption small{color:rgba(255,255,255,.65)}.voice-dark .q{color:#ffe247}
+  /* philosophy */
+  .phil{background:radial-gradient(70% 90% at 50% 45%,rgba(220,38,38,.35) 0%,rgba(220,38,38,0) 60%),linear-gradient(160deg,#0b1430 0%,#1a1033 55%,#3b0d1a 100%)}
+  .quad{display:grid;grid-template-columns:1fr;gap:1rem}
+  .qd{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-top:3px solid var(--c);border-radius:24px;padding:1.5rem;backdrop-filter:blur(6px)}
+  .qd .material-symbols-outlined{font-size:32px;color:var(--c)}
+  .qd .qk{font:700 12px Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--c);margin:.75rem 0 0}
+  .qd h3{font:800 22px/1.2 'Plus Jakarta Sans',sans-serif;margin:.25rem 0 .5rem}
+  .qd p:last-child{font-size:15px;line-height:1.6;color:rgba(255,255,255,.78);margin:0}
+  .qc{display:grid;place-items:center;order:-1;grid-column:1/-1}.qc img{width:120px;filter:drop-shadow(0 20px 30px rgba(0,0,0,.55))}
+  @media (min-width:1024px){.quad{grid-template-columns:1fr 240px 1fr;grid-template-rows:auto auto;gap:1.5rem 2rem;align-items:center}
+    .qd:nth-child(1){grid-area:1/1}.qd:nth-child(2){grid-area:2/1}.qc{grid-area:1/2/3/3;order:0}.qd:nth-child(4){grid-area:1/3}.qd:nth-child(5){grid-area:2/3}
+    .qc img{width:220px;filter:drop-shadow(0 30px 40px rgba(0,0,0,.55));animation:bob 7s ease-in-out infinite}}
+  @media (min-width:640px) and (max-width:1023px){.quad{grid-template-columns:1fr 1fr}}
+  .aim div{border-radius:16px;padding:1.25rem 1.5rem;background:rgba(255,226,71,.08);border:1px solid rgba(255,226,71,.28);text-align:center}
+  .aim dt{font:700 12px Inter,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#ffe247}
+  .aim dd{margin:.5rem 0 0;font:700 19px/1.4 'Plus Jakarta Sans',sans-serif;color:#fff}
+  /* growth journey */
+  .jr-ends{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.75rem 1rem}
+  .jr-end,.jr-now{display:inline-flex;align-items:center;gap:.75rem;padding:.5rem 1.25rem .5rem .5rem;border-radius:9999px;background:#fff;border:1px solid #e2e8f0;text-decoration:none;color:#0f172a;box-shadow:0 8px 20px -12px rgba(15,23,42,.3);transition:border-color .2s,transform .2s}
+  .jr-end:hover{border-color:#94a3b8;transform:translateY(-2px)}
+  .jr-end img,.jr-now img{width:40px;height:40px;object-fit:contain}
+  .jr-end small{display:block;font:600 12px Inter,sans-serif;color:#64748b}.jr-end b,.jr-now b{display:block;font:700 15px 'Plus Jakarta Sans',sans-serif}
+  .jr-now{background:#0b1430;color:#fff;border-color:#0b1430}
+  .jr-arrow{color:#94a3b8}
+  @media (max-width:1023px){.jr-arrow{transform:rotate(90deg)}.jr-ends{flex-direction:column}}
+  .journey{list-style:none;margin:0;padding:0;display:grid;gap:1rem;position:relative}
+  .journey li{position:relative;background:#fff;border-radius:24px;border:1px solid #e2e8f0;border-top:4px solid var(--c);padding:1.5rem 1.25rem 1.25rem;box-shadow:0 1px 2px rgba(15,23,42,.04),0 14px 30px -16px color-mix(in srgb,var(--c) 50%,rgba(15,23,42,.3));transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s}
+  .journey li:hover{transform:translateY(-4px)}
+  .journey img{width:96px;height:96px;object-fit:contain;filter:drop-shadow(0 10px 14px rgba(0,0,0,.25))}
+  .journey .jr-g{font:700 12px Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--c);margin:.75rem 0 0}
+  .journey h3{font:800 24px/1.1 'Plus Jakarta Sans',sans-serif;color:#0f172a;margin:.25rem 0 .5rem}
+  .journey .jr-t{font-size:14px;line-height:1.55;color:#475569;margin:0}
+  .jr-dot{display:none}
+  @media (max-width:639px){.journey{padding-left:1.75rem}.journey::before{content:"";position:absolute;left:.5rem;top:1rem;bottom:1rem;width:3px;border-radius:3px;background:linear-gradient(#1d4ed8,#dc2626,#15803d,#64748b,#7f1d1d,#b45309)}
+    .jr-dot{display:block;position:absolute;left:calc(-1.25rem - 9px);top:2rem;width:18px;height:18px;border-radius:9999px;background:#fff;border:4px solid var(--c)}
+    .journey li{display:grid;grid-template-columns:72px 1fr;column-gap:1rem;padding:1.25rem 1rem}.journey img{width:72px;height:72px;grid-row:span 3}.journey .jr-g{margin:0}}
+  @media (min-width:640px){.journey{grid-template-columns:repeat(3,1fr)}}
+  @media (min-width:1280px){.journey{grid-template-columns:repeat(6,1fr);gap:1rem;padding-top:1.5rem}
+    .journey::before{content:"";position:absolute;left:4%;right:4%;top:0;height:4px;border-radius:4px;background:linear-gradient(90deg,#1d4ed8,#dc2626,#15803d,#64748b,#7f1d1d,#b45309)}
+    .jr-dot{display:block;position:absolute;top:calc(-1.5rem - 9px);left:50%;margin-left:-11px;width:22px;height:22px;border-radius:9999px;background:#fff;border:5px solid var(--c);box-shadow:0 0 0 6px #faf8ff}
+    .journey li{text-align:center;display:flex;flex-direction:column;align-items:center;padding:1.5rem 1rem 1.25rem}}
+  .areas{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr;gap:.5rem}
+  @media (min-width:640px){.areas{grid-template-columns:1fr 1fr}}
+  .areas li{display:flex;align-items:center;gap:.75rem;padding:.75rem 1rem;border-radius:16px;background:color-mix(in srgb,var(--c) 7%,#fff);border:1px solid color-mix(in srgb,var(--c) 20%,#fff);font:600 14px Inter,sans-serif;color:#1e293b}
+  .areas .material-symbols-outlined{font-size:22px;color:var(--c)}
+  .invest{background:radial-gradient(90% 120% at 100% 0%,rgba(220,38,38,.5),rgba(220,38,38,0) 60%),linear-gradient(135deg,#0b1430,#3b0d1a)}
   .gal{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:150px;gap:.75rem}
   .gal .ph{border-radius:16px}
   .gal .big{grid-column:span 2;grid-row:span 2}
@@ -81,14 +139,59 @@
 </div></div>
 </header>
 
+<!-- ================= WHY JOIN ================= -->
+<section class="section" id="why">
+<div class="wrap">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-end">
+<div class="lg:col-span-7"><p class="eyebrow">Why Pathfinders</p><h2 class="h-section" style="text-wrap:balance">Why every kid should join a Pathfinder club</h2></div>
+<p class="slot lede lg:col-span-5 !mt-0" data-slot="PF-04" data-spec="Text · why Pathfinders, 60–90 words, in the Director's voice">Pathfinders is where children become leaders. Every meeting, campout and honor is built to grow a young person spiritually, mentally, physically and socially, with adults who model what it means to walk with Jesus.</p>
+</div>
+<ul class="slot why mt-12 list-none p-0" data-slot="PF-17" data-spec="Text · DRAFT six reasons; confirm or rewrite each in 20–30 words">
+<li style="--c:#b91c1c;--t:#fef2f2"><span class="why-ic material-symbols-outlined" aria-hidden="true">church</span><h3>A faith of their own</h3><p>Pathfinders don't just hear about Jesus. They study the Bible, lead worship and pray with friends until faith becomes something they own.</p></li>
+<li style="--c:#1d4ed8;--t:#eff6ff"><span class="why-ic material-symbols-outlined" aria-hidden="true">diversity_3</span><h3>Friends who last</h3><p>A unit of peers and a counselor who knows their name, week after week, through the middle-school years when belonging matters most.</p></li>
+<li style="--c:#15803d;--t:#f0fdf4"><span class="why-ic material-symbols-outlined" aria-hidden="true">forest</span><h3>Real skills, outdoors</h3><p>Pitching a tent, reading a map, giving first aid, cooking over a fire. Skills that build confidence far from a screen.</p></li>
+<li style="--c:#b45309;--t:#fffbeb"><span class="why-ic material-symbols-outlined" aria-hidden="true">flag</span><h3>Leadership, early</h3><p>Pathfinders lead devotions, call drill commands and teach younger members, and older teens train as junior staff.</p></li>
+<li style="--c:#7c3aed;--t:#f5f3ff"><span class="why-ic material-symbols-outlined" aria-hidden="true">volunteer_activism</span><h3>Service to New York</h3><p>Food drives, neighborhood clean-ups and outreach across the five boroughs and Long Island teach that faith shows up in action.</p></li>
+<li style="--c:#0369a1;--t:#f0f9ff"><span class="why-ic material-symbols-outlined" aria-hidden="true">shield_person</span><h3>Adults who invest</h3><p>Every staff member is screened and trained. Many were Pathfinders themselves and now give back as mentors.</p></li>
+</ul>
+<div class="slot voices mt-12 grid grid-cols-1 md:grid-cols-2 gap-6" data-slot="PF-18" data-spec="Quotes · one parent and one Pathfinder, 25–40 words each, with first name, club and permission">
+<figure class="voice"><span class="q" aria-hidden="true">“</span><blockquote>A parent's words about what Pathfinders changed in their child go here, in their own voice.</blockquote><figcaption><span class="av ph"><span class="material-symbols-outlined">person</span></span><span><b>Parent's first name</b><small>Parent · club name</small></span></figcaption></figure>
+<figure class="voice voice-dark"><span class="q" aria-hidden="true">“</span><blockquote>A Pathfinder's words about their club, a camporee or an honor they are proud of go here.</blockquote><figcaption><span class="av ph ph-dark"><span class="material-symbols-outlined">person</span></span><span><b>Pathfinder's first name</b><small>Voyager class · club name</small></span></figcaption></figure>
+</div>
+</div>
+</section>
+
+<!-- ================= PHILOSOPHY ================= -->
+<section class="phil section relative overflow-hidden text-white" id="philosophy">
+<div class="pf-lines absolute inset-0" aria-hidden="true"></div>
+<div class="wrap relative">
+<div class="max-w-3xl mx-auto text-center">
+<p class="text-xs font-bold tracking-[0.18em] uppercase text-[#ffe247]">Our philosophy</p>
+<h2 class="font-heading font-extrabold text-4xl sm:text-5xl tracking-[-0.02em] leading-[1.05] mt-3" style="text-wrap:balance">Growing the whole person, the way Jesus grew</h2>
+<blockquote class="mt-6 text-lg sm:text-xl text-white/85 leading-relaxed">“And Jesus increased in wisdom and stature, and in favour with God and man.”<cite class="block not-italic text-sm font-semibold tracking-wider uppercase text-white/55 mt-2">Luke 2:52</cite></blockquote>
+</div>
+<div class="quad mt-14">
+<div class="qd" style="--c:#60a5fa"><span class="material-symbols-outlined" aria-hidden="true">psychology</span><p class="qk">Wisdom · Mental</p><h3>A curious mind</h3><p>Honors, nature study and Bible memory stretch how Pathfinders think, from identifying birds to explaining what they believe.</p></div>
+<div class="qd" style="--c:#4ade80"><span class="material-symbols-outlined" aria-hidden="true">directions_run</span><p class="qk">Stature · Physical</p><h3>A strong body</h3><p>Hiking, drilling, camping and fitness goals teach Pathfinders to care for the body God gave them.</p></div>
+<div class="qc" aria-hidden="true"><img src="../img/08.png" alt=""></div>
+<div class="qd" style="--c:#fcd34d"><span class="material-symbols-outlined" aria-hidden="true">auto_stories</span><p class="qk">Favour with God · Spiritual</p><h3>A living faith</h3><p>Morning watch, worship, baptism classes and Bible Experience lead to a friendship with Jesus that lasts beyond the club.</p></div>
+<div class="qd" style="--c:#fca5a5"><span class="material-symbols-outlined" aria-hidden="true">handshake</span><p class="qk">Favour with man · Social</p><h3>A servant's heart</h3><p>Units, service projects and outreach teach Pathfinders to work together and to be a friend to everyone they meet.</p></div>
+</div>
+<dl class="slot aim mt-14 grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto" data-slot="PF-19" data-spec="Text · confirm the Aim and Motto wording used by GNYC">
+<div><dt>Our aim</dt><dd>The Advent message to all the world in my generation.</dd></div>
+<div><dt>Our motto</dt><dd>The love of Christ compels us.</dd></div>
+</dl>
+</div>
+</section>
+
 <!-- ================= PLEDGE & LAW ================= -->
 <section class="section bg-white border-b border-slate-200/80">
 <div class="wrap grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
 <div class="lg:col-span-5">
-<p class="eyebrow">What we promise</p>
+<p class="eyebrow">What a Pathfinder promises</p>
 <h2 class="h-section">The Pathfinder Pledge</h2>
 <blockquote class="mt-6 font-heading font-bold text-2xl sm:text-3xl leading-snug tracking-tight text-slate-900 border-l-4 border-[#dc2626] pl-6">“By the grace of God, I will be pure and kind and true. I will keep the Pathfinder Law. I will be a servant of God and a friend to man.”</blockquote>
-<p class="slot lede" data-slot="PF-04" data-spec="Text · why Pathfinders, 60–90 words, in the Director's voice">Pathfinders is where children become leaders. Every meeting, campout and honor is built to grow a young person spiritually, mentally, physically and socially, with adults who model what it means to walk with Jesus.</p>
+<p class="lede">The Pledge is the promise at the heart of every club. The Law is how a Pathfinder lives it out, one line at a time.</p>
 <div class="slot mt-6 flex items-center gap-4 rounded-2xl bg-slate-50 border border-slate-200 p-4" data-slot="PF-05" data-spec="Done from gnycyouth.org; add email"><img src="../img/people/andrew-gordon.jpg" alt="Dr. Andrew Gordon" class="rounded-full w-14 h-14 object-cover shrink-0"><div><p class="font-semibold text-slate-900 m-0">Dr. Andrew Gordon</p><p class="text-sm text-slate-600 m-0">Associate Director · Club Ministry</p></div></div>
 </div>
 <div class="lg:col-span-7">
@@ -100,8 +203,65 @@
 </div></div>
 </section>
 
+<!-- ================= GROWTH JOURNEY: CLASSES, CURRICULUM, HONORS ================= -->
+<section class="section" id="classes">
+<div class="wrap">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-end">
+<div class="lg:col-span-7"><p class="eyebrow">The growth journey</p><h2 class="h-section" style="text-wrap:balance">Six classes, one for every year of growing up</h2></div>
+<p class="lede lg:col-span-5 !mt-0">The classes are the heart of Pathfinders. Each school year a Pathfinder works through one class, going deeper in faith, skill and service, and is invested before the church when it is complete.</p>
+</div>
+
+<div class="jr-ends mt-12"><a class="jr-end" href="adventurers.html"><img src="../img/07.png" alt=""><span><small>Before Pathfinders</small><b>Adventurers · ages 4–9</b></span></a><span class="jr-arrow material-symbols-outlined" aria-hidden="true">arrow_forward</span><span class="jr-now"><img src="../img/08.png" alt=""><b>Pathfinders · six classes</b></span><span class="jr-arrow material-symbols-outlined" aria-hidden="true">arrow_forward</span><a class="jr-end" href="master-guides.html"><img src="../img/crest-mg.png" alt=""><span><small>After Pathfinders</small><b>TLT and Master Guide</b></span></a></div>
+
+<ol class="slot journey mt-10" data-slot="PF-20" data-spec="Text · DRAFT one focus line per class, 15–25 words; confirm against the NAD class descriptions">
+<li style="--c:#1d4ed8"><span class="jr-dot" aria-hidden="true"></span><img src="../img/class-friend.png" alt="" width="112" height="112"><p class="jr-g">Grade 5 · age 10</p><h3>Friend</h3><p class="jr-t">A friend of Jesus, of nature and of others. The first year: the Pledge and Law, a first campout and first honors.</p></li>
+<li style="--c:#dc2626"><span class="jr-dot" aria-hidden="true"></span><img src="../img/class-companion.png" alt="" width="112" height="112"><p class="jr-g">Grade 6 · age 11</p><h3>Companion</h3><p class="jr-t">Walking alongside others: learning to serve, to share faith and to be the teammate a unit can count on.</p></li>
+<li style="--c:#15803d"><span class="jr-dot" aria-hidden="true"></span><img src="../img/class-explorer.png" alt="" width="112" height="112"><p class="jr-g">Grade 7 · age 12</p><h3>Explorer</h3><p class="jr-t">Exploring God's Word and God's world further, with longer hikes, deeper Bible study and new honors.</p></li>
+<li style="--c:#64748b"><span class="jr-dot" aria-hidden="true"></span><img src="../img/class-ranger.png" alt="" width="112" height="112"><p class="jr-g">Grade 8 · age 13</p><h3>Ranger</h3><p class="jr-t">Self-reliance on the trail and in life: outdoor skill, good choices and care for the people around them.</p></li>
+<li style="--c:#7f1d1d"><span class="jr-dot" aria-hidden="true"></span><img src="../img/class-voyager.png" alt="" width="112" height="112"><p class="jr-g">Grade 9 · age 14</p><h3>Voyager</h3><p class="jr-t">Going further: mentoring younger Pathfinders, planning service projects and taking a bigger role in the club.</p></li>
+<li style="--c:#b45309"><span class="jr-dot" aria-hidden="true"></span><img src="../img/class-guide.png" alt="" width="112" height="112"><p class="jr-g">Grade 10 · age 15</p><h3>Guide</h3><p class="jr-t">Guiding others: leadership that prepares a Pathfinder for Teen Leadership Training and the Master Guide path.</p></li>
+</ol>
+<p class="text-sm text-slate-600 mt-6 flex items-start gap-2 max-w-3xl"><span class="material-symbols-outlined text-[20px] text-[#b45309]" aria-hidden="true">military_tech</span><span>Every class also has an <b class="text-slate-800">Advanced</b> level for Pathfinders ready for more in the same year.</span></p>
+
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-14">
+<div class="lg:col-span-7 card p-7 sm:p-9">
+<p class="eyebrow">What every class covers</p>
+<h3 class="font-heading font-extrabold text-2xl sm:text-3xl tracking-tight text-slate-900 mt-1">The same areas, deeper each year</h3>
+<p class="text-[15px] text-slate-700 mt-3 leading-relaxed max-w-xl">Each class follows the Investiture Achievement curriculum. The areas stay the same from Friend to Guide; what grows is the depth, the responsibility and the independence.</p>
+<ul class="areas slot mt-6" data-slot="PF-21" data-spec="List · confirm the curriculum area names used in GNYC clubs">
+<li style="--c:#b91c1c"><span class="material-symbols-outlined" aria-hidden="true">badge</span>General: Pledge, Law and club life</li>
+<li style="--c:#1e3a8a"><span class="material-symbols-outlined" aria-hidden="true">menu_book</span>Spiritual discovery</li>
+<li style="--c:#7c3aed"><span class="material-symbols-outlined" aria-hidden="true">volunteer_activism</span>Serving others</li>
+<li style="--c:#0369a1"><span class="material-symbols-outlined" aria-hidden="true">diversity_3</span>Developing friendship</li>
+<li style="--c:#15803d"><span class="material-symbols-outlined" aria-hidden="true">favorite</span>Health and fitness</li>
+<li style="--c:#b45309"><span class="material-symbols-outlined" aria-hidden="true">groups</span>Organization and leadership</li>
+<li style="--c:#166534"><span class="material-symbols-outlined" aria-hidden="true">eco</span>Nature study</li>
+<li style="--c:#0f6b5c"><span class="material-symbols-outlined" aria-hidden="true">camping</span>Outdoor living</li>
+<li style="--c:#be185d"><span class="material-symbols-outlined" aria-hidden="true">palette</span>Lifestyle enrichment</li>
+</ul>
+</div>
+<div class="lg:col-span-5 grid gap-6">
+<div class="invest relative overflow-hidden rounded-[24px] text-white p-7">
+<img class="absolute -right-12 -bottom-16 w-40 opacity-10 rotate-12" src="../img/08.png" alt="" aria-hidden="true">
+<div class="relative"><p class="text-xs font-bold tracking-[0.18em] uppercase text-[#ffe247]">Every June</p><h3 class="font-heading font-extrabold text-2xl tracking-tight mt-1">Investiture</h3><p class="text-[15px] text-white/80 mt-2 leading-relaxed">When a class is complete, the Pathfinder is invested before family and church and receives the class pin. It marks a year of growth, not just a finished checklist.</p></div>
+</div>
+<div class="grid gap-3 content-start">
+<a class="card acc-amber p-7 group block" href="pathfinders/honors.html">
+<p class="eyebrow !text-[#92400e]">Along the way</p>
+<h3 class="font-heading font-extrabold text-2xl tracking-tight text-slate-900 mt-1">Honors: 567 skills to explore</h3>
+<p class="text-[15px] text-slate-700 mt-2 leading-relaxed">Each class asks for honors, and many Pathfinders earn far more: from knot tying and birds to first aid and Bible study.</p>
+<span class="hon-row mt-4" aria-hidden="true"><img src="../img/honors/knot-tying.webp" alt=""><img src="../img/honors/camping-skills-i.webp" alt=""><img src="../img/honors/birds.webp" alt=""><img src="../img/honors/first-aid-basic.webp" alt=""><img src="../img/honors/stars.webp" alt=""></span>
+<span class="link mt-4">Browse the honors <span aria-hidden="true">&rarr;</span></span>
+</a>
+<nav class="hon-cats" aria-label="Honor categories"><a class="hon-cat" href="pathfinders/honors.html?cat=Arts%20%26%20Crafts">Arts &amp; crafts</a><a class="hon-cat" href="pathfinders/honors.html?cat=Health%20%26%20Science">Health &amp; science</a><a class="hon-cat" href="pathfinders/honors.html?cat=Household%20Arts">Household arts</a><a class="hon-cat" href="pathfinders/honors.html?cat=Nature">Nature</a><a class="hon-cat" href="pathfinders/honors.html?cat=Outdoor%20Industries">Outdoor industries</a><a class="hon-cat" href="pathfinders/honors.html?cat=Recreation">Recreation</a><a class="hon-cat" href="pathfinders/honors.html?cat=Spiritual%20Growth">Spiritual growth</a><a class="hon-cat" href="pathfinders/honors.html?cat=Vocational">Vocational</a></nav>
+</div>
+</div>
+</div>
+</div>
+</section>
+
 <!-- ================= PROGRAMS ================= -->
-<section class="section">
+<section class="section bg-white border-y border-slate-200/80">
 <div class="wrap">
 <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
 <div><p class="eyebrow">Inside the club</p><h2 class="h-section">Four programs, one ministry</h2><p class="lede">Every Pathfinder club takes part in the club year. These four conference programs are where clubs compete, perform and grow together.</p></div>
@@ -123,7 +283,7 @@
 </section>
 
 <!-- ================= THE PATHFINDER YEAR ================= -->
-<section class="section bg-white border-y border-slate-200/80">
+<section class="section">
 <div class="wrap">
 <p class="eyebrow">Plan the year</p>
 <h2 class="h-section">A year in the life of a club</h2>
@@ -138,32 +298,6 @@
 </ol>
 <a class="link mt-4" href="../events.html">See this year's Pathfinder dates <span aria-hidden="true">&rarr;</span></a>
 </div>
-</section>
-
-<!-- ================= CLASSES & HONORS ================= -->
-<section class="section" id="classes">
-<div class="wrap grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-<div class="lg:col-span-5">
-<p class="eyebrow">Growth track</p>
-<h2 class="h-section">Six classes, one for every year</h2>
-<p class="lede">Each class year covers Bible, personal growth, health, outdoor skills and service. Pathfinders are invested in their class each June.</p>
-<div class="cls mt-8"><div style="--c:#1d4ed8"><img src="../img/class-friend.png" alt="Friend class emblem" width="96" height="96"><strong>Friend</strong><span>Grade 5 · age 10</span></div><div style="--c:#dc2626"><img src="../img/class-companion.png" alt="Companion class emblem" width="96" height="96"><strong>Companion</strong><span>Grade 6 · age 11</span></div><div style="--c:#15803d"><img src="../img/class-explorer.png" alt="Explorer class emblem" width="96" height="96"><strong>Explorer</strong><span>Grade 7 · age 12</span></div><div style="--c:#64748b"><img src="../img/class-ranger.png" alt="Ranger class emblem" width="96" height="96"><strong>Ranger</strong><span>Grade 8 · age 13</span></div><div style="--c:#7f1d1d"><img src="../img/class-voyager.png" alt="Voyager class emblem" width="96" height="96"><strong>Voyager</strong><span>Grade 9 · age 14</span></div><div style="--c:#b45309"><img src="../img/class-guide.png" alt="Guide class emblem" width="96" height="96"><strong>Guide</strong><span>Grade 10 · age 15</span></div></div>
-</div>
-<div class="lg:col-span-7">
-<div class="card acc-amber p-7 sm:p-9 overflow-hidden relative">
-<span class="material-symbols-outlined absolute -right-6 -bottom-8 text-[200px] text-amber-100" aria-hidden="true">workspace_premium</span>
-<div class="relative">
-<p class="eyebrow !text-[#92400e]">Honors</p>
-<h3 class="font-heading font-extrabold text-3xl tracking-tight text-slate-900 mt-1">567 honors to earn</h3>
-<p class="text-[15px] text-slate-700 mt-3 leading-relaxed max-w-md">From knot tying to first aid to Christian citizenship, honors are the patches on a Pathfinder's sash. Clubs teach them at meetings; many are offered at camporee.</p>
-<a class="hon-row mt-6" href="pathfinders/honors.html" aria-label="Browse all 567 honors"><img src="../img/honors/knot-tying.webp" alt=""><img src="../img/honors/camping-skills-i.webp" alt=""><img src="../img/honors/birds.webp" alt=""><img src="../img/honors/first-aid-basic.webp" alt=""><img src="../img/honors/drilling-marching.webp" alt=""><img src="../img/honors/stars.webp" alt=""></a>
-<div class="mt-5 grid grid-cols-2 sm:grid-cols-4 gap-3 text-sm font-semibold text-slate-800">
-<a class="hon-cat" href="pathfinders/honors.html?cat=Arts%20%26%20Crafts">Arts &amp; crafts</a><a class="hon-cat" href="pathfinders/honors.html?cat=Health%20%26%20Science">Health &amp; science</a><a class="hon-cat" href="pathfinders/honors.html?cat=Household%20Arts">Household arts</a><a class="hon-cat" href="pathfinders/honors.html?cat=Nature">Nature</a><a class="hon-cat" href="pathfinders/honors.html?cat=Outdoor%20Industries">Outdoor industries</a><a class="hon-cat" href="pathfinders/honors.html?cat=Spiritual%20Growth">Spiritual growth</a><a class="hon-cat" href="pathfinders/honors.html?cat=Recreation">Recreation</a><a class="hon-cat" href="pathfinders/honors.html?cat=Vocational">Vocational</a>
-</div>
-<a class="inline-flex items-center justify-center gap-2 mt-6 px-6 py-3 rounded-full bg-[#92400e] hover:bg-[#78350f] text-white font-semibold text-[15px] transition-colors" href="pathfinders/honors.html">Browse all honors <span aria-hidden="true">&rarr;</span></a>
-<div class="slot ph rounded-2xl h-40 mt-6" data-slot="PF-07" data-spec="Photo · 1600×700 · close-up of a honors sash or an honor being taught"><span><span class="material-symbols-outlined">photo_camera</span>Honors sash close-up</span></div>
-</div></div>
-</div></div>
 </section>
 
 <!-- ================= UPCOMING EVENTS ================= -->
