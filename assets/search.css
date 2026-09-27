@@ -1,21 +1,21 @@
 /* Site search: hero bar, results panel with preview, search dialog */
-.ss-bar{position:relative;display:flex;align-items:center;gap:.9rem;height:72px;padding:0 .5rem 0 .6rem;border-radius:9999px;background:#fff;
+.ss-bar{position:relative;display:flex;align-items:center;gap:.9rem;height:60px;padding:0 .4rem 0 .45rem;border-radius:9999px;background:#fff;
   border:2px solid transparent;background-image:linear-gradient(#fff,#fff),linear-gradient(120deg,#fcd34d,#7dd3fc 55%,#fcd34d);background-origin:border-box;background-clip:padding-box,border-box;
-  box-shadow:0 30px 60px -24px rgba(2,8,23,.75),0 0 0 8px rgba(255,255,255,.08);transition:box-shadow .25s}
-.ss-bar:focus-within,.ss-bar.is-open{box-shadow:0 30px 60px -24px rgba(2,8,23,.75),0 0 0 8px rgba(252,211,77,.28)}
-.ss-lead{width:52px;height:52px;flex:none;border-radius:9999px;display:grid;place-items:center;background:linear-gradient(145deg,#0b1430,#1e3a8a);color:#fcd34d;box-shadow:inset 0 1px 0 rgba(255,255,255,.15)}
-.ss-lead .material-symbols-outlined{font-size:26px}
-.ss-bar input{flex:1;min-width:0;height:100%;border:0;outline:0;background:none;font:600 19px 'Plus Jakarta Sans',system-ui,sans-serif;letter-spacing:-.01em;color:#0f172a}
+  box-shadow:0 24px 48px -22px rgba(2,8,23,.7),0 0 0 6px rgba(255,255,255,.08);transition:box-shadow .25s}
+.ss-bar:focus-within,.ss-bar.is-open{box-shadow:0 24px 48px -22px rgba(2,8,23,.7),0 0 0 6px rgba(252,211,77,.28)}
+.ss-lead{width:44px;height:44px;flex:none;border-radius:9999px;display:grid;place-items:center;background:linear-gradient(145deg,#0b1430,#1e3a8a);color:#fcd34d;box-shadow:inset 0 1px 0 rgba(255,255,255,.15)}
+.ss-lead .material-symbols-outlined{font-size:22px}
+.ss-bar input{flex:1;min-width:0;height:100%;border:0;outline:0;background:none;font:600 17px 'Plus Jakarta Sans',system-ui,sans-serif;letter-spacing:-.01em;color:#0f172a}
 .ss-bar input::placeholder{color:#94a3b8;font-weight:500}
 .ss-bar input:focus{box-shadow:none}
 .ss-bar input::-webkit-search-cancel-button{-webkit-appearance:none}
 .ss-kbd{font:600 12px Inter,sans-serif;color:#64748b;border:1px solid #e2e8f0;border-bottom-width:2px;border-radius:8px;padding:4px 9px;background:#f8fafc}
-.ss-btn{height:56px;padding:0 1.5rem;border:0;border-radius:9999px;background:linear-gradient(145deg,#0b1430,#1e3a8a);color:#fff;font:700 15px 'Plus Jakarta Sans',sans-serif;cursor:pointer;display:inline-flex;align-items:center;gap:.4rem}
+.ss-btn{height:46px;padding:0 1.25rem;border:0;border-radius:9999px;background:linear-gradient(145deg,#0b1430,#1e3a8a);color:#fff;font:700 14px 'Plus Jakarta Sans',sans-serif;cursor:pointer;display:inline-flex;align-items:center;gap:.4rem}
 .ss-btn:hover{background:linear-gradient(145deg,#1e3a8a,#2563eb)}
-@media (max-width:639px){.ss-bar{height:62px}.ss-lead{width:44px;height:44px}.ss-kbd,.ss-btn{display:none}.ss-bar input{font-size:17px}}
+@media (max-width:639px){.ss-bar{height:54px}.ss-lead{width:40px;height:40px}.ss-kbd,.ss-btn{display:none}.ss-bar input{font-size:17px}}
 
 /* results panel */
-.ss-list{position:absolute;left:0;top:calc(100% + 14px);z-index:80;width:min(940px,calc(100vw - 2rem));background:rgba(255,255,255,.98);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+.ss-list{position:absolute;left:0;top:calc(100% + 12px);z-index:80;width:min(940px,calc(100vw - 2rem));background:rgba(255,255,255,.98);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
   border-radius:28px;box-shadow:0 50px 100px -30px rgba(2,8,23,.7),0 0 0 1px rgba(15,23,42,.06);overflow:hidden;text-align:left;animation:ss-in .18s cubic-bezier(.16,1,.3,1)}
 @keyframes ss-in{from{opacity:0;transform:translateY(-6px)}}
 .ss-tabs{display:flex;gap:.4rem;padding:1rem 1.25rem;border-bottom:1px solid #eef1f6;overflow-x:auto;scrollbar-width:none;background:linear-gradient(180deg,#f8faff,#fff)}
@@ -104,5 +104,5 @@
 dialog.ss-dlg{border:0;background:transparent;padding:0;margin:9vh auto auto;width:min(940px,calc(100vw - 2rem));max-height:none;overflow:visible}
 dialog.ss-dlg::backdrop{background:rgba(6,12,32,.72);backdrop-filter:blur(8px)}
 .ss-bar-dlg .ss-list{width:100%}
-.ss-x{width:48px;height:48px;flex:none;border:0;border-radius:9999px;background:#f1f5f9;cursor:pointer;display:grid;place-items:center;color:#334155}
+.ss-x{width:44px;height:44px;flex:none;border:0;border-radius:9999px;background:#f1f5f9;cursor:pointer;display:grid;place-items:center;color:#334155}
 .ss-x:hover{background:#e2e8f0}
