@@ -57,7 +57,8 @@ var P = [
   ['EV-05','data','Every event this season','Title, date, time, venue, audience (Adventurers / Pathfinders / Leaders / Youth), 30 words, flyer 1200×1200, registration link. A spreadsheet is ideal']]},
  {code:'RS', name:'Resources', url:'resources.html', group:'Built pages', slots:[
   ['RS-01','text','Intro','30–50 words'],
-  ['RS-02','file','Resource inventory','Every document to publish: title, one-line description, ministry, category, the file (PDF/Doc/link), year, English or Spanish. A spreadsheet plus a folder of files']]},
+  ['RS-02','file','Resource inventory','Every document to publish: title, one-line description, ministry, category, the file (PDF/Doc/link), year, English or Spanish. A spreadsheet plus a folder of files'],
+  ['RS-03','data','Most requested','DRAFT pick the four resources directors ask for most; shown beside the search on the Resources page']]},
  {code:'AB', name:'About & Leadership', url:'about.html', group:'Built pages', slots:[
   ['AB-01','photo','Hero photo','1600×1200, the team or a large gathering'],
   ['AB-02','text','Mission statement','30–50 words'],
