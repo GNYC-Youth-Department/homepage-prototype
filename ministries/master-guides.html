@@ -60,6 +60,40 @@
   .tl li{list-style:none;position:relative}
   .tl li::before{content:"";position:absolute;left:calc(-2rem - 7px);top:6px;width:12px;height:12px;border-radius:9999px;background:#1e40af;box-shadow:0 0 0 4px #fff}
   .tl b{font:800 14px Inter,sans-serif;letter-spacing:.1em;color:#3730a3}
+  /* uniform */
+  .uni-h{font:800 17px 'Plus Jakarta Sans',sans-serif;color:#0f172a;margin:0 0 .5rem}
+  .uni-cols{display:grid;grid-template-columns:1fr;gap:1.25rem}@media (min-width:640px){.uni-cols{grid-template-columns:1fr 1fr}}
+  .uni-list{list-style:none;margin:0;padding:0;display:grid;gap:.5rem}
+  .uni-list li{position:relative;padding-left:1.5rem;font-size:15px;line-height:1.5;color:#334155}
+  .uni-list li::before{content:"";position:absolute;left:.25rem;top:.55rem;width:8px;height:8px;border-radius:9999px;background:#1d4ed8}
+  @media (min-width:640px){.uni-list-2{grid-template-columns:1fr 1fr;column-gap:1.5rem}}
+  .uni-kids{margin:0;border-radius:24px;padding:1.5rem 1.5rem 1.25rem;background:radial-gradient(80% 60% at 50% 100%,#bbf7d0 0%,rgba(187,247,208,0) 70%),linear-gradient(180deg,#e0f2fe,#f0f9ff);border:1px solid #bae6fd;display:flex;flex-direction:column;justify-content:flex-end}
+  .uni-kids-row{display:flex;align-items:flex-end;justify-content:center}
+  .uni-kids-row img{width:26%;height:auto;max-height:230px;object-fit:contain;margin:0 -1%;filter:drop-shadow(0 12px 14px rgba(3,105,161,.25))}
+  .uni-kids figcaption{font-size:14px;color:#334155;text-align:center;margin-top:1rem}
+  .uni-mini{border-radius:24px;padding:1.25rem 1.5rem;background:linear-gradient(170deg,var(--t),#fff 70%);border:1px solid color-mix(in srgb,var(--c) 20%,#e2e8f0)}
+  .uni-mini .material-symbols-outlined{font-size:28px;color:var(--c)}
+  .uni-mini h3{font:800 17px 'Plus Jakarta Sans',sans-serif;color:#0f172a;margin:.5rem 0 .25rem}
+  .uni-mini p{font-size:15px;line-height:1.55;color:#475569;margin:0}
+  .uni-sand{background:linear-gradient(180deg,#f7f1e3,#fbf8f1);border-color:#eadfc4}
+  .uni-pieces{list-style:none;margin:0;padding:0;display:grid;gap:1rem;grid-template-columns:repeat(2,1fr)}
+  @media (min-width:768px){.uni-pieces{grid-template-columns:repeat(4,1fr)}}
+  .uni-pieces li{background:#fff;border:1px solid #eadfc4;border-radius:24px;padding:1.25rem;display:flex;flex-direction:column;box-shadow:0 12px 26px -18px rgba(124,90,22,.45)}
+  .uni-pieces img{height:130px;width:100%;object-fit:contain;filter:drop-shadow(0 10px 12px rgba(0,0,0,.18));margin-bottom:.75rem}
+  .uni-pieces .uni-icon .material-symbols-outlined{height:130px;display:grid;place-items:center;font-size:72px;color:#7c5a16;background:#f7f1e3;border-radius:16px;margin-bottom:.75rem}
+  .uni-pieces h3{font:800 16px 'Plus Jakarta Sans',sans-serif;color:#0f172a;margin:0 0 .25rem}
+  .uni-pieces p{font-size:14px;line-height:1.5;color:#475569;margin:0}
+  .uni-levels{list-style:none;margin:0;padding:0;display:grid;gap:.75rem}
+  .uni-levels li{display:grid;grid-template-columns:7rem 1fr;gap:1rem;align-items:baseline;padding-bottom:.75rem;border-bottom:1px solid #f1ead8}
+  .uni-levels li:last-child{border-bottom:0;padding-bottom:0}
+  .uni-levels b{font:800 16px 'Plus Jakarta Sans',sans-serif;color:#7c5a16}.uni-levels span{font-size:15px;color:#334155}
+  .uni-mg{border-radius:24px;padding:2rem;color:#fff;background:radial-gradient(90% 70% at 50% 0%,rgba(96,165,250,.45),rgba(96,165,250,0) 65%),linear-gradient(160deg,#0b1430,#1e3a8a)}
+  .uni-mg img{width:132px;filter:drop-shadow(0 20px 26px rgba(0,0,0,.5))}
+  .uni-combo{list-style:none;margin:.75rem 0 0;padding:0;display:grid;gap:.5rem}.uni-combo li{padding:.6rem .9rem;border-radius:16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);font-size:15px}
+  .uni-mg-items{list-style:none;margin:0;padding:0;display:grid;gap:1rem;grid-template-columns:1fr}@media (min-width:640px){.uni-mg-items{grid-template-columns:1fr 1fr}}
+  .uni-mg-items li{display:flex;gap:1rem;align-items:flex-start;background:#fff;border:1px solid #dbeafe;border-radius:24px;padding:1.25rem;box-shadow:0 12px 26px -18px rgba(30,58,138,.4)}
+  .uni-mg-items .material-symbols-outlined{flex:none;width:44px;height:44px;border-radius:16px;display:grid;place-items:center;background:color-mix(in srgb,var(--c) 12%,#fff);color:var(--c);font-size:24px}
+  .uni-mg-items h3{font:800 16px 'Plus Jakarta Sans',sans-serif;color:#0f172a;margin:0 0 .25rem}.uni-mg-items p{font-size:14px;line-height:1.5;color:#475569;margin:0}
 </style>
 </head>
 <body data-page="ministries">
@@ -122,6 +156,28 @@
 <div class="ph slot rounded-2xl h-40 mt-6" data-slot="MG-08" data-spec="Photo · 1600×700 · investiture service, candidates receiving scarves"><span><span class="material-symbols-outlined">photo_camera</span>investiture service, candidates receiving scarves</span></div>
 </div></div></div></div></section>
 
+<!-- ================= UNIFORM ================= -->
+<section class="section border-y border-blue-100" id="uniform" style="background:linear-gradient(180deg,#eff6ff,#f8faff)">
+<div class="wrap">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-end">
+<div class="lg:col-span-7"><p class="eyebrow">After investiture</p><h2 class="h-section" style="text-wrap:balance">The Master Guide uniform</h2></div>
+<p class="lede lg:col-span-5 !mt-0">Master Guides serving with Pathfinders wear the Pathfinder Class A uniform with the insignia they have earned.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-12">
+<div class="uni-mg lg:col-span-4"><img src="../img/crest-mg.png" alt="Master Guide emblem"><p class="text-xs font-bold tracking-[0.18em] uppercase text-[#ffe247] mt-6">Four authorized combinations</p><ul class="uni-combo"><li>Tan shirt, black skirt or slacks</li><li>Tan shirt, black skirt or slacks, black uniform jacket</li><li>Tan shirt, green skirt or slacks</li><li>Tan shirt, green skirt or slacks, green uniform jacket</li></ul><p class="text-sm text-white/70 mt-4">Most conferences encourage a jacket but do not require one.</p></div>
+<ul class="slot uni-mg-items lg:col-span-8" data-slot="MG-17" data-spec="Text · confirm GNYC's Master Guide uniform: bottoms colour, jacket, shoulder cords and any conference additions">
+<li style="--c:#1d4ed8"><span class="material-symbols-outlined" aria-hidden="true">workspace_premium</span><div><h3>Master Guide pin</h3><p>On the flap of the left chest pocket, with the class level pins.</p></div></li>
+<li style="--c:#b45309"><span class="material-symbols-outlined" aria-hidden="true">badge</span><div><h3>Name stripe</h3><p>Across the top of the left chest pocket.</p></div></li>
+<li style="--c:#0369a1"><span class="material-symbols-outlined" aria-hidden="true">star</span><div><h3>Master Guide star</h3><p>On the left sleeve below the world patch; with six class chevrons once every Investiture Achievement level is earned.</p></div></li>
+<li style="--c:#a16207"><span class="material-symbols-outlined" aria-hidden="true">checkroom</span><div><h3>Master Guide neckerchief</h3><p>Yellow with red edging, the six-colour ribbon and the Master Guide logo, worn with the blue slide.</p></div></li>
+<li style="--c:#be185d"><span class="material-symbols-outlined" aria-hidden="true">diversity_1</span><div><h3>With Adventurers</h3><p>Master Guides on Adventurer staff may wear the yellow Adventurer Master Guide scarf with its level stripes.</p></div></li>
+<li style="--c:#475569"><span class="material-symbols-outlined" aria-hidden="true">face</span><div><h3>Beret</h3><p>Optional, with the Master Guide flash over the left eye.</p></div></li>
+</ul>
+</div>
+<div class="flex flex-col sm:flex-row gap-3 mt-8"><a class="btn-primary !py-3.5 !px-7 !text-[15px]" href="https://gnycyouth.org/shop/"><span class="material-symbols-outlined text-xl" aria-hidden="true">shopping_bag</span>Shop the uniform</a><a class="pill !py-3.5 !px-7 !text-[15px] text-center" href="https://www.clubministries.org/masterguides/master-guide-uniform/" target="_blank" rel="noopener noreferrer">NAD Master Guide uniform page</a></div>
+</div>
+</section>
+
 <section class="section bg-white border-y border-slate-200/80"><div class="wrap">
 <div class="flex flex-col md:flex-row md:items-end justify-between gap-4"><div><p class="eyebrow">Coming up</p><h2 class="h-section">Master Guides events</h2></div><a class="link" href="../events.html">All events <span aria-hidden="true">&rarr;</span></a></div>
 <ul class="slot grid grid-cols-1 md:grid-cols-3 gap-6 mt-10 list-none p-0 m-0" data-slot="MG-09" data-spec="Auto · pulled from the Events calendar when tagged Master Guides">
@@ -131,7 +187,7 @@
 <section class="section" id="directors"><div class="wrap grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
 <div class="lg:col-span-4"><p class="eyebrow">Instructors & candidates</p><h2 class="h-section">Tools for the course</h2><p class="lede">Record cards, curriculum and the forms that go with investiture.</p><a class="btn-primary mt-6 !py-3.5 !px-7 !text-[15px]" href="../resources.html">Open the resource library</a></div>
 <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-5">
-<a class="card acc-sky p-6 flex gap-4 items-start" href="../resources.html"><span class="material-symbols-outlined text-3xl text-[#006194]" aria-hidden="true">assignment</span><span><strong class="font-heading text-lg text-slate-900 block">Forms & waivers</strong><span class="text-sm text-slate-600">Registration, releases, risk memo</span></span></a><a class="card acc-indigo p-6 flex gap-4 items-start" href="../resources.html"><span class="material-symbols-outlined text-3xl text-indigo-700" aria-hidden="true">checkroom</span><span><strong class="font-heading text-lg text-slate-900 block">Uniform guidelines</strong><span class="text-sm text-slate-600">Class A and B, insignia placement</span></span></a><a class="slot card acc-emerald p-6 flex gap-4 items-start" href="#" data-slot="MG-09" data-spec="File · Master Guide record card PDF"><span class="material-symbols-outlined text-3xl text-emerald-700" aria-hidden="true">fact_check</span><span><strong class="font-heading text-lg text-slate-900 block">Record card & requirements</strong><span class="text-sm text-slate-600">The NAD curriculum checklist</span></span></a><a class="slot card acc-amber p-6 flex gap-4 items-start" href="#" data-slot="MG-10" data-spec="Link · screening instructions"><span class="material-symbols-outlined text-3xl text-amber-700" aria-hidden="true">verified_user</span><span><strong class="font-heading text-lg text-slate-900 block">Staff safety & screening</strong><span class="text-sm text-slate-600">Required before serving in any club</span></span></a>
+<a class="card acc-sky p-6 flex gap-4 items-start" href="../resources.html"><span class="material-symbols-outlined text-3xl text-[#006194]" aria-hidden="true">assignment</span><span><strong class="font-heading text-lg text-slate-900 block">Forms & waivers</strong><span class="text-sm text-slate-600">Registration, releases, risk memo</span></span></a><a class="card acc-indigo p-6 flex gap-4 items-start" href="#uniform"><span class="material-symbols-outlined text-3xl text-indigo-700" aria-hidden="true">checkroom</span><span><strong class="font-heading text-lg text-slate-900 block">Uniform guidelines</strong><span class="text-sm text-slate-600">Master Guide insignia and uniform</span></span></a><a class="slot card acc-emerald p-6 flex gap-4 items-start" href="#" data-slot="MG-18" data-spec="File · Master Guide record card PDF"><span class="material-symbols-outlined text-3xl text-emerald-700" aria-hidden="true">fact_check</span><span><strong class="font-heading text-lg text-slate-900 block">Record card & requirements</strong><span class="text-sm text-slate-600">The NAD curriculum checklist</span></span></a><a class="slot card acc-amber p-6 flex gap-4 items-start" href="#" data-slot="MG-10" data-spec="Link · screening instructions"><span class="material-symbols-outlined text-3xl text-amber-700" aria-hidden="true">verified_user</span><span><strong class="font-heading text-lg text-slate-900 block">Staff safety & screening</strong><span class="text-sm text-slate-600">Required before serving in any club</span></span></a>
 </div></div></section>
 
 <section class="section bg-white border-y border-slate-200/80"><div class="wrap">

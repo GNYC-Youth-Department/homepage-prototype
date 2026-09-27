@@ -145,6 +145,40 @@
   .law-tiles li{padding:.75rem 1rem;border-radius:16px;background:#fff;border:1px solid #e2e8f0;font:600 16px 'Plus Jakarta Sans',sans-serif;color:#0f172a;align-items:center;box-shadow:0 6px 16px -10px rgba(15,23,42,.25)}
   .law-tiles li::before{width:32px;height:32px;line-height:32px;font-size:13px;color:#fff}
   .law-tiles li:nth-child(5n+1)::before{background:#0ea5e9}.law-tiles li:nth-child(5n+2)::before{background:#f59e0b}.law-tiles li:nth-child(5n+3)::before{background:#10b981}.law-tiles li:nth-child(5n+4)::before{background:#ec4899}.law-tiles li:nth-child(5n)::before{background:#7c3aed}
+  /* uniform */
+  .uni-h{font:800 17px 'Plus Jakarta Sans',sans-serif;color:#0f172a;margin:0 0 .5rem}
+  .uni-cols{display:grid;grid-template-columns:1fr;gap:1.25rem}@media (min-width:640px){.uni-cols{grid-template-columns:1fr 1fr}}
+  .uni-list{list-style:none;margin:0;padding:0;display:grid;gap:.5rem}
+  .uni-list li{position:relative;padding-left:1.5rem;font-size:15px;line-height:1.5;color:#334155}
+  .uni-list li::before{content:"";position:absolute;left:.25rem;top:.55rem;width:8px;height:8px;border-radius:9999px;background:#0ea5e9}
+  @media (min-width:640px){.uni-list-2{grid-template-columns:1fr 1fr;column-gap:1.5rem}}
+  .uni-kids{margin:0;border-radius:24px;padding:1.5rem 1.5rem 1.25rem;background:radial-gradient(80% 60% at 50% 100%,#bbf7d0 0%,rgba(187,247,208,0) 70%),linear-gradient(180deg,#e0f2fe,#f0f9ff);border:1px solid #bae6fd;display:flex;flex-direction:column;justify-content:flex-end}
+  .uni-kids-row{display:flex;align-items:flex-end;justify-content:center}
+  .uni-kids-row img{width:26%;height:auto;max-height:230px;object-fit:contain;margin:0 -1%;filter:drop-shadow(0 12px 14px rgba(3,105,161,.25))}
+  .uni-kids figcaption{font-size:14px;color:#334155;text-align:center;margin-top:1rem}
+  .uni-mini{border-radius:24px;padding:1.25rem 1.5rem;background:linear-gradient(170deg,var(--t),#fff 70%);border:1px solid color-mix(in srgb,var(--c) 20%,#e2e8f0)}
+  .uni-mini .material-symbols-outlined{font-size:28px;color:var(--c)}
+  .uni-mini h3{font:800 17px 'Plus Jakarta Sans',sans-serif;color:#0f172a;margin:.5rem 0 .25rem}
+  .uni-mini p{font-size:15px;line-height:1.55;color:#475569;margin:0}
+  .uni-sand{background:linear-gradient(180deg,#f7f1e3,#fbf8f1);border-color:#eadfc4}
+  .uni-pieces{list-style:none;margin:0;padding:0;display:grid;gap:1rem;grid-template-columns:repeat(2,1fr)}
+  @media (min-width:768px){.uni-pieces{grid-template-columns:repeat(4,1fr)}}
+  .uni-pieces li{background:#fff;border:1px solid #eadfc4;border-radius:24px;padding:1.25rem;display:flex;flex-direction:column;box-shadow:0 12px 26px -18px rgba(124,90,22,.45)}
+  .uni-pieces img{height:130px;width:100%;object-fit:contain;filter:drop-shadow(0 10px 12px rgba(0,0,0,.18));margin-bottom:.75rem}
+  .uni-pieces .uni-icon .material-symbols-outlined{height:130px;display:grid;place-items:center;font-size:72px;color:#7c5a16;background:#f7f1e3;border-radius:16px;margin-bottom:.75rem}
+  .uni-pieces h3{font:800 16px 'Plus Jakarta Sans',sans-serif;color:#0f172a;margin:0 0 .25rem}
+  .uni-pieces p{font-size:14px;line-height:1.5;color:#475569;margin:0}
+  .uni-levels{list-style:none;margin:0;padding:0;display:grid;gap:.75rem}
+  .uni-levels li{display:grid;grid-template-columns:7rem 1fr;gap:1rem;align-items:baseline;padding-bottom:.75rem;border-bottom:1px solid #f1ead8}
+  .uni-levels li:last-child{border-bottom:0;padding-bottom:0}
+  .uni-levels b{font:800 16px 'Plus Jakarta Sans',sans-serif;color:#7c5a16}.uni-levels span{font-size:15px;color:#334155}
+  .uni-mg{border-radius:24px;padding:2rem;color:#fff;background:radial-gradient(90% 70% at 50% 0%,rgba(96,165,250,.45),rgba(96,165,250,0) 65%),linear-gradient(160deg,#0b1430,#1e3a8a)}
+  .uni-mg img{width:132px;filter:drop-shadow(0 20px 26px rgba(0,0,0,.5))}
+  .uni-combo{list-style:none;margin:.75rem 0 0;padding:0;display:grid;gap:.5rem}.uni-combo li{padding:.6rem .9rem;border-radius:16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);font-size:15px}
+  .uni-mg-items{list-style:none;margin:0;padding:0;display:grid;gap:1rem;grid-template-columns:1fr}@media (min-width:640px){.uni-mg-items{grid-template-columns:1fr 1fr}}
+  .uni-mg-items li{display:flex;gap:1rem;align-items:flex-start;background:#fff;border:1px solid #dbeafe;border-radius:24px;padding:1.25rem;box-shadow:0 12px 26px -18px rgba(30,58,138,.4)}
+  .uni-mg-items .material-symbols-outlined{flex:none;width:44px;height:44px;border-radius:16px;display:grid;place-items:center;background:color-mix(in srgb,var(--c) 12%,#fff);color:var(--c);font-size:24px}
+  .uni-mg-items h3{font:800 16px 'Plus Jakarta Sans',sans-serif;color:#0f172a;margin:0 0 .25rem}.uni-mg-items p{font-size:14px;line-height:1.5;color:#475569;margin:0}
 </style>
 </head>
 <body data-page="ministries">
@@ -282,6 +316,34 @@
 </section>
 
 
+<!-- ================= UNIFORM ================= -->
+<section class="section bg-white border-y border-slate-200/80" id="uniform">
+<div class="wrap">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-end">
+<div class="lg:col-span-7"><p class="eyebrow">For parents</p><h2 class="h-section" style="text-wrap:balance">The Adventurer uniform</h2></div>
+<p class="lede lg:col-span-5 !mt-0">The uniform helps a child feel part of the club. Ask your director what a new Adventurer needs first.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-12">
+<figure class="uni-kids lg:col-span-5"><div class="uni-kids-row" role="img" aria-label="Four children in the Adventurer dress uniform, one in a wheelchair"><img src="../img/uniform/adv-girl-1.webp" alt=""><img src="../img/uniform/adv-boy.webp" alt=""><img src="../img/uniform/adv-wheelchair.webp" alt=""><img src="../img/uniform/adv-girl-2.webp" alt=""></div><figcaption>The dress uniform: navy and light blue, the burgundy scarf, and the sash that carries every award.</figcaption></figure>
+<div class="slot lg:col-span-7 card p-7 sm:p-8" data-slot="AD-23" data-spec="Text · confirm the GNYC dress uniform options (blouse and shirt colour, socks, beret) and where families buy">
+<p class="eyebrow">Dress uniform</p>
+<div class="uni-cols mt-3">
+<div><h3 class="uni-h">Girls</h3><ul class="uni-list"><li>Navy blue pleated jumper</li><li>Light blue or white blouse, short or long sleeves</li></ul></div>
+<div><h3 class="uni-h">Boys</h3><ul class="uni-list"><li>Navy blue pants</li><li>Light blue or white shirt, short or long sleeves</li></ul></div>
+</div>
+<h3 class="uni-h mt-5">Everyone</h3>
+<ul class="uni-list uni-list-2"><li>Black shoes</li><li>Navy blue socks</li><li>Burgundy Adventurer scarf and slide</li><li>Navy sash, right shoulder to left hip, for stars, chips and awards</li><li>Navy beret, if the club chooses</li></ul>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+<div class="uni-mini" style="--c:#0369a1;--t:#f0f9ff"><span class="material-symbols-outlined" aria-hidden="true">event</span><h3>When to wear it</h3><p>Club meetings, Induction, Adventurer Day, Investiture and community service.</p></div>
+<div class="uni-mini" style="--c:#047857;--t:#ecfdf5"><span class="material-symbols-outlined" aria-hidden="true">apparel</span><h3>Field uniform</h3><p>A club T-shirt and blue jeans, for Adventurers and staff.</p></div>
+<div class="uni-mini" style="--c:#b45309;--t:#fffbeb"><span class="material-symbols-outlined" aria-hidden="true">savings</span><h3>Save on uniforms</h3><p>Clubs can offer rentals, uniform trades between families, or loans. Ask what yours does.</p></div>
+</div>
+<div class="flex flex-col sm:flex-row gap-3 mt-8"><a class="btn-primary !py-3.5 !px-7 !text-[15px]" href="https://gnycyouth.org/shop/"><span class="material-symbols-outlined text-xl" aria-hidden="true">shopping_bag</span>Shop the uniform</a><a class="pill !py-3.5 !px-7 !text-[15px] text-center" href="https://clubministries.org/wp-content/uploads/AdventurerUniformInsigniaGuide.pdf" target="_blank" rel="noopener noreferrer">Where each patch goes (NAD guide, PDF)</a></div>
+</div>
+</section>
+
 <section class="section border-y border-sky-100" style="background:linear-gradient(180deg,#f0f9ff,#f8fbff)"><div class="wrap">
 <p class="eyebrow">Plan the year</p><h2 class="h-section">A year in Adventurers</h2><p class="lede">The rhythm every club follows. Dates change each year; the current calendar is on the Events page.</p>
 <div class="mt-8 rounded-2xl border-2 border-dashed border-amber-400 bg-amber-50 p-5 flex flex-col sm:flex-row sm:items-center gap-4"><span class="material-symbols-outlined text-3xl text-amber-600 shrink-0" aria-hidden="true">event_repeat</span><div class="flex-1"><p class="font-heading font-bold text-lg text-amber-900 m-0">Cycle to be confirmed</p><p class="text-sm text-amber-800 mt-1 mb-0">The milestones and months below are a draft frame, not the real calendar. The Director confirms the correct annual cycle for this ministry: which events happen, in what order, and in which month.</p></div><a class="btn-primary !bg-amber-600 hover:!bg-amber-700 !py-2.5 shrink-0" href="../sitemap.html">Assign in the page map</a></div>
@@ -299,7 +361,7 @@
 <section class="section" id="directors"><div class="wrap grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
 <div class="lg:col-span-4"><p class="eyebrow">Club directors & staff</p><h2 class="h-section">Run your club well</h2><p class="lede">Forms, standards, training dates and the people to call.</p><a class="btn-primary mt-6 !py-3.5 !px-7 !text-[15px]" href="../resources.html">Open the resource library</a></div>
 <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-5">
-<a class="card acc-sky p-6 flex gap-4 items-start" href="../resources.html"><span class="material-symbols-outlined text-3xl text-[#006194]" aria-hidden="true">assignment</span><span><strong class="font-heading text-lg text-slate-900 block">Forms & waivers</strong><span class="text-sm text-slate-600">Registration, releases, risk memo</span></span></a><a class="card acc-indigo p-6 flex gap-4 items-start" href="../resources.html"><span class="material-symbols-outlined text-3xl text-indigo-700" aria-hidden="true">checkroom</span><span><strong class="font-heading text-lg text-slate-900 block">Uniform guidelines</strong><span class="text-sm text-slate-600">Class A and B, insignia placement</span></span></a><a class="slot card acc-emerald p-6 flex gap-4 items-start" href="#" data-slot="AD-21" data-spec="Link · monthly report form or portal URL"><span class="material-symbols-outlined text-3xl text-emerald-700" aria-hidden="true">fact_check</span><span><strong class="font-heading text-lg text-slate-900 block">Monthly club report</strong><span class="text-sm text-slate-600">Due the 5th of each month</span></span></a><a class="slot card acc-amber p-6 flex gap-4 items-start" href="#" data-slot="AD-10" data-spec="Link · screening instructions"><span class="material-symbols-outlined text-3xl text-amber-700" aria-hidden="true">verified_user</span><span><strong class="font-heading text-lg text-slate-900 block">Staff safety & screening</strong><span class="text-sm text-slate-600">Background checks and child protection training</span></span></a>
+<a class="card acc-sky p-6 flex gap-4 items-start" href="../resources.html"><span class="material-symbols-outlined text-3xl text-[#006194]" aria-hidden="true">assignment</span><span><strong class="font-heading text-lg text-slate-900 block">Forms & waivers</strong><span class="text-sm text-slate-600">Registration, releases, risk memo</span></span></a><a class="card acc-indigo p-6 flex gap-4 items-start" href="#uniform"><span class="material-symbols-outlined text-3xl text-indigo-700" aria-hidden="true">checkroom</span><span><strong class="font-heading text-lg text-slate-900 block">Uniform guidelines</strong><span class="text-sm text-slate-600">Dress and field uniform, where awards go</span></span></a><a class="slot card acc-emerald p-6 flex gap-4 items-start" href="#" data-slot="AD-21" data-spec="Link · monthly report form or portal URL"><span class="material-symbols-outlined text-3xl text-emerald-700" aria-hidden="true">fact_check</span><span><strong class="font-heading text-lg text-slate-900 block">Monthly club report</strong><span class="text-sm text-slate-600">Due the 5th of each month</span></span></a><a class="slot card acc-amber p-6 flex gap-4 items-start" href="#" data-slot="AD-10" data-spec="Link · screening instructions"><span class="material-symbols-outlined text-3xl text-amber-700" aria-hidden="true">verified_user</span><span><strong class="font-heading text-lg text-slate-900 block">Staff safety & screening</strong><span class="text-sm text-slate-600">Background checks and child protection training</span></span></a>
 </div></div></section>
 
 <section class="section bg-white border-y border-slate-200/80"><div class="wrap">
