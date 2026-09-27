@@ -76,7 +76,7 @@ var P = [
  {code:'DS', name:'Design guidelines', url:'design.html', group:'Built pages', slots:[
   ['DS-01','file','Official seal','GNYC Youth seal as vector (SVG/AI/EPS) or PNG 2000px, transparent'],
   ['DS-02','file','Club emblems','Adventurer, Pathfinder, Master Guide, AY emblems as vector or PNG 2000px, transparent (we have web-size copies)'],
-  ['DS-03','file','Pathfinder class insignia','Friend, Companion, Explorer, Ranger, Voyager, Guide emblems, transparent PNG or vector, supplied 21 Sep 2026 as one sheet; used on the Pathfinders page. Vector originals from AdventSource still welcome for print']]},
+  ['DS-03','file','Pathfinder class insignia','Friend, Companion, Explorer, Ranger, Voyager, Guide emblems, transparent PNG or vector, supplied 21 Sep 2026 as one sheet; used on the Pathfinders page. Vector originals from the GNYC Youth Store still welcome for print']]},
  {code:'AD', name:'Adventurers', tmpl:'PF', url:'ministries/adventurers.html', group:'Built pages · ministry layout', slots:[
   ['AD-02','text','Tagline','tagline, 25–40 words'],
   ['AD-03','data','Three figures','3 real figures'],
