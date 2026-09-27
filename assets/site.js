@@ -118,5 +118,6 @@
     toSlot(); window.addEventListener('hashchange', toSlot);
   }
   /* site search: loaded on every page */
+  var sl = document.createElement('link'); sl.rel = 'stylesheet'; sl.href = u('assets/search.css'); document.head.appendChild(sl);
   var ss = document.createElement('script'); ss.src = u('assets/search.js'); ss.defer = true; document.body.appendChild(ss);
 })();
