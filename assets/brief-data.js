@@ -68,8 +68,8 @@ var P = [
   ['AB-09','text','Office hours and contacts','Hours, and the best contact per ministry']]},
  {code:'ADA', name:'Adventurer Awards', url:'ministries/adventurers/awards.html', group:'Built pages', slots:[
   ['ADA-01','text','Intro','30–50 words; which awards GNYC clubs teach most'],
-  ['ADA-02','photo','Patch photos','117 awards still show a grey circle; 34 patch photos came from the Climb Higher camporee app. Photograph or scan the rest on a plain background, 600×600'],
-  ['ADA-03','text','Class check','Confirm the class assignment for Potato and Trikes & Bikes, and whether Healthy Me and Insects (Little Lamb) are still current']]},
+  ['ADA-02','photo','Patch photos','104 of 156 awards still show a grey circle. 34 patch photos came from the Climb Higher camporee app and 18 from clubministries.org (27 Sep 2026); Wikibooks, where the other awards link, has no patch photos. Photograph or scan the rest on a plain background, 600×600'],
+  ['ADA-03','text','Class check','Done 27 Sep 2026 from the clubministries.org awards table: Potato is Busy Bee, Trikes & Bikes is Little Lamb, and Healthy Me and Insects are current Little Lamb stars. Five awards were added (ABCs, Colors, Numbers, Skater, Stamp Art); Stamp Art has no requirements page yet']]},
  {code:'PFH', name:'Pathfinder Honors', url:'ministries/pathfinders/honors.html', group:'Built pages', note:'All 567 honors, categories, approval, skill levels and patch images come from the AY Honors list on the Pathfinder Wiki (10 Aug 2026). Each patch links to its wiki page, so requirements are not kept on our site.', slots:[
   ['PFH-01','text','Intro','30–50 words; name the honors GNYC teaches at camporee, if any'],
   ['PFH-02','link','Patch image permission','Before the live site: written permission from NAD Youth Ministries to host the 567 patch images, or switch to linking them from the wiki']]},
