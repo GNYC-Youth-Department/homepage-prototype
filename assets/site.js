@@ -145,7 +145,7 @@
   document.querySelectorAll('[data-gmap]').forEach(function (box) {
     var sec = box.closest('section') || document, btns = sec.querySelectorAll('[data-filter]');
     fetch(u('assets/gnyc-map.svg')).then(function (r) { return r.text(); }).then(function (svg) {
-      box.innerHTML = svg;
+      box.innerHTML = '<div class="gmap-head"><small>Our territory</small><b>Greater New York, from the Catskills to Montauk</b><span>The Greater New York Conference covers the five boroughs, Long Island and nine Hudson Valley counties. Select an area to see its clubs.</span></div>' + svg;
       var ars = box.querySelectorAll('.ar');
       function sync() { var on = sec.querySelector('[data-filter].is-on'); var f = on ? on.dataset.filter : 'all';
         ars.forEach(function (a) { a.classList.toggle('is-on', a.dataset.area === f); a.setAttribute('aria-pressed', a.dataset.area === f); }); var g = box.querySelector('.gmap'); if (g) g.classList.toggle('all-on', f === 'all'); }
