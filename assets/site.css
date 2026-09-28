@@ -225,8 +225,8 @@ li:has(>.jr-req:focus-visible),li:has(.jr-req:focus-visible){outline:3px solid v
 .gmap .lb.sm{font-size:12px}
 .gmap .ins-frame{fill:none;stroke:#fff;stroke-width:3}
 .gmap .ins-t{font:800 13px Inter,system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;fill:#475569}
-.gmap .nyc-box{fill:none;stroke:#0f172a;stroke-width:1.5;stroke-dasharray:4 4;opacity:.55}
-.gmap .nyc-lead{stroke:#0f172a;stroke-width:1.2;stroke-dasharray:4 4;opacity:.4;fill:none}
+.gmap .nyc-box{fill:none;stroke:#0f172a;stroke-width:1.8;stroke-dasharray:6 4;opacity:.7}
+.gmap .nyc-lead{stroke:#0f172a;stroke-width:1.8;stroke-dasharray:6 4;opacity:.7;fill:none}
 .gmap-note{font-size:12px;color:#64748b;margin:.6rem .25rem 0}
 .gmap-note{display:flex;align-items:flex-start;gap:.5rem;line-height:1.5}
 .gmap-key{flex:none;width:12px;height:12px;margin-top:.2rem;border-radius:3px;background:color-mix(in srgb,var(--pa,#1e3a8a) 30%,#fff);box-shadow:0 0 0 1px color-mix(in srgb,var(--pa,#1e3a8a) 40%,#fff)}
