@@ -141,6 +141,25 @@
   extLinks(document);
   window.gnycExtLinks = extLinks;
   new MutationObserver(function () { extLinks(document); }).observe(document.body, { childList: true, subtree: true });
+  /* area map: clicking an area on the map presses the matching area button, and the map follows the buttons */
+  document.querySelectorAll('[data-gmap]').forEach(function (box) {
+    var sec = box.closest('section') || document, btns = sec.querySelectorAll('[data-filter]');
+    fetch(u('assets/gnyc-map.svg')).then(function (r) { return r.text(); }).then(function (svg) {
+      box.innerHTML = svg;
+      var ars = box.querySelectorAll('.ar');
+      function sync() { var on = sec.querySelector('[data-filter].is-on'); var f = on ? on.dataset.filter : 'all';
+        ars.forEach(function (a) { a.classList.toggle('is-on', a.dataset.area === f); a.setAttribute('aria-pressed', a.dataset.area === f); }); var g = box.querySelector('.gmap'); if (g) g.classList.toggle('all-on', f === 'all'); }
+      ars.forEach(function (a) {
+        a.setAttribute('tabindex', '0'); a.setAttribute('role', 'button'); a.setAttribute('aria-label', a.querySelector('title').textContent);
+        function go() { var b = sec.querySelector('[data-filter="' + a.dataset.area + '"]'); if (!b) return;
+          if (b.classList.contains('is-on')) b = sec.querySelector('[data-filter="all"]') || b; b.click(); }
+        a.addEventListener('click', go);
+        a.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
+      });
+      btns.forEach(function (b) { b.addEventListener('click', function () { setTimeout(sync, 0); }); });
+      sync();
+    }).catch(function () {});
+  });
   /* site search: loaded on every page */
   var sl = document.createElement('link'); sl.rel = 'stylesheet'; sl.href = u('assets/search.css'); document.head.appendChild(sl);
   var ss = document.createElement('script'); ss.src = u('assets/search.js'); ss.defer = true; document.body.appendChild(ss);

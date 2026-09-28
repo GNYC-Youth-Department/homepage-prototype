@@ -206,3 +206,27 @@ a[data-ext] .link{white-space:normal;flex-wrap:wrap;row-gap:0}
 .jr-req:focus-visible{outline:none}
 li:has(>.jr-req:focus-visible),li:has(.jr-req:focus-visible){outline:3px solid var(--c,#1e3a8a);outline-offset:3px}
 .jr-req.ext-inline::after{font-size:12px;line-height:1.3;color:#fff;bottom:calc(100% + 8px)}
+/* ---------- area map (assets/gnyc-map.svg, injected by site.js into [data-gmap]) ---------- */
+.gmap-wrap{position:relative;border-radius:28px;overflow:hidden;box-shadow:0 1px 2px rgba(15,23,42,.05),0 24px 50px -28px rgba(15,23,42,.45);background:#dbe9f6}
+.gmap{display:block;width:100%;height:auto}
+.gmap .sea{fill:#dbe9f6}
+.gmap .ctx path{fill:#f4f6fa;stroke:#cfd6e2;stroke-width:.8}
+.gmap .ar{--t:16%}
+.gmap .ar[data-area="upstate"]{--t:13%}.gmap .ar[data-area="li"]{--t:19%}.gmap .ar[data-area="queens"]{--t:24%}.gmap .ar[data-area="brooklyn"]{--t:17%}.gmap .ar[data-area="manhattan"]{--t:28%}.gmap .ar[data-area="bronx"]{--t:21%}.gmap .ar[data-area="si"]{--t:25%}
+.gmap .ar path{fill:color-mix(in srgb,var(--pa,#1e3a8a) var(--t),#fff);stroke:#fff;stroke-width:1.2;transition:fill .2s}
+.gmap.all-on .ar path{fill:color-mix(in srgb,var(--pa,#1e3a8a) calc(var(--t) + 22%),#fff)}
+.gmap .lb.ctx-l{font:600 13px Inter,system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;fill:#94a3b8;stroke:none}
+.gmap .ar{cursor:pointer;outline:none}
+.gmap .ar:hover path,.gmap .ar:focus-visible path,.gmap.all-on .ar:hover path{fill:color-mix(in srgb,var(--pa,#1e3a8a) 55%,#fff)}
+.gmap .ar.is-on path{fill:var(--pa,#1e3a8a)}
+.gmap .ar:focus-visible path{stroke:#0f172a;stroke-width:2}
+.gmap .lb{font:700 15px Inter,system-ui,sans-serif;fill:#0f172a;text-anchor:middle;pointer-events:none;paint-order:stroke;stroke:rgba(255,255,255,.85);stroke-width:4px;stroke-linejoin:round}
+.gmap .lb.big{font-size:22px;letter-spacing:.01em}
+.gmap .lb.sm{font-size:12px}
+.gmap .ins-frame{fill:none;stroke:#fff;stroke-width:3}
+.gmap .ins-t{font:800 13px Inter,system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;fill:#475569}
+.gmap .nyc-box{fill:none;stroke:#0f172a;stroke-width:1.5;stroke-dasharray:4 4;opacity:.55}
+.gmap .nyc-lead{stroke:#0f172a;stroke-width:1.2;stroke-dasharray:4 4;opacity:.4;fill:none}
+.gmap-note{font-size:12px;color:#64748b;margin:.6rem .25rem 0}
+.gmap-note{display:flex;align-items:flex-start;gap:.5rem;line-height:1.5}
+.gmap-key{flex:none;width:12px;height:12px;margin-top:.2rem;border-radius:3px;background:color-mix(in srgb,var(--pa,#1e3a8a) 30%,#fff);box-shadow:0 0 0 1px color-mix(in srgb,var(--pa,#1e3a8a) 40%,#fff)}
