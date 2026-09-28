@@ -237,3 +237,12 @@ li:has(>.jr-req:focus-visible),li:has(.jr-req:focus-visible){outline:3px solid v
 .gmap-head b{display:block;font:800 clamp(18px,2.2vw,22px)/1.2 'Plus Jakarta Sans',sans-serif;color:#0f172a;margin-top:.3rem;letter-spacing:-.01em}
 .gmap-head span{display:block;font-size:14px;line-height:1.5;color:#475569;margin-top:.3rem}
 @media (max-width:640px){.gmap .cl{font-size:19px}.gmap .lb{font-size:22px;stroke-width:5px}.gmap .lb.big{font-size:32px}.gmap .lb.sm{font-size:19px}.gmap .lb.ctx-l{font-size:18px}.gmap .ins-t{font-size:15px}.gmap .cl{font-size:18px}}
+.gmap .tn{font:italic 500 11.5px Inter,system-ui,sans-serif;fill:#64748b;pointer-events:none}
+.gmap .tn-dot{fill:#fff;stroke:#475569;stroke-width:1.5;pointer-events:none}
+.gmap .ar.is-on .tn{fill:rgba(255,255,255,.85)}
+.gmap .ar.is-on .tn-dot{fill:var(--pa,#1e3a8a);stroke:#fff}
+@media (max-width:640px){.gmap .tn{font-size:14px}.gmap .tn-dot{r:5}}
+.gmap .tn-m{display:none}
+@media (max-width:640px){.gmap .tn-d{display:none}.gmap .tn-m{display:inline}}
+.gmap .tn{paint-order:stroke;stroke:rgba(255,255,255,.75);stroke-width:3px;stroke-linejoin:round}
+.gmap .ar.is-on .tn{stroke:var(--pa,#1e3a8a)}
