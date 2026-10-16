@@ -1,0 +1,4 @@
+.DS_Store
+comments-worker/.wrangler/
+comments-worker/node_modules/
+comments-worker/.dev.vars

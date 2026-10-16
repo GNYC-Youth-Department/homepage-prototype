@@ -1,0 +1,67 @@
+/* Comments on the prototype: the floating button, the per-slot Comment buttons, and the drawer. Loaded by assets/site.js. */
+.cmt-fab{position:fixed;right:1rem;bottom:calc(4.4rem + env(safe-area-inset-bottom,0px));z-index:70;display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.1rem;border-radius:9999px;border:0;background:#006194;color:#fff;font:600 14px Inter,system-ui,sans-serif;box-shadow:0 12px 30px -8px rgba(0,0,0,.45);cursor:pointer}
+.cmt-fab:hover{background:#004b73}
+.cmt-fab .material-symbols-outlined{font-size:20px;color:#ffe247}
+.cmt-fab .n{position:absolute;top:-7px;right:-4px;background:#ffe247;color:#0b1430;border-radius:9999px;padding:0 6px;font-size:11px;line-height:18px;min-width:18px;text-align:center;font-variant-numeric:tabular-nums;box-shadow:0 0 0 2px #fff}
+.cmt-fab .n:empty{display:none}
+@media print{.cmt-fab,.slot-cm{display:none!important}}
+/* a Comment button on every slot while the codes are shown */
+.slot-cm{position:absolute;top:-12px;right:8px;z-index:21;display:none;align-items:center;gap:4px;border:0;border-radius:6px;background:#0f172a;color:#ffe247;font:700 11px/1 Inter,system-ui,sans-serif;letter-spacing:.04em;padding:5px 8px;box-shadow:0 4px 10px -2px rgba(0,0,0,.35);cursor:pointer;white-space:nowrap}
+body.show-slots .slot-cm{display:inline-flex}
+.slot-host{position:relative}
+body.show-slots .slot:has(> .slot-cm)::after{max-width:calc(100% - 104px)}
+.slot-cm:hover{background:#006194;color:#fff}
+.slot-cm i{font-style:normal;background:#ffe247;color:#0b1430;border-radius:9999px;padding:0 5px;line-height:14px;min-width:14px;text-align:center}
+.slot-cm i:empty{display:none}
+/* drawer */
+.cmts-scrim{position:fixed;inset:0;background:rgba(11,20,48,.35);z-index:80}
+.cmts{position:fixed;top:0;right:0;bottom:0;width:min(460px,100%);background:#fff;color:#131b2e;z-index:81;display:flex;flex-direction:column;box-shadow:0 10px 30px rgba(11,20,48,.3);border-left:1px solid #e2e8f0;padding-top:env(safe-area-inset-top,0px);font:14px/1.5 Inter,system-ui,sans-serif}
+.cmts header{display:flex;gap:10px;align-items:flex-start;padding:18px 20px 12px;border-bottom:1px solid #e2e8f0}
+.cmts header div{flex:1;min-width:0}
+.cmts header h2{font:800 17px/1.3 'Plus Jakarta Sans',system-ui,sans-serif;margin:0;letter-spacing:-.015em}
+.cmts header .sub{display:block;margin-top:2px;font-size:12.5px;color:#64748b}
+.cmts header .x{border:0;background:transparent;color:#006194;font:600 15px/1 Inter,sans-serif;padding:6px 8px;border-radius:9999px;cursor:pointer}
+.cmts header .x:hover{background:#f0f9ff}
+.cmts .flt{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:10px 20px;background:#fffbeb;border-bottom:1px solid #fde68a;font-size:12.5px;color:#92400e}
+.cmts .flt b{font:700 12px ui-monospace,Menlo,monospace;color:#b45309}
+.cmts .flt span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cmts .flt button{border:0;background:#fff;border:1px solid #fde68a;color:#92400e;font:600 12px/1 Inter,sans-serif;padding:6px 10px;border-radius:9999px;cursor:pointer}
+.cmts .list{flex:1;overflow:auto;padding:14px 20px;display:flex;flex-direction:column;gap:10px}
+.cmts .th{display:flex;flex-direction:column;gap:6px}
+.cmts .c{background:#faf8ff;border:1px solid #e2e8f0;border-radius:12px;padding:10px 12px}
+.cmts .c.r{background:#fff}
+.cmts .c .who{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap;font-size:12.5px;color:#64748b}
+.cmts .c .who b{color:#131b2e;font-weight:600;font-size:13.5px}
+.cmts .c p{margin:4px 0 0;white-space:pre-wrap;overflow-wrap:anywhere;font-size:14px}
+.cmts .c.gone{color:#64748b;font-style:italic;font-size:13px}
+.cmts .sl,.cmt-all .sl{display:inline-flex;align-items:center;gap:4px;font:700 11px ui-monospace,Menlo,monospace;color:#b45309;background:#fef3c7;padding:2px 7px;border-radius:6px;text-decoration:none;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cmts .sl:hover,.cmt-all .sl:hover{background:#fde68a}
+.cmts .sl small,.cmt-all .sl small{font:500 11px Inter,sans-serif;color:#92400e;overflow:hidden;text-overflow:ellipsis}
+.cmts .c .del{margin-left:auto;border:0;background:transparent;color:#b91c1c;font:600 12px/1 Inter,sans-serif;padding:2px 6px;border-radius:9999px;cursor:pointer}
+.cmts .c .del:hover{background:#fee2e2}
+.cmts .reps{display:flex;flex-direction:column;gap:6px;margin-left:12px;padding-left:12px;border-left:2px solid #d5dbe6}
+.cmts .rep{align-self:flex-start;margin-left:12px;border:0;background:transparent;color:#006194;font:600 12.5px/1 Inter,sans-serif;padding:6px 10px;border-radius:9999px;cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.cmts .rep:hover{background:#f0f9ff}
+.cmts .rep svg{width:14px;height:14px}
+.cmts .rf{margin-left:12px;padding:10px 12px;border:1px solid #d5dbe6;border-radius:12px;background:#fff;display:flex;flex-direction:column;gap:8px}
+.cmts .none{text-align:center;color:#64748b;padding:30px 10px;font-size:13.5px}
+.cmts .none b{display:block;color:#131b2e;font:700 15px 'Plus Jakarta Sans',sans-serif;margin-bottom:4px}
+.cmts .add{border-top:1px solid #e2e8f0;padding:12px 20px 6px;display:flex;flex-direction:column;gap:10px;background:#fff}
+.cmts label{display:flex;flex-direction:column;gap:5px;font-size:12px;font-weight:600;color:#475569;letter-spacing:.02em}
+.cmts input,.cmts textarea,.cmts select{font:14px/1.45 Inter,sans-serif;color:#131b2e;padding:9px 11px;border:1px solid #d5dbe6;border-radius:10px;background:#faf8ff;min-height:40px;width:100%}
+.cmts textarea{min-height:84px;resize:vertical}
+.cmts .rf textarea{min-height:64px}
+.cmts input:focus,.cmts textarea:focus,.cmts select:focus{outline:none;border-color:#0284c7;box-shadow:0 0 0 3px rgba(2,132,199,.25)}
+.cmts .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.cmts .acts{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.cmts .st{font-size:12.5px;color:#64748b;flex:1;min-width:120px}
+.cmts .st.bad{color:#b91c1c;font-weight:600}
+.cmts .st.ok{color:#059669;font-weight:600}
+.cmts .post{display:inline-flex;align-items:center;justify-content:center;padding:9px 16px;border-radius:9999px;border:0;background:linear-gradient(145deg,#0b1430,#1e3a8a);color:#fff;font:700 14px 'Plus Jakarta Sans',sans-serif;min-height:40px;cursor:pointer}
+.cmts .post:disabled{opacity:.55;cursor:not-allowed}
+.cmts .cancel{border:0;background:transparent;color:#475569;font:600 13px/1 Inter,sans-serif;padding:8px 10px;border-radius:9999px;cursor:pointer}
+.cmts .cancel:hover{background:#f0f9ff}
+.cmts footer{padding:4px 20px calc(12px + env(safe-area-inset-bottom,0px));font-size:12px;color:#64748b;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.cmts footer button{border:0;background:none;color:#006194;font:600 12px/1 Inter,sans-serif;padding:0;cursor:pointer}
+.cmts footer input{font:13px Inter,sans-serif;color:#131b2e;padding:5px 9px;border:1px solid #d5dbe6;border-radius:8px;background:#faf8ff;flex:1;min-width:140px}
+@media (prefers-reduced-motion:no-preference){.cmts{animation:cmts-in .2s ease-out}@keyframes cmts-in{from{transform:translateX(24px);opacity:0}}}

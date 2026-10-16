@@ -14,6 +14,14 @@ Design prototype of the proposed gnycyouth.org homepage revamp, published so rev
 
 Static pages, no build step: `index.html` (home), the four ministry pages under `ministries/` (Adventurers, Pathfinders, Master Guides, AY Ministries) and their program pages under `ministries/pathfinders/` (Bible Experience, TLT, Drum Corps, Drilling & Marching) and `ministries/ay/` (Young Adults, School of Evangelism, Public Campus Ministry), `news.html`, `history.html`, `events.html`, `resources.html`, `about.html`, `design.html` (design guidelines) and `brief.html` (content brief with every slot the Director provides). `assets/site.js` renders the shared nav, footer and content-slot overlay (`?slots=1`). Styling comes from the Tailwind CDN and Google Fonts; there is no build step and no data is collected. The event filters, resource filters and mobile menu work; the EN | ES switch is visual only.
 
+## Comments on every page
+
+Every page has a **Comments** button at the bottom right, above the slot toggle. It opens a drawer with the comments for that page: name and comment, no sign-in, visible to everyone who opens the page, newest conversation first; the button shows how many there are. Each comment names the section it is about by its code from the content brief (`HM-05`, `PF-12`), or the whole page. Two ways to pick the section: choose it in the drawer's **About** list, or press **Show content slots**, then the **Comment** button that appears on any slot; that opens the drawer filtered to that code with the slot lit on the page. The code on a comment is a link that scrolls to the slot. Anyone can **Reply**; replies sit under the comment, one level deep.
+
+**Comments** in the review ribbon opens `comments.html`, every comment from every page in one place, with a filter per page, the page and code each one refers to (the code links to that section of the page), replies, and Reply.
+
+The comments are kept by a small comments service (`comments-worker/`, a Cloudflare Worker with a D1 table on Darwin Garcia's personal account; see its README). Darwin Garcia can remove a comment through the drawer's **Moderate** link with the moderator key. The drawer reaches the service only from the GitHub Pages link or a local server; opened from a file or another host it says so.
+
 ## Placeholders
 
 Story photos, the Camporee and Leadership Summit dates, and the Store link are placeholders. Dates and venues marked TBA have not been confirmed.

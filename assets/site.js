@@ -38,7 +38,7 @@
 
   var nav = document.querySelector('[data-site="nav"]');
   if (nav) nav.innerHTML =
-    '<div class="proto-ribbon" role="note"><strong>Design prototype</strong><span>Proposed gnycyouth.org &middot; for review only, not the live site &middot; <a href="' + u('brief.html') + '">Content brief</a> &middot; <a href="' + u('sitemap.html') + '">Page map</a></span></div>' +
+    '<div class="proto-ribbon" role="note"><strong>Design prototype</strong><span>Proposed gnycyouth.org &middot; for review only, not the live site &middot; <a href="' + u('brief.html') + '">Content brief</a> &middot; <a href="' + u('sitemap.html') + '">Page map</a> &middot; <a href="' + u('comments.html') + '">Comments</a></span></div>' +
     '<nav class="glass-nav" aria-label="Main"><div class="wrap">' +
     '<div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;height:72px">' +
     '<a href="' + u('index.html') + '" style="display:flex;align-items:center;gap:.75rem;text-decoration:none;padding:.25rem"><img src="' + u('img/00.png') + '" alt="GNYC Adventist Youth Ministries seal" style="height:44px;width:auto"><span style="display:flex;flex-direction:column"><span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#006194;line-height:1.2">Greater New York Conference</span><span class="font-heading" style="font-weight:800;font-size:18px;letter-spacing:-.01em;color:#0f172a;line-height:1.2">Adventist Youth</span></span></a>' +
@@ -163,4 +163,7 @@
   /* site search: loaded on every page */
   var sl = document.createElement('link'); sl.rel = 'stylesheet'; sl.href = u('assets/search.css'); document.head.appendChild(sl);
   var ss = document.createElement('script'); ss.src = u('assets/search.js'); ss.defer = true; document.body.appendChild(ss);
+  /* comments on every page (comments.html loads the script and styles itself) */
+  if (!document.querySelector('link[href$="comments.css"]')) { var cl = document.createElement('link'); cl.rel = 'stylesheet'; cl.href = u('assets/comments.css'); document.head.appendChild(cl); }
+  if (!document.querySelector('script[src$="comments.js"]')) { var cs = document.createElement('script'); cs.src = u('assets/comments.js'); cs.defer = true; document.body.appendChild(cs); }
 })();

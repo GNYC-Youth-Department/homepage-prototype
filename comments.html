@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en" data-root="./">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Comments · GNYC Youth prototype</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/comments.css">
+<style>
+  .cmt-hero{border-bottom:1px solid rgba(226,232,240,.8);background:radial-gradient(70% 90% at 0% 0%,rgba(254,243,199,.9),rgba(254,243,199,0) 60%),linear-gradient(180deg,#fff,#f6f8ff)}
+  .cmt-hero .wrap{padding-block:2.5rem 2.75rem}
+  .cmt-hero .acts{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.5rem}
+  .cmt-hero .pill{text-decoration:none;display:inline-flex;align-items:center}
+  .cmt-all{padding-block:2rem 5rem;display:flex;flex-direction:column;gap:1rem;max-width:56rem}
+  .cmt-all .filters{display:flex;flex-wrap:wrap;gap:.4rem}
+  .cmt-all .filters .pill{display:inline-flex;align-items:center;gap:.45rem;padding:.4rem .85rem;font-size:13px}
+  .cmt-all .filters .pill i{font-style:normal;font-size:11.5px;font-variant-numeric:tabular-nums;background:#f1f5f9;border-radius:9999px;padding:1px 7px;color:#64748b}
+  .cmt-all .filters .pill.is-on i{background:rgba(255,255,255,.22);color:#fff}
+  .cmt-all .sum{font-size:13px;color:#64748b}
+  .cmt-all .list{display:flex;flex-direction:column;gap:.8rem}
+  .cmt-all .c{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:.9rem 1.1rem;display:flex;flex-direction:column;gap:.45rem;min-width:0;box-shadow:0 1px 2px rgba(15,23,42,.04)}
+  .cmt-all .c.r{background:#faf8ff;box-shadow:none}
+  .cmt-all .c .top{display:flex;gap:.6rem;align-items:baseline;flex-wrap:wrap;font-size:12.5px;color:#64748b}
+  .cmt-all .c .top b{font:700 14.5px/1.3 'Plus Jakarta Sans',sans-serif;color:#131b2e}
+  .cmt-all .c.r .top b{font:600 13.5px/1.3 Inter,sans-serif}
+  .cmt-all .c .top .pg{font:600 12.5px Inter,sans-serif;color:#006194;text-decoration:none;background:#f0f9ff;border-radius:9999px;padding:3px 10px;white-space:nowrap}
+  .cmt-all .c .top .pg:hover{text-decoration:underline}
+  .cmt-all .c .top .del{margin-left:auto;border:0;background:transparent;color:#b91c1c;font:600 12px/1 Inter,sans-serif;padding:2px 6px;border-radius:9999px;cursor:pointer}
+  .cmt-all .c .top .del:hover{background:#fee2e2}
+  .cmt-all .c p{margin:0;white-space:pre-wrap;overflow-wrap:anywhere;max-width:72ch;font-size:14.5px;line-height:1.55}
+  .cmt-all .c.gone{color:#64748b;font-style:italic;font-size:13.5px}
+  .cmt-all .th{display:flex;flex-direction:column;gap:.5rem}
+  .cmt-all .reps{display:flex;flex-direction:column;gap:.5rem;margin-left:.6rem;padding-left:.9rem;border-left:2px solid #d5dbe6}
+  .cmt-all .rep{align-self:flex-start;border:0;background:transparent;color:#006194;font:600 13px/1 Inter,sans-serif;padding:7px 10px;margin-left:-.1rem;border-radius:9999px;cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+  .cmt-all .rep:hover{background:#f0f9ff}.cmt-all .rep svg{width:15px;height:15px}
+  .cmt-all .rf{display:flex;flex-direction:column;gap:.5rem;margin-left:.6rem;padding:.8rem;border:1px solid #d5dbe6;border-radius:12px;background:#fff}
+  .cmt-all .rf input,.cmt-all .rf textarea{font:14px/1.45 Inter,sans-serif;color:#131b2e;padding:8px 10px;border:1px solid #d5dbe6;border-radius:10px;background:#faf8ff;min-height:38px;width:100%}
+  .cmt-all .rf textarea{min-height:72px;resize:vertical}
+  .cmt-all .rf input:focus,.cmt-all .rf textarea:focus{outline:none;border-color:#0284c7;box-shadow:0 0 0 3px rgba(2,132,199,.25)}
+  .cmt-all .acts{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.cmt-all .st{flex:1;min-width:140px;font-size:12.5px;color:#64748b}.cmt-all .st.bad{color:#b91c1c;font-weight:600}
+  .cmt-all .cancel{border:0;background:transparent;color:#475569;font:600 13px/1 Inter,sans-serif;padding:9px 12px;border-radius:9999px;cursor:pointer}
+  .cmt-all .post{border:0;background:linear-gradient(145deg,#0b1430,#1e3a8a);color:#fff;font:700 13px/1 'Plus Jakarta Sans',sans-serif;padding:10px 16px;border-radius:9999px;cursor:pointer}.cmt-all .post:disabled{opacity:.6}
+  .cmt-all .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+  .cmt-all .none{padding:1.8rem;border:1px dashed #d5dbe6;border-radius:14px;text-align:center;color:#64748b;background:#fff;font-size:14px}
+  .cmt-all .none b{display:block;color:#131b2e;font:700 16px/1.3 'Plus Jakarta Sans',sans-serif;margin-bottom:4px}
+  .cmt-all .foot{font-size:12.5px;color:#64748b;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .cmt-all .foot button{border:0;background:none;color:#006194;font:600 12.5px/1 Inter,sans-serif;padding:0;cursor:pointer}
+  .cmt-all .foot input{font:13px Inter,sans-serif;color:#131b2e;padding:5px 9px;border:1px solid #d5dbe6;border-radius:8px;background:#fff;flex:1;min-width:140px;max-width:260px}
+  @media (max-width:560px){.cmt-all .reps,.cmt-all .rf{margin-left:0}}
+</style>
+</head>
+<body data-page="comments">
+<div data-site="nav"></div>
+
+<header class="cmt-hero"><div class="wrap">
+  <p class="eyebrow !text-[#b45309]" style="color:#b45309">Design prototype · review</p>
+  <h1 class="h-section">Comments on the prototype</h1>
+  <p class="lede">Every comment reviewers have left, on every page, with the section it refers to by its code from the content brief. Newest conversation first. Reply here, or open a page, show the codes, and press Comment on any section.</p>
+  <div class="acts"><button class="pill" id="refresh" type="button">Refresh</button><a class="pill" href="index.html?slots=1">See the codes on a page</a><a class="pill" href="brief.html">Content brief</a><a class="pill" href="sitemap.html">Page map</a></div>
+</div></header>
+
+<main class="wrap cmt-all">
+  <div class="filters" id="filters" role="group" aria-label="Show comments from" hidden></div>
+  <div class="sum" id="sum" aria-live="polite"></div>
+  <div class="list" id="out"><div class="none">Loading…</div></div>
+  <div class="foot" id="foot"></div>
+</main>
+
+<div data-site="footer"></div>
+<script src="assets/brief-data.js"></script>
+<script src="assets/comments.js"></script>
+<script>
+(function () {
+  var C = window.gnycComments, h = C.h, when = C.when, ls = C.ls;
+  var out = document.getElementById('out'), fl = document.getElementById('filters'), sum = document.getElementById('sum'), foot = document.getElementById('foot');
+  /* slot code -> short name, from the content brief's inventory */
+  var NAME = {};
+  try { (P || []).forEach(function (pg) { var slots = pg.slots || ((typeof TEMPLATES !== 'undefined' && pg.tmpl && TEMPLATES[pg.tmpl]) ? TEMPLATES[pg.tmpl].map(function (s) { return [pg.code + '-' + s[0]].concat(s.slice(1)); }) : []); slots.forEach(function (s) { NAME[s[0]] = s[2] || ''; }); }); } catch (e) { console.warn('Comments: slot names not read from the brief.', e.message); }
+  var PG = {}; C.PAGES.forEach(function (p) { PG[p[0]] = { name: p[1], url: p[2] }; });
+  var pageOf = function (k) { return PG[k] || { name: k, url: '' }; };
+  var all = null, sel = 'all', mod = C.getMod();
+  function chip(c) { if (!c.slot) return ''; var p = pageOf(c.page); return '<a class="sl" href="' + h(p.url ? p.url + '#' + c.slot : '#') + '" title="Open the page at this section">' + h(c.slot) + (NAME[c.slot] ? '<small>' + h(NAME[c.slot]) + '</small>' : '') + '</a>'; }
+  function one(c, r) { var p = pageOf(c.page); return '<article class="c' + (r ? ' r' : '') + '" data-id="' + c.id + '" data-page="' + h(c.page) + '"><div class="top"><b>' + h(c.name) + '</b><time datetime="' + h(c.at) + '">' + when(c.at) + '</time>' + (r ? '' : '<a class="pg" href="' + h(p.url || '#') + '">' + h(p.name) + '</a>' + chip(c)) + (mod ? '<button class="del" type="button">Delete</button>' : '') + '</div><p>' + h(c.body) + '</p></article>'; }
+  function render() { if (all === null) return; var rows = sel === 'all' ? all : all.filter(function (c) { return c.page === sel; });
+    var counts = {}; all.forEach(function (c) { counts[c.page] = (counts[c.page] || 0) + 1; });
+    var keys = C.PAGES.map(function (p) { return p[0]; }).filter(function (k) { return counts[k]; }).concat(Object.keys(counts).filter(function (k) { return !PG[k]; }));
+    fl.hidden = keys.length < 2; fl.innerHTML = '<button class="pill' + (sel === 'all' ? ' is-on' : '') + '" type="button" data-k="all" aria-pressed="' + (sel === 'all') + '">All pages<i>' + all.length + '</i></button>' + keys.map(function (k) { return '<button class="pill' + (sel === k ? ' is-on' : '') + '" type="button" data-k="' + h(k) + '" aria-pressed="' + (sel === k) + '">' + h(pageOf(k).name) + '<i>' + counts[k] + '</i></button>'; }).join('');
+    var th = C.threads(rows); sum.textContent = rows.length ? (th.length + (th.length === 1 ? ' conversation, ' : ' conversations, ') + rows.length + (rows.length === 1 ? ' comment' : ' comments') + (sel === 'all' ? ' across ' + keys.length + (keys.length === 1 ? ' page' : ' pages') : ' on ' + pageOf(sel).name)) : '';
+    if (!rows.length) { out.innerHTML = '<div class="none"><b>No comments yet</b>Open any page, press Comments, and say what works, what does not, what you would change.</div>'; return; }
+    out.innerHTML = th.map(function (x) { var t = x.t; return '<div class="th" data-th="' + t.id + '" data-page="' + h(t.page) + '">' + (t.gone ? '<div class="c gone">This comment was removed.</div>' : one(t)) + (x.reps.length ? '<div class="reps">' + x.reps.map(function (r) { return one(r, 1); }).join('') + '</div>' : '') + (t.gone ? '' : '<button class="rep" type="button" data-to="' + t.id + '" aria-label="Reply to ' + h(t.name) + '">' + C.REP_SVG + 'Reply</button>') + '</div>'; }).join(''); }
+  function renderFoot() { foot.innerHTML = mod ? '<span>Moderating as Darwin Garcia · Delete shows on every comment.</span><button type="button" class="stop">Stop</button>' : '<span>Visible to everyone with the link. Darwin Garcia can remove a comment.</span><button type="button" class="modb">Moderate</button>';
+    var m = foot.querySelector('.modb'); if (m) m.onclick = function () { foot.innerHTML = '<input type="password" placeholder="Moderator key" aria-label="Moderator key" autocomplete="off"><button type="button" class="use">Use key</button><button type="button" class="cancel">Cancel</button>';
+      var i = foot.querySelector('input'); i.focus(); foot.querySelector('.cancel').onclick = renderFoot;
+      var go = function () { var k = i.value.trim(); if (!k) return; C.setMod(k); C.api('/c/check').then(function () { mod = k; render(); renderFoot(); }).catch(function () { C.setMod(''); foot.querySelector('.use').textContent = 'Key not accepted'; i.focus(); }); };
+      foot.querySelector('.use').onclick = go; i.onkeydown = function (e) { if (e.key === 'Enter') { e.preventDefault(); go(); } }; };
+    var s = foot.querySelector('.stop'); if (s) s.onclick = function () { C.setMod(''); mod = ''; render(); renderFoot(); }; }
+  function load() { out.innerHTML = '<div class="none">Loading…</div>'; return C.api('/c/all').then(function (j) { all = j.comments || []; render(); }).catch(function (err) { out.innerHTML = '<div class="none"><b>Comments cannot be reached from here</b>' + (C.unreachable(err) ? 'Open the shared link at gnyc-youth-department.github.io, or a local server.' : h(err.message)) + '</div>'; }); }
+  fl.addEventListener('click', function (e) { var b = e.target.closest('[data-k]'); if (!b) return; sel = b.dataset.k; render(); });
+  document.getElementById('refresh').onclick = load;
+  out.addEventListener('click', function (e) { var rb = e.target.closest('.rep'); if (rb) { var to = rb.dataset.to, who = (all.filter(function (c) { return String(c.id) === to; })[0] || {}).name || ''; var prev = out.querySelector('.rf'); if (prev) { var pb0 = prev.previousElementSibling; prev.remove(); if (pb0) pb0.hidden = false; }
+      var rf = document.createElement('form'); rf.className = 'rf'; rf.dataset.to = to; rf.dataset.page = rb.closest('.th').dataset.page; rf.innerHTML = '<input name="name" maxlength="60" value="' + h(ls(C.KN)) + '" placeholder="Your name" aria-label="Your name" autocomplete="name"><textarea name="body" maxlength="2000" placeholder="Reply to ' + h(who) + '" aria-label="Reply to ' + h(who) + '"></textarea><input class="hp" name="hp" tabindex="-1" autocomplete="off" aria-hidden="true"><div class="acts"><span class="st" role="status"></span><button type="button" class="cancel">Cancel</button><button class="post" type="submit">Post reply</button></div>';
+      rb.hidden = true; rb.after(rf); (ls(C.KN) ? rf.body : rf.name).focus(); return; }
+    if (e.target.closest('.rf .cancel')) { var rf2 = e.target.closest('.rf'), rb2 = rf2.previousElementSibling; rf2.remove(); if (rb2) { rb2.hidden = false; rb2.focus(); } return; }
+    var d = e.target.closest('.del'); if (d) { var id = d.closest('.c').dataset.id; if (d.dataset.arm !== '1') { d.dataset.arm = '1'; d.textContent = 'Confirm delete'; d.onblur = function () { d.dataset.arm = ''; d.textContent = 'Delete'; }; return; }
+      d.disabled = true; C.api('/c/' + id, { method: 'DELETE' }).then(function () { all = all.filter(function (c) { return String(c.id) !== String(id); }); render(); }).catch(function (err) { d.disabled = false; d.textContent = err.message.indexOf('key') > -1 ? 'Key not accepted' : 'Could not delete'; }); } });
+  out.addEventListener('submit', function (e) { var rf = e.target.closest('.rf'); if (!rf) return; e.preventDefault(); var st = rf.querySelector('.st'), pb = rf.querySelector('.post'), name = rf.name.value.trim(), body = rf.body.value.trim();
+    if (!name || !body) { st.className = 'st bad'; st.textContent = !name ? 'Add your name.' : 'Write the reply first.'; (!name ? rf.name : rf.body).focus(); return; }
+    pb.disabled = true; st.className = 'st'; st.textContent = 'Posting…';
+    C.api('/c', { method: 'POST', body: JSON.stringify({ page: rf.dataset.page, name: name, body: body, parent: Number(rf.dataset.to), hp: rf.hp.value }) }).then(function (j) { ls(C.KN, name); all = [j.comment].concat(all); render(); }).catch(function (err) { st.className = 'st bad'; st.textContent = C.unreachable(err) ? 'Comments cannot be reached from here.' : err.message; pb.disabled = false; }); });
+  renderFoot(); load();
+})();
+</script>
+<script src="assets/site.js"></script>
+</body>
+</html>
