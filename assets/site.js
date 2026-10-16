@@ -181,4 +181,6 @@
   /* comments on every page (comments.html loads the script and styles itself) */
   if (!document.querySelector('link[href$="comments.css"]')) { var cl = document.createElement('link'); cl.rel = 'stylesheet'; cl.href = u('assets/comments.css'); document.head.appendChild(cl); }
   if (!document.querySelector('script[src$="comments.js"]')) { var cs = document.createElement('script'); cs.src = u('assets/comments.js'); cs.defer = true; document.body.appendChild(cs); }
+  /* real photos from Drive: only the staff copy behind Cloudflare Access fills them (assets/photos.js) */
+  var ps = document.createElement('script'); ps.src = u('assets/photos.js'); ps.defer = true; document.body.appendChild(ps);
 })();

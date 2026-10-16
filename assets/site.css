@@ -248,3 +248,12 @@ li:has(>.jr-req:focus-visible),li:has(.jr-req:focus-visible){outline:3px solid v
 @media (max-width:640px){.gmap .tn-d{display:none}.gmap .tn-m{display:inline}}
 .gmap .tn{paint-order:stroke;stroke:rgba(255,255,255,.75);stroke-width:3px;stroke-linejoin:round}
 .gmap .ar.is-on .tn{stroke:var(--pa,#1e3a8a)}
+/* staff copy: slots filled from the Drive folder (assets/photos.js) */
+.ph.has-photo{color:transparent}
+.ph.has-photo>span{display:none}
+.in-drive{display:block;margin-top:4px;font:700 10px/1 Inter,system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#047857}
+body.show-slots [data-photo="drive"]::after{background:#047857}
+.photo-notice{display:flex;gap:.75rem;align-items:flex-start;position:fixed;left:1rem;bottom:calc(1rem + env(safe-area-inset-bottom,0px));z-index:69;max-width:min(420px,calc(100% - 2rem));padding:.75rem 1rem;border-radius:12px;background:#7c2d12;color:#fff;font:600 13px/1.4 Inter,system-ui,sans-serif;box-shadow:0 12px 30px -8px rgba(0,0,0,.45)}
+@media (max-width:640px){.photo-notice{bottom:calc(4.5rem + env(safe-area-inset-bottom,0px))}}
+.photo-notice button{flex:none;width:44px;height:44px;margin:-.6rem -.6rem -.6rem 0;border:0;border-radius:10px;background:transparent;color:#fff;font:400 22px/1 system-ui;cursor:pointer}
+.photo-notice button:focus-visible{outline:2px solid #fff;outline-offset:-4px}

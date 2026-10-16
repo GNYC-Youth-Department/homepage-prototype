@@ -2,3 +2,8 @@
 comments-worker/.wrangler/
 comments-worker/node_modules/
 comments-worker/.dev.vars
+staff-worker/.wrangler
+staff-worker/.dev.vars
+*.iam.gserviceaccount*.json
+youthcongress-*.json
+staff-worker/*.json

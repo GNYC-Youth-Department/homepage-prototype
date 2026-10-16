@@ -1,0 +1,13 @@
+name = "gnycyouth-staff"
+main = "worker.js"
+compatibility_date = "2026-09-01"
+workers_dev = true
+
+[[kv_namespaces]]
+binding = "PHOTOS"
+id = "85469f4a09074caabd8f39d50c5437c8"
+
+[vars]
+FOLDER_ID = "1Udv4Di_tE94kylc2wXvVoRDRXx1rR5aV"
+# ACCESS_TEAM and ACCESS_AUD are added once Cloudflare Access protects this Worker.
+# Secret GOOGLE_SA (the service account's JSON key) is set on the Worker only, never in this repo.

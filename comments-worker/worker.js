@@ -7,7 +7,7 @@
             DELETE /c/<id>                        -> { ok }        header X-Mod-Key
             GET /c/check                          -> { ok }        header X-Mod-Key (validates the key)
 */
-const ORIGINS = [/^https:\/\/gnyc-youth-department\.github\.io$/, /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/];
+const ORIGINS = [/^https:\/\/gnyc-youth-department\.github\.io$/, /^https:\/\/gnycyouth-staff\.rdgt07\.workers\.dev$/, /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/];
 const PAGE = /^[a-z0-9-]{1,40}$/;
 const SLOT = /^[A-Z]{2,3}-\d\d(?:-\d{1,2})?$/;
 const LIMIT_PER_HOUR = 30;

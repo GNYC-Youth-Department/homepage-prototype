@@ -22,6 +22,10 @@ Every page has a **Comments** button at the bottom right, above the slot toggle.
 
 The comments are kept by a small comments service (`comments-worker/`, a Cloudflare Worker with a D1 table on Darwin Garcia's personal account; see its README). Darwin Garcia can remove a comment through the drawer's **Moderate** link with the moderator key. The drawer reaches the service only from the GitHub Pages link or a local server; opened from a file or another host it says so.
 
+## Real photos: staff copy only
+
+This public copy never shows a real photo; every photo slot keeps its placeholder. Signed-in staff see the same pages at `https://gnycyouth-staff.rdgt07.workers.dev`, where each slot shows the photo whose file name starts with its code in the private Drive folder **GNYC Website Content** (for example `PF-14-3 camporee.jpg`). Sign-in is Cloudflare Access with an email code; the list of staff emails is kept there. `assets/site.js` loads `assets/photos.js` on every page, and it does nothing outside the staff host. How it works, how to set it up and its tests: `staff-worker/README.md`.
+
 ## Placeholders
 
 Every photograph has its own code, so a file can be named by it. A section with several photos numbers each one under its code: the Pathfinders gallery is `PF-14-1` to `PF-14-9`, the Club Ministry lead area coordinators are `AB-07-1` to `AB-07-7`, each with the person or caption in its label; a file is named `PF-14-1-camporee.jpg`. The content brief lists every photo code under its section, and the codes show on the page with the slot toggle. Photos already on the site from gnycyouth.org keep a code too, labeled Done, so a replacement can be sent under it. Event flyers in the auto-filled event lists have no code of their own: a flyer belongs to its event record.
