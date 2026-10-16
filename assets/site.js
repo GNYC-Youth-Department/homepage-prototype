@@ -109,7 +109,22 @@
   });
   /* content-slot overlay */
   var st = document.getElementById('slot-toggle');
-  function slots(on) { document.body.classList.toggle('show-slots', on); st.setAttribute('aria-pressed', on); st.querySelector('.slot-toggle-label').textContent = on ? 'Hide content slots' : 'Show content slots'; try { sessionStorage.setItem('slots', on ? '1' : '0'); } catch (e) {} }
+  /* a label sits 12px above its element; when that spot is clipped by a card with hidden overflow, or can never
+     come out from under the sticky nav, the label moves inside the element (class slot-in) */
+  function placeLabels() {
+    if (!document.body.classList.contains('show-slots')) return;
+    var navB = 0; var gn = document.querySelector('.glass-nav'); if (gn) navB = gn.getBoundingClientRect().bottom + window.scrollY;
+    document.querySelectorAll('.slot').forEach(function (el) {
+      var r = el.getBoundingClientRect(), labelTop = r.top - 12, inside = el.hasAttribute('data-slot-in');   /* data-slot-in: a page says the label must sit inside, e.g. under a sticky toolbar */
+      if (r.top + window.scrollY - 12 < navB) inside = true;
+      for (var a = el; a && a !== document.body && !inside; a = a.parentElement) {
+        var o = getComputedStyle(a); if (/hidden|clip|auto|scroll/.test(o.overflow + ' ' + o.overflowX + ' ' + o.overflowY)) { if (labelTop < a.getBoundingClientRect().top + 1) inside = true; break; }
+      }
+      el.classList.toggle('slot-in', inside);
+    });
+  }
+  function slots(on) { document.body.classList.toggle('show-slots', on); st.setAttribute('aria-pressed', on); st.querySelector('.slot-toggle-label').textContent = on ? 'Hide content slots' : 'Show content slots'; try { sessionStorage.setItem('slots', on ? '1' : '0'); } catch (e) {} if (on) placeLabels(); }
+  var plT; window.addEventListener('resize', function () { clearTimeout(plT); plT = setTimeout(placeLabels, 150); }); window.addEventListener('load', placeLabels);
   if (st) {
     var want = /[?&]slots=1/.test(location.search); try { if (!want && sessionStorage.getItem('slots') === '1') want = true; } catch (e) {}
     slots(want); st.addEventListener('click', function () { slots(!document.body.classList.contains('show-slots')); });

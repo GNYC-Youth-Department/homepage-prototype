@@ -112,7 +112,7 @@ body.show-slots .slot::after{content:attr(data-slot) "  ·  " attr(data-spec);po
 .slot-toggle{position:fixed;right:1rem;bottom:calc(1rem + env(safe-area-inset-bottom,0px));z-index:70;display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.1rem;border-radius:9999px;border:0;background:#0f172a;color:#fff;font:600 14px Inter,system-ui,sans-serif;box-shadow:0 12px 30px -8px rgba(0,0,0,.45);cursor:pointer}
 .slot-toggle .material-symbols-outlined{font-size:20px;color:#ffe247}
 /* a photo inside a coded section: its own label sits inside it, so the two labels never share a line */
-body.show-slots .slot .slot::after{top:8px;left:8px;max-width:calc(100% - 16px)}
+body.show-slots .slot .slot::after,body.show-slots .slot.slot-in::after{top:8px;left:8px;max-width:calc(100% - 16px)}
 body.show-slots .slot-here{outline:3px solid #d97706;outline-offset:6px;box-shadow:0 0 0 12px rgba(217,119,6,.18);animation:slot-here 1.6s ease-in-out 3}
 @keyframes slot-here{50%{box-shadow:0 0 0 24px rgba(217,119,6,.05)}}
 @media (prefers-reduced-motion:reduce){body.show-slots .slot-here{animation:none}}
