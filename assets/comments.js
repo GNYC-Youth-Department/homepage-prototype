@@ -44,7 +44,7 @@
   var label = P ? P[1] : document.title.replace(/\s*[·|].*$/, '');
   /* the slots on this page, by code */
   var SLOTS = []; var seen = {};
-  document.querySelectorAll('[data-slot]').forEach(function (el) { var c = el.dataset.slot; if (!/^[A-Z]{2,3}-\d\d$/.test(c) || seen[c]) return; seen[c] = 1; SLOTS.push({ code: c, spec: el.dataset.spec || '', el: el }); });
+  document.querySelectorAll('[data-slot]').forEach(function (el) { var c = el.dataset.slot; if (!/^[A-Z]{2,3}-\d\d(?:-\d{1,2})?$/.test(c) || seen[c]) return; seen[c] = 1; SLOTS.push({ code: c, spec: el.dataset.spec || '', el: el }); });
   SLOTS.sort(function (a, b) { return a.code < b.code ? -1 : 1; });
   var specOf = function (code) { for (var i = 0; i < SLOTS.length; i++) if (SLOTS[i].code === code) return SLOTS[i].spec; return ''; };
   var short = function (s) { s = s.replace(/^[^·]*·\s*/, ''); return s.length > 48 ? s.slice(0, 46) + '…' : s; };

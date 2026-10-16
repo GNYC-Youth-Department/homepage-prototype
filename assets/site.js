@@ -114,7 +114,7 @@
     var want = /[?&]slots=1/.test(location.search); try { if (!want && sessionStorage.getItem('slots') === '1') want = true; } catch (e) {}
     slots(want); st.addEventListener('click', function () { slots(!document.body.classList.contains('show-slots')); });
     /* a slot code in the address (#PF-06) shows the slots, scrolls to that one and lights it */
-    function toSlot() { var m = /^#([A-Z]{2,3}-\d\d)$/.exec(location.hash); if (!m) return; var el = document.querySelector('[data-slot="' + m[1] + '"]'); if (!el) return; slots(true); document.querySelectorAll('.slot-here').forEach(function (x) { x.classList.remove('slot-here'); }); el.classList.add('slot-here'); el.scrollIntoView({ block: 'center' }); }
+    function toSlot() { var m = /^#([A-Z]{2,3}-\d\d(?:-\d{1,2})?)$/.exec(location.hash); if (!m) return; var el = document.querySelector('[data-slot="' + m[1] + '"]'); if (!el) return; slots(true); document.querySelectorAll('.slot-here').forEach(function (x) { x.classList.remove('slot-here'); }); el.classList.add('slot-here'); el.scrollIntoView({ block: 'center' }); }
     toSlot(); window.addEventListener('hashchange', toSlot);
   }
   /* external links: one quiet mark everywhere. Cards and link lines name the site; text links show

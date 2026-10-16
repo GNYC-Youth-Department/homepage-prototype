@@ -9,7 +9,7 @@
 */
 const ORIGINS = [/^https:\/\/gnyc-youth-department\.github\.io$/, /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/];
 const PAGE = /^[a-z0-9-]{1,40}$/;
-const SLOT = /^[A-Z]{2,3}-\d\d$/;
+const SLOT = /^[A-Z]{2,3}-\d\d(?:-\d{1,2})?$/;
 const LIMIT_PER_HOUR = 30;
 const COLS = "id, page, slot, parent_id AS parent, name, body, created_at AS at";
 

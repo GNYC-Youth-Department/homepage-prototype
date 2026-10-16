@@ -10,6 +10,8 @@
 body.show-slots .slot-cm{display:inline-flex}
 .slot-host{position:relative}
 body.show-slots .slot:has(> .slot-cm)::after{max-width:calc(100% - 104px)}
+body.show-slots .slot .slot:has(> .slot-cm)::after{max-width:calc(100% - 16px)}
+body.show-slots .slot .slot > .slot-cm{top:auto;bottom:8px;right:8px}
 .slot-cm:hover{background:#006194;color:#fff}
 .slot-cm i{font-style:normal;background:#ffe247;color:#0b1430;border-radius:9999px;padding:0 5px;line-height:14px;min-width:14px;text-align:center}
 .slot-cm i:empty{display:none}
