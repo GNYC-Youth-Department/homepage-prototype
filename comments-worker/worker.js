@@ -33,6 +33,48 @@ async function ipHash(req) {
   return [...new Uint8Array(buf)].slice(0, 12).map(b => b.toString(16).padStart(2, "0")).join("");
 }
 const clean = (s, max) => String(s ?? "").replace(/\r\n?/g, "\n").replace(/[^\S\n]+/g, " ").replace(/\n{3,}/g, "\n\n").trim().slice(0, max);
+/* No links in comments, from anyone: a web address, email or phone number in a comment is how a fake message lures a
+   reader. Rendering never makes links clickable; this keeps them out altogether. File names such as PF-14-3.jpg pass. */
+const TLD = "com|org|net|edu|gov|mil|int|io|info|biz|ly|gl|gd|gy|xyz|app|dev|site|online|link|click|top|ru|cn|tk|ml|ga|cf|gq|live|shop|store|page|tv|ws|cc|ca|uk|de|fr|es|nl|br|au|ng|jp|kr|sh|gg|lol|icu|cyou|buzz|rest|work|win|bid|cam|pro|club|vip|fun|art|blog|news|cloud|tech|space|website|email|network|support|help|login|today|world|life|best|mobi|name|plus|pw|su|ua|vn|ph|mx|pr|ar|cl|pe|ve|hn|gt|sv|cr|pa|ec|py|uy|nz|za|ke|gh|tz|ug|eu|asia|ms|tw|hk|sg|my|id|ir|tr|pl|ru|ro|cz|ch|se|no|fi|dk|pt|il|sa|ae|eg|pk|bd|lk|np|cx|nu|tc|vg|ai|mov|zip|co|me|to|it|so|in|us|do|is|am|be|at|go|on|or|my|by|me|tv";
+const WORDY = /^(?:ai|mov|zip|co|me|to|it|so|in|us|do|is|am|be|at|go|on|or|my|by|no|id|pe|pa|ms|sh|win|work|best|life|news|art|fun|help|page|name|plus|live|top|link|click|email|today|world|support|network|space|cam|rest)$/i;   /* also English words or file types: count only with a path, e.g. "evil.co/x" */
+const DOT = String.raw`(?:\s*\.\s*|\[\.\]|\(\.\)|\[dot\]|\(dot\)|\s+dot\s+)`;
+const DOMAIN = new RegExp(String.raw`[a-z0-9-]` + DOT + "(" + TLD + String.raw`)\b(\/)?`, "gi");
+const SCHEME = /:\s*\/\s*\/|\bh\s*[tx]\s*[tx]\s*p\s*s?\s*:|\bhxxps?\b|\b(?:javascript|vbscript)\s*:|\bdata:[a-z]+\/|\bfile:\/|\bmailto:|\bwww\s*(?:\.|\[\.\]|\s+dot\s+)|\b\d{1,3}(?:\.\d{1,3}){3}\b/i;
+const PHONE = /(?:^|[^\d])(?:\+?1[\s.\-]?)?\(?\d{3}\)?[\s.\-]?\d{3}[\s.\-]?\d{4}(?!\d)/;   /* US shape 3-3-4; dates such as 2026-10-17 pass */
+const EMAIL = /\S@\S|\[at\]|\(at\)/i;   /* "name@host", also written "name [at] host"; a lone "@ 10" passes */
+const OWN = /(?:https?:\/\/)?(?:[a-z0-9._%+-]{1,64}@)?(?:[a-z0-9-]{1,63}\.){0,4}gnycyouth\.(?:org|com)\b(?![.-][a-z0-9])/gi;   /* the conference's own address only; what follows it is still checked */
+const prep = s => s.normalize("NFKC").replace(/[\p{Cf}]/gu, "").replace(/[。｡．]/g, ".").replace(/\p{Nd}/gu, d => /\d/.test(d) ? d : String((d.codePointAt(0) - 0x30) % 16 % 10));
+const hasLink = s => {
+  let t = prep(s);
+  if (/gnycyouth/i.test(t)) t = t.replace(OWN, " ");
+  if (SCHEME.test(t) || PHONE.test(t) || EMAIL.test(t)) return true;
+  for (const m of t.matchAll(DOMAIN)) {
+    const spaced = /\s/.test(m[0]);
+    if (WORDY.test(m[1]) && !m[2]) continue;                 /* "Done.So happy", "flyer.ai" */
+    if (spaced && !/dot|\[|\(/i.test(m[0]) && !/\s\.\s/.test(m[0])) continue;   /* "end. Com…" is a sentence; "evil . com" is not */
+    return true;
+  }
+  return false;
+};
+/* Names only the moderator may post under, so nobody can pose as the site admin. Each word is folded first, so
+   "Dárwin", a Cyrillic look-alike or "D a r w i n" still count; "Darwin Rodriguez" or "Head Ministries" do not. */
+const LOOKALIKE = { "а": "a", "е": "e", "о": "o", "р": "p", "с": "c", "і": "i", "ӏ": "l", "ԁ": "d", "ɡ": "g", "ѕ": "s", "х": "x", "у": "y", "ո": "n", "ɑ": "a", "ı": "i", "0": "o", "1": "i", "3": "e", "4": "a", "@": "a", "$": "s" };
+const foldWord = w => w.normalize("NFKD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/./gu, c => LOOKALIKE[c] || c).replace(/[^a-z]/g, "");
+const words = name => {
+  const out = []; let run = "";
+  for (const w of prep(name).split(/[\s._\-,;:'"·|/\\]+/).map(foldWord).filter(Boolean)) {
+    if (w.length === 1) { run += w; continue; }               /* "D a r w i n" joins back into one word */
+    if (run) { out.push(run); run = ""; } out.push(w);
+  }
+  if (run) out.push(run);
+  return out;
+};
+const RESERVED = new Set(["admin", "administrator", "siteadmin", "moderator", "webmaster", "gnycyouth", "darwingarcia"]);
+const reserved = name => {
+  const w = words(name);
+  if (w.length === 1 && w[0] === "darwin") return true;
+  return w.some((x, i) => RESERVED.has(x) || RESERVED.has(x + (w[i + 1] || "")) || (x === "darwin" && /^g/.test(w[i + 1] || "")));
+};
 const isMod = (req, env) => {
   const k = req.headers.get("X-Mod-Key") || "";
   return !!env.MOD_KEY && k.length === env.MOD_KEY.length && k === env.MOD_KEY;
@@ -68,6 +110,8 @@ export default {
       if (!PAGE.test(page)) return json(req, { error: "bad page" }, 400);
       if (!name) return json(req, { error: "Add your name so the team knows who said it." }, 422);
       if (!body) return json(req, { error: "Write the comment first." }, 422);
+      if (hasLink(body) || hasLink(name)) return json(req, { error: "Comments cannot include web addresses, email addresses or phone numbers, except the conference's own gnycyouth.org. Name the page or the section code (such as PF-14) instead." }, 422);
+      if (reserved(name) && !isMod(req, env)) return json(req, { error: "That name is reserved for the site admin. Please use your own name." }, 422);
       let slot = String(b.slot || "").toUpperCase();
       if (slot && !SLOT.test(slot)) return json(req, { error: "That section code is not one of ours." }, 422);
       slot = slot || null;
