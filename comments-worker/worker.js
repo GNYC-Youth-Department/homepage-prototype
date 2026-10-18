@@ -51,18 +51,18 @@ const hasLink = s => {
   for (const m of t.matchAll(DOMAIN)) {
     const spaced = /\s/.test(m[0]);
     if (WORDY.test(m[1]) && !m[2]) continue;                 /* "Done.So happy", "flyer.ai" */
-    if (spaced && !/dot|\[|\(/i.test(m[0]) && !/\s\.\s/.test(m[0])) continue;   /* "end. Com…" is a sentence; "evil . com" is not */
+    if (spaced && !/dot|\[|\(/i.test(m[0]) && !/\s\.\s/.test(m[0])) continue;   /* "end. Com..." is a sentence; "evil . com" is not */
     return true;
   }
   return false;
 };
 /* Names only the moderator may post under, so nobody can pose as the site admin. Each word is folded first, so
-   "Dárwin", a Cyrillic look-alike or "D a r w i n" still count; "Darwin Rodriguez" or "Head Ministries" do not. */
+   "Darwin" with an accent, a Cyrillic look-alike or "D a r w i n" still count; "Darwin Rodriguez" or "Head Ministries" do not. */
 const LOOKALIKE = { "\u0430": "a", "\u0435": "e", "\u043e": "o", "\u0440": "p", "\u0441": "c", "\u0456": "i", "\u04cf": "l", "\u0501": "d", "\u0261": "g", "\u0455": "s", "\u0445": "x", "\u0443": "y", "\u0578": "n", "\u0251": "a", "\u0131": "i", "0": "o", "1": "i", "3": "e", "4": "a", "@": "a", "$": "s" };
 const foldWord = w => w.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/./gu, c => LOOKALIKE[c] || c).replace(/[^a-z]/g, "");
 const words = name => {
   const out = []; let run = "";
-  for (const w of prep(name).split(/[\s._\-,;:'"·|/\\]+/).map(foldWord).filter(Boolean)) {
+  for (const w of prep(name).split(/[\s._\-,;:'"\u00b7|/\\]+/).map(foldWord).filter(Boolean)) {
     if (w.length === 1) { run += w; continue; }               /* "D a r w i n" joins back into one word */
     if (run) { out.push(run); run = ""; } out.push(w);
   }
