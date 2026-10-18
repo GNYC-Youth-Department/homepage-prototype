@@ -32,7 +32,7 @@
     return fetch(API + path, Object.assign({}, opt, { headers: hd })).then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { if (!r.ok) throw new Error(j.error || ('HTTP ' + r.status)); return j; }); }); };
   /* Google Drive and Docs links in a signed-in comment become clickable; everything else stays plain text. */
   var DRIVE = /https?:\/\/(?:drive|docs)\.google\.com\/(?:(?:file|document|spreadsheets|presentation|forms)\/d\/(?:e\/)?[\w-]{10,}|drive\/(?:u\/\d\/)?folders\/[\w-]{10,}|open\?id=[\w-]{10,})(?:\/(?:view|edit|preview|viewform))?(?:\?[\w=&-]*)?(?:#[\w=&-]*)?(?![\w.\/@-])/g;
-  var text = function (c) { if (!c.verified) return h(c.body); var out = '', at = 0; String(c.body).replace(DRIVE, function (u, i) { out += h(c.body.slice(at, i)) + '<a href="' + h(u) + '" target="_blank" rel="noopener noreferrer">' + h(u) + '</a>'; at = i + u.length; return u; }); return out + h(c.body.slice(at)); };
+  var text = function (c) { if (!c.verified) return h(c.body); var out = '', at = 0; String(c.body).replace(DRIVE, function (u, i) { out += h(c.body.slice(at, i)) + '<a href="' + h(u) + '" target="_blank" rel="noopener noreferrer">' + h(u) + '<span class="sr-only"> (opens in a new tab)</span></a>'; at = i + u.length; return u; }); return out + h(c.body.slice(at)); };
   var me = '';
   var unreachable = function (err) { return /Failed to fetch|NetworkError|Load failed|origin not allowed/.test(err.message); };
   /* threads: top comments with their replies, the thread with the newest message first */
@@ -73,7 +73,7 @@
     SLOTS.forEach(function (s) { if (!s.btn) return; var n = list ? list.filter(function (c) { return c.slot === s.code; }).length : 0; s.btn.querySelector('i').textContent = n ? String(n) : ''; }); }
   function load() { return api('/c?page=' + encodeURIComponent(page)).then(function (j) { list = j.comments || []; badge(); return list; }); }
   function chip(c) { return c.slot ? '<a class="sl" href="#' + h(c.slot) + '" title="' + h(specOf(c.slot)) + '">' + h(c.slot) + (specOf(c.slot) ? '<small>' + h(short(specOf(c.slot))) + '</small>' : '') + '</a>' : ''; }
-  function one(c, r) { return '<article class="c' + (r ? ' r' : '') + '" data-id="' + c.id + '"><div class="who"><b>' + h(c.name) + '</b>' + (c.verified ? '<span class="ok" title="Posted while signed in">Signed in</span>' : '') + '<time datetime="' + h(c.at) + '">' + when(c.at) + '</time>' + (!r && !filter ? chip(c) : '') + (mod ? '<button class="del" type="button">Delete</button>' : '') + '</div><p>' + text(c) + '</p></article>'; }
+  function one(c, r) { return '<article class="c' + (r ? ' r' : '') + '" data-id="' + c.id + '"><div class="who"><b>' + h(c.name) + '</b>' + (c.verified ? '<span class="ok">Verified staff</span>' : '<span class="typed">Name typed</span>') + '<time datetime="' + h(c.at) + '">' + when(c.at) + '</time>' + (!r && !filter ? chip(c) : '') + (mod ? '<button class="del" type="button">Delete</button>' : '') + '</div><p>' + text(c) + '</p></article>'; }
   function renderList() { if (!open) return; var L = open.querySelector('.list'); if (list === null) { L.innerHTML = '<div class="none">Loading…</div>'; return; }
     var rows = filter ? list.filter(function (c) { return c.slot === filter; }) : list;
     if (!rows.length) { L.innerHTML = '<div class="none"><b>No comments yet' + (filter ? ' on ' + h(filter) : '') + '</b>Be the first: what works, what does not, what you would change.</div>'; return; }
@@ -88,20 +88,25 @@
     document.querySelectorAll('.slot-here').forEach(function (x) { x.classList.remove('slot-here'); });
     if (code) { var s = SLOTS.filter(function (x) { return x.code === code; })[0]; if (s) { document.body.classList.add('show-slots'); s.el.classList.add('slot-here'); } } }
   function renderFoot() { if (!open) return; var F = open.querySelector('footer');
-    F.innerHTML = mod ? '<span>Moderating as Darwin Garcia · Delete shows on every comment.</span><button type="button" class="stop">Stop</button>' : '<span>' + (STAFF ? 'Comments carry the name of the person signed in. Darwin Garcia can remove a comment.' : 'Read-only on this copy. Darwin Garcia can remove a comment.') + '</span><button type="button" class="modb">Moderate</button>';
+    F.innerHTML = mod ? '<span>Moderating as Darwin Garcia · Delete shows on every comment.</span><button type="button" class="stop">Stop</button>' : '<span>Verified staff: posted from a staff email sign-in. Name typed: posted before sign-in, by name only. Darwin Garcia can remove a comment.</span>' + (STAFF ? '<button type="button" class="modb">Moderate</button><a class="out" href="/cdn-cgi/access/logout">Sign out</a>' : '');
     var m = F.querySelector('.modb'); if (m) m.onclick = function () { F.innerHTML = '<input type="password" placeholder="Moderator key" aria-label="Moderator key" autocomplete="off"><button type="button" class="use">Use key</button><button type="button" class="cancel">Cancel</button>';
       var i = F.querySelector('input'); i.focus(); F.querySelector('.cancel').onclick = renderFoot;
       var go = function () { var k = i.value.trim(); if (!k) return; mod = k; api('/c/check').then(function () { window.gnycComments.setMod(k); renderList(); renderFoot(); }).catch(function () { mod = ''; F.querySelector('.use').textContent = 'Key not accepted'; i.focus(); }); };
       F.querySelector('.use').onclick = go; i.onkeydown = function (e) { if (e.key === 'Enter') { e.preventDefault(); go(); } }; };
     var s = F.querySelector('.stop'); if (s) s.onclick = function () { window.gnycComments.setMod(''); mod = ''; renderList(); renderFoot(); }; }
-  function close() { if (!open) return; open.remove(); open = null; var sc = document.querySelector('.cmts-scrim'); if (sc) sc.remove(); fab.focus(); }
+  var opener = null;
+  function close() { if (!open) return; open.remove(); open = null; var sc = document.querySelector('.cmts-scrim'); if (sc) sc.remove();
+    document.querySelectorAll('[data-cmt-inert]').forEach(function (el) { el.inert = false; el.removeAttribute('data-cmt-inert'); });
+    (opener && document.contains(opener) ? opener : fab).focus(); opener = null; }
   function show(slot) { if (open) { if (slot === undefined) { close(); return; } setFilter(slot); var ta = open.querySelector('textarea[name="body"]'); if (ta) ta.focus(); return; }
+    opener = document.activeElement && document.activeElement !== document.body ? document.activeElement : fab;
+    Array.prototype.forEach.call(document.body.children, function (el) { if (!el.inert) { el.inert = true; el.setAttribute('data-cmt-inert', ''); } });   /* the page behind stays out of Tab while the drawer is open */
     var sc = document.createElement('div'); sc.className = 'cmts-scrim'; sc.onclick = close; document.body.appendChild(sc);
     open = document.createElement('aside'); open.className = 'cmts'; open.setAttribute('role', 'dialog'); open.setAttribute('aria-modal', 'true'); open.setAttribute('aria-labelledby', 'cmt-h');
     var opts = '<option value="">The whole page</option>' + SLOTS.map(function (s) { return '<option value="' + h(s.code) + '">' + h(s.code) + (s.spec ? ' · ' + h(short(s.spec)) : '') + '</option>'; }).join('');
-    open.innerHTML = '<header><div><h2 id="cmt-h">Comments</h2><span class="sub">' + h(label) + ' · each comment names the section it is about, by its code</span></div><button class="x" type="button" aria-label="Close comments">✕</button></header><div class="flt" hidden></div><div class="list" aria-live="polite"></div>' +
-      (!STAFF ? '<div class="ro"><b>Comments are read-only here.</b>To comment, open <a href="' + h(STAFF_URL + location.pathname.replace(/^.*?\/homepage-prototype/, '')) + '">the staff copy</a> and sign in with your email.</div><footer></footer>' :
-      '<form class="add"><p class="as">Posting as <b>' + (me ? h(me) : 'you') + '</b></p><label>About<select name="slot">' + opts + '</select></label><label>Comment<textarea name="body" maxlength="2000" placeholder="What works, what does not, what you would change"></textarea></label><div class="acts"><span class="st" role="status">Posted comments are kept and shown to everyone who opens this page.</span><button class="post" type="submit">Post comment</button></div></form><footer></footer>');
+    open.innerHTML = '<header><div><h2 id="cmt-h">Comments</h2><span class="sub">' + h(label) + (STAFF ? ' · each comment names the section it is about, by its code' : '') + '</span></div><button class="x" type="button" aria-label="Close comments">✕</button></header><div class="flt" hidden></div>' + (STAFF ? '' : '<div class="ro"><b>Comments are read-only here.</b><a href="' + h(STAFF_URL + location.pathname.replace(/^.*?\/homepage-prototype/, '')) + '">Sign in to comment</a>: we email you a one-time code, no password.</div>') + '<div class="list"></div>' +
+      (!STAFF ? '<footer></footer>' :
+      '<form class="add"><p class="as">' + (meFail ? h(meFail) + ' <a href="">Reload to sign in again</a>' : 'Posting as <b>' + (me ? h(me) : '…') + '</b>') + '</p><label>Section<select name="slot">' + opts + '</select></label><label>Comment<textarea name="body" maxlength="2000" placeholder="What works, what does not, what you would change"></textarea></label><p class="note">Posted comments are kept and shown to everyone who opens this page.</p><div class="acts"><span class="st" role="status"></span><button class="post" type="submit">Post comment</button></div></form><footer></footer>');
     document.body.appendChild(open); open.querySelector('.x').onclick = close;
     var f = open.querySelector('.add'), st = open.querySelector('.st'), pb = open.querySelector('.post'), L = open.querySelector('.list');
     if (f) f.slot.onchange = function () { setFilter(f.slot.value); };
@@ -127,5 +132,6 @@
   fab.addEventListener('click', function () { show(); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && open) close(); });
   load().catch(function (err) { console.warn('Comments: count not loaded.', err.message); });
-  if (STAFF) api('/c/me').then(function (j) { me = j.name || ''; var b = open && open.querySelector('.as b'); if (b) b.textContent = me; }).catch(function (err) { console.warn('Comments: sign-in name not loaded.', err.message); });
+  var meFail = '';
+  if (STAFF) api('/c/me').then(function (j) { me = j.name || ''; var b = open && open.querySelector('.as b'); if (b) b.textContent = me; }).catch(function (err) { meFail = err.message; console.warn('Comments: sign-in name not loaded.', err.message); var a = open && open.querySelector('.as'); if (a) a.innerHTML = h(meFail) + ' <a href="">Reload to sign in again</a>'; });
 })();

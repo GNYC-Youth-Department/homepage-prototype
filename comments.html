@@ -27,8 +27,11 @@
   .cmt-all .c .top{display:flex;gap:.6rem;align-items:baseline;flex-wrap:wrap;font-size:12.5px;color:#64748b}
   .cmt-all .c .top b{font:700 14.5px/1.3 'Plus Jakarta Sans',sans-serif;color:#131b2e}
   .cmt-all .c.r .top b{font:600 13.5px/1.3 Inter,sans-serif}
-  .cmt-all .c .ok{display:inline-flex;align-items:center;padding:2px 7px;border-radius:999px;background:#ecfdf5;color:#047857;font:700 10.5px/1.3 Inter,sans-serif;letter-spacing:.04em;text-transform:uppercase}
-  .cmt-all .c p a{color:#006194;text-decoration:underline;word-break:break-all}
+  .cmt-all .c .ok,.cmt-all .c .typed{display:inline-flex;align-items:center;padding:2px 8px;border-radius:999px;font:700 12px/1.3 Inter,sans-serif}
+  .cmt-all .c .ok{background:#ecfdf5;color:#065f46}
+  .cmt-all .c .typed{background:#f1f5f9;color:#334155;font-weight:600}
+  .cmt-all .c p a{color:#00466b;text-decoration:underline;overflow-wrap:anywhere}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
   .cmt-all .c .top .pg{font:600 12.5px Inter,sans-serif;color:#006194;text-decoration:none;background:#f0f9ff;border-radius:9999px;padding:3px 10px;white-space:nowrap}
   .cmt-all .c .top .pg:hover{text-decoration:underline}
   .cmt-all .c .top .del{margin-left:auto;border:0;background:transparent;color:#b91c1c;font:600 12px/1 Inter,sans-serif;padding:2px 6px;border-radius:9999px;cursor:pointer}
@@ -39,6 +42,7 @@
   .cmt-all .reps{display:flex;flex-direction:column;gap:.5rem;margin-left:.6rem;padding-left:.9rem;border-left:2px solid #d5dbe6}
   .cmt-all .rep{align-self:flex-start;border:0;background:transparent;color:#006194;font:600 13px/1 Inter,sans-serif;padding:7px 10px;margin-left:-.1rem;border-radius:9999px;cursor:pointer;display:inline-flex;gap:6px;align-items:center}
   .cmt-all .rep:hover{background:#f0f9ff}.cmt-all .rep svg{width:15px;height:15px}
+  .cmt-all .rep{min-height:44px;padding:0 12px}
   .cmt-all .rf{display:flex;flex-direction:column;gap:.5rem;margin-left:.6rem;padding:.8rem;border:1px solid #d5dbe6;border-radius:12px;background:#fff}
   .cmt-all .rf input,.cmt-all .rf textarea{font:14px/1.45 Inter,sans-serif;color:#131b2e;padding:8px 10px;border:1px solid #d5dbe6;border-radius:10px;background:#faf8ff;min-height:38px;width:100%}
   .cmt-all .rf textarea{min-height:72px;resize:vertical}
@@ -86,7 +90,7 @@
   var pageOf = function (k) { return PG[k] || { name: k, url: '' }; };
   var all = null, sel = 'all', mod = C.getMod();
   function chip(c) { if (!c.slot) return ''; var p = pageOf(c.page); return '<a class="sl" href="' + h(p.url ? p.url + '#' + c.slot : '#') + '" title="Open the page at this section">' + h(c.slot) + (NAME[c.slot] ? '<small>' + h(NAME[c.slot]) + '</small>' : '') + '</a>'; }
-  function one(c, r) { var p = pageOf(c.page); return '<article class="c' + (r ? ' r' : '') + '" data-id="' + c.id + '" data-page="' + h(c.page) + '"><div class="top"><b>' + h(c.name) + '</b>' + (c.verified ? '<span class="ok" title="Posted while signed in">Signed in</span>' : '') + '<time datetime="' + h(c.at) + '">' + when(c.at) + '</time>' + (r ? '' : '<a class="pg" href="' + h(p.url || '#') + '">' + h(p.name) + '</a>' + chip(c)) + (mod ? '<button class="del" type="button">Delete</button>' : '') + '</div><p>' + C.text(c) + '</p></article>'; }
+  function one(c, r) { var p = pageOf(c.page); return '<article class="c' + (r ? ' r' : '') + '" data-id="' + c.id + '" data-page="' + h(c.page) + '"><div class="top"><b>' + h(c.name) + '</b>' + (c.verified ? '<span class="ok">Verified staff</span>' : '<span class="typed">Name typed</span>') + '<time datetime="' + h(c.at) + '">' + when(c.at) + '</time>' + (r ? '' : '<a class="pg" href="' + h(p.url || '#') + '">' + h(p.name) + '</a>' + chip(c)) + (mod ? '<button class="del" type="button">Delete</button>' : '') + '</div><p>' + C.text(c) + '</p></article>'; }
   function render() { if (all === null) return; var rows = sel === 'all' ? all : all.filter(function (c) { return c.page === sel; });
     var counts = {}; all.forEach(function (c) { counts[c.page] = (counts[c.page] || 0) + 1; });
     var keys = C.PAGES.map(function (p) { return p[0]; }).filter(function (k) { return counts[k]; }).concat(Object.keys(counts).filter(function (k) { return !PG[k]; }));
@@ -94,7 +98,7 @@
     var th = C.threads(rows); sum.textContent = rows.length ? (th.length + (th.length === 1 ? ' conversation, ' : ' conversations, ') + rows.length + (rows.length === 1 ? ' comment' : ' comments') + (sel === 'all' ? ' across ' + keys.length + (keys.length === 1 ? ' page' : ' pages') : ' on ' + pageOf(sel).name)) : '';
     if (!rows.length) { out.innerHTML = '<div class="none"><b>No comments yet</b>Open any page, press Comments, and say what works, what does not, what you would change.</div>'; return; }
     out.innerHTML = th.map(function (x) { var t = x.t; return '<div class="th" data-th="' + t.id + '" data-page="' + h(t.page) + '">' + (t.gone ? '<div class="c gone">This comment was removed.</div>' : one(t)) + (x.reps.length ? '<div class="reps">' + x.reps.map(function (r) { return one(r, 1); }).join('') + '</div>' : '') + (t.gone || !C.STAFF ? '' : '<button class="rep" type="button" data-to="' + t.id + '" aria-label="Reply to ' + h(t.name) + '">' + C.REP_SVG + 'Reply</button>') + '</div>'; }).join(''); }
-  function renderFoot() { foot.innerHTML = mod ? '<span>Moderating as Darwin Garcia · Delete shows on every comment.</span><button type="button" class="stop">Stop</button>' : '<span>' + (C.STAFF ? 'Comments carry the name of the person signed in. Darwin Garcia can remove a comment.' : 'Read-only on this copy: to reply, open the staff copy at gnyc.webtekton.com and sign in. Darwin Garcia can remove a comment.') + '</span><button type="button" class="modb">Moderate</button>';
+  function renderFoot() { foot.innerHTML = mod ? '<span>Moderating as Darwin Garcia · Delete shows on every comment.</span><button type="button" class="stop">Stop</button>' : '<span>Verified staff: posted from a staff email sign-in. Name typed: posted before sign-in, by name only. ' + (C.STAFF ? '' : 'To reply, <a href="' + C.STAFF_URL + '/comments.html">sign in to comment</a>; we email you a one-time code. ') + 'Darwin Garcia can remove a comment.</span>' + (C.STAFF ? '<button type="button" class="modb">Moderate</button>' : '');
     var m = foot.querySelector('.modb'); if (m) m.onclick = function () { foot.innerHTML = '<input type="password" placeholder="Moderator key" aria-label="Moderator key" autocomplete="off"><button type="button" class="use">Use key</button><button type="button" class="cancel">Cancel</button>';
       var i = foot.querySelector('input'); i.focus(); foot.querySelector('.cancel').onclick = renderFoot;
       var go = function () { var k = i.value.trim(); if (!k) return; C.setMod(k); C.api('/c/check').then(function () { mod = k; render(); renderFoot(); }).catch(function () { C.setMod(''); foot.querySelector('.use').textContent = 'Key not accepted'; i.focus(); }); };

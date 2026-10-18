@@ -72,10 +72,26 @@ body.show-slots .slot .slot.slot-in:has(> .slot-cm)::after{max-width:calc(100% -
 .cmts footer input{font:13px Inter,sans-serif;color:#131b2e;padding:5px 9px;border:1px solid #d5dbe6;border-radius:8px;background:#faf8ff;flex:1;min-width:140px}
 @media (prefers-reduced-motion:no-preference){.cmts{animation:cmts-in .2s ease-out}@keyframes cmts-in{from{transform:translateX(24px);opacity:0}}}
 /* signed-in comments (staff copy) and the read-only note (public copy) */
-.cmts .c .ok{display:inline-flex;align-items:center;padding:2px 7px;border-radius:999px;background:#ecfdf5;color:#047857;font:700 10.5px/1.3 Inter,system-ui,sans-serif;letter-spacing:.04em;text-transform:uppercase}
-.cmts .c p a{color:#006194;text-decoration:underline;word-break:break-all}
+.cmts .c .ok,.cmts .c .typed{display:inline-flex;align-items:center;padding:2px 8px;border-radius:999px;font:700 12px/1.3 Inter,system-ui,sans-serif}
+.cmts .c .ok{background:#ecfdf5;color:#065f46}
+.cmts .c .typed{background:#f1f5f9;color:#334155;font-weight:600}
+.cmts .c p a,.cmts .ro a,.cmts .as a{color:#00466b;text-decoration:underline;overflow-wrap:anywhere}
 .cmts .add .as{margin:0;font:500 13.5px/1.4 Inter,system-ui,sans-serif;color:#475569}
 .cmts .add .as b{color:#131b2e}
-.cmts .ro{margin:0 1rem 1rem;padding:.9rem 1rem;border-radius:12px;background:#f1f5f9;color:#334155;font:500 13.5px/1.5 Inter,system-ui,sans-serif}
+.cmts .add .note{margin:0;font:400 12.5px/1.4 Inter,system-ui,sans-serif;color:#475569}
+.cmts .ro{margin:0 1rem .75rem;padding:.9rem 1rem;border-radius:12px;background:#f1f5f9;color:#334155;font:500 13.5px/1.5 Inter,system-ui,sans-serif}
 .cmts .ro b{display:block;color:#131b2e;margin-bottom:.15rem}
-.cmts .ro a{color:#006194;font-weight:600;text-decoration:underline}
+.cmts .ro a{font-weight:700}
+.cmts footer .out{margin-left:.75rem;color:#00466b;font-weight:600;text-decoration:underline}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+/* touch targets: every control in the drawer is at least 44px tall */
+.cmts .rep{min-height:44px;padding:0 12px}
+.cmts footer{row-gap:0}
+.cmts footer > span{flex-basis:100%;padding-top:6px}
+.cmts footer button,.cmts footer .out{display:inline-flex;align-items:center;min-height:44px;padding:0 10px;margin-left:-10px;font:600 12.5px/1 Inter,system-ui,sans-serif}
+.cmts footer .out{margin-left:auto}
+.cmts .as a{display:inline-flex;align-items:center;min-height:44px}
+.cmts .x{min-width:44px;min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+.cmts .add select,.cmts .add .post,.cmts .rf .post,.cmts .rf .cancel{min-height:44px}
+.cmts .c a.sl{position:relative}
+.cmts .c a.sl::before{content:"";position:absolute;inset:-13px -4px}   /* 44px tall hit area around the small section chip */
