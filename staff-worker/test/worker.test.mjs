@@ -64,4 +64,22 @@ await eq('pages proxied when signed in', go('/ministries/pathfinders.html?x=1', 
 await Promise.all(pending); calls = [];
 await eq('second request comes from KV', go('/photos/PF-14-3?v=1', A), 200, /^THUMB$/);
 assert.equal(calls.filter(c => c.includes('lh3') || c.includes('alt=media')).length, 0, 'no Drive download on a KV hit'); console.log('ok kv cache');
+// comments go to the comments service with the signed-in email, never one the browser sends
+const seen = [];
+const COMMENTS = { fetch: async r => { seen.push({ url: r.url, method: r.method, h: Object.fromEntries(r.headers), body: r.method === 'POST' ? await r.text() : null }); return Response.json({ ok: true }); } };
+const cenv = { ...env, COMMENTS, STAFF_KEY: 'staff-key-abcdefghijklmnopqrstuvwxyz012345' };
+const SAME = { Origin: 'https://gnyc.webtekton.com', 'Sec-Fetch-Site': 'same-origin', 'Content-Type': 'application/json' };
+const goC = async (path, opt = {}, hdr = A) => { const r = await W.fetch(new Request('https://gnyc.webtekton.com' + path, { ...opt, headers: { ...hdr, ...(opt.method ? SAME : {}), ...(opt.headers || {}) } }), cenv, ctx); return r.status; };
+assert.equal(await goC('/c?page=hm', {}, {}), 401); assert.equal(seen.length, 0); console.log('ok comments need sign-in');
+assert.equal(await goC('/c', { method: 'POST', body: '{"page":"hm","body":"hi"}', headers: { 'X-Staff-Email': 'christian@evil.example', 'X-Staff-Key': 'guess' } }), 200);
+assert.equal(seen[0].h['x-staff-email'], 'a@b.org'); assert.equal(seen[0].h['x-staff-key'], 'staff-key-abcdefghijklmnopqrstuvwxyz012345'); assert.equal(seen[0].body, '{"page":"hm","body":"hi"}'); assert.equal(seen[0].url, 'https://comments.internal/c');
+console.log('ok post carries the signed-in email; browser-sent identity headers are replaced');
+assert.equal(await goC('/c/12', { method: 'DELETE', headers: { 'X-Mod-Key': 'mk' } }), 200); assert.equal(seen[1].method, 'DELETE'); assert.equal(seen[1].h['x-mod-key'], 'mk'); console.log('ok delete passes the moderator key');
+assert.equal(await goC('/c', { method: 'POST', body: '{"page":"hm","body":"x"}', headers: { Origin: 'https://evil.example', 'Sec-Fetch-Site': 'cross-site' } }), 403); console.log('ok cross-site post refused');
+assert.equal(await goC('/c', { method: 'POST', body: '{"page":"hm","body":"x"}', headers: { Origin: 'null' } }), 403); console.log('ok post without our origin refused');
+assert.equal(await goC('/c', { method: 'POST', body: '{"page":"hm","body":"x"}', headers: { 'Content-Type': 'text/plain' } }), 415); console.log('ok form-style (text/plain) post refused');
+assert.equal(await goC('/c/12', { method: 'DELETE', headers: { 'X-Mod-Key': 'mk', Origin: 'https://evil.example', 'Sec-Fetch-Site': 'cross-site' } }), 403); console.log('ok cross-site delete refused');
+assert.equal(seen.length, 2, 'refused requests never reach the comments service');
+assert.equal(await goC('/index.html', { method: 'POST', body: 'x' }), 405); console.log('ok only comments accept POST');
+assert.equal(await (async () => { const r = await W.fetch(new Request('https://gnyc.webtekton.com/c/me', { headers: A }), env, ctx); return r.status; })(), 503); console.log('ok comments fail closed without the binding');
 console.log('all staff Worker tests passed');

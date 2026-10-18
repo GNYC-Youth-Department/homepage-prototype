@@ -8,8 +8,12 @@ routes = [{ pattern = "gnyc.webtekton.com", custom_domain = true }]
 binding = "PHOTOS"
 id = "85469f4a09074caabd8f39d50c5437c8"
 
+[[services]]
+binding = "COMMENTS"
+service = "gnycyouth-comments"
+
 [vars]
 FOLDER_ID = "1Udv4Di_tE94kylc2wXvVoRDRXx1rR5aV"
 ACCESS_TEAM = "gnycyouth.cloudflareaccess.com"
 ACCESS_AUD = "4aa70b1ace18871b7179a6c5a42ce049e589ab3b3cefc74906e287ab72501c6c"   # audience tag of the Access application; not a secret
-# Secret GOOGLE_SA (the service account's JSON key) is set on the Worker only, never in this repo.
+# Secrets GOOGLE_SA (the service account's JSON key) and STAFF_KEY (shared with gnycyouth-comments) live on the Worker only, never in this repo.

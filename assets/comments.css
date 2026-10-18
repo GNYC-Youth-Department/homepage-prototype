@@ -71,3 +71,11 @@ body.show-slots .slot .slot.slot-in:has(> .slot-cm)::after{max-width:calc(100% -
 .cmts footer button{border:0;background:none;color:#006194;font:600 12px/1 Inter,sans-serif;padding:0;cursor:pointer}
 .cmts footer input{font:13px Inter,sans-serif;color:#131b2e;padding:5px 9px;border:1px solid #d5dbe6;border-radius:8px;background:#faf8ff;flex:1;min-width:140px}
 @media (prefers-reduced-motion:no-preference){.cmts{animation:cmts-in .2s ease-out}@keyframes cmts-in{from{transform:translateX(24px);opacity:0}}}
+/* signed-in comments (staff copy) and the read-only note (public copy) */
+.cmts .c .ok{display:inline-flex;align-items:center;padding:2px 7px;border-radius:999px;background:#ecfdf5;color:#047857;font:700 10.5px/1.3 Inter,system-ui,sans-serif;letter-spacing:.04em;text-transform:uppercase}
+.cmts .c p a{color:#006194;text-decoration:underline;word-break:break-all}
+.cmts .add .as{margin:0;font:500 13.5px/1.4 Inter,system-ui,sans-serif;color:#475569}
+.cmts .add .as b{color:#131b2e}
+.cmts .ro{margin:0 1rem 1rem;padding:.9rem 1rem;border-radius:12px;background:#f1f5f9;color:#334155;font:500 13.5px/1.5 Inter,system-ui,sans-serif}
+.cmts .ro b{display:block;color:#131b2e;margin-bottom:.15rem}
+.cmts .ro a{color:#006194;font-weight:600;text-decoration:underline}

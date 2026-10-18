@@ -6,6 +6,7 @@
    "PF-14-3 camporee.jpg"; the newest file wins when two share a code. Drafts, PDFs and anything else are never served.
    Routes:  GET /photos/index        -> { photos: { CODE: version }, skipped: [{ name, reason }] }
             GET /photos/<CODE>?v=..  -> the image (Drive thumbnail at 2000px when available, else the original)
+            /c, /c/...               -> the comments service (binding COMMENTS), with the signed-in email (secret STAFF_KEY)
             anything else            -> the page from GitHub Pages
    Cache: Workers KV (binding PHOTOS), keyed by code, Drive file id and modified time; the Cache API does not run on
    workers.dev or behind Access. Entries expire after 30 days.
@@ -49,7 +50,7 @@ async function verifyAccess(req, env) {
   const ok = await crypto.subtle.verify("RSASSA-PKCS1-v1_5", key, unb64u(s), new TextEncoder().encode(h + "." + p));
   const aud = [].concat(claims.aud || []);
   const t = Date.now() / 1000;
-  return ok && aud.includes(env.ACCESS_AUD) && claims.iss === `https://${env.ACCESS_TEAM}` && claims.exp > t && !(claims.nbf > t + 60);
+  return ok && aud.includes(env.ACCESS_AUD) && claims.iss === `https://${env.ACCESS_TEAM}` && claims.exp > t && !(claims.nbf > t + 60) ? claims : false;
 }
 
 /* ---------- Google Drive through the service account ---------- */
@@ -125,10 +126,29 @@ async function photo(env, code, ctx) {
   return new Response(bytes, { headers: { "Content-Type": type, "Cache-Control": "private, max-age=86400", "X-Content-Type-Options": "nosniff" } });
 }
 
+/* Comments go to the comments service over the service binding, carrying who signed in. Headers are built fresh, so
+   nothing a browser sends can claim to be someone else. */
+async function comments(req, env, url, who) {
+  if (!env.COMMENTS || !env.STAFF_KEY) return text("comments are not configured yet", 503);
+  if (!who || !who.email) return text("sign in required", 401);
+  if (req.method === "POST" || req.method === "DELETE") {
+    /* Writes only from this site's own pages: another site cannot make a signed-in browser post in someone's name. */
+    if (req.headers.get("Origin") !== url.origin || (req.headers.get("Sec-Fetch-Site") || "same-origin") !== "same-origin") return text("cross-site request refused", 403);
+    if (req.method === "POST" && !/^application\/json\b/i.test(req.headers.get("Content-Type") || "")) return text("send JSON", 415);
+  }
+  const headers = { "Content-Type": "application/json", "X-Staff-Key": env.STAFF_KEY, "X-Staff-Email": String(who.email) };
+  const mk = req.headers.get("X-Mod-Key"); if (mk) headers["X-Mod-Key"] = mk;
+  const init = { method: req.method, headers };
+  if (req.method === "POST") { init.body = await req.text(); if (init.body.length > 8000) return text("too long", 413); }
+  try { return await env.COMMENTS.fetch(new Request("https://comments.internal" + url.pathname + url.search, init)); }
+  catch (e) { console.error("comments", e.message); return text("comments could not be reached", 502); }
+}
+
 export default {
   async fetch(req, env, ctx) {
     const url = new URL(req.url);
-    if (req.method !== "GET" && req.method !== "HEAD") return text("method not allowed", 405);
+    const isComments = url.pathname === "/c" || url.pathname.startsWith("/c/");
+    if (req.method !== "GET" && req.method !== "HEAD" && !(isComments && (req.method === "POST" || req.method === "DELETE"))) return text("method not allowed", 405);
     const configured = env.ACCESS_TEAM && env.ACCESS_AUD;
     if (url.pathname.startsWith("/photos/")) {
       if (!configured || !env.GOOGLE_SA || !env.FOLDER_ID) return text("photos are not configured yet", 503);
@@ -143,7 +163,9 @@ export default {
         return await photo(env, code, ctx);
       } catch (e) { console.error("photos", e.message); return text("drive error", 502); }
     }
-    if (configured && !(await signedIn(req, env))) return text("sign in required", 401);
+    const who = configured && await signedIn(req, env);
+    if (configured && !who) return text("sign in required", 401);
+    if (url.pathname === "/c" || url.pathname.startsWith("/c/")) return comments(req, env, url, who);
     let r;
     try { r = await fetch(ORIGIN + url.pathname + url.search, { cf: { cacheTtl: 60 } }); } catch (e) { return text("the public pages could not be reached; try again", 502); }
     const out = new Response(r.body, r);
