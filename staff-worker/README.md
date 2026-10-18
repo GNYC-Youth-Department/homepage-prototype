@@ -5,7 +5,7 @@ The public prototype on GitHub Pages never shows a real photo. This Worker serve
 ```
 Uploader ──saves "PF-14-3 camporee.jpg"──▶ Drive folder "GNYC Website Content" (private)
                                                 │ read-only: service account gnycyouth-photos
-Staff viewer ──email code (Cloudflare Access)──▶ Worker gnycyouth-staff ──▶ pages from GitHub Pages
+Staff viewer ──email code (Cloudflare Access)──▶ gnyc.webtekton.com (Worker gnycyouth-staff) ──▶ pages from GitHub Pages
                                                 └──▶ /photos/index, /photos/<code> (only files named by a slot code)
 ```
 
@@ -19,8 +19,8 @@ Staff viewer ──email code (Cloudflare Access)──▶ Worker gnycyouth-staf
 **Setup state and steps**
 1. Service account `gnycyouth-photos` in Google Cloud project `youthcongress`, Drive API enabled, folder shared with it as Viewer.
 2. Secret: `npx wrangler secret put GOOGLE_SA` (paste the JSON key), from this folder, signed in to the rdgt07 account. The key file is deleted after; it is never committed.
-3. Cloudflare Zero Trust enabled on the account; on the Worker, Settings → Domains & Routes → workers.dev → enable Cloudflare Access; add the staff emails to the policy.
-4. Set vars `ACCESS_TEAM` (the team domain, e.g. `name.cloudflareaccess.com`) and `ACCESS_AUD` (the Access application's audience tag), then redeploy.
+3. Address: custom domain `gnyc.webtekton.com` (zone webtekton.com, same Cloudflare account); the workers.dev address is turned off so there is one door. Moving to `staff.gnycyouth.org` later means the Worker must live in the account that holds gnycyouth.org; add the new host to `assets/photos.js` (STAFF) and the comments allow-list.
+4. Cloudflare Zero Trust team `gnycyouth.cloudflareaccess.com`; Access application "GNYC staff prototype (real photos)" on the address above, email one-time code, policy "GNYC staff photo reviewers" holds the staff emails (add people there). Worker vars `ACCESS_TEAM` = the team domain and `ACCESS_AUD` = the application's audience tag are set on the Worker.
 
 Redeploy after editing `worker.js`: `npx wrangler deploy` from this folder. 
 

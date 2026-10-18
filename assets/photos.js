@@ -2,7 +2,7 @@
    private Drive folder by slot code; each matching slot on the page shows its photo. The public GitHub Pages copy
    never loads this file's data: it keeps its placeholders. See staff-worker/README.md. */
 (function () {
-  var STAFF = /^gnycyouth-staff\.[a-z0-9-]+\.workers\.dev$/.test(location.hostname);
+  var STAFF = ['gnyc.webtekton.com'].indexOf(location.hostname) !== -1;   /* the staff copy's address; add staff.gnycyouth.org when it moves */
   var API = (function () { try { return localStorage.getItem('gnycyouth.photos.api') || ''; } catch (e) { return ''; } })();
   if (!STAFF && !API) return;
   var base = API || location.origin;

@@ -24,7 +24,7 @@ The comments are kept by a small comments service (`comments-worker/`, a Cloudfl
 
 ## Real photos: staff copy only
 
-This public copy never shows a real photo; every photo slot keeps its placeholder. Signed-in staff see the same pages at `https://gnycyouth-staff.rdgt07.workers.dev`, where each slot shows the photo whose file name starts with its code in the private Drive folder **GNYC Website Content** (for example `PF-14-3 camporee.jpg`). Sign-in is Cloudflare Access with an email code; the list of staff emails is kept there. `assets/site.js` loads `assets/photos.js` on every page, and it does nothing outside the staff host. How it works, how to set it up and its tests: `staff-worker/README.md`.
+This public copy never shows a real photo; every photo slot keeps its placeholder. Signed-in staff see the same pages at `https://gnyc.webtekton.com`, where each slot shows the photo whose file name starts with its code in the private Drive folder **GNYC Website Content** (for example `PF-14-3 camporee.jpg`). Sign-in is Cloudflare Access with an email code; the list of staff emails is kept there. `assets/site.js` loads `assets/photos.js` on every page, and it does nothing outside the staff host. How it works, how to set it up and its tests: `staff-worker/README.md`.
 
 ## Placeholders
 

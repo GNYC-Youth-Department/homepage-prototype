@@ -35,7 +35,7 @@ globalThis.fetch = async (u, o = {}) => { u = String(u); calls.push(u);
 const W = (await import(new URL('../worker.js', import.meta.url))).default;
 const pending = []; const ctx = { waitUntil: p => pending.push(p) };
 const env = { PHOTOS, FOLDER_ID: 'root', GOOGLE_SA: JSON.stringify(sa), ACCESS_TEAM: TEAM, ACCESS_AUD: AUD };
-const go = async (path, hdr = {}, e = env) => { const r = await W.fetch(new Request('https://gnycyouth-staff.rdgt07.workers.dev' + path, { headers: hdr }), e, ctx); return [r.status, r.headers.get('content-type'), await r.text()]; };
+const go = async (path, hdr = {}, e = env) => { const r = await W.fetch(new Request('https://gnyc.webtekton.com' + path, { headers: hdr }), e, ctx); return [r.status, r.headers.get('content-type'), await r.text()]; };
 const A = { 'Cf-Access-Jwt-Assertion': good };
 const eq = async (name, got, status, body) => { const [st, , b] = await got; assert.equal(st, status, name + ' status'); if (body !== undefined) assert.match(b, body, name + ' body'); console.log('ok', name); };
 const noEnv = { FOLDER_ID: 'root', GOOGLE_SA: env.GOOGLE_SA };
