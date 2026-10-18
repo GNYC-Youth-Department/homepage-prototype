@@ -43,7 +43,7 @@ const SCHEME = /:\s*\/\s*\/|\bh\s*[tx]\s*[tx]\s*p\s*s?\s*:|\bhxxps?\b|\b(?:javas
 const PHONE = /(?:^|[^\d])(?:\+?1[\s.\-]?)?\(?\d{3}\)?[\s.\-]?\d{3}[\s.\-]?\d{4}(?!\d)/;   /* US shape 3-3-4; dates such as 2026-10-17 pass */
 const EMAIL = /\S@\S|\[at\]|\(at\)/i;   /* "name@host", also written "name [at] host"; a lone "@ 10" passes */
 const OWN = /(?:https?:\/\/)?(?:[a-z0-9._%+-]{1,64}@)?(?:[a-z0-9-]{1,63}\.){0,4}gnycyouth\.(?:org|com)\b(?![.-][a-z0-9])/gi;   /* the conference's own address only; what follows it is still checked */
-const prep = s => s.normalize("NFKC").replace(/[\p{Cf}]/gu, "").replace(/[。｡．]/g, ".").replace(/\p{Nd}/gu, d => /\d/.test(d) ? d : String((d.codePointAt(0) - 0x30) % 16 % 10));
+const prep = s => s.normalize("NFKC").replace(/[\p{Cf}]/gu, "").replace(/[\u3002\uff61\uff0e]/g, ".").replace(/\p{Nd}/gu, d => /\d/.test(d) ? d : String((d.codePointAt(0) - 0x30) % 16 % 10));
 const hasLink = s => {
   let t = prep(s);
   if (/gnycyouth/i.test(t)) t = t.replace(OWN, " ");
@@ -58,8 +58,8 @@ const hasLink = s => {
 };
 /* Names only the moderator may post under, so nobody can pose as the site admin. Each word is folded first, so
    "Dárwin", a Cyrillic look-alike or "D a r w i n" still count; "Darwin Rodriguez" or "Head Ministries" do not. */
-const LOOKALIKE = { "а": "a", "е": "e", "о": "o", "р": "p", "с": "c", "і": "i", "ӏ": "l", "ԁ": "d", "ɡ": "g", "ѕ": "s", "х": "x", "у": "y", "ո": "n", "ɑ": "a", "ı": "i", "0": "o", "1": "i", "3": "e", "4": "a", "@": "a", "$": "s" };
-const foldWord = w => w.normalize("NFKD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/./gu, c => LOOKALIKE[c] || c).replace(/[^a-z]/g, "");
+const LOOKALIKE = { "\u0430": "a", "\u0435": "e", "\u043e": "o", "\u0440": "p", "\u0441": "c", "\u0456": "i", "\u04cf": "l", "\u0501": "d", "\u0261": "g", "\u0455": "s", "\u0445": "x", "\u0443": "y", "\u0578": "n", "\u0251": "a", "\u0131": "i", "0": "o", "1": "i", "3": "e", "4": "a", "@": "a", "$": "s" };
+const foldWord = w => w.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/./gu, c => LOOKALIKE[c] || c).replace(/[^a-z]/g, "");
 const words = name => {
   const out = []; let run = "";
   for (const w of prep(name).split(/[\s._\-,;:'"·|/\\]+/).map(foldWord).filter(Boolean)) {
