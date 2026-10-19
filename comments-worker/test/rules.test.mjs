@@ -44,7 +44,10 @@ for (const b of ['https://drive.google.com.evil.ru/file/d/1AbCdEfGhIjKlMnOp', 'h
   assert.equal(await post('x', b), 422, 'should block: ' + b);
 console.log('ok Drive look-alikes refused');
 // emails never leave the service
-sql.length = 0; await call('/c?page=hm', {}, null); await call('/c/all', {}, null);
+for (const [p, o, as, key] of [['/c/all', {}, null], ['/c?page=hm', {}, null], ['/c/all', {}, 'mary.smith@example.org', 'x'.repeat(40)], ['/c/check', {}, null], ['/c/7', { method: 'DELETE' }, null]])
+  assert.equal((await call(p, o, as, key)).status, 401, 'should refuse without the staff key: ' + p);
+console.log('ok reading and deleting need the staff key');
+sql.length = 0; await call('/c?page=hm'); await call('/c/all');
 for (const q of sql.filter(q => /^SELECT/.test(q))) { assert.ok(!/(^|[\s,])email(\s*,|\s+FROM)/i.test(q.replace(/\(email IS NOT NULL\) AS verified/, '')), 'query returns email: ' + q); }
 console.log('ok reads return only a signed-in flag, never the email');
 assert.equal((await W.fetch(new Request('https://c.example/c', { method: 'POST', headers: { 'X-Staff-Email': 'mary.smith@example.org', 'X-Staff-Key': 'short' }, body: '{"page":"hm","body":"hi"}' }), { ...env, STAFF_KEY: 'short' })).status, 403); console.log('ok a short staff key is never accepted');

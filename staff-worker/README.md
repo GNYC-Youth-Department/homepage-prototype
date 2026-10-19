@@ -5,7 +5,7 @@ The public prototype on GitHub Pages never shows a real photo. This Worker serve
 ```
 Uploader ──saves "PF-14-3 camporee.jpg"──▶ Drive folder "GNYC Website Content" (private)
                                                 │ read-only: service account gnycyouth-photos
-Staff viewer ──email code (Cloudflare Access)──▶ gnyc.webtekton.com (Worker gnycyouth-staff) ──▶ pages from GitHub Pages
+Staff viewer ──email code (Cloudflare Access)──▶ site-review.gnycyouth.org (Worker gnycyouth-staff) ──▶ pages from GitHub Pages
                                                 └──▶ /photos/index, /photos/<code> (only files named by a slot code)
 ```
 
@@ -18,14 +18,14 @@ Staff viewer ──email code (Cloudflare Access)──▶ gnyc.webtekton.com (W
 
 **Setup state and steps**
 1. Service account `gnycyouth-photos` in Google Cloud project `youthcongress`, Drive API enabled, folder shared with it as Viewer.
-2. Secret: `npx wrangler secret put GOOGLE_SA` (paste the JSON key), from this folder, signed in to the rdgt07 account. The key file is deleted after; it is never committed.
-3. Address: custom domain `gnyc.webtekton.com` (zone webtekton.com, same Cloudflare account); the workers.dev address is turned off so there is one door. Moving to `staff.gnycyouth.org` later means the Worker must live in the account that holds gnycyouth.org; add the new host to `assets/photos.js` (STAFF) and the comments allow-list.
-4. Cloudflare Zero Trust team `gnycyouth.cloudflareaccess.com`; Access application "GNYC staff prototype (real photos)" on the address above, email one-time code, policy "GNYC staff photo reviewers" holds the staff emails (add people there). Worker vars `ACCESS_TEAM` = the team domain and `ACCESS_AUD` = the application's audience tag are set on the Worker.
+2. Secret `GOOGLE_SA` (the JSON key) on the Worker, set through the Cloudflare API or the dashboard (Workers & Pages → gnycyouth-staff → Settings → Variables and Secrets). The key file is deleted after; it is never committed.
+3. Account and address: the Greater New York Conference Cloudflare account, which holds gnycyouth.org; custom domain `site-review.gnycyouth.org`, no workers.dev address, so there is one door. Other prototypes follow the same pattern (`congress-review.gnycyouth.org`). Until October 2026 the copy ran at `gnyc.webtekton.com` on Darwin Garcia's personal account; it keeps showing photos (`assets/photos.js`) but no comments until the move is confirmed, then it is turned off and removed from `assets/photos.js`.
+4. Cloudflare Zero Trust team `gnycstaff.cloudflareaccess.com` (Free plan); Access application "GNYC site review" on the address above, email one-time code, 24-hour session; reusable policy "GNYC staff site reviewers" holds the staff emails (add people there). Worker vars `ACCESS_TEAM` = the team domain and `ACCESS_AUD` = the application's audience tag are set on the Worker.
 
-Redeploy after editing `worker.js`: `npx wrangler deploy` from this folder. 
+Redeploy after editing `worker.js`: push, then upload the file served by GitHub Pages through the Cloudflare API with a SHA-256 check against the commit (no wrangler on this machine); the upload keeps the bindings (`keep_bindings`), and the bindings list is checked after. Bindings: `PHOTOS` (KV `gnycyouth-photos`), `COMMENTS` (service `gnycyouth-comments`), vars from `wrangler.toml`, secrets `GOOGLE_SA` and `STAFF_KEY`.
 
 **Tests:** `node staff-worker/test/worker.test.mjs` (fake Drive, fake Access, keys generated per run; no credentials). Run before every deploy.
 
-**Rollback:** revert the commit that added this folder; then delete the `gnycyouth-staff` Worker in the Cloudflare dashboard (or remove the `GOOGLE_SA` secret, which turns every photo request into a 503). The KV namespace `gnycyouth-staff-photos` holds only cached copies and can be deleted with it.
+**Rollback:** revert the commit that added this folder; then delete the `gnycyouth-staff` Worker in the Cloudflare dashboard (or remove the `GOOGLE_SA` secret, which turns every photo request into a 503). The KV namespace `gnycyouth-photos` holds only cached copies and can be deleted with it.
 
 **Known limits:** the index is cached per Worker instance for a minute, so a new upload shows within about a minute. Signed-in viewers can see the names of skipped files in `/photos/index` so uploaders can fix them; keep the staff list narrow, and keep photo releases for minors on file before anything is uploaded.

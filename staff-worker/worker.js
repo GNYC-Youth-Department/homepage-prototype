@@ -10,7 +10,7 @@
             anything else            -> the page from GitHub Pages
    Cache: Workers KV (binding PHOTOS), keyed by code, Drive file id and modified time; the Cache API does not run on
    workers.dev or behind Access. Entries expire after 30 days.
-   Access: vars ACCESS_TEAM (e.g. gnycyouth.cloudflareaccess.com) and ACCESS_AUD (the Access application's audience tag).
+   Access: vars ACCESS_TEAM (e.g. gnycstaff.cloudflareaccess.com) and ACCESS_AUD (the Access application's audience tag).
    Until both are set, /photos/* answers 503 and nothing from Drive leaves the Worker (fail closed).
 */
 const ORIGIN = "https://gnyc-youth-department.github.io/homepage-prototype";

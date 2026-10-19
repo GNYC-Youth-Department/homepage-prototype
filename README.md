@@ -20,11 +20,11 @@ Every page has a **Comments** button at the bottom right, above the slot toggle.
 
 **Comments** in the review ribbon opens `comments.html`, every comment from every page in one place, with a filter per page, the page and code each one refers to (the code links to that section of the page), replies, and Reply.
 
-The comments are kept by a small comments service (`comments-worker/`, a Cloudflare Worker with a D1 table on Darwin Garcia's personal account; see its README). Darwin Garcia can remove a comment through the drawer's **Moderate** link with the moderator key. The drawer reaches the service only from the GitHub Pages link or a local server; opened from a file or another host it says so.
+The comments are kept by a small comments service (`comments-worker/`, a Cloudflare Worker with a D1 table on the Greater New York Conference Cloudflare account; see its README). They are for staff only: the drawer and the comments page work on the staff copy at `https://site-review.gnycyouth.org`, after the email sign-in, and this public copy shows no comments. Darwin Garcia can remove a comment through the drawer's **Moderate** link with the moderator key.
 
 ## Real photos: staff copy only
 
-This public copy never shows a real photo; every photo slot keeps its placeholder. Signed-in staff see the same pages at `https://gnyc.webtekton.com`, where each slot shows the photo whose file name starts with its code in the private Drive folder **GNYC Website Content** (for example `PF-14-3 camporee.jpg`). Sign-in is Cloudflare Access with an email code; the list of staff emails is kept there. `assets/site.js` loads `assets/photos.js` on every page, and it does nothing outside the staff host. How it works, how to set it up and its tests: `staff-worker/README.md`.
+This public copy never shows a real photo; every photo slot keeps its placeholder. Signed-in staff see the same pages at `https://site-review.gnycyouth.org`, where each slot shows the photo whose file name starts with its code in the private Drive folder **GNYC Website Content** (for example `PF-14-3 camporee.jpg`). Sign-in is Cloudflare Access with an email code; the list of staff emails is kept there. `assets/site.js` loads `assets/photos.js` on every page, and it does nothing outside the staff host. How it works, how to set it up and its tests: `staff-worker/README.md`.
 
 ## Placeholders
 

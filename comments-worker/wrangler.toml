@@ -1,9 +1,9 @@
 name = "gnycyouth-comments"
 main = "worker.js"
 compatibility_date = "2026-09-01"
-workers_dev = true
+workers_dev = false   # reached only through the staff Worker's COMMENTS binding
 
 [[d1_databases]]
 binding = "DB"
 database_name = "gnycyouth-comments"
-database_id = "a77da35d-0d3c-48e5-a48f-001c1e93ba88"
+database_id = "87aa1d56-e360-48de-8183-bb5cf2bb4fad"

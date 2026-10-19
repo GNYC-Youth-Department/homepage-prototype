@@ -4,11 +4,12 @@
    Kept by a small comments service (comments-worker/, a Cloudflare Worker with a D1 table). Loaded by assets/site.js;
    comments.html loads it directly and uses window.gnycComments. */
 (function () {
-  /* The staff copy (behind the email sign-in) posts through its own Worker, which adds who is signed in; everywhere
-     else comments are read-only. */
-  var STAFF = location.hostname === 'gnyc.webtekton.com' || (function () { try { return localStorage.getItem('gnycyouth.comments.staff') === '1'; } catch (e) { return false; } })();
-  var STAFF_URL = 'https://gnyc.webtekton.com';
-  var API = (function () { try { return localStorage.getItem('gnycyouth.comments.api') || ''; } catch (e) { return ''; } })() || (location.hostname === 'gnyc.webtekton.com' ? location.origin : 'https://gnycyouth-comments.rdgt07.workers.dev');
+  /* Comments live only on the staff copy (behind the email sign-in), which reads and posts through its own Worker; that
+     Worker adds who is signed in. The public copy, and the older staff address gnyc.webtekton.com, show no comments. */
+  var ON_STAFF = location.hostname === 'site-review.gnycyouth.org';
+  var STAFF = ON_STAFF || (function () { try { return localStorage.getItem('gnycyouth.comments.staff') === '1'; } catch (e) { return false; } })();
+  var STAFF_URL = 'https://site-review.gnycyouth.org';
+  var API = (function () { try { return localStorage.getItem('gnycyouth.comments.api') || ''; } catch (e) { return ''; } })() || (ON_STAFF ? location.origin : '');
   var KN = 'gnycyouth.comments.name', KM = 'gnycyouth.comments.mod';
   var MO = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   /* page key, name, path: the key is the slot prefix of the page's codes, in lower case */
@@ -47,6 +48,7 @@
     getMod: function () { return mod; }, setMod: function (k) { mod = k || ''; ls(KM, mod || null); } };
 
   if (document.body.getAttribute('data-page') === 'comments') return;
+  if (!API) return;   /* public copy: no Comments button */
   var ROOT = document.documentElement.getAttribute('data-root') || './';
   var P = pageFor(location.pathname); var firstSlot = document.querySelector('[data-slot]');
   var page = P ? P[0] : (firstSlot ? firstSlot.dataset.slot.split('-')[0].toLowerCase() : 'page');

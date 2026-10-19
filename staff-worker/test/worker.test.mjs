@@ -35,7 +35,7 @@ globalThis.fetch = async (u, o = {}) => { u = String(u); calls.push(u);
 const W = (await import(new URL('../worker.js', import.meta.url))).default;
 const pending = []; const ctx = { waitUntil: p => pending.push(p) };
 const env = { PHOTOS, FOLDER_ID: 'root', GOOGLE_SA: JSON.stringify(sa), ACCESS_TEAM: TEAM, ACCESS_AUD: AUD };
-const go = async (path, hdr = {}, e = env) => { const r = await W.fetch(new Request('https://gnyc.webtekton.com' + path, { headers: hdr }), e, ctx); return [r.status, r.headers.get('content-type'), await r.text()]; };
+const go = async (path, hdr = {}, e = env) => { const r = await W.fetch(new Request('https://site-review.gnycyouth.org' + path, { headers: hdr }), e, ctx); return [r.status, r.headers.get('content-type'), await r.text()]; };
 const A = { 'Cf-Access-Jwt-Assertion': good };
 const eq = async (name, got, status, body) => { const [st, , b] = await got; assert.equal(st, status, name + ' status'); if (body !== undefined) assert.match(b, body, name + ' body'); console.log('ok', name); };
 const noEnv = { FOLDER_ID: 'root', GOOGLE_SA: env.GOOGLE_SA };
@@ -68,8 +68,8 @@ assert.equal(calls.filter(c => c.includes('lh3') || c.includes('alt=media')).len
 const seen = [];
 const COMMENTS = { fetch: async r => { seen.push({ url: r.url, method: r.method, h: Object.fromEntries(r.headers), body: r.method === 'POST' ? await r.text() : null }); return Response.json({ ok: true }); } };
 const cenv = { ...env, COMMENTS, STAFF_KEY: 'staff-key-abcdefghijklmnopqrstuvwxyz012345' };
-const SAME = { Origin: 'https://gnyc.webtekton.com', 'Sec-Fetch-Site': 'same-origin', 'Content-Type': 'application/json' };
-const goC = async (path, opt = {}, hdr = A) => { const r = await W.fetch(new Request('https://gnyc.webtekton.com' + path, { ...opt, headers: { ...hdr, ...(opt.method ? SAME : {}), ...(opt.headers || {}) } }), cenv, ctx); return r.status; };
+const SAME = { Origin: 'https://site-review.gnycyouth.org', 'Sec-Fetch-Site': 'same-origin', 'Content-Type': 'application/json' };
+const goC = async (path, opt = {}, hdr = A) => { const r = await W.fetch(new Request('https://site-review.gnycyouth.org' + path, { ...opt, headers: { ...hdr, ...(opt.method ? SAME : {}), ...(opt.headers || {}) } }), cenv, ctx); return r.status; };
 assert.equal(await goC('/c?page=hm', {}, {}), 401); assert.equal(seen.length, 0); console.log('ok comments need sign-in');
 assert.equal(await goC('/c', { method: 'POST', body: '{"page":"hm","body":"hi"}', headers: { 'X-Staff-Email': 'christian@evil.example', 'X-Staff-Key': 'guess' } }), 200);
 assert.equal(seen[0].h['x-staff-email'], 'a@b.org'); assert.equal(seen[0].h['x-staff-key'], 'staff-key-abcdefghijklmnopqrstuvwxyz012345'); assert.equal(seen[0].body, '{"page":"hm","body":"hi"}'); assert.equal(seen[0].url, 'https://comments.internal/c');
@@ -81,5 +81,5 @@ assert.equal(await goC('/c', { method: 'POST', body: '{"page":"hm","body":"x"}',
 assert.equal(await goC('/c/12', { method: 'DELETE', headers: { 'X-Mod-Key': 'mk', Origin: 'https://evil.example', 'Sec-Fetch-Site': 'cross-site' } }), 403); console.log('ok cross-site delete refused');
 assert.equal(seen.length, 2, 'refused requests never reach the comments service');
 assert.equal(await goC('/index.html', { method: 'POST', body: 'x' }), 405); console.log('ok only comments accept POST');
-assert.equal(await (async () => { const r = await W.fetch(new Request('https://gnyc.webtekton.com/c/me', { headers: A }), env, ctx); return r.status; })(), 503); console.log('ok comments fail closed without the binding');
+assert.equal(await (async () => { const r = await W.fetch(new Request('https://site-review.gnycyouth.org/c/me', { headers: A }), env, ctx); return r.status; })(), 503); console.log('ok comments fail closed without the binding');
 console.log('all staff Worker tests passed');

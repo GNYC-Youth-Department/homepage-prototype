@@ -2,11 +2,11 @@ name = "gnycyouth-staff"
 main = "worker.js"
 compatibility_date = "2026-09-01"
 workers_dev = false
-routes = [{ pattern = "gnyc.webtekton.com", custom_domain = true }]
+routes = [{ pattern = "site-review.gnycyouth.org", custom_domain = true }]
 
 [[kv_namespaces]]
 binding = "PHOTOS"
-id = "85469f4a09074caabd8f39d50c5437c8"
+id = "7920ed0ef48b4c88ab16d16b3b85e6ce"
 
 [[services]]
 binding = "COMMENTS"
@@ -14,6 +14,6 @@ service = "gnycyouth-comments"
 
 [vars]
 FOLDER_ID = "1Udv4Di_tE94kylc2wXvVoRDRXx1rR5aV"
-ACCESS_TEAM = "gnycyouth.cloudflareaccess.com"
-ACCESS_AUD = "4aa70b1ace18871b7179a6c5a42ce049e589ab3b3cefc74906e287ab72501c6c"   # audience tag of the Access application; not a secret
+ACCESS_TEAM = "gnycstaff.cloudflareaccess.com"
+ACCESS_AUD = "98c577602a2cbd26e6d6910bfe165a91e414f0a4a01843a2e5eb905bdbcaa75b"   # audience tag of the Access application; not a secret
 # Secrets GOOGLE_SA (the service account's JSON key) and STAFF_KEY (shared with gnycyouth-comments) live on the Worker only, never in this repo.

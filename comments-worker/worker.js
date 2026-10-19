@@ -1,8 +1,9 @@
 /* Comments service for the gnycyouth.org prototype pages (GNYC-Youth-Department/homepage-prototype).
-   Cloudflare Worker + D1. Comments are posted only from the staff copy (gnyc.webtekton.com, behind Cloudflare Access):
+   Cloudflare Worker + D1. Comments are posted only from the staff copy (site-review.gnycyouth.org, behind Cloudflare Access):
    its Worker forwards each post over a service binding with the signed-in email and a shared key (secret STAFF_KEY),
    and the name shown is looked up in the staff directory (secret STAFF_NAMES, JSON email -> full name), never typed.
-   Anyone with the public link can read; nobody can post there. Emails are stored but never returned.
+   It has no public address: everything reaches it through that binding, so only signed-in staff read or post.
+   Emails are stored but never returned.
    A moderator key (secret MOD_KEY) allows deletes.
    Every comment belongs to a page and, optionally, to one content slot on it (a code such as HM-05 from the content brief).
    Routes:  GET /c?page=<key>                     -> { comments: [...] } newest first, for one page
@@ -10,9 +11,10 @@
             POST /c {page,body,slot?,parent?}     -> { comment }   signed-in staff only; slot: the code the comment is about; parent: the comment it replies to
             GET /c/me                             -> { name }      signed-in staff only: the name comments will carry
             DELETE /c/<id>                        -> { ok }        header X-Mod-Key
+            Every route needs the staff key and a signed-in email; without them: 401 (403 for POST).
             GET /c/check                          -> { ok }        header X-Mod-Key (validates the key)
 */
-const ORIGINS = [/^https:\/\/gnyc-youth-department\.github\.io$/, /^https:\/\/gnyc\.webtekton\.com$/, /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/];
+const ORIGINS = [/^https:\/\/site-review\.gnycyouth\.org$/];   /* calls arrive through the binding, so CORS is a backstop only */
 const PAGE = /^[a-z0-9-]{1,40}$/;
 const SLOT = /^[A-Z]{2,3}-\d\d(?:-\d{1,2})?$/;
 const LIMIT_PER_HOUR = 30;
@@ -21,7 +23,7 @@ const COLS = "id, page, slot, parent_id AS parent, name, body, created_at AS at,
 const allowed = req => ORIGINS.some(r => r.test(req.headers.get("Origin") || ""));
 function cors(req) {
   return {
-    "Access-Control-Allow-Origin": allowed(req) ? req.headers.get("Origin") : "https://gnyc-youth-department.github.io",
+    "Access-Control-Allow-Origin": allowed(req) ? req.headers.get("Origin") : "https://site-review.gnycyouth.org",
     "Access-Control-Allow-Methods": "GET,POST,DELETE,OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type,X-Mod-Key",
     "Access-Control-Max-Age": "86400",
@@ -78,6 +80,8 @@ export default {
     if (req.method === "OPTIONS") return new Response(null, { status: 204, headers: cors(req) });
     const url = new URL(req.url);
     const path = url.pathname.replace(/\/+$/, "");
+    /* reading and deleting need the staff Worker's key too, so the comments stay private even if this Worker is ever given an address */
+    if ((req.method === "GET" || req.method === "DELETE") && !staff(req, env)) return json(req, { error: "sign in at the staff copy to read comments" }, 401);
 
     if (req.method === "GET" && path === "/c/me") {
       const who = staff(req, env);
@@ -104,7 +108,7 @@ export default {
 
     if (req.method === "POST" && path === "/c") {
       const who = staff(req, env);
-      if (!who) return json(req, { error: "Comments are posted from the staff copy at gnyc.webtekton.com, where you sign in with your email." }, 403);
+      if (!who) return json(req, { error: "Comments are posted from the staff copy at site-review.gnycyouth.org, where you sign in with your email." }, 403);
       if (who.broken) return json(req, { error: "comments are not configured" }, 503);
       if (!who.name) return json(req, { error: "Your email is not in the staff directory yet. Ask Darwin Garcia to add you." }, 403);
       let b; try { b = await req.json(); } catch { return json(req, { error: "bad json" }, 400); }
