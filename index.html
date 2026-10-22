@@ -118,10 +118,20 @@
   .heart-on .love-swap.is-heart .lw{opacity:0;filter:blur(6px);transform:scale(.85)}
   .heart-on .love-swap.is-heart .lh{opacity:1;transform:scale(1)}
   .heart-on .love-swap.is-beating .lh{animation:beat 1.6s ease-in-out infinite;transition:none}
-  .hero-mark{position:absolute;right:7%;bottom:14%;width:min(22vw,300px);opacity:0;pointer-events:none;transform-origin:50% 50%;filter:drop-shadow(0 20px 36px rgba(0,0,0,.45));animation:markgrow 6.5s ease-in-out .8s 1 forwards}
-  @keyframes markgrow{0%{opacity:0;transform:scale(.45)}20%{opacity:1;transform:scale(.6)}70%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.06)}}
-  @media (prefers-reduced-motion:reduce){.hero-mark{animation:none;opacity:0}}
-  @media (max-width:900px){.hero-mark{display:none}}
+  /* The department seal: on the open sky at the upper right, away from the headline and the corner controls.
+     A soft light blooms, two rings ripple outward, the seal grows from small to its size, holds, then fades.
+     Once per visit; off below 1100px (no open sky there) and with reduced motion. */
+  .hero-mark{position:absolute;right:6%;top:17%;width:min(18vw,280px);aspect-ratio:512/389;pointer-events:none;z-index:1}
+  .hero-mark>img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transform:scale(.38);filter:drop-shadow(0 18px 30px rgba(0,0,0,.5));animation:seal-grow 7.5s cubic-bezier(.33,1,.68,1) .9s 1 forwards}
+  .hero-mark>i{position:absolute;left:50%;top:50%;width:150%;aspect-ratio:1;border-radius:9999px;transform:translate(-50%,-50%) scale(.2);opacity:0;pointer-events:none}
+  .hero-mark>i.glow{background:radial-gradient(circle,rgba(255,226,71,.55) 0%,rgba(255,226,71,.18) 35%,rgba(255,226,71,0) 70%);animation:seal-glow 7.5s ease-out .9s 1 forwards}
+  .hero-mark>i.ring{border:2px solid rgba(255,255,255,.55);animation:seal-ring 2.6s ease-out 1.6s 1 forwards}
+  .hero-mark>i.ring2{border:1px solid rgba(255,226,71,.6);animation:seal-ring 2.6s ease-out 2.3s 1 forwards}
+  @keyframes seal-grow{0%{opacity:0;transform:scale(.38)}14%{opacity:1;transform:scale(.55)}55%{opacity:1;transform:scale(1)}80%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.04)}}
+  @keyframes seal-glow{0%{opacity:0;transform:translate(-50%,-50%) scale(.2)}18%{opacity:1;transform:translate(-50%,-50%) scale(1)}75%{opacity:.8;transform:translate(-50%,-50%) scale(1.05)}100%{opacity:0;transform:translate(-50%,-50%) scale(1.15)}}
+  @keyframes seal-ring{0%{opacity:0;transform:translate(-50%,-50%) scale(.35)}15%{opacity:1}100%{opacity:0;transform:translate(-50%,-50%) scale(1.35)}}
+  @media (prefers-reduced-motion:reduce){.hero-mark{display:none}}
+  @media (max-width:1100px){.hero-mark{display:none}}
   @keyframes beat{0%,100%{transform:scale(1)}14%{transform:scale(1.1)}28%{transform:scale(1)}42%{transform:scale(1.06)}56%{transform:scale(1)}}
 </style>
 </head>
@@ -131,7 +141,7 @@
 <header class="hero slot relative bg-[#0b1430]" style="z-index:5" data-slot="HM-01" data-spec="Photo · hero 2400×1200 landscape (current image is stock)">
 <img class="absolute inset-0 w-full h-full object-cover" style="object-position:50% 38%" src="img/hero.jpg" alt="Manhattan skyline over Central Park at dusk">
 <div class="hero-scrim absolute inset-0" aria-hidden="true"></div>
-<img class="hero-mark" src="img/00.png" alt="" aria-hidden="true">
+<div class="hero-mark" aria-hidden="true"><i class="glow"></i><i class="ring"></i><i class="ring2"></i><img src="img/00.png" alt=""></div>
 <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-20 sm:pt-28 sm:pb-24 lg:pt-36 lg:pb-32">
 <div class="flex flex-wrap gap-2"><a class="inline-flex items-center gap-2 text-sm font-medium text-white/90 hover:text-white border border-white/25 bg-white/10 backdrop-blur-sm rounded-full pl-3 pr-4 py-1.5" href="https://events.gnycyouth.com/event/13/adventist-youth-congress-xviii?aff=P1A3HA0V"><span class="w-1.5 h-1.5 rounded-full bg-[#ffe247]" aria-hidden="true"></span>AY Congress XVIII registration is open <span aria-hidden="true">&rarr;</span></a><a class="slot inline-flex items-center gap-2 text-sm font-medium text-white/90 hover:text-white border border-white/25 bg-white/10 backdrop-blur-sm rounded-full pl-3 pr-4 py-1.5" href="https://gnycyouth.org/" data-slot="HM-11" data-spec="Link · 2027 club registration form URL"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400" aria-hidden="true"></span>2027 club registration is open <span aria-hidden="true">&rarr;</span></a></div>
 <h1 data-slot="HM-02" data-spec="Text · headline + 25-word intro" class="slot mt-6 max-w-3xl text-[40px] leading-[1.08] sm:text-6xl sm:leading-[1.05] lg:text-7xl lg:leading-[1.03] font-heading font-extrabold tracking-[-0.03em] text-white" style="text-wrap:balance">Helping New York youth live, lead and <span class="love-swap"><span class="lw">love</span><svg class="lh" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.3 10.6 20C5.4 15.4 2 12.3 2 8.5 2 5.4 4.4 3 7.5 3c1.7 0 3.4.8 4.5 2.1C13.1 3.8 14.8 3 16.5 3 19.6 3 22 5.4 22 8.5c0 3.8-3.4 6.9-8.6 11.5L12 21.3z"/></svg></span> <span class="text-[#ffe247]">like Jesus.</span></h1>
