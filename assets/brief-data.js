@@ -13,6 +13,10 @@ var P = [
   ['HM-05-3','photo','Story photo · Story 3','1600×1000 · file HM-05-3-story-3.jpg'],
   ['HM-07','text','Club card descriptions','Confirm the four 25-word descriptions and age ranges'],
   ['HM-08','file','Four featured resources','Which four downloads should the homepage show; link or file for each'],
+  ['HM-08-1','photo','Faded photo · download card 1','1200×600 · file HM-08-1-name.jpg · shown faint behind the top of the card'],
+  ['HM-08-2','photo','Faded photo · download card 2','1200×600 · file HM-08-2-name.jpg · shown faint behind the top of the card'],
+  ['HM-08-3','photo','Faded photo · download card 3','1200×600 · file HM-08-3-name.jpg · shown faint behind the top of the card'],
+  ['HM-08-4','photo','Faded photo · download card 4','1200×600 · file HM-08-4-name.jpg · shown faint behind the top of the card'],
   ['HM-09','link','Store link','Done: gnycyouth.org/shop'],
   ['HM-10','file','Year calendar PDF','The current season’s printable calendar']]},
  {code:'PF', name:'Pathfinders', url:'ministries/pathfinders.html', group:'Built pages', note:'Ministry page layout. Adventurers, Master Guides and AY Ministries use the same layout and the same list of slots.', slots:[

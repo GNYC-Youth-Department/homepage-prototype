@@ -38,6 +38,7 @@
   .ev-card:hover{transform:translateY(-6px);border-color:rgba(var(--acc),.45);box-shadow:0 2px 4px rgba(15,23,42,.04),0 28px 56px -14px rgba(var(--acc),.38),0 10px 20px -8px rgba(15,23,42,.08)}
   .ev-art{transition:transform .6s cubic-bezier(.16,1,.3,1)}
   .ev-card:hover .ev-art{transform:scale(1.06)}
+  .res-photo{position:absolute;inset:0;opacity:.28;background:none;color:transparent;z-index:0}.res-photo.has-photo{background-size:cover;background-position:50% 30%}.res-head>.res-lines,.res-head>.res-sheet,.res-head>.res-badge{position:relative;z-index:1}
   .ev-crest{right:18px;bottom:-30px;width:172px;height:172px;object-fit:contain;transform:rotate(-8deg);filter:drop-shadow(0 18px 28px rgba(0,0,0,.45))}
   .ev-card:hover .ev-crest{transform:rotate(-3deg) scale(1.07)}
   .ev-lines{background:repeating-linear-gradient(135deg,rgba(255,255,255,.07) 0 1px,transparent 1px 14px);-webkit-mask-image:linear-gradient(90deg,#000,transparent 75%);mask-image:linear-gradient(90deg,#000,transparent 75%)}
@@ -53,6 +54,16 @@
   .ev-camporee .ev-glow{background:radial-gradient(60% 90% at 82% 78%,rgba(245,214,10,.55),rgba(245,214,10,0) 70%)}
   .ev-camporee .ev-btn{background:#fef3c7;color:#854d0e;box-shadow:inset 0 0 0 1px rgba(180,83,9,.18)}
   .ev-camporee .ev-btn:hover{background:#fde68a}
+  .ev-gyd{--acc:3,105,161}
+  .ev-gyd .ev-head{background:linear-gradient(135deg,#0c4a6e 0%,#0369a1 60%,#0284c7 100%)}
+  .ev-gyd .ev-glow{background:radial-gradient(60% 90% at 82% 78%,rgba(255,226,71,.5),rgba(255,226,71,0) 70%)}
+  .ev-gyd .ev-btn{background:#e0f2fe;color:#075985;box-shadow:inset 0 0 0 1px rgba(3,105,161,.16)}
+  .ev-gyd .ev-btn:hover{background:#bae6fd}
+  .ev-advcamp{--acc:109,40,217}
+  .ev-advcamp .ev-head{background:linear-gradient(135deg,#3b0764 0%,#6d28d9 60%,#7c3aed 100%)}
+  .ev-advcamp .ev-glow{background:radial-gradient(60% 90% at 82% 78%,rgba(253,224,71,.5),rgba(253,224,71,0) 70%)}
+  .ev-advcamp .ev-btn{background:#ede9fe;color:#5b21b6;box-shadow:inset 0 0 0 1px rgba(109,40,217,.16)}
+  .ev-advcamp .ev-btn:hover{background:#ddd6fe}
   .ev-summit{--acc:55,48,163}
   .ev-summit .ev-head{background:linear-gradient(135deg,#0b1430 0%,#1e3a8a 60%,#1e40af 100%)}
   .ev-summit .ev-glow{background:radial-gradient(60% 90% at 82% 78%,rgba(251,191,36,.45),rgba(251,191,36,0) 70%)}
@@ -107,6 +118,10 @@
   .heart-on .love-swap.is-heart .lw{opacity:0;filter:blur(6px);transform:scale(.85)}
   .heart-on .love-swap.is-heart .lh{opacity:1;transform:scale(1)}
   .heart-on .love-swap.is-beating .lh{animation:beat 1.6s ease-in-out infinite;transition:none}
+  .hero-mark{position:absolute;right:4%;bottom:10%;width:min(34vw,420px);opacity:0;pointer-events:none;filter:drop-shadow(0 24px 40px rgba(0,0,0,.45));animation:markrise 7s cubic-bezier(.22,.61,.36,1) .6s 1 forwards}
+  @keyframes markrise{0%{opacity:0;transform:translateY(28%) rotate(-14deg) scale(.82)}18%{opacity:.95;transform:translateY(0) rotate(0) scale(1)}70%{opacity:.95;transform:translateY(0) rotate(0) scale(1)}100%{opacity:.12;transform:translateY(-10%) rotate(6deg) scale(1.08)}}
+  @media (prefers-reduced-motion:reduce){.hero-mark{animation:none;opacity:.14;transform:none}}
+  @media (max-width:900px){.hero-mark{display:none}}
   @keyframes beat{0%,100%{transform:scale(1)}14%{transform:scale(1.1)}28%{transform:scale(1)}42%{transform:scale(1.06)}56%{transform:scale(1)}}
 </style>
 </head>
@@ -116,13 +131,14 @@
 <header class="hero slot relative bg-[#0b1430]" style="z-index:5" data-slot="HM-01" data-spec="Photo · hero 2400×1200 landscape (current image is stock)">
 <img class="absolute inset-0 w-full h-full object-cover" style="object-position:50% 38%" src="img/hero.jpg" alt="Manhattan skyline over Central Park at dusk">
 <div class="hero-scrim absolute inset-0" aria-hidden="true"></div>
+<img class="hero-mark" src="img/00.png" alt="" aria-hidden="true">
 <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-20 sm:pt-28 sm:pb-24 lg:pt-36 lg:pb-32">
 <div class="flex flex-wrap gap-2"><a class="inline-flex items-center gap-2 text-sm font-medium text-white/90 hover:text-white border border-white/25 bg-white/10 backdrop-blur-sm rounded-full pl-3 pr-4 py-1.5" href="https://events.gnycyouth.com/event/13/adventist-youth-congress-xviii?aff=P1A3HA0V"><span class="w-1.5 h-1.5 rounded-full bg-[#ffe247]" aria-hidden="true"></span>AY Congress XVIII registration is open <span aria-hidden="true">&rarr;</span></a><a class="slot inline-flex items-center gap-2 text-sm font-medium text-white/90 hover:text-white border border-white/25 bg-white/10 backdrop-blur-sm rounded-full pl-3 pr-4 py-1.5" href="https://gnycyouth.org/" data-slot="HM-11" data-spec="Link · 2027 club registration form URL"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400" aria-hidden="true"></span>2027 club registration is open <span aria-hidden="true">&rarr;</span></a></div>
 <h1 data-slot="HM-02" data-spec="Text · headline + 25-word intro" class="slot mt-6 max-w-3xl text-[40px] leading-[1.08] sm:text-6xl sm:leading-[1.05] lg:text-7xl lg:leading-[1.03] font-heading font-extrabold tracking-[-0.03em] text-white" style="text-wrap:balance">Helping New York youth live, lead and <span class="love-swap"><span class="lw">love</span><svg class="lh" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.3 10.6 20C5.4 15.4 2 12.3 2 8.5 2 5.4 4.4 3 7.5 3c1.7 0 3.4.8 4.5 2.1C13.1 3.8 14.8 3 16.5 3 19.6 3 22 5.4 22 8.5c0 3.8-3.4 6.9-8.6 11.5L12 21.3z"/></svg></span> <span class="text-[#ffe247]">like Jesus.</span></h1>
-<p class="mt-6 max-w-xl text-lg sm:text-xl leading-relaxed text-white/85">Events, clubs and resources for Adventist Youth Ministries across the five boroughs, Long Island and upstate New York.</p>
+<p class="mt-6 max-w-xl text-lg sm:text-xl leading-relaxed text-white/85">Resources for Adventist Youth Ministries across the five boroughs, Long Island and upstate New York.</p>
 <div class="mt-10 max-w-3xl">
 <form class="ss-bar ss-bar-hero" role="search" action="#"><span class="ss-lead" aria-hidden="true"><span class="material-symbols-outlined">search</span></span><input type="search" data-search placeholder="Search events, clubs, honors, forms…" aria-label="Search the site"><kbd class="ss-kbd" aria-hidden="true">/</kbd><button type="submit" class="ss-btn">Search<span class="material-symbols-outlined" aria-hidden="true" style="font-size:18px">arrow_forward</span></button></form>
-<div class="ss-chips"><span>Popular</span><a href="#calendar"><span class="material-symbols-outlined" aria-hidden="true">event</span>Upcoming events</a><a href="ministries/pathfinders.html#find"><span class="material-symbols-outlined" aria-hidden="true">location_on</span>Find a club</a><a href="ministries/pathfinders/honors.html"><span class="material-symbols-outlined" aria-hidden="true">workspace_premium</span>Pathfinder Honors</a><a href="resources.html"><span class="material-symbols-outlined" aria-hidden="true">folder_open</span>Forms</a></div>
+<div class="ss-chips"><span>Popular</span><a href="#calendar"><span class="material-symbols-outlined" aria-hidden="true">event</span>Upcoming events</a><a href="ministries/pathfinders/honors.html"><span class="material-symbols-outlined" aria-hidden="true">workspace_premium</span>Pathfinder Honors</a><a href="resources.html"><span class="material-symbols-outlined" aria-hidden="true">folder_open</span>Forms</a></div>
 </div></div></header>
 <section class="py-16 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" id="calendar">
 <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
@@ -180,6 +196,42 @@
 <p class="text-sm text-slate-600 mt-2 flex items-center gap-1"><span class="material-symbols-outlined text-base text-slate-400" aria-hidden="true">location_on</span>Venue TBA</p>
 <p class="text-[15px] text-slate-700 mt-3 mb-6 leading-relaxed">The conference Bible Olympics for Pathfinder and Adventurer clubs, October 24.</p>
 <a class="ev-btn mt-auto inline-flex items-center justify-center gap-2 w-full py-3.5 px-5 rounded-full font-semibold text-[15px]" href="ministries/pathfinders/teen-leadership-training.html" rel="noopener noreferrer" target="_blank">Details<span class="material-symbols-outlined text-lg transition-transform group-hover:translate-x-1" aria-hidden="true">arrow_forward</span></a>
+</div></li><li class="ev-item ev-card ev-gyd group relative flex flex-col bg-white rounded-3xl overflow-hidden" data-cats="youth service" data-start="2027-03-20">
+<div class="ev-head relative h-52 overflow-hidden"><div class="ev-glow absolute inset-0" aria-hidden="true"></div><div class="ev-lines absolute inset-0" aria-hidden="true"></div><img class="ev-art ev-crest absolute" src="img/crest-ay.png" alt="">
+<div class="absolute inset-0 bg-gradient-to-t from-black/55 via-black/5 to-black/25" aria-hidden="true"></div>
+<span class="absolute top-4 left-4 inline-flex items-center px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase text-white bg-white/15 backdrop-blur-md border border-white/25">All ages</span>
+<span class="soon absolute top-4 right-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase bg-[#ffe247] text-[#211b00] shadow-lg" hidden><span class="w-1.5 h-1.5 rounded-full bg-[#211b00]" aria-hidden="true"></span>This week</span>
+</div>
+<div class="relative flex flex-col flex-1 px-6 sm:px-7 pb-7">
+<div class="ev-date -mt-10 mb-5 self-start bg-white rounded-2xl px-4 pt-2.5 pb-2 text-center min-w-[76px]"><div class="ev-mon text-[11px] font-extrabold tracking-[0.16em] uppercase">2027 Mar</div><div class="font-heading font-extrabold text-[26px] leading-tight tracking-tight text-slate-900 whitespace-nowrap tabular-nums">20</div></div>
+<h3 class="font-heading font-bold text-[22px] text-slate-900 leading-snug tracking-tight">Global Youth Day</h3>
+<p class="text-sm text-slate-600 mt-2 flex items-center gap-1"><span class="material-symbols-outlined text-base text-slate-400" aria-hidden="true">location_on</span>Every church &middot; across the conference</p>
+<p class="text-[15px] text-slate-700 mt-3 mb-6 leading-relaxed">One Sabbath when youth across the world church leave the pews to serve their neighbors. Plan your church's project now.</p>
+<a class="ev-btn mt-auto inline-flex items-center justify-center gap-2 w-full py-3.5 px-5 rounded-full font-semibold text-[15px]" href="ministries/ay-ministries.html">Explore AY Ministries<span class="material-symbols-outlined text-lg transition-transform group-hover:translate-x-1" aria-hidden="true">arrow_forward</span></a>
+</div></li><li class="ev-item ev-card ev-camporee group relative flex flex-col bg-white rounded-3xl overflow-hidden" data-cats="clubs outdoors" data-start="2027-06-04">
+<div class="ev-head relative h-52 overflow-hidden"><div class="ev-glow absolute inset-0" aria-hidden="true"></div><div class="ev-lines absolute inset-0" aria-hidden="true"></div><img class="ev-art ev-crest absolute" src="img/08.png" alt="">
+<div class="absolute inset-0 bg-gradient-to-t from-black/55 via-black/5 to-black/25" aria-hidden="true"></div>
+<span class="absolute top-4 left-4 inline-flex items-center px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase text-white bg-white/15 backdrop-blur-md border border-white/25">Pathfinders</span>
+<span class="soon absolute top-4 right-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase bg-[#ffe247] text-[#211b00] shadow-lg" hidden><span class="w-1.5 h-1.5 rounded-full bg-[#211b00]" aria-hidden="true"></span>This week</span>
+</div>
+<div class="relative flex flex-col flex-1 px-6 sm:px-7 pb-7">
+<div class="ev-date -mt-10 mb-5 self-start bg-white rounded-2xl px-4 pt-2.5 pb-2 text-center min-w-[76px]"><div class="ev-mon text-[11px] font-extrabold tracking-[0.16em] uppercase">2027 Jun</div><div class="font-heading font-extrabold text-[26px] leading-tight tracking-tight text-slate-900 whitespace-nowrap tabular-nums">4&ndash;6</div></div>
+<h3 class="font-heading font-bold text-[22px] text-slate-900 leading-snug tracking-tight">Pathfinder Camporee</h3>
+<p class="text-sm text-slate-600 mt-2 flex items-center gap-1"><span class="material-symbols-outlined text-base text-slate-400" aria-hidden="true">location_on</span>Venue TBA</p>
+<p class="text-[15px] text-slate-700 mt-3 mb-6 leading-relaxed">Every Pathfinder club in Greater New York, one campsite: worship, events, honors and the fair.</p>
+<a class="ev-btn mt-auto inline-flex items-center justify-center gap-2 w-full py-3.5 px-5 rounded-full font-semibold text-[15px]" href="ministries/pathfinders.html">Explore Pathfinders<span class="material-symbols-outlined text-lg transition-transform group-hover:translate-x-1" aria-hidden="true">arrow_forward</span></a>
+</div></li><li class="ev-item ev-card ev-advcamp group relative flex flex-col bg-white rounded-3xl overflow-hidden" data-cats="clubs outdoors" data-start="2027-06-11">
+<div class="ev-head relative h-52 overflow-hidden"><div class="ev-glow absolute inset-0" aria-hidden="true"></div><div class="ev-lines absolute inset-0" aria-hidden="true"></div><img class="ev-art ev-crest absolute" src="img/07.png" alt="">
+<div class="absolute inset-0 bg-gradient-to-t from-black/55 via-black/5 to-black/25" aria-hidden="true"></div>
+<span class="absolute top-4 left-4 inline-flex items-center px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase text-white bg-white/15 backdrop-blur-md border border-white/25">Adventurers</span>
+<span class="soon absolute top-4 right-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase bg-[#ffe247] text-[#211b00] shadow-lg" hidden><span class="w-1.5 h-1.5 rounded-full bg-[#211b00]" aria-hidden="true"></span>This week</span>
+</div>
+<div class="relative flex flex-col flex-1 px-6 sm:px-7 pb-7">
+<div class="ev-date -mt-10 mb-5 self-start bg-white rounded-2xl px-4 pt-2.5 pb-2 text-center min-w-[76px]"><div class="ev-mon text-[11px] font-extrabold tracking-[0.16em] uppercase">2027 Jun</div><div class="font-heading font-extrabold text-[26px] leading-tight tracking-tight text-slate-900 whitespace-nowrap tabular-nums">11&ndash;13</div></div>
+<h3 class="font-heading font-bold text-[22px] text-slate-900 leading-snug tracking-tight">Adventurer Camporee</h3>
+<p class="text-sm text-slate-600 mt-2 flex items-center gap-1"><span class="material-symbols-outlined text-base text-slate-400" aria-hidden="true">location_on</span>Venue TBA</p>
+<p class="text-[15px] text-slate-700 mt-3 mb-6 leading-relaxed">A weekend of camping, awards and family worship for Adventurer clubs and their parents.</p>
+<a class="ev-btn mt-auto inline-flex items-center justify-center gap-2 w-full py-3.5 px-5 rounded-full font-semibold text-[15px]" href="ministries/adventurers.html">Explore Adventurers<span class="material-symbols-outlined text-lg transition-transform group-hover:translate-x-1" aria-hidden="true">arrow_forward</span></a>
 </div></li></ul></section>
 <section class="story-band" id="news"><div class="max-w-7xl mx-auto py-16 lg:py-24 px-4 sm:px-6 lg:px-8">
 <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
@@ -376,7 +428,7 @@
 <div class="mt-8 flex items-start gap-3.5 rounded-2xl bg-white/80 border border-slate-200/80 p-4 shadow-subtle-card"><span class="material-symbols-outlined text-[22px] text-[#006194] mt-0.5" aria-hidden="true">mail</span><p class="text-sm text-slate-700 leading-relaxed">Can&rsquo;t find a form? Email <a class="font-semibold text-[#006194] hover:underline" href="mailto:youth@gnycyouth.org">youth@gnycyouth.org</a> and the youth office will send it.</p></div>
 </div>
 <ul class="slot lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-7" data-slot="HM-08" data-spec="Files · the 4 downloads to feature"><li class="res-item res-card res-sky group relative flex flex-col bg-white rounded-3xl overflow-hidden" data-cats="forms">
-<div class="res-head relative h-44 overflow-hidden" aria-hidden="true">
+<div class="res-head relative h-44 overflow-hidden" aria-hidden="true"><div class="ph slot res-photo" data-slot="HM-08-1" data-spec="Photo · 1200×600 · faded behind the card top; a GNYC photo that fits this download"><span></span></div>
 <div class="res-lines absolute inset-0"></div>
 <div class="res-sheet res-back"></div>
 <div class="res-sheet res-front"><i class="res-bar"></i><i></i><i></i><i class="short"></i><i></i><i class="short"></i></div>
@@ -389,7 +441,7 @@
 <p class="text-[15px] text-slate-700 mt-2.5 mb-6 leading-relaxed">Schedule, campsite rules, fire safety and the director briefing for the annual camporee.</p>
 <a class="res-btn mt-auto inline-flex items-center justify-center gap-2 w-full py-3.5 px-5 rounded-full font-semibold text-[15px]" href="https://drive.google.com/file/d/1fXJtZb3sQf-Ta3kHERrqHuwifCNthTd4/view?usp=sharing" rel="noopener noreferrer" target="_blank"><span class="material-symbols-outlined text-xl transition-transform group-hover:translate-y-0.5" aria-hidden="true">download</span>Download the form</a>
 </div></li><li class="res-item res-card res-amber group relative flex flex-col bg-white rounded-3xl overflow-hidden" data-cats="forms">
-<div class="res-head relative h-44 overflow-hidden" aria-hidden="true">
+<div class="res-head relative h-44 overflow-hidden" aria-hidden="true"><div class="ph slot res-photo" data-slot="HM-08-2" data-spec="Photo · 1200×600 · faded behind the card top; a GNYC photo that fits this download"><span></span></div>
 <div class="res-lines absolute inset-0"></div>
 <div class="res-sheet res-back"></div>
 <div class="res-sheet res-front"><i class="res-bar"></i><i></i><i></i><i class="short"></i><i></i><i class="short"></i></div>
@@ -402,7 +454,7 @@
 <p class="text-[15px] text-slate-700 mt-2.5 mb-6 leading-relaxed">Parental permission, a risk management template and the pastor and director memo.</p>
 <a class="res-btn mt-auto inline-flex items-center justify-center gap-2 w-full py-3.5 px-5 rounded-full font-semibold text-[15px]" href="https://docs.google.com/document/d/1tja6FWznvbLDNfgDkX4kkWgLNS0EpW2A/edit?usp=sharing" rel="noopener noreferrer" target="_blank"><span class="material-symbols-outlined text-xl transition-transform group-hover:translate-y-0.5" aria-hidden="true">download</span>Download the release</a>
 </div></li><li class="res-item res-card res-indigo group relative flex flex-col bg-white rounded-3xl overflow-hidden" data-cats="uniform">
-<div class="res-head relative h-44 overflow-hidden" aria-hidden="true">
+<div class="res-head relative h-44 overflow-hidden" aria-hidden="true"><div class="ph slot res-photo" data-slot="HM-08-3" data-spec="Photo · 1200×600 · faded behind the card top; a GNYC photo that fits this download"><span></span></div>
 <div class="res-lines absolute inset-0"></div>
 <div class="res-sheet res-back"></div>
 <div class="res-sheet res-front"><i class="res-bar"></i><i></i><i></i><i class="short"></i><i></i><i class="short"></i></div>
@@ -415,7 +467,7 @@
 <p class="text-[15px] text-slate-700 mt-2.5 mb-6 leading-relaxed">Insignia placement, sash protocol, Class A and Class B uniforms, and TLT cords.</p>
 <a class="res-btn mt-auto inline-flex items-center justify-center gap-2 w-full py-3.5 px-5 rounded-full font-semibold text-[15px]" href="https://www.clubministries.org/pathfinders/pathfinder-uniform-standards-nad/">See the uniform standards</a>
 </div></li><li class="res-item res-card res-emerald group relative flex flex-col bg-white rounded-3xl overflow-hidden" data-cats="pbe">
-<div class="res-head relative h-44 overflow-hidden" aria-hidden="true">
+<div class="res-head relative h-44 overflow-hidden" aria-hidden="true"><div class="ph slot res-photo" data-slot="HM-08-4" data-spec="Photo · 1200×600 · faded behind the card top; a GNYC photo that fits this download"><span></span></div>
 <div class="res-lines absolute inset-0"></div>
 <div class="res-sheet res-back"></div>
 <div class="res-sheet res-front"><i class="res-bar"></i><i></i><i></i><i class="short"></i><i></i><i class="short"></i></div>
