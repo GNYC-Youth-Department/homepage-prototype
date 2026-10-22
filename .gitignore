@@ -7,3 +7,4 @@ staff-worker/.dev.vars
 *.iam.gserviceaccount*.json
 youthcongress-*.json
 staff-worker/*.json
+gnycyouth-photos-*.json
