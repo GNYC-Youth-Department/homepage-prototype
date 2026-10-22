@@ -62,7 +62,7 @@ var P = [
   ['PF-21','data','Curriculum areas','Pathfinders page only. Confirm the Investiture Achievement area names used in GNYC clubs; some editions call the last area Honor Enrichment rather than Lifestyle Enrichment'],
   ['PF-22','text','Levels of dress','Removed Sep 27, 2026: levels of dress follow the NAD Pathfinder Uniform page, linked from the uniform section'],
   ['PF-23','text','How to start a club','DRAFT five steps shown in How to start. Confirm the GNYC process: who approves, how a club registers with the conference, fees, and Basic Staff Training dates']]},
- {code:'PBE', name:'Pathfinder Bible Experience', url:'ministries/pathfinders/bible-experience.html', group:'Built pages', note:'Sub-ministry page layout. TLT, Drum Corps, Drilling & Marching, Young Adults, School of Evangelism and Public Campus Ministry use the same layout.', slots:[
+ {code:'PBE', name:'Pathfinder Bible Experience', url:'ministries/pathfinders/bible-experience.html', group:'Built pages', note:'Sub-ministry page layout. TLT, Drum Corps, Drilling & Marching, Young Adults, L.E.A.D Training School and Public Campus Ministry use the same layout.', slots:[
   ['PBE-01','photo','PBE logo','Supplied Sep 21, 2026 (518×369 PNG); a larger or vector copy is in the NAD logo pack on nadpbe.org'],
   ['PBE-02','text','Intro','30–50 words'],
   ['PBE-03','link','Team registration','Form URL and deadline'],
@@ -330,7 +330,7 @@ var P = [
   ['YA-10-3','photo','Highlight photo · Small groups · Story title','1600×1000 · file YA-10-3-small-groups.jpg'],
   ['YA-11','people','Coordinator','Responsible director shown; name the program coordinator if appointed, with email'],
   ['YA-12','text','FAQ','4 questions and answers']]},
- {code:'SOE', name:'School of Evangelism', tmpl:'PBE', url:'ministries/ay/school-of-evangelism.html', group:'Built pages · program layout', slots:[
+ {code:'SOE', name:'L.E.A.D Training School', tmpl:'PBE', url:'ministries/ay/school-of-evangelism.html', group:'Built pages · program layout', slots:[
   ['SOE-01','photo','Key art or logo','800×1067 or emblem, transparent'],
   ['SOE-02','text','Intro','30–50 words'],
   ['SOE-03','link','Sign-up or registration','URL and deadline'],
@@ -391,7 +391,8 @@ var P = [
   ['HS-03-6','photo','Portrait · Dr. Ariel Manzueta','Done from gnycyouth.org; to replace it send HS-03-6-ariel-manzueta.jpg'],
   ['HS-03-7','photo','Portrait · Pr. Enmanuel Contreras','Done from gnycyouth.org; to replace it send HS-03-7-enmanuel-contreras.jpg'],
   ['HS-03-8','photo','Portrait · Pr. Christian Genao','Done from gnycyouth.org; to replace it send HS-03-8-christian-genao.jpg'],
-  ['HS-04','text','History narrative','400–800 words in the Director’s words']]},
+  ['HS-04','text','History narrative','400–800 words in the Director’s words'],
+  ['HS-05','photo','2026 theme logo','I Am a Game Changer artwork · PNG, transparent background, 1200px wide · file HS-05-game-changer.png']]},
  {code:'LG', name:'Legal & policies', group:'Not mocked up', slots:[
   ['LG-01','file','Privacy policy, terms, risk management','Current text or documents; confirm the three footer links']]}
 ];
