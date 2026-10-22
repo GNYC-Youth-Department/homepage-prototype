@@ -257,3 +257,15 @@ body.show-slots [data-photo="drive"]::after{background:#047857}
 @media (max-width:640px){.photo-notice{bottom:calc(4.5rem + env(safe-area-inset-bottom,0px))}}
 .photo-notice button{flex:none;width:44px;height:44px;margin:-.6rem -.6rem -.6rem 0;border:0;border-radius:10px;background:transparent;color:#fff;font:400 22px/1 system-ui;cursor:pointer}
 .photo-notice button:focus-visible{outline:2px solid #fff;outline-offset:-4px}
+
+/* the Director's note on ministry pages */
+.dir-note{position:fixed;left:1rem;bottom:calc(1rem + env(safe-area-inset-bottom,0px));z-index:68;width:min(380px,calc(100% - 2rem));padding:1.1rem 1.2rem 1rem;border-radius:18px;background:#fff;color:#131b2e;border:1px solid #e2e8f0;box-shadow:0 24px 48px -16px rgba(15,23,42,.35),0 0 0 1px rgba(15,23,42,.03);opacity:0;transform:translateY(12px);transition:opacity .25s ease,transform .25s ease}
+.dir-note.is-in{opacity:1;transform:none}
+.dir-note .dir-k{margin:0 2.5rem 0 0;font:800 11px/1.4 Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#0369a1}
+.dir-note .dir-t{margin:.5rem 0 0;font-size:14.5px;line-height:1.55;color:#334155}
+.dir-note .dir-t a{color:#0369a1;font-weight:600;text-decoration:underline;text-underline-offset:2px}
+.dir-note .dir-s{margin:.6rem 0 0;font-size:13px;font-weight:600;color:#0f172a}
+.dir-note .dir-x{position:absolute;top:.5rem;right:.5rem;width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;border-radius:9999px;background:transparent;border:0;color:#64748b;cursor:pointer}
+.dir-note .dir-x:hover{background:#f1f5f9;color:#0f172a}
+@media (max-width:640px){.dir-note{bottom:calc(4.6rem + env(safe-area-inset-bottom,0px))}}
+@media (prefers-reduced-motion:reduce){.dir-note{transition:none;transform:none}}
