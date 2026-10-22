@@ -118,9 +118,9 @@
   .heart-on .love-swap.is-heart .lw{opacity:0;filter:blur(6px);transform:scale(.85)}
   .heart-on .love-swap.is-heart .lh{opacity:1;transform:scale(1)}
   .heart-on .love-swap.is-beating .lh{animation:beat 1.6s ease-in-out infinite;transition:none}
-  .hero-mark{position:absolute;right:4%;bottom:10%;width:min(34vw,420px);opacity:0;pointer-events:none;filter:drop-shadow(0 24px 40px rgba(0,0,0,.45));animation:markrise 7s cubic-bezier(.22,.61,.36,1) .6s 1 forwards}
-  @keyframes markrise{0%{opacity:0;transform:translateY(28%) rotate(-14deg) scale(.82)}18%{opacity:.95;transform:translateY(0) rotate(0) scale(1)}70%{opacity:.95;transform:translateY(0) rotate(0) scale(1)}100%{opacity:.12;transform:translateY(-10%) rotate(6deg) scale(1.08)}}
-  @media (prefers-reduced-motion:reduce){.hero-mark{animation:none;opacity:.14;transform:none}}
+  .hero-mark{position:absolute;right:7%;bottom:14%;width:min(22vw,300px);opacity:0;pointer-events:none;transform-origin:50% 50%;filter:drop-shadow(0 20px 36px rgba(0,0,0,.45));animation:markgrow 6.5s ease-in-out .8s 1 forwards}
+  @keyframes markgrow{0%{opacity:0;transform:scale(.45)}20%{opacity:1;transform:scale(.6)}70%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.06)}}
+  @media (prefers-reduced-motion:reduce){.hero-mark{animation:none;opacity:0}}
   @media (max-width:900px){.hero-mark{display:none}}
   @keyframes beat{0%,100%{transform:scale(1)}14%{transform:scale(1.1)}28%{transform:scale(1)}42%{transform:scale(1.06)}56%{transform:scale(1)}}
 </style>
