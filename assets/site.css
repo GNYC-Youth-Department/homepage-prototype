@@ -269,3 +269,6 @@ body.show-slots [data-photo="drive"]::after{background:#047857}
 .dir-note .dir-x:hover{background:#f1f5f9;color:#0f172a}
 @media (max-width:640px){.dir-note{bottom:calc(4.6rem + env(safe-area-inset-bottom,0px))}}
 @media (prefers-reduced-motion:reduce){.dir-note{transition:none;transform:none}}
+
+/* a DRAFT badge inside an FAQ question sits right after the words, the icon stays at the end */
+details.faq summary .draft{margin-right:auto;flex:none}
