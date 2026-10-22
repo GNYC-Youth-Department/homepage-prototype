@@ -14,7 +14,7 @@
     { key: 'masterguides', name: 'Master Guides', ages: 'Grade 11 to adult', crest: u('img/crest-mg.png'), dot: '#1e40af', href: u('ministries/master-guides.html'),
       sub: [['Curriculum & investiture', u('ministries/master-guides.html#classes')], ['Basic Staff Training', u('ministries/master-guides.html')], ['Master Guide clubs', u('ministries/master-guides.html#find')]] },
     { key: 'ay', name: 'AY Ministries', ages: 'Young adults', crest: u('img/crest-ay.png'), dot: '#0284c7', href: u('ministries/ay-ministries.html'),
-      sub: [['Young Adults', u('ministries/ay/young-adults.html')], ['School of Evangelism', u('ministries/ay/school-of-evangelism.html')], ['Public Campus Ministry', u('ministries/ay/public-campus-ministry.html'), u('img/pcm-logo.png')]] }
+      sub: [['Young Adults', u('ministries/ay/young-adults.html')], ['L.E.A.D Training School', u('ministries/ay/school-of-evangelism.html')], ['Public Campus Ministry', u('ministries/ay/public-campus-ministry.html'), u('img/pcm-logo.png')]] }
   ];
   var about = [
     ['info', 'About us', 'Mission and who we serve', u('about.html')],
@@ -183,4 +183,24 @@
   if (!document.querySelector('script[src$="comments.js"]')) { var cs = document.createElement('script'); cs.src = u('assets/comments.js'); cs.defer = true; document.body.appendChild(cs); }
   /* real photos from Drive: only the staff copy behind Cloudflare Access fills them (assets/photos.js) */
   var ps = document.createElement('script'); ps.src = u('assets/photos.js'); ps.defer = true; document.body.appendChild(ps);
+})();
+
+/* A note from the Director on every ministry page (asked for on Oct 17, 2026): a small card, lower left, after the visitor
+   has read a third of the page; dismissed for the session with one tap. The wording is a draft until the Director writes his. */
+(function () {
+  if (document.body.getAttribute('data-page') !== 'ministries') return;
+  var K = 'gnycyouth.dirnote'; try { if (sessionStorage.getItem(K) === '1') return; } catch (e) {}
+  var el = document.createElement('aside'); el.className = 'dir-note'; el.setAttribute('role', 'complementary'); el.setAttribute('aria-label', 'A note from the Youth Director'); el.hidden = true;
+  el.innerHTML = '<button type="button" class="dir-x" aria-label="Dismiss this note"><span class="material-symbols-outlined" aria-hidden="true">close</span></button>' +
+    '<p class="dir-k">A note from the Director <span class="draft">DRAFT wording</span></p>' +
+    '<p class="dir-t">Welcome! This page shows you how to join, what the year looks like and who to call. If you need more information, email us at <a href="mailto:youth@gnycyouth.org">youth@gnycyouth.org</a>.</p>' +
+    '<p class="dir-s">Pastor Christian Genao &middot; Youth Director</p>';
+  document.body.appendChild(el);
+  var shown = false, timer = setTimeout(show, 9000);
+  function show() { if (shown) return; shown = true; clearTimeout(timer); el.hidden = false; requestAnimationFrame(function () { el.classList.add('is-in'); }); window.removeEventListener('scroll', onScroll); }
+  function hide() { el.classList.remove('is-in'); setTimeout(function () { el.hidden = true; }, 250); try { sessionStorage.setItem(K, '1'); } catch (e) {} }
+  function onScroll() { var h = document.documentElement; if (h.scrollTop > (h.scrollHeight - h.clientHeight) * 0.33) show(); }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  el.querySelector('.dir-x').addEventListener('click', hide);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !el.hidden) hide(); });
 })();

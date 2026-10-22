@@ -21,7 +21,7 @@
     ['pbe', 'Pathfinder Bible Experience', 'ministries/pathfinders/bible-experience.html'], ['tlt', 'Teen Leadership Training', 'ministries/pathfinders/teen-leadership-training.html'],
     ['dc', 'Drum Corps', 'ministries/pathfinders/drum-corps.html'], ['dm', 'Drilling & Marching', 'ministries/pathfinders/drilling-marching.html'],
     ['mg', 'Master Guides', 'ministries/master-guides.html'], ['ay', 'AY Ministries', 'ministries/ay-ministries.html'],
-    ['ya', 'Young Adults', 'ministries/ay/young-adults.html'], ['soe', 'School of Evangelism', 'ministries/ay/school-of-evangelism.html'],
+    ['ya', 'Young Adults', 'ministries/ay/young-adults.html'], ['soe', 'L.E.A.D Training School', 'ministries/ay/school-of-evangelism.html'],
     ['pcm', 'Public Campus Ministry', 'ministries/ay/public-campus-ministry.html'],
     ['brief', 'Content brief', 'brief.html'], ['sitemap', 'Page map', 'sitemap.html'], ['design', 'Design guidelines', 'design.html']
   ];
