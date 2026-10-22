@@ -5,7 +5,7 @@
    comments.html loads it directly and uses window.gnycComments. */
 (function () {
   /* Comments live only on the staff copy (behind the email sign-in), which reads and posts through its own Worker; that
-     Worker adds who is signed in. The public copy, and the older staff address gnyc.webtekton.com, show no comments. */
+     Worker adds who is signed in. The public copy shows no comments. */
   var ON_STAFF = location.hostname === 'site-review.gnycyouth.org';
   var STAFF = ON_STAFF || (function () { try { return localStorage.getItem('gnycyouth.comments.staff') === '1'; } catch (e) { return false; } })();
   var STAFF_URL = 'https://site-review.gnycyouth.org';
