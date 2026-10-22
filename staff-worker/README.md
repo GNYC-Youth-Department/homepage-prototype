@@ -17,8 +17,8 @@ Staff viewer ──email code (Cloudflare Access)──▶ site-review.gnycyouth
 - `assets/photos.js` runs only on the staff host; the GitHub Pages copy never asks for photos.
 
 **Setup state and steps**
-1. Service account `gnycyouth-photos` in Google Cloud project `youthcongress`, Drive API enabled, folder shared with it as Viewer.
-2. Secret `GOOGLE_SA` (the JSON key) on the Worker, set through the Cloudflare API or the dashboard (Workers & Pages → gnycyouth-staff → Settings → Variables and Secrets). The key file is deleted after; it is never committed.
+1. Service account `gnycyouth-photos` in Google Cloud project `gnycyouth-photos` (its own project, no billing), Drive API enabled, the folder shared with it as Viewer. Done October 22, 2026; live test passed the same day (a file named `PF-14-1 test.jpg` showed in the Pathfinder gallery).
+2. Secret `GOOGLE_SA` (the whole JSON key file) on the Worker, pasted in the dashboard (Workers & Pages → gnycyouth-staff → Settings → Variables and Secrets, type Secret) rather than through a session, so the key never lands in a transcript. Set October 22, 2026; the key file was deleted after. It is never committed (`.gitignore`).
 3. Account and address: the Greater New York Conference Cloudflare account, which holds gnycyouth.org; custom domain `site-review.gnycyouth.org`, no workers.dev address, so there is one door. Other prototypes follow the same pattern (`congress-review.gnycyouth.org`). Until October 22, 2026 the copy ran at `gnyc.webtekton.com` on Darwin Garcia's personal account; that address is turned off and no longer appears in the scripts.
 4. Cloudflare Zero Trust team `gnycstaff.cloudflareaccess.com` (Free plan); Access application "GNYC site review" on the address above, email one-time code, 24-hour session; reusable policy "GNYC staff site reviewers" holds the staff emails (add people there). Worker vars `ACCESS_TEAM` = the team domain and `ACCESS_AUD` = the application's audience tag are set on the Worker.
 
@@ -28,4 +28,4 @@ Redeploy after editing `worker.js`: push, then upload the file served by GitHub 
 
 **Rollback:** revert the commit that added this folder; then delete the `gnycyouth-staff` Worker in the Cloudflare dashboard (or remove the `GOOGLE_SA` secret, which turns every photo request into a 503). The KV namespace `gnycyouth-photos` holds only cached copies and can be deleted with it.
 
-**Known limits:** the index is cached per Worker instance for a minute, so a new upload shows within about a minute. Signed-in viewers can see the names of skipped files in `/photos/index` so uploaders can fix them; keep the staff list narrow, and keep photo releases for minors on file before anything is uploaded.
+**Known limits:** the index is cached per Worker instance for a minute, so a new upload shows within about a minute. If the folder is not shared with the service account, Drive answers with an empty list rather than an error, so `/photos/index` shows `"photos":{}` with nothing skipped; check the folder's sharing first. Signed-in viewers can see the names of skipped files in `/photos/index` so uploaders can fix them; keep the staff list narrow, and keep photo releases for minors on file before anything is uploaded.
