@@ -2,7 +2,7 @@
    into <div data-site="nav"> / <div data-site="footer"> so every page shares one menu. */
 (function () {
   var ROOT = document.documentElement.getAttribute('data-root') || './';
-  var CONGRESS = 'https://events.gnycyouth.com/event/13/adventist-youth-congress-xviii?aff=P1A3HA0V';
+  var CONGRESS = 'https://events.gnycyouth.org/event/18/adventist-youth-congress-xix';
   var page = document.body.getAttribute('data-page') || '';
   function u(p) { return ROOT + p; }
 
