@@ -22,7 +22,7 @@ for (const b of blocked) { assert.equal(await post('Mary Smith', b), 422, 'shoul
 console.log('ok', blocked.length, 'link tricks refused');
 const fine = ['The photo for PF-14-3.jpg is too dark.', 'Love the hero! Can we use the Jan. 29 flyer?', 'Mr. Smith asked about St. Paul club.', 'U.S. spelling please.',
   'Version 2.0 looks better than 1.5', 'Ages 10-15. Grades 5-10.', 'Use the PBE logo; see slot HM-03.', 'Is the time 7:30 or 8:00?', 'e.g. the Bronx', 'It is 3.14 times better', 'Camporee is 2026-10-17 to 2026-10-19', 'Room 101, 9:00 to 12:30', 'Ages 4-9, about 120 kids', 'Meet at the church @ 10',
-  'end with: if you need more information email us at youth@gnycyouth.org.', 'Link to https://gnycyouth.org/shop/ for uniforms', 'see events.gnycyouth.com/event/13', 'GNYCYOUTH.ORG in caps',
+  'end with: if you need more information email us at youth@gnycyouth.org.', 'Link to https://gnycyouth.org/shop/ for uniforms', 'see events.gnycyouth.org/event/13', 'GNYCYOUTH.ORG in caps',
   'File: PF-14-3.jpg', 'Updated data: 120 kids', 'flyer.ai is attached', 'camporee.mov', 'photos.zip', 'Looks good.It is fine', 'Done.So happy', 'Seasons 2023-2024-2025',
   '2026-10-17 2026-10-19', 'Reply @ Mary', 'Great job. Me and the team agree.', 'Plan B. Go with it.'];
 for (const b of fine) { assert.equal(await post('Mary Smith', b), 201, 'should allow: ' + b); }
